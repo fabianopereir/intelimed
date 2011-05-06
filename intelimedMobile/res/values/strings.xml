@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Intelimed!</string>
+    <string name="app_name">InteliMED</string>
+    <string name="login">Login</string>
+    <string name="btlogin">OK</string>
+</resources>
