@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.activity.MainMenu" android:label="@string/app_name"/>			
-        <activity android:name=".controller.activity.MenuCadastro" android:label="@string/app_name"/>
+        <activity android:name=".controller.activity.CadastroPaciente" android:label="@string/app_name"/>
+        <activity android:name=".controller.activity.MenuPaciente" android:label="@string/app_name"/>
     </application>  
 </manifest>

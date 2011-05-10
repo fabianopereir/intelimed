@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <Button
+  	android:id="@+bt/opCadastro"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:text="Cadastrar"	
+  />
+  <Button
+  	android:id="@+bt/opPesquisar"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:layout_below="@+bt/opCadastro"
+  	android:text="Pesquisar"	
+  />
+  <Button
+  	android:id="@+bt/opListar"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:layout_below="@+bt/opPesquisar"
+  	android:text="Listar"	
+  />
+  <Button
+  	android:id="@+bt/opSincronizar"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:layout_below="@+bt/opListar"
+  	android:text="Sincronizar Dados"	
+  />
+</RelativeLayout>

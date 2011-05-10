@@ -9,22 +9,21 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainMenu extends Activity implements OnClickListener{
-	Button btCadastro;
+	Button btMenuPaciente;
 	 @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	    	
 	        super.onCreate(savedInstanceState);
 	        //setContentView(R.layout.main);
 	        setContentView(R.layout.menu);
-	        btCadastro = (Button) findViewById(R.bt.menuCadastro);
-			btCadastro.setOnClickListener(this);
+	        btMenuPaciente = (Button) findViewById(R.bt.menuPaciente);
+	        btMenuPaciente.setOnClickListener(this);
 	 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-	
-		startActivity(new Intent(this, MenuCadastro.class));
+		startActivity(new Intent(this, MenuPaciente.class));
 		
 	}
 
