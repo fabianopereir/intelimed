@@ -12,8 +12,13 @@ public final class R {
     }
     public static final class bt {
         public static final int btLogin=0x7f070000;
-        public static final int cadPaciente=0x7f070002;
-        public static final int menuCadastro=0x7f070001;
+        public static final int cadPaciente=0x7f070007;
+        public static final int menuDiagnosticar=0x7f070002;
+        public static final int menuPaciente=0x7f070001;
+        public static final int opCadastro=0x7f070003;
+        public static final int opListar=0x7f070005;
+        public static final int opPesquisar=0x7f070004;
+        public static final int opSincronizar=0x7f070006;
     }
     public static final class campo {
         public static final int password=0x7f060001;
@@ -38,8 +43,9 @@ public final class R {
         public static final int login=0x7f030001;
         public static final int main=0x7f030002;
         public static final int menu=0x7f030003;
-        public static final int paciente=0x7f030004;
-        public static final int teste=0x7f030005;
+        public static final int menupaciente=0x7f030004;
+        public static final int paciente=0x7f030005;
+        public static final int teste=0x7f030006;
     }
     public static final class paciente {
         public static final int bairro=0x7f090005;
