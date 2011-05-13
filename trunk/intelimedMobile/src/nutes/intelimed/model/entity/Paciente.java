@@ -1,11 +1,13 @@
 package nutes.intelimed.model.entity;
 
-import nutes.intelimed.model.entity.Usuario.Usuarios;
+import java.io.Serializable;
+
 import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-public class Paciente {
+public class Paciente implements Serializable{
+	public long id;
 	public  String nome;
 	public String datanascimento;
 	
@@ -17,21 +19,25 @@ public class Paciente {
 	{
 	}
 
-		
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
-
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-
 	public String getDatanascimento() {
 		return datanascimento;
 	}
-
 
 	public void setDatanascimento(String datanascimento) {
 		this.datanascimento = datanascimento;
@@ -42,8 +48,7 @@ public class Paciente {
 		
 		private Pacientes() {
 		}
-	
-	
+		
 		public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/pacientes");
 	
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.google.pacientes";
@@ -52,16 +57,15 @@ public class Paciente {
 	
 		public static final String DEFAULT_SORT_ORDER = "_id ASC";
 	
-
 		public static final String NOME = "nome";
 		public static final String DTNASCIMENTO = "dtnascimento";
 	
 		/**
-		 * Método que constrói uma Uri para um Funcionario específico, com o seu id
+		 * Método que constrói uma Uri para um Paciente específico, com o seu id
 		 */
 		public static Uri getUriId(long id) {
-			Uri uriFuncionario = ContentUris.withAppendedId(Usuarios.CONTENT_URI, id);
-			return uriFuncionario;
+			Uri uriPaciente = ContentUris.withAppendedId(Pacientes.CONTENT_URI, id);
+			return uriPaciente;
 		}
 	}
 }

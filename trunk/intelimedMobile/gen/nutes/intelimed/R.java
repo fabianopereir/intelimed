@@ -12,6 +12,7 @@ public final class R {
     }
     public static final class bt {
         public static final int btLogin=0x7f070000;
+        public static final int btSearch=0x7f070008;
         public static final int cadPaciente=0x7f070007;
         public static final int menuDiagnosticar=0x7f070002;
         public static final int menuPaciente=0x7f070001;
@@ -26,14 +27,17 @@ public final class R {
     }
     public static final class drawable {
         public static final int icon=0x7f020000;
+        public static final int pesquisar=0x7f020001;
     }
     public static final class id {
-        public static final int Button01=0x7f080003;
-        public static final int Button02=0x7f080004;
-        public static final int Button03=0x7f080005;
-        public static final int LinearLayout01=0x7f080002;
+        public static final int Button01=0x7f080005;
+        public static final int Button02=0x7f080006;
+        public static final int Button03=0x7f080007;
+        public static final int LinearLayout01=0x7f080004;
         public static final int LinearLayout02=0x7f080001;
         public static final int ScrollView01=0x7f080000;
+        public static final int text1=0x7f080002;
+        public static final int text2=0x7f080003;
     }
     public static final class label {
         public static final int login=0x7f050000;
@@ -45,7 +49,9 @@ public final class R {
         public static final int menu=0x7f030003;
         public static final int menupaciente=0x7f030004;
         public static final int paciente=0x7f030005;
-        public static final int teste=0x7f030006;
+        public static final int paciente_row_table=0x7f030006;
+        public static final int searchpaciente=0x7f030007;
+        public static final int teste=0x7f030008;
     }
     public static final class paciente {
         public static final int bairro=0x7f090005;
@@ -59,10 +65,18 @@ public final class R {
         public static final int numero=0x7f090003;
         public static final int rsuspeita=0x7f090009;
     }
+    public static final class search {
+        public static final int campoDatanascimento=0x7f0b0001;
+        public static final int campoNome=0x7f0b0000;
+    }
     public static final class string {
         public static final int app_name=0x7f040001;
         public static final int btlogin=0x7f040003;
         public static final int hello=0x7f040000;
         public static final int login=0x7f040002;
+    }
+    public static final class table {
+        public static final int datNascimento=0x7f0a0001;
+        public static final int nome=0x7f0a0000;
     }
 }

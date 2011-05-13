@@ -1,19 +1,28 @@
 package nutes.intelimed.controller.activity;
 
+
+
+
 import nutes.intelimed.R;
 import nutes.intelimed.model.DAO.PacienteDao;
 import nutes.intelimed.model.DAO.PacienteScript;
 import nutes.intelimed.model.entity.Paciente;
+
 import android.app.Activity;
+
 import android.content.Intent;
+
 import android.os.Bundle;
+
 import android.view.View;
 import android.view.View.OnClickListener;
+
 import android.widget.Button;
 import android.widget.EditText;
 
+
 public class CadastroPaciente extends Activity implements OnClickListener{
-	
+
 	EditText nome, dtnascimento;
 	Button cadPaciente;
 	PacienteDao dao;
@@ -29,12 +38,12 @@ public class CadastroPaciente extends Activity implements OnClickListener{
         dtnascimento = (EditText) findViewById(R.paciente.dtnascimento);
         cadPaciente = (Button) findViewById(R.bt.cadPaciente);
         cadPaciente.setOnClickListener(this);
+        
 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
 		save();
 	}
 	public void save()
