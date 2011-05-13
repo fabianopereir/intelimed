@@ -87,12 +87,8 @@ public class Login extends Activity implements OnClickListener{
 			//Toast.makeText(Login.this, "Sucesso!!!", Toast.LENGTH_SHORT).show();
 		}else{
 			Toast.makeText(Login.this, "Usuário ou senha incorreto!", Toast.LENGTH_SHORT).show();
-			//Log.i("jamilson", "Senha: "+);
+			
 		}
 	}
-	// Busca uma pessoa pelo nome
-	/*protected Usuario validaLogin(String vvuser) {
-		Usuario usuarioo = dao.login(vvuser);
-		return usuarioo;
-	}*/
+	
 }

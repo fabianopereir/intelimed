@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent">
+	<TableRow>
+		<TextView
+			android:id="@+id/text1"
+			android:text="Nome:"
+			android:textColor="#ffffff" />
+		<EditText
+			android:id="@+search/campoNome"
+			android:width="240px" />
+	</TableRow>
+	<TableRow>
+		<TextView
+			android:id="@+id/text2"
+			android:text="Data Nascimento:"
+			android:textColor="#ffffff" />
+		<EditText
+			android:id="@+search/campoDatanascimento" />
+	</TableRow>
+	<TableRow>
+		<ImageButton
+			android:src="@drawable/pesquisar"
+			android:id="@+bt/btSearch"
+			android:text="Buscar" />
+	</TableRow>
+</TableLayout>

@@ -19,7 +19,7 @@ public class PacienteScript extends PacienteDao{
 	private static final String NOME_BANCO = "inteliMobile";
 
 	// Controle de versão
-	private static final int VERSAO_BANCO = 2;
+	private static final int VERSAO_BANCO = 1;
 
 	// Nome da tabela
 	public static final String NOME_TABELA = "paciente";
