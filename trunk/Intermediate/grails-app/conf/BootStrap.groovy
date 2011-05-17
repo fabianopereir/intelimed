@@ -1,7 +1,11 @@
 class BootStrap {
 
-    def init = { servletContext ->
-    }
-    def destroy = {
-    }
+	def springSecurityService
+	
+	def init = {
+	 
+	}
+	def destroy = {
+	}
+
 }

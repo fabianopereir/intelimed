@@ -1,20 +1,19 @@
 package intermediate
 
+import java.util.Date;
+
 class Usuario {
 	
-	static constraints = {
-		idUsuario(min:0)
-		login(blank:false, maxSize:45)
+static constraints = {	
+		nome(blank:false)
+		login(blank:false, maxSize:45, unique:true)
 		senha(blank:false, maxSize:250, password:true)
 		tipoDeUsuario(inList:["Admin","Medico","Agente de saude"])
-		
-		//limitar tamanho corretamente
-		
-		cpf(blank:false, minSize:11, maxSize:11)
+		cpf(blank:false, minSize:11, maxSize:11, matches:"[0-9]+", unique:true)
 		dataDeNascimento()
     }
-	
-	int idUsuario
+
+	String nome
 	String cpf
 	Date dataDeNascimento
 	String tipoDeUsuario
