@@ -12,5 +12,5 @@ public interface InterfaceModelPaciente {
 	public abstract Paciente buscarPacientePorNome(String nome);
 	public abstract List<Paciente> listarPacientes();
 	public abstract void fechar();
-	public abstract void salvar(Paciente pessoa);
+	public abstract void salvar(Paciente paciente);
 }

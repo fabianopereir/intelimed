@@ -19,13 +19,19 @@ public class ListarPaciente extends ListActivity{
 		dao = new PacienteScript(this);
 		updateList();
 	}
+	@Override
+	protected void onPause() {
+		super.onPause();
+		// Cancela para não ficar nada pendente na tela
+		setResult(RESULT_CANCELED);
+
+		// Fecha a tela
+		finish();
+	}
 	protected void updateList() {
 		Log.i("jamilson", "metodo updateList");
-		// Pega a lista de pessoas e exibe na tela
 		pacientes = dao.listarPacientes();
 		Log.i("jamilson", "foi chamado o metodo listarPacientes");
-		// Adaptador de lista customizado para cada linha de uma pessoa
 		setListAdapter(new PacienteListAdapter(this, pacientes));
 	}
-
 }

@@ -47,6 +47,7 @@ public class UsuarioScript extends UsuarioDao{
 	@Override
 	public void fechar() {
 		super.fechar();
+		Log.i("jamilson", "Mandou fechar o banco");
 		if (dbHelper != null) {
 			dbHelper.close();
 		}

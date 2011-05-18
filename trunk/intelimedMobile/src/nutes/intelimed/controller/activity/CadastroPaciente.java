@@ -1,10 +1,8 @@
 package nutes.intelimed.controller.activity;
 
 
-
-
 import nutes.intelimed.R;
-import nutes.intelimed.model.DAO.PacienteDao;
+import nutes.intelimed.model.InterfaceModelPaciente;
 import nutes.intelimed.model.DAO.PacienteScript;
 import nutes.intelimed.model.entity.Paciente;
 
@@ -23,46 +21,48 @@ import android.widget.EditText;
 
 public class CadastroPaciente extends Activity implements OnClickListener{
 
+	public static InterfaceModelPaciente dao;
+	
 	EditText nome, dtnascimento;
 	Button cadPaciente;
-	PacienteDao dao;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
     	
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.main);
-        new PacienteScript(this);
+        dao = new PacienteScript(this);
         setContentView(R.layout.paciente);
-        //setContentView(ScrollView.FOCUS_UP);
         nome = (EditText) findViewById(R.paciente.nome);
         dtnascimento = (EditText) findViewById(R.paciente.dtnascimento);
         cadPaciente = (Button) findViewById(R.bt.cadPaciente);
         cadPaciente.setOnClickListener(this);
         
 	}
-
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		save();
-	}
+	}	
 	public void save()
 	{
 		Paciente paciente = new Paciente();
 		
 		paciente.nome = nome.getText().toString();
 		paciente.datanascimento = dtnascimento.getText().toString();
-
-		// Salvar
-		//salvarPessoa(paciente);
-		dao = new PacienteDao(this);
-		dao.save(paciente);
-		// OK
+		salvarPaciente(paciente);
+	
 		setResult(RESULT_OK, new Intent());
 
 		// Fecha a tela
 		finish();
+	}	
+	public void salvarPaciente(Paciente paciente)
+	{
+		dao.salvar(paciente);
 	}
-	
-
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		// Fecha o banco
+		dao.fechar();
+	}
 }

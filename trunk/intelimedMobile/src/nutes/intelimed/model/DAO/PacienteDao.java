@@ -29,8 +29,6 @@ public class PacienteDao implements InterfaceModelPaciente{
 
 	protected SQLiteDatabase db;
 	
-	
-	
 	public PacienteDao()
 	{
 		
@@ -136,7 +134,6 @@ public class PacienteDao implements InterfaceModelPaciente{
 			do {
 				Paciente paciente = new Paciente();
 				pacientes.add(paciente);
-
 				
 				//paciente.i = c.getLong(idxId);
 				paciente.nome = c.getString(idxNome);
@@ -148,9 +145,16 @@ public class PacienteDao implements InterfaceModelPaciente{
 		return pacientes;
 	}
 	@Override
-	public void salvar(Paciente pessoa) {
-		// TODO Auto-generated method stub
+	public void salvar(Paciente paciente) {
+		Log.i("jamilson", "chamou salvar");
+		ContentValues values = new ContentValues();
 		
+		values.put(Pacientes.NOME, paciente.nome);
+		values.put(Pacientes.DTNASCIMENTO, paciente.datanascimento);
+		
+		long id = db.insert(NOME_TABELA, "", values);
+		Log.i("jamilson", "Paciente inserido com sucesso!!!");
+		//return id;	
 	}
 	/**
 	 * 	Busca um paciente utilizando as configurações definidas no SQLiteQueryBuilder
