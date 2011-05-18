@@ -17,14 +17,13 @@ public class UsuarioDao {
 
 	protected SQLiteDatabase db;
 	
-	
-	
 	public UsuarioDao()
 	{
 		
 	}
 	public UsuarioDao(Context ctx) {
 		// Abre o banco de dados
+		
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
 	}
 	 public Usuario login(Usuario u){
@@ -39,7 +38,9 @@ public class UsuarioDao {
 				
 				//Log.i("jamilson", "FIMPass");	
 				// Se encontrou...
-				if (c.moveToNext()) {
+				//if (c.moveToNext()) {
+				if (c.getCount() > 0) {
+					c.moveToFirst();
 					user = new Usuario();
 					// utiliza os métodos getLong(), getString(), getInt(), etc para recuperar os valores
 					//user.id = c.getLong(0);
@@ -47,20 +48,18 @@ public class UsuarioDao {
 					Log.i("jamilson", "Result2: "+c.getString(1));
 					user.Vuser = c.getString(1);
 					user.Vpassword = c.getString(2);
+					return u;
 				}else 
 				{
 					return null;
 				}
+				
 			} catch (SQLException e) {
 				Log.e("jamilson", "Erro ao buscar a usuario: " + e.toString());
 				e.printStackTrace();
-
 				return null;
-			}
-
-			//return pessoa;
-		 	
-	        return u;
+			}	 	
+	        //return u;
 	    }
 	 
 	 /**
@@ -72,5 +71,4 @@ public class UsuarioDao {
 				db.close();
 			}
 		}
-	 
 }

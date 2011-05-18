@@ -40,9 +40,20 @@ public class UpdatePaciente extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		update();
 	}
+	
 	public void update(){
 		dao.atualizar(paciente);
 		setResult(RESULT_OK, new Intent());
+		// Fecha a tela
+		finish();
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		// Cancela para não ficar nada na tela pendente
+		setResult(RESULT_CANCELED);
+
 		// Fecha a tela
 		finish();
 	}
