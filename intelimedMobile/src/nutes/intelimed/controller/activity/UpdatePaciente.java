@@ -15,7 +15,7 @@ import android.widget.EditText;
 public class UpdatePaciente extends Activity implements OnClickListener{
 	public static InterfaceModelPaciente dao;
 	EditText nome, dtnascimento;
-	Button upPaciente;
+	Button upPaciente,delPaciente;
 	Paciente paciente;
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -24,9 +24,11 @@ public class UpdatePaciente extends Activity implements OnClickListener{
 		nome = (EditText) findViewById(R.paciente.nome);
         dtnascimento = (EditText) findViewById(R.paciente.dtnascimento);
         upPaciente = (Button) findViewById(R.bt.cadPaciente);
+        //delPaciente= (Button) findViewById(R.bt.delPaciente);
         upPaciente.setText("Atualizar");
         upPaciente.setOnClickListener(this);
         
+        //exibe os dados do paciente
 		Intent intent = getIntent();
         if (intent!=null)
         {
@@ -36,12 +38,15 @@ public class UpdatePaciente extends Activity implements OnClickListener{
         	dtnascimento.setText(paciente.datanascimento);
         }
 	}
+	
 	@Override
 	public void onClick(View v) {
 		update();
 	}
 	
 	public void update(){
+		paciente.nome = nome.getText().toString();
+		paciente.datanascimento = dtnascimento.getText().toString();
 		dao.atualizar(paciente);
 		setResult(RESULT_OK, new Intent());
 		// Fecha a tela
