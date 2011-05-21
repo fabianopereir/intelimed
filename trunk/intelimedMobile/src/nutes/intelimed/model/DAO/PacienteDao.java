@@ -114,8 +114,15 @@ public class PacienteDao implements InterfaceModelPaciente {
 
 	@Override
 	public int deletar(long id) {
-		// TODO Auto-generated method stub
-		return 0;
+		String where = Pacientes._ID + "=?";
+
+		String _id = String.valueOf(id);
+		String[] whereArgs = new String[] { _id };
+
+		int count = db.delete(NOME_TABELA, where, whereArgs);
+		Log.i(CATEGORIA, "Deletou [" + count + "] registros");
+
+		return count;
 	}
 
 	public Cursor getCursor() {

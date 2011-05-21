@@ -18,6 +18,29 @@
 	 	android:layout_height="wrap_content"
 	 	android:text="Cadastro de Paciente"
 	 />
+
+<RadioGroup
+android:id="@+id/radioGroup"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="horizontal"
+android:visibility="visible"
+>
+<RadioButton
+android:id="@+id/editar"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Editar"
+/>
+<RadioButton
+android:id="@+id/remover"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:text="Remover"/>
+
+</RadioGroup>
+
 	 <TextView
 	 	android:layout_width="fill_parent"
 	 	android:layout_height="wrap_content"
@@ -134,7 +157,7 @@
 	 	android:layout_width="fill_parent"
 	 	android:layout_height="wrap_content"
 	 	android:text="Cadastrar"
-	 />	  
+	 />	 
   </LinearLayout>
 	</ScrollView>
 </LinearLayout>
