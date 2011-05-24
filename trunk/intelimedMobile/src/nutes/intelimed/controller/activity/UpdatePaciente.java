@@ -47,6 +47,7 @@ public class UpdatePaciente extends Activity implements OnClickListener{
         {
         	paciente = (Paciente) intent.getSerializableExtra("paciente");
         	//String algumaString = intent.getString("nome");
+        	//Log.i("jamilson","Nome do paciente:"+ paciente.getNome());
         	nome.setText(paciente.nome);
         	dtnascimento.setText(paciente.datanascimento);
         }

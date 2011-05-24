@@ -69,7 +69,9 @@ public class PacienteDao implements InterfaceModelPaciente {
 
 		String where = Pacientes._ID + "=?";
 		String[] whereArgs = new String[] { _id };
-
+		Log.i("jamilson", "ID: "+Pacientes._ID);
+		Log.i("jamilson", "where: "+where);
+		Log.i("jamilson", "whereArgs: "+whereArgs);
 		int count = db.update(NOME_TABELA, values, where, whereArgs);
 		Log.i(CATEGORIA, "Atualizou [" + count + "] registros");
 
