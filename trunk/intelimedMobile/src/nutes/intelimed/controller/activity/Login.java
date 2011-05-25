@@ -16,15 +16,19 @@ import android.widget.Toast;
 
 
 import nutes.intelimed.R;
+import nutes.intelimed.model.InterfaceModelUsuario;
 import nutes.intelimed.model.MD5Password;
 import nutes.intelimed.model.DAO.UsuarioDao;
 import nutes.intelimed.model.DAO.UsuarioScript;
 import nutes.intelimed.model.entity.Usuario;
 
 public class Login extends Activity implements OnClickListener{
+	
+	public static InterfaceModelUsuario dao;
+	
 	Button btlogin;
 	EditText user, password;
-	UsuarioDao dao;
+	//UsuarioDao dao;
 	
 	Usuario usuario = new Usuario();
 
@@ -35,7 +39,7 @@ public class Login extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         
-        new UsuarioScript(this);
+        dao = new UsuarioScript(this);
        
         btlogin = (Button) findViewById(R.bt.btLogin);
         btlogin.setOnClickListener(this); 
@@ -66,7 +70,7 @@ public class Login extends Activity implements OnClickListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dao = new UsuarioDao(this);
+		//userFinal = dao.login(usuario);
 		userFinal = dao.login(usuario);
 		if (userFinal!=null)
 		{

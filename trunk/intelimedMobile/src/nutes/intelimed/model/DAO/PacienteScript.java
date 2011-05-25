@@ -1,17 +1,24 @@
 package nutes.intelimed.model.DAO;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class PacienteScript extends PacienteDao{
 
 
 	// Script para fazer drop na tabela
-	private static final String SCRIPT_DATABASE_DELETE = "DROP TABLE IF EXISTS paciente";
+	private static final String[] SCRIPT_DATABASE_DELETE = new String[]{
+		"DROP TABLE IF EXISTS paciente",
+		"DROP TABLE IF EXISTS doenca",
+		"DROP TABLE IF EXISTS report_suspeita"
+	};
 
 	// Cria a tabela com o "_id" sequencial
 	private static final String[] SCRIPT_DATABASE_CREATE = new String[] {
 			"create table paciente ( _id integer primary key autoincrement, nome text not null,dtnascimento text not null);",
+			"create table doenca ( _id integer primary key autoincrement, nome varchar(120))",
+			"create table report_suspeita ( _id integer primary key autoincrement, suspeita varchar(120),id_paciente integer, id_doenca integer, Foreign Key (id_paciente) references paciente(_id), Foreign Key (id_doenca) references doenca(_id))",
 			"insert into paciente (nome,dtnascimento) values('jamilson','21/11/1989');"
 			 };
 
@@ -44,7 +51,7 @@ public class PacienteScript extends PacienteDao{
 	/**
 	 * Fecha o banco
 	 */
-	@Override
+	//@Override
 	public void fechar() {
 		super.fechar();
 		if (dbHelper != null) {

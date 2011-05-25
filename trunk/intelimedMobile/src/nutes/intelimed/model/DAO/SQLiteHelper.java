@@ -17,7 +17,7 @@ class SQLiteHelper extends SQLiteOpenHelper {
 	private static final String CATEGORIA = "nutes";
 
 	private String[] scriptSQLCreate;
-	private String scriptSQLDelete;
+	private String[] scriptSQLDelete;
 
 	/**
 	 * Cria uma instância de SQLiteHelper
@@ -26,12 +26,12 @@ class SQLiteHelper extends SQLiteOpenHelper {
 	 * @param nomeBanco nome do banco de dados
 	 * @param versaoBanco versão do banco de dados (se for diferente é para atualizar)
 	 * @param scriptSQLCreate SQL com o create table..
-	 * @param scriptSQLDelete SQL com o drop table...
+	 * @param scriptDatabaseDelete SQL com o drop table...
 	 */
-	SQLiteHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String scriptSQLDelete) {
+	SQLiteHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
 		super(context, nomeBanco, null, versaoBanco);
 		this.scriptSQLCreate = scriptSQLCreate;
-		this.scriptSQLDelete = scriptSQLDelete;
+		this.scriptSQLDelete = scriptDatabaseDelete;
 		Log.i("jamilson", "passou3");
 	}	
 	
@@ -55,9 +55,17 @@ class SQLiteHelper extends SQLiteOpenHelper {
 	// Mudou a versão...
 	public void onUpgrade(SQLiteDatabase db, int versaoAntiga, int novaVersao) {
 		Log.w(CATEGORIA, "Atualizando da versão " + versaoAntiga + " para " + novaVersao + ". Todos os registros serão deletados.");
-		Log.i(CATEGORIA, scriptSQLDelete);
 		// Deleta as tabelas...
-		db.execSQL(scriptSQLDelete);
+		int qtdeScripts = scriptSQLDelete.length;
+
+		// Executa cada sql passado como parâmetro
+		for (int i = 0; i < qtdeScripts; i++) {
+			String sql = scriptSQLDelete[i];
+			Log.i(CATEGORIA, sql);
+			// Cria o banco de dados executando o script de criação
+			db.execSQL(sql);
+		}
+		//db.execSQL(scriptSQLDelete);
 		// Cria novamente...
 		onCreate(db);
 	}
