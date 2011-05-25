@@ -6,7 +6,12 @@ import android.util.Log;
 public class UsuarioScript extends UsuarioDao{
 
 	// Script para fazer drop na tabela
-	private static final String SCRIPT_DATABASE_DELETE = "DROP TABLE IF EXISTS usuario";
+	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {
+		"DROP TABLE IF EXISTS permissao;",
+		"DROP TABLE IF EXISTS grupo;",
+		"DROP TABLE IF EXISTS usuario;",
+		"DROP TABLE IF EXISTS grupo_permissao;"
+	};
 
 	// Cria a tabela com o "_id" sequencial
 	private static final String[] SCRIPT_DATABASE_CREATE = new String[] {
@@ -18,7 +23,6 @@ public class UsuarioScript extends UsuarioDao{
 			"insert into grupo (nome,descricao) values('acs','Agentes de saúde');",
 			"insert into usuario (user,password,id_grupo) values('jamilson','202cb962ac59075b964b07152d234b70', 1);"
 			 };
-	;
 	// Nome do banco
 	private static final String NOME_BANCO = "inteliMobile";
 
@@ -39,7 +43,7 @@ public class UsuarioScript extends UsuarioDao{
 		// Criar utilizando um script SQL
 		dbHelper = new SQLiteHelper(ctx, UsuarioScript.NOME_BANCO, UsuarioScript.VERSAO_BANCO,
 				UsuarioScript.SCRIPT_DATABASE_CREATE, UsuarioScript.SCRIPT_DATABASE_DELETE);
-
+		
 		// abre o banco no modo escrita para poder alterar também
 		db = dbHelper.getWritableDatabase();
 		Log.i("jamilson", "passou2");
