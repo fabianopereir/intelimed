@@ -88,3 +88,10 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'intelimed.access.SecUser'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'intelimed.access.SecUserRole'
+grails.plugins.springsecurity.authority.className = 'intelimed.access.Role'
+grails.plugins.springsecurity.requestMap.className = 'intelimed.access.Requestmap'
+grails.plugins.springsecurity.securityConfigType = 'Requestmap'
