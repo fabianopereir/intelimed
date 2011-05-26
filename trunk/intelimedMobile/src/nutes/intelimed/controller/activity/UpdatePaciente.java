@@ -16,26 +16,32 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 
 public class UpdatePaciente extends Activity implements OnClickListener{
 	public static InterfaceModelPaciente dao;
+	TextView titulo;
 	EditText nome, dtnascimento;
 	Button upPaciente;
 	Paciente paciente;
 	RadioButton delPaciente,edPaciente;
 	RadioGroup radioGroup;
 	boolean del=false;
+	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		dao = new PacienteScript(this);
 		setContentView(R.layout.paciente);
 		
+		titulo = (TextView) findViewById(R.id.TituloCadUp);
 		nome = (EditText) findViewById(R.paciente.nome);
         dtnascimento = (EditText) findViewById(R.paciente.dtnascimento);
         upPaciente = (Button) findViewById(R.bt.cadPaciente);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         delPaciente = (RadioButton) findViewById(R.id.remover);
         edPaciente = (RadioButton) findViewById(R.id.editar);
+        
+        titulo.setText("Atualização de Paciente");
         upPaciente.setText("Atualizar");
         upPaciente.setOnClickListener(this);
         radioGroup.setVisibility(RadioGroup.VISIBLE);

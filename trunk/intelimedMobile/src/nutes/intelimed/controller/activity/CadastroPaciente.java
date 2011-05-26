@@ -17,6 +17,8 @@ import android.view.View.OnClickListener;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 
 public class CadastroPaciente extends Activity implements OnClickListener{
@@ -25,7 +27,8 @@ public class CadastroPaciente extends Activity implements OnClickListener{
 	
 	EditText nome, dtnascimento;
 	Button cadPaciente;
-	
+	RadioButton delPaciente,edPaciente;
+	RadioGroup radioGroup;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
     	
@@ -36,6 +39,12 @@ public class CadastroPaciente extends Activity implements OnClickListener{
         dtnascimento = (EditText) findViewById(R.paciente.dtnascimento);
         cadPaciente = (Button) findViewById(R.bt.cadPaciente);
         cadPaciente.setOnClickListener(this);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        delPaciente = (RadioButton) findViewById(R.id.remover);
+        edPaciente = (RadioButton) findViewById(R.id.editar);
+        radioGroup.setVisibility(RadioGroup.GONE);
+        delPaciente.setVisibility(RadioButton.GONE);
+        edPaciente.setVisibility(RadioButton.GONE);
         
 	}
 	@Override
