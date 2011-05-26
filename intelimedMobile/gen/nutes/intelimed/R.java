@@ -33,17 +33,18 @@ public final class R {
         public static final int pesquisar=0x7f020001;
     }
     public static final class id {
-        public static final int Button01=0x7f080008;
-        public static final int Button02=0x7f080009;
-        public static final int Button03=0x7f08000a;
-        public static final int LinearLayout01=0x7f080007;
+        public static final int Button01=0x7f080009;
+        public static final int Button02=0x7f08000a;
+        public static final int Button03=0x7f08000b;
+        public static final int LinearLayout01=0x7f080008;
         public static final int LinearLayout02=0x7f080001;
         public static final int ScrollView01=0x7f080000;
-        public static final int editar=0x7f080003;
-        public static final int radioGroup=0x7f080002;
-        public static final int remover=0x7f080004;
-        public static final int text1=0x7f080005;
-        public static final int text2=0x7f080006;
+        public static final int TituloCadUp=0x7f080002;
+        public static final int editar=0x7f080004;
+        public static final int radioGroup=0x7f080003;
+        public static final int remover=0x7f080005;
+        public static final int text1=0x7f080006;
+        public static final int text2=0x7f080007;
     }
     public static final class label {
         public static final int login=0x7f050000;
