@@ -10,7 +10,7 @@ public class Paciente implements Serializable{
 	public long id;
 	public  String nome;
 	public String datanascimento;
-	
+	public String suspeita;
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { Pacientes._ID, Pacientes.NOME, Pacientes.DTNASCIMENTO };
 	//public static String[] colunas = new String[] {Usuarios.USUARIO, Usuarios.SENHA};
@@ -42,8 +42,14 @@ public class Paciente implements Serializable{
 	public void setDatanascimento(String datanascimento) {
 		this.datanascimento = datanascimento;
 	}
+	public String getSupeita() {
+		return suspeita;
+	}
 
-
+	public void setSupeita(String suspeita) {
+		this.suspeita = suspeita;
+	}
+		
 	public static final class Pacientes implements BaseColumns {
 		
 		private Pacientes() {
@@ -59,6 +65,8 @@ public class Paciente implements Serializable{
 	
 		public static final String NOME = "nome";
 		public static final String DTNASCIMENTO = "dtnascimento";
+		public static final String DOENCAO = "doenca";
+		public static final String SUSPEITA = "suspeita";
 	
 		/**
 		 * Método que constrói uma Uri para um Paciente específico, com o seu id
