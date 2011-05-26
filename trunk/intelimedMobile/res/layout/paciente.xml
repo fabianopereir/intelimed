@@ -1,136 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent"
 	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
 	<ScrollView
-		android:id="@+id/ScrollView01"
+		android:layout_height="fill_parent"
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
+		android:id="@+id/ScrollView01">
+		
 		<LinearLayout
-			android:id="@+id/LinearLayout02"
-			android:layout_width="fill_parent"
 			android:layout_height="30px"
+			android:layout_width="fill_parent"
+			android:id="@+id/LinearLayout02"
 			android:orientation="vertical">
 			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+id/TituloCadUp"
 				android:text="Cadastro de Paciente" />
-
+			
 			<RadioGroup
-				android:id="@+id/radioGroup"
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/radioGroup"
 				android:orientation="horizontal"
 				android:visibility="visible">
 				<RadioButton
-					android:id="@+id/editar"
-					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:id="@+id/editar"
 					android:text="Editar" />
 				<RadioButton
-					android:id="@+id/remover"
-					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
+					android:layout_width="fill_parent"
+					android:id="@+id/remover"
 					android:text="Remover" />
 			</RadioGroup>
-
 			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:paddingTop="10px"
-				android:text="Nome" />
+				android:layout_width="fill_parent"
+				android:text="Nome"
+				android:paddingTop="10px" />
 			<EditText
-				android:id="@+paciente/nome"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/nome" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Data de nascimento" />
 			<EditText
-				android:id="@+paciente/dtnascimento"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/dtnascimento" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="-----------------------------------------------------------" />
 			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Endereço" />
 			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Logradouro" />
 			<EditText
-				android:id="@+paciente/logradouro"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/logradouro" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Número" />
 			<EditText
-				android:id="@+paciente/numero"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/numero" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Complemento" />
 			<EditText
-				android:id="@+paciente/complemento"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/complemento" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Bairro" />
 			<EditText
-				android:id="@+paciente/bairro"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/bairro" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Cidade" />
 			<EditText
-				android:id="@+paciente/cidade"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/cidade" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Estado" />
 			<EditText
-				android:id="@+paciente/estado"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/estado" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Data do cadastro" />
 			<EditText
-				android:id="@+paciente/dtcadastro"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content" />
-			<TextView
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+paciente/dtcadastro" />
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:text="Reportar suspeita" />
 			<Spinner
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
 				android:id="@+cbm/doenca"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:prompt="@string/doencas"
-				/>
+				android:prompt="@string/doencas" />
 			<Button
-				android:id="@+bt/cadPaciente"
-				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+bt/cadPaciente"
 				android:text="Cadastrar" />
 		</LinearLayout>
 	</ScrollView>
