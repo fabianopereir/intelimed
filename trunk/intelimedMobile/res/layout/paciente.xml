@@ -129,6 +129,11 @@
 				android:layout_width="fill_parent"
 				android:id="@+cbm/doenca"
 				android:prompt="@string/doencas" />
+				<EditText
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:height="120px"
+				android:id="@+paciente/dtreport" />
 			<Button
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"

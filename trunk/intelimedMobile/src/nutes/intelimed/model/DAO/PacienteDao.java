@@ -5,7 +5,9 @@ import java.util.List;
 
 import nutes.intelimed.model.InterfaceModelPaciente;
 import nutes.intelimed.model.entity.Paciente;
+import nutes.intelimed.model.entity.ReportSuspeita;
 import nutes.intelimed.model.entity.Paciente.Pacientes;
+import nutes.intelimed.model.entity.ReportSuspeita.Suspeita;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -25,6 +27,7 @@ public class PacienteDao implements InterfaceModelPaciente {
 	private static final String NOME_BANCO = "inteliMobile";
 	// Nome da tabela
 	public static final String NOME_TABELA = "paciente";
+	public static final String TABELA_REPORT_SUSPEITA = "report_suspeita";
 
 	protected SQLiteDatabase db;
 
@@ -55,6 +58,15 @@ public class PacienteDao implements InterfaceModelPaciente {
 
 		long id = db.insert(NOME_TABELA, "", values);
 		Log.i("jamilson", "Paciente inserido com sucesso!!!");
+		
+		/**
+		 * @author jamilson
+		 * @Description 
+		 */
+		ContentValues valuesreport = new ContentValues();
+		valuesreport.put(Suspeita.SUSPEITA, paciente.suspeita);
+		db.insert(TABELA_REPORT_SUSPEITA, "", values);
+		
 		return id;
 	}
 
@@ -64,11 +76,12 @@ public class PacienteDao implements InterfaceModelPaciente {
 		ContentValues values = new ContentValues();
 		values.put(Pacientes.NOME, paciente.nome);
 		values.put(Pacientes.DTNASCIMENTO, paciente.datanascimento);
-
+		
 		String _id = String.valueOf(paciente.id);
-
 		String where = Pacientes._ID + "=?";
 		String[] whereArgs = new String[] { _id };
+		
+		
 		Log.i("jamilson", "ID: "+Pacientes._ID);
 		Log.i("jamilson", "where: "+where);
 		Log.i("jamilson", "whereArgs: "+whereArgs);

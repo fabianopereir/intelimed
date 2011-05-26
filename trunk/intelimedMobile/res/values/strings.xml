@@ -4,6 +4,10 @@
     <string name="app_name">InteliMED</string>
     <string name="login">Login</string>
     <string name="btlogin">OK</string>
-    <string name="doencas">Asma</string>
-    
+    <string name="doencas">Doenças</string>
+	<string-array name="doencas_array">
+		<item>Asma</item>
+		<item>Tuberculose</item>
+		<item>Pneumonia</item>
+	</string-array>
 </resources>
