@@ -26,7 +26,7 @@ public class UsuarioScript extends UsuarioDao{
 	// Nome do banco
 	private static final String NOME_BANCO = "inteliMobile";
 
-	// Controle de versão
+	// Controle de versã
 	private static final int VERSAO_BANCO = 1;
 
 	// Nome da tabela

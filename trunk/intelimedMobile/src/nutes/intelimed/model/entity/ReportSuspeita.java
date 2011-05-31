@@ -11,7 +11,7 @@ public class ReportSuspeita {
 	public String doenca;
 	
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
-	public static String[] colunas = new String[] { Suspeita._ID, Suspeita.SUSPEITA };
+	public static String[] colunas = new String[] { Suspeita._ID, Suspeita.SUSPEITA,Suspeita.ID_PACIENTE,Suspeita.ID_DOENCA };
 	
 	public ReportSuspeita(){
 		
@@ -55,7 +55,9 @@ public static final class Suspeita implements BaseColumns {
 		public static final String DEFAULT_SORT_ORDER = "_id ASC";
 	
 		public static final String SUSPEITA = "suspeita";
-	
+		public static final String ID_PACIENTE = "id_paciente";
+		public static final String ID_DOENCA = "id_doenca";
+		
 		/**
 		 * Método que constrói uma Uri para um Paciente específico, com o seu id
 		 */

@@ -1,33 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-	android:id="@+id/LinearLayout01"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
 	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	xmlns:android="http://schemas.android.com/apk/res/android">
-	<ScrollView
-		android:id="@+id/ScrollView01"
+	android:layout_height="wrap_content">
+	<TableLayout
 		android:layout_width="fill_parent"
-		android:layout_height="110px">
+		android:layout_height="wrap_content">
+		<TableRow
+			android:background="@drawable/navbar"
+			android:gravity="center_horizontal">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="TOPPPP"
+				android:textColor="#FFFFFF"
+				android:textSize="14dp"
+				android:padding="10dp"
+				android:textStyle="bold">
+			</TextView>
+		</TableRow>
+	</TableLayout>
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:background="#FFFFFF"
+		android:layout_weight="200">
+
 		<LinearLayout
-			android:id="@+id/LinearLayout02"
-			android:layout_width="wrap_content"
-			android:layout_height="30px"
-			android:orientation="vertical">
-			<Button
-				android:text="1"
-				android:id="@+id/Button01"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-			<Button
-				android:text="2"
-				android:id="@+id/Button02"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-			<Button
-				android:text="3"
-				android:id="@+id/Button03"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:background="#FFFFFF">
+			<TextView
+			android:text="Meios"
+			android:layout_height="10px"
+			/>
+			<TextView
+			android:text="Meios"
+			android:layout_height="10px"
+			/>
+			
+			<TextView
+			android:text="Meios"
+			android:layout_height="10px"
+			/>
+			<TextView
+			android:text="Meios"
+			android:layout_height="10px"
+			/>
+			<TextView
+			android:text="Meios"
+			android:layout_height="10px"
+			/>
 		</LinearLayout>
+
 	</ScrollView>
+	<TableLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<TableRow
+			android:background="@drawable/navbar"
+			android:gravity="center_horizontal">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="BOTTOM"
+				android:textColor="#FFFFFF"
+				android:textSize="14dp"
+				android:padding="10dp"
+				android:textStyle="bold">
+			</TextView>
+		</TableRow>
+	</TableLayout>
 </LinearLayout>

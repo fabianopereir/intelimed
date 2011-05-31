@@ -33,13 +33,10 @@ public final class R {
     }
     public static final class drawable {
         public static final int icon=0x7f020000;
-        public static final int pesquisar=0x7f020001;
+        public static final int navbar=0x7f020001;
+        public static final int pesquisar=0x7f020002;
     }
     public static final class id {
-        public static final int Button01=0x7f090009;
-        public static final int Button02=0x7f09000a;
-        public static final int Button03=0x7f09000b;
-        public static final int LinearLayout01=0x7f090008;
         public static final int LinearLayout02=0x7f090001;
         public static final int ScrollView01=0x7f090000;
         public static final int TituloCadUp=0x7f090002;
