@@ -21,7 +21,7 @@ public class PacienteScript extends PacienteDao{
 			"create table report_suspeita ( _id integer primary key autoincrement, suspeita varchar(120),id_paciente integer, id_doenca integer, Foreign Key (id_paciente) references paciente(_id), Foreign Key (id_doenca) references doenca(_id));",
 			"insert into paciente (nome,dtnascimento) values('jamilson','21/11/1989');",
 			"insert into doenca (nome) values('asma');",
-			"insert into report_suspeita (suspeita) values('falta de ar',1,1);"
+			"insert into report_suspeita (suspeita,id_paciente,id_doenca) values('falta de ar',1,1);"
 			 };
 
 	// Nome do banco

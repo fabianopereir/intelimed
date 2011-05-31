@@ -55,7 +55,6 @@ public class PacienteDao implements InterfaceModelPaciente {
 
 		values.put(Pacientes.NOME, paciente.nome);
 		values.put(Pacientes.DTNASCIMENTO, paciente.datanascimento);
-
 		long id = db.insert(NOME_TABELA, "", values);
 		Log.i("jamilson", "Paciente inserido com sucesso!!!");
 		
@@ -65,8 +64,12 @@ public class PacienteDao implements InterfaceModelPaciente {
 		 */
 		ContentValues valuesreport = new ContentValues();
 		valuesreport.put(Suspeita.SUSPEITA, paciente.suspeita);
+		valuesreport.put(Suspeita.ID_PACIENTE, paciente.id);
+		Log.i("nute2","Tabela"+TABELA_REPORT_SUSPEITA);
+		Log.i("nute2","paciente id"+paciente.id);
+		valuesreport.put(Suspeita.ID_DOENCA, 1);
 		db.insert(TABELA_REPORT_SUSPEITA, "", values);
-		
+		Log.i("nute2","Concluido");
 		return id;
 	}
 

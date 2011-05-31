@@ -38,7 +38,7 @@ public class Login extends Activity implements OnClickListener{
     	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        
+       
         dao = new UsuarioScript(this);
        
         btlogin = (Button) findViewById(R.bt.btLogin);
