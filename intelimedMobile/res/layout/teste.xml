@@ -10,6 +10,7 @@
 		<TableRow
 			android:background="@drawable/navbar"
 			android:gravity="center_horizontal">
+			
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -33,44 +34,22 @@
 			android:layout_height="fill_parent"
 			android:background="#FFFFFF">
 			<TextView
-			android:text="Meios"
-			android:layout_height="10px"
-			/>
+				android:text="Meios"
+				android:layout_height="10px" />
 			<TextView
-			android:text="Meios"
-			android:layout_height="10px"
-			/>
-			
+				android:text="Meios"
+				android:layout_height="10px" />
+
 			<TextView
-			android:text="Meios"
-			android:layout_height="10px"
-			/>
+				android:text="Meios"
+				android:layout_height="10px" />
 			<TextView
-			android:text="Meios"
-			android:layout_height="10px"
-			/>
+				android:text="Meios"
+				android:layout_height="10px" />
 			<TextView
-			android:text="Meios"
-			android:layout_height="10px"
-			/>
+				android:text="Meios"
+				android:layout_height="10px" />
 		</LinearLayout>
 
 	</ScrollView>
-	<TableLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-		<TableRow
-			android:background="@drawable/navbar"
-			android:gravity="center_horizontal">
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="BOTTOM"
-				android:textColor="#FFFFFF"
-				android:textSize="14dp"
-				android:padding="10dp"
-				android:textStyle="bold">
-			</TextView>
-		</TableRow>
-	</TableLayout>
 </LinearLayout>
