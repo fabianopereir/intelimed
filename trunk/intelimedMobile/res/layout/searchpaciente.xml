@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:background="@drawable/gradientbg" android:layout_height="match_parent">
+
+	<TableLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:stretchColumns="1">
+		<TableRow
+			android:background="@drawable/navbar"
+			android:gravity="center_horizontal"
+			android:layout_height="wrap_content" android:baselineAligned="false">
+			
+		<ImageButton
+			android:src="@drawable/back"
+			android:id="@+bt/btBack"
+			android:background="@drawable/back" android:layout_gravity="right"/>
+		<ImageButton
+			android:src="@drawable/logo"
+			android:id="@+bt/btLogo"
+			android:background="@drawable/logo" android:layout_gravity="center_horizontal"/>
+		<ImageButton
+			android:background="@drawable/logoff"
+			android:gravity="right"
+			android:id="@+bt/btLogoff"
+			android:src="@drawable/logoff" android:layout_gravity="right"/>
+
+		</TableRow>
+	</TableLayout>
+
 <TableLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_height="fill_parent"
-	android:layout_width="fill_parent">
+	android:layout_width="fill_parent"
+	android:background="@drawable/gradientbg">
+	
 	<TableRow>
 		<TextView
 			android:id="@+id/text1"
@@ -27,3 +61,4 @@
 			android:text="Buscar" />
 	</TableRow>
 </TableLayout>
+</LinearLayout>

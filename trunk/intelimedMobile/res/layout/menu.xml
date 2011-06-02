@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
-  <Button
-  	android:id="@+bt/menuPaciente"
-  	android:layout_width="fill_parent"
-  	android:layout_height="wrap_content"
-  	android:text="Pacientes"	
-  />
-  <Button
-  	android:id="@+bt/menuDiagnosticar"
-  	android:layout_width="fill_parent"
-  	android:layout_height="wrap_content"
-  	android:layout_below="@+bt/menuPaciente"
-  	android:text="Diagnosticar"	
-  />
-</RelativeLayout>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:background="@drawable/gradientbg" android:layout_height="match_parent">
+
+	<TableLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:stretchColumns="1">
+		<TableRow
+			android:background="@drawable/navbar"
+			android:gravity="center_horizontal"
+			android:layout_height="wrap_content" android:baselineAligned="false">
+			
+		<ImageButton
+			android:src="@drawable/back"
+			android:id="@+bt/btBack"
+			android:background="@drawable/back" android:layout_gravity="right"/>
+		<ImageButton
+			android:src="@drawable/logo"
+			android:id="@+bt/btLogo"
+			android:background="@drawable/logo" android:layout_gravity="center_horizontal"/>
+		<ImageButton
+			android:background="@drawable/logoff"
+			android:gravity="right"
+			android:id="@+bt/btLogoff"
+			android:src="@drawable/logoff" android:layout_gravity="right"/>
+
+		</TableRow>
+	</TableLayout>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:orientation="vertical">
+		<Button
+			android:id="@+bt/menuPaciente"
+			android:layout_width="fill_parent"
+			android:text="Pacientes" android:layout_height="wrap_content"/>
+		<Button
+			android:id="@+bt/menuDiagnosticar"
+			android:layout_width="fill_parent"
+			android:layout_below="@+bt/menuPaciente"
+			android:text="Diagnosticar" android:layout_height="wrap_content"/>
+	</LinearLayout>
+</LinearLayout>
