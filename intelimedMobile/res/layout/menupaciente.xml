@@ -5,58 +5,43 @@
 	android:layout_height="match_parent"
 	android:background="@drawable/gradientbg"
 	android:orientation="vertical">
-		<TableLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:stretchColumns="1">
-		<TableRow
-			android:background="@drawable/navbar"
-			android:gravity="center_horizontal"
-			android:layout_height="wrap_content" android:baselineAligned="false">
-			
-		<ImageButton
-			android:src="@drawable/back"
-			android:id="@+bt/btBack"
-			android:background="@drawable/back" android:layout_gravity="right"/>
-		<ImageButton
-			android:src="@drawable/logo"
-			android:id="@+bt/btLogo"
-			android:background="@drawable/logo" android:layout_gravity="center_horizontal"/>
-		<ImageButton
-			android:background="@drawable/logoff"
-			android:gravity="right"
-			android:id="@+bt/btLogoff"
-			android:src="@drawable/logoff" android:layout_gravity="right"/>
-
-		</TableRow>
-	</TableLayout>
+	<include
+		layout="@layout/navbar" />
 	<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical">
-	<Button
-		android:id="@+bt/opCadastro"
+		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="Cadastrar" />
-	<Button
-		android:id="@+bt/opPesquisar"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_below="@+bt/opCadastro"
-		android:text="Pesquisar" />
-	<Button
-		android:id="@+bt/opListar"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_below="@+bt/opPesquisar"
-		android:text="Listar" />
-	<Button
-		android:id="@+bt/opSincronizar"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_below="@+bt/opListar"
-		android:text="Sincronizar Dados" />
-</LinearLayout>
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:paddingTop="25dp"
+		android:paddingRight="10dp"
+		android:paddingLeft="10dp">
+		<Button
+			android:id="@+bt/opCadastro"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/cadastrar" 
+			android:drawableRight="@drawable/imgbt"/>
+		<Button
+			android:id="@+bt/opPesquisar"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+bt/opCadastro"
+			android:text="@string/pesquisar" 
+			android:drawableRight="@drawable/imgbt"/>
+		<Button
+			android:id="@+bt/opListar"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+bt/opPesquisar"
+			android:text="@string/listar" 
+			android:drawableRight="@drawable/imgbt"/>
+		<Button
+			android:id="@+bt/opSincronizar"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+bt/opListar"
+			android:text="@string/sinc" 
+			android:drawableRight="@drawable/imgbt"
+			/>
+	</LinearLayout>
 </LinearLayout>

@@ -1,39 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-	  xmlns:android="http://schemas.android.com/apk/res/android"
-	  android:layout_width="match_parent"
-	  android:layout_height="match_parent"
-	  android:background="@drawable/gradientbg">
-	  
-		 <TextView
-		 	android:id="@+label/login"
-		 	android:layout_width="fill_parent"
-		 	android:layout_height="wrap_content"
-		 	android:text="@string/login"
-		 	android:layout_centerHorizontal="true"
-		 	android:layout_centerVertical="true"
-		 /> 
-		<EditText
-			android:id="@+campo/user"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_below="@+label/login"
-			android:layout_alignLeft="@+label/login"
-		/>
-		<EditText
-			android:id="@+campo/password"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_below="@+campo/user"
-			android:layout_alignLeft="@+campo/user"
-			android:password="true"
-		/>
-		<Button
-			android:id="@+bt/btLogin"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/btlogin"
-			android:layout_below="@+campo/password"
-			android:layout_alignLeft="@+campo/password"
-		/>
- </RelativeLayout> 
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/gradientbg"
+	android:orientation="vertical"
+	android:gravity="center"
+	android:paddingRight="10dp"
+	android:paddingLeft="10dp">
+
+	<TextView
+		android:id="@+label/login"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/login"
+		 />
+	<EditText
+		android:id="@+campo/user"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		 />
+	<TextView
+		android:id="@+label/senha"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/senha"
+		 />
+	<EditText
+		android:id="@+campo/password"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:password="true" />
+	<Button
+		android:id="@+bt/btLogin"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/btlogin"
+		 />
+	
+	<ImageView
+		android:id="@+id/test_image"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:src="@drawable/logologin" />
+</LinearLayout> 
