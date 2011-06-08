@@ -42,7 +42,38 @@ public class Login extends Activity implements OnClickListener{
         dao = new UsuarioScript(this);
        
         btlogin = (Button) findViewById(R.bt.btLogin);
-        btlogin.setOnClickListener(this); 
+        btlogin.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String Vuser, Vpassword;
+				Usuario userFinal=null;
+				
+				user = (EditText) findViewById(R.campo.user);
+				password = (EditText) findViewById(R.campo.password);
+				
+				Vuser = user.getText().toString();
+				Vpassword = password.getText().toString();
+				try {
+					//Toast.makeText(Login.this, Vuser + " " + MD5Password.getPassword(Vpassword), Toast.LENGTH_SHORT).show();
+					usuario.setVuser(Vuser);
+					usuario.setVpassword(MD5Password.getPassword(Vpassword));
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//userFinal = dao.login(usuario);
+				userFinal = dao.login(usuario);
+				if (userFinal!=null)
+				{
+					//startActivity(new Intent(this, MenuPaciente.class));
+					init();
+				}else{
+					Toast.makeText(Login.this, "Usuário ou senha incorreto!", Toast.LENGTH_SHORT).show();
+				}
+				
+			}
+		}); 
     }
     
     @Override
@@ -53,36 +84,19 @@ public class Login extends Activity implements OnClickListener{
 		finish();
 	}
 
-	public void onClick(View view) {
-		String Vuser, Vpassword;
-		Usuario userFinal=null;
-		
-		user = (EditText) findViewById(R.campo.user);
-		password = (EditText) findViewById(R.campo.password);
-		
-		Vuser = user.getText().toString();
-		Vpassword = password.getText().toString();
-		try {
-			//Toast.makeText(Login.this, Vuser + " " + MD5Password.getPassword(Vpassword), Toast.LENGTH_SHORT).show();
-			usuario.setVuser(Vuser);
-			usuario.setVpassword(MD5Password.getPassword(Vpassword));
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//userFinal = dao.login(usuario);
-		userFinal = dao.login(usuario);
-		if (userFinal!=null)
-		{
-			startActivity(new Intent(this, MainMenu.class));
-		}else{
-			Toast.makeText(Login.this, "Usuário ou senha incorreto!", Toast.LENGTH_SHORT).show();
-		}
-	}
+    public void init(){
+    	startActivity(new Intent(this, MainMenu.class));
+    }
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		// Fecha o banco
 		dao.fechar();
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
 	}
 }

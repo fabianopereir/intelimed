@@ -27,42 +27,7 @@ public class UsuarioDao implements InterfaceModelUsuario{
 		
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
 	}
-	/* public Usuario login(Usuario u){
-		 
-		 Usuario user = null;
 
-			try {
-				
-				// Idem a: SELECT _id,nome,cpf from usuario where nome = ?
-				//Cursor c = db.query(NOME_TABELA, Usuario.colunas, Usuarios.USUARIO + "='" + u.getVuser() + "'", null, null, null, null);
-				Cursor c = db.query(NOME_TABELA, Usuario.colunas, Usuarios.USUARIO + "='" + u.getVuser() + "'" + " AND " + Usuarios.SENHA + "='" + u.getVpassword() + "'", null, null, null, null);
-				
-				//Log.i("jamilson", "FIMPass");	
-				// Se encontrou...
-				//if (c.moveToNext()) {
-				if (c.getCount() > 0) {
-					c.moveToFirst();
-					user = new Usuario();
-					// utiliza os métodos getLong(), getString(), getInt(), etc para recuperar os valores
-					//user.id = c.getLong(0);
-					Log.i("jamilson", "Result1: "+c.getString(0));
-					Log.i("jamilson", "Result2: "+c.getString(1));
-					user.Vuser = c.getString(1);
-					user.Vpassword = c.getString(2);
-					return u;
-				}else 
-				{
-					return null;
-				}
-				
-			} catch (SQLException e) {
-				Log.e("jamilson", "Erro ao buscar a usuario: " + e.toString());
-				e.printStackTrace();
-				return null;
-			}	 	
-	        //return u;
-	    }
-	 */
 	@Override
 	public Usuario login(Usuario u) {
 		Usuario user = null;
@@ -72,6 +37,14 @@ public class UsuarioDao implements InterfaceModelUsuario{
 			// Idem a: SELECT _id,nome,cpf from usuario where nome = ?
 			//Cursor c = db.query(NOME_TABELA, Usuario.colunas, Usuarios.USUARIO + "='" + u.getVuser() + "'", null, null, null, null);
 			Cursor c = db.query(NOME_TABELA, Usuario.colunas, Usuarios.USUARIO + "='" + u.getVuser() + "'" + " AND " + Usuarios.SENHA + "='" + u.getVpassword() + "'", null, null, null, null);
+			
+			
+			//String MY_QUERY = "SELECT * FROM table_a a INNER JOIN table_b b ON a.id=b.other_id WHERE b.property_id=?";
+			
+			/*String MY_QUERY = "SELECT * FROM usuario a INNER JOIN grupo b ON a.id=b.other_id WHERE b.property_id=?";
+			
+			db.rawQuery(MY_QUERY, new String[]{String.valueOf(propertyId)});
+			*/
 			
 			//Log.i("jamilson", "FIMPass");	
 			// Se encontrou...
@@ -97,6 +70,9 @@ public class UsuarioDao implements InterfaceModelUsuario{
 			return null;
 		}	 	
         //return u;
+	}
+	public void permissaoUser(Usuario u){
+		
 	}
 	/**
 	 * Fecha o banco

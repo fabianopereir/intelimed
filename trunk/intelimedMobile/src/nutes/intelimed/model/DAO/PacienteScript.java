@@ -9,13 +9,15 @@ public class PacienteScript extends PacienteDao{
 
 	// Script para fazer drop na tabela
 	private static final String[] SCRIPT_DATABASE_DELETE = new String[]{
-		"DROP TABLE IF EXISTS paciente;",
-		"DROP TABLE IF EXISTS doenca;",
-		"DROP TABLE IF EXISTS report_suspeita;"
+		"DROP TABLE IF EXISTS paciente;"
 	};
 
 	// Cria a tabela com o "_id" sequencial
 	private static final String[] SCRIPT_DATABASE_CREATE = new String[] {
+		"create table paciente ( _id integer primary key autoincrement, nome text not null,dtnascimento text not null);",
+		"insert into paciente (nome,dtnascimento) values('jamilson','21/11/1989');"
+		 };
+	/*private static final String[] SCRIPT_DATABASE_CREATE = new String[] {
 			"create table paciente ( _id integer primary key autoincrement, nome text not null,dtnascimento text not null);",
 			"create table doenca ( _id integer primary key autoincrement, nome varchar(120));",
 			"create table report_suspeita ( _id integer primary key autoincrement, suspeita varchar(120),id_paciente integer, id_doenca integer, Foreign Key (id_paciente) references paciente(_id), Foreign Key (id_doenca) references doenca(_id));",
@@ -23,7 +25,7 @@ public class PacienteScript extends PacienteDao{
 			"insert into doenca (nome) values('asma');",
 			"insert into report_suspeita (suspeita,id_paciente,id_doenca) values('falta de ar',1,1);"
 			 };
-
+	 */
 	// Nome do banco
 	private static final String NOME_BANCO = "inteliMobile";
 

@@ -44,7 +44,7 @@ public class PacienteListAdapter extends BaseAdapter{
 
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.paciente_row_table, null);
-
+		
 		// Atualiza o valor do TextView
 		TextView nome = (TextView) view.findViewById(R.table.nome);
 	
