@@ -13,6 +13,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -20,18 +21,39 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class SearchPaciente extends Activity implements OnClickListener{
+public class SearchPaciente extends Activity{
 	public static InterfaceModelPaciente dao;
 	EditText nome, datanascimento;
-	ImageButton btPesquisar;
+	ImageButton btPesquisar,back;
+	
 	public void onCreate(Bundle iclice){
 		super.onCreate(iclice);
+		
 		dao = new PacienteScript(this);
 		setContentView(R.layout.searchpaciente);
+		
+		back = (ImageButton) findViewById(R.bt.btBack);
+		btPesquisar = (ImageButton) findViewById(R.bt.btSearch);
 		nome = (EditText) findViewById(R.search.campoNome);
 		datanascimento = (EditText) findViewById(R.search.campoDatanascimento);
-		btPesquisar = (ImageButton) findViewById(R.bt.btSearch);
-		btPesquisar.setOnClickListener(this);
+		
+		back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+				
+			}
+		});
+		
+		btPesquisar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Search();
+			}
+		});
 	}
 	
 	@Override
@@ -43,9 +65,8 @@ public class SearchPaciente extends Activity implements OnClickListener{
 		// Fecha a tela
 		finish();
 	}
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
+	
+	public void Search() {
 		Paciente paciente = searchPaciente(nome.getText().toString());
 		if(paciente!=null){
 			Intent intent = new Intent();
@@ -66,5 +87,18 @@ public class SearchPaciente extends Activity implements OnClickListener{
 		return paciente;
 	}
 	
-
+	/**
+	 * @author jamilson
+	 * @Description Implementation for button  back of Activity
+	 * @param Indentification of onclick for mouse
+	 * @return value boolean
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+	        	finish();
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
 }
