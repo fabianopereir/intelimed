@@ -1,5 +1,7 @@
 package nutes.intelimed.controller.activity;
 
+import javax.security.auth.Destroyable;
+
 import nutes.intelimed.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,14 +16,15 @@ import android.widget.Toast;
 
 public class MenuPaciente extends Activity{
 	Button btcadPaciente, btlistPaciente, btPesquisar;
-	ImageButton back;
+	ImageButton back, logout;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menupaciente);
 		
 		back = (ImageButton) findViewById(R.bt.btBack);
-		btlistPaciente = (Button) findViewById(R.bt.opListar); 
+		logout = (ImageButton) findViewById(R.bt.btLogoff);
+		btlistPaciente = (Button) findViewById(R.bt.opListar);
 		btcadPaciente = (Button) findViewById(R.bt.opCadastro);
 		btPesquisar = (Button) findViewById(R.bt.opPesquisar);
 		btcadPaciente.setOnClickListener(new OnClickListener() {
@@ -51,6 +54,15 @@ public class MenuPaciente extends Activity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				finish();
+				
+			}
+		});
+		
+		logout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+					onDestroy();
 				
 			}
 		});
