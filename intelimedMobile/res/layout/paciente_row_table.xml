@@ -6,7 +6,7 @@
 	android:background="@drawable/gradientbg"
 	android:layout_height="match_parent">
 
-	<TableLayout
+	<!--<TableLayout
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:stretchColumns="1">
@@ -34,7 +34,7 @@
 				android:layout_gravity="right" />
 
 		</TableRow>
-	</TableLayout>
+	</TableLayout>-->
 
 	<LinearLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"

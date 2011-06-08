@@ -27,7 +27,7 @@ public class CadastroPaciente extends Activity implements OnClickListener{
 
 	public static InterfaceModelPaciente dao;
 	
-	EditText nome, dtnascimento, suspeita;
+	EditText nome, dtnascimento;
 	Button cadPaciente;
 	RadioButton delPaciente,edPaciente;
 	RadioGroup radioGroup;
@@ -39,7 +39,6 @@ public class CadastroPaciente extends Activity implements OnClickListener{
         setContentView(R.layout.paciente);
         nome = (EditText) findViewById(R.paciente.nome);
         dtnascimento = (EditText) findViewById(R.paciente.dtnascimento);
-        suspeita = (EditText) findViewById(R.paciente.dtreport);
         cadPaciente = (Button) findViewById(R.bt.cadPaciente);
         cadPaciente.setOnClickListener(this);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -49,12 +48,12 @@ public class CadastroPaciente extends Activity implements OnClickListener{
         delPaciente.setVisibility(RadioButton.GONE);
         edPaciente.setVisibility(RadioButton.GONE);
         
-        Spinner spinner = (Spinner) findViewById(R.cbm.doenca);
+        /*Spinner spinner = (Spinner) findViewById(R.cbm.doenca);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
         this, R.array.doencas_array,
         android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(adapter);*/
         
 	}
 	@Override
@@ -67,7 +66,6 @@ public class CadastroPaciente extends Activity implements OnClickListener{
 		
 		paciente.nome = nome.getText().toString();
 		paciente.datanascimento = dtnascimento.getText().toString();
-		paciente.suspeita = suspeita.getText().toString();
 		salvarPaciente(paciente);
 	
 		setResult(RESULT_OK, new Intent());

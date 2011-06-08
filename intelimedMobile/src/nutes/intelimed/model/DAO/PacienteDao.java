@@ -22,12 +22,10 @@ import android.util.Log;
 public class PacienteDao implements InterfaceModelPaciente {
 
 	private static final String CATEGORIA = "nutes";
-
 	// Nome do banco
 	private static final String NOME_BANCO = "inteliMobile";
 	// Nome da tabela
 	public static final String NOME_TABELA = "paciente";
-	public static final String TABELA_REPORT_SUSPEITA = "report_suspeita";
 
 	protected SQLiteDatabase db;
 
@@ -57,19 +55,6 @@ public class PacienteDao implements InterfaceModelPaciente {
 		values.put(Pacientes.DTNASCIMENTO, paciente.datanascimento);
 		long id = db.insert(NOME_TABELA, "", values);
 		Log.i("jamilson", "Paciente inserido com sucesso!!!");
-		
-		/**
-		 * @author jamilson
-		 * @Description 
-		 */
-		ContentValues valuesreport = new ContentValues();
-		valuesreport.put(Suspeita.SUSPEITA, paciente.suspeita);
-		valuesreport.put(Suspeita.ID_PACIENTE, paciente.id);
-		Log.i("nute2","Tabela"+TABELA_REPORT_SUSPEITA);
-		Log.i("nute2","paciente id"+paciente.id);
-		valuesreport.put(Suspeita.ID_DOENCA, 1);
-		db.insert(TABELA_REPORT_SUSPEITA, "", values);
-		Log.i("nute2","Concluido");
 		return id;
 	}
 
