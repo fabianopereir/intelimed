@@ -24,7 +24,7 @@ import android.widget.Toast;
 public class SearchPaciente extends Activity{
 	public static InterfaceModelPaciente dao;
 	EditText nome, datanascimento;
-	ImageButton btPesquisar,back;
+	ImageButton btPesquisar,back, logout;
 	
 	public void onCreate(Bundle iclice){
 		super.onCreate(iclice);
@@ -33,6 +33,7 @@ public class SearchPaciente extends Activity{
 		setContentView(R.layout.searchpaciente);
 		
 		back = (ImageButton) findViewById(R.bt.btBack);
+		logout = (ImageButton) findViewById(R.bt.btLogoff);
 		btPesquisar = (ImageButton) findViewById(R.bt.btSearch);
 		nome = (EditText) findViewById(R.search.campoNome);
 		datanascimento = (EditText) findViewById(R.search.campoDatanascimento);
@@ -42,7 +43,9 @@ public class SearchPaciente extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				finish();
+				
+				startActivity(new Intent(getBaseContext(), MenuPaciente.class));
+				//finish();
 				
 			}
 		});
@@ -54,17 +57,20 @@ public class SearchPaciente extends Activity{
 				Search();
 			}
 		});
+		
+		logout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				startActivity(new Intent(getBaseContext(), Login.class));
+				//	finish();
+				
+			}
+		});
 	}
 	
-	@Override
-	protected void onPause() {
-		super.onPause();
-		// Cancela para não ficar nada pendente na tela
-		setResult(RESULT_CANCELED);
-
-		// Fecha a tela
-		finish();
-	}
+	
 	
 	public void Search() {
 		Paciente paciente = searchPaciente(nome.getText().toString());
@@ -96,9 +102,23 @@ public class SearchPaciente extends Activity{
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-	        	finish();
+	    	startActivity(new Intent(getBaseContext(), MenuPaciente.class));
+	        	//finish();
 	        return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
 	}
+	
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		// Cancela para não ficar nada pendente na tela
+		setResult(RESULT_CANCELED);
+
+		// Fecha a tela
+		finish();
+	}
+	
+	
 }

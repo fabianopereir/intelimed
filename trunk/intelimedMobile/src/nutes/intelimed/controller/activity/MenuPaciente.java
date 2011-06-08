@@ -53,7 +53,8 @@ public class MenuPaciente extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				finish();
+				//finish();
+				startActivity(new Intent(getBaseContext(),MainMenu.class));
 				
 			}
 		});
@@ -62,7 +63,7 @@ public class MenuPaciente extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-					onDestroy();
+				startActivity(new Intent(getBaseContext(), Login.class));
 				
 			}
 		});
@@ -98,6 +99,14 @@ public class MenuPaciente extends Activity{
 	}
 	public void search(){
 		startActivity(new Intent(this,SearchPaciente.class));
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		setResult(RESULT_CANCELED);
+		// Fecha a tela
+		finish();
 	}
 
 }
