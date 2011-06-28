@@ -8,6 +8,7 @@ class UrlMappings {
 		}
 
 		"/"(view:"/index")
+		"/rest/usuario/$cpf?"(controller:"usuario", action:"rest")
 		"500"(view:'/error')
 	}
 }
