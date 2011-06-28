@@ -45,7 +45,7 @@ class PacienteController {
         def pacienteInstance = Paciente.get(params.id)
         if (!pacienteInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'paciente.label', default: 'Paciente'), params.id])}"
-            redirect(action: "list")
+			redirect(action: "list")
         }
         else {
             return [pacienteInstance: pacienteInstance]
