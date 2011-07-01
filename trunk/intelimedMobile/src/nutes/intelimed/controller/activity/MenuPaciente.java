@@ -27,11 +27,13 @@ public class MenuPaciente extends Activity{
 		btlistPaciente = (Button) findViewById(R.bt.opListar);
 		btcadPaciente = (Button) findViewById(R.bt.opCadastro);
 		btPesquisar = (Button) findViewById(R.bt.opPesquisar);
+		
 		btcadPaciente.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				initCadPaciente();
 			}
 		});
+		
 		btlistPaciente.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -78,7 +80,8 @@ public class MenuPaciente extends Activity{
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-	        	finish();
+	        	//finish();
+	    	startActivity(new Intent(getBaseContext(), Login.class));
 	        return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
@@ -92,11 +95,13 @@ public class MenuPaciente extends Activity{
 	public void initCadPaciente(){
 		startActivity(new Intent(this,CadastroPaciente.class));
 	}
+	
 	public void list()
 	{
 		Log.i("jamilson", "metodo list");
 		startActivity(new Intent(this,ListarPaciente.class));
 	}
+	
 	public void search(){
 		startActivity(new Intent(this,SearchPaciente.class));
 	}
@@ -106,7 +111,7 @@ public class MenuPaciente extends Activity{
 		super.onPause();
 		setResult(RESULT_CANCELED);
 		// Fecha a tela
-		finish();
+		//finish();
 	}
 
 }

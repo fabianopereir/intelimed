@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -26,12 +27,17 @@ public class UpdatePaciente extends Activity implements OnClickListener{
 	Paciente paciente;
 	RadioButton delPaciente,edPaciente;
 	RadioGroup radioGroup;
+	ImageButton back, logout;
 	boolean del=false;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		dao = new PacienteScript(this);
 		setContentView(R.layout.paciente);
+		
+		
+		back = (ImageButton) findViewById(R.bt.btBack);
+		logout = (ImageButton) findViewById(R.bt.btLogoff);
 		
 		titulo = (TextView) findViewById(R.id.TituloCadUp);
 		nome = (EditText) findViewById(R.paciente.nome);
@@ -75,6 +81,26 @@ public class UpdatePaciente extends Activity implements OnClickListener{
 		            dtnascimento.setEnabled(false);
 					Log.i("jamilson", "Marcou radio Não: " + checkedId +""+ del);
 				}
+			}
+		});
+        
+        back.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				//finish();
+				startActivity(new Intent(getBaseContext(),MenuPaciente.class));
+				
+			}
+		});
+		
+		logout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(getBaseContext(), Login.class));
+				
 			}
 		});
 		

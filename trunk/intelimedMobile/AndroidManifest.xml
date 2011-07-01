@@ -27,5 +27,16 @@
         <activity android:name=".controller.activity.ListarPaciente" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".controller.activity.SearchPaciente" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".controller.activity.UpdatePaciente" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".controller.activity.QuestionnaireAsma" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name="test.ExpandableListView_Personalizado" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+	        <intent-filter>
+	                <action android:name="android.intent.action.MAIN" />
+	         </intent-filter>
+        </activity>
+        <activity android:name="test.MyList">
+	        <intent-filter>
+	                <action android:name="android.intent.action.MAIN" />
+	         </intent-filter>
+        </activity>    
     </application>  
 </manifest>
