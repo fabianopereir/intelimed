@@ -2,7 +2,10 @@ package nutes.intelimed.controller;
 
 import java.util.List;
 
+
+
 import nutes.intelimed.R;
+import nutes.intelimed.controller.activity.ListarPaciente;
 import nutes.intelimed.model.entity.Paciente;
 
 
@@ -17,11 +20,13 @@ import android.widget.Toast;
 
 public class PacienteListAdapter extends BaseAdapter{
 
+	private LayoutInflater mInflater;
 	private Context context;
 	private List<Paciente> lista;
 
 	public PacienteListAdapter(Context context, List<Paciente> lista) {
 		Log.i("jamilson", "metodo listarPacientes");
+		mInflater = LayoutInflater.from(context);
 		this.context = context;
 		this.lista = lista;
 	}
@@ -40,11 +45,17 @@ public class PacienteListAdapter extends BaseAdapter{
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
+		//ViewHolder holder;
+		
 		Paciente c = lista.get(position);
 
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.paciente_row_table, null);
 		
+		
+		//convertView = mInflater.inflate(R.layout.paciente_row_table, null);
+	    //holder = new ListarPaciente().;
+	    
 		// Atualiza o valor do TextView
 		TextView nome = (TextView) view.findViewById(R.table.nome);
 	

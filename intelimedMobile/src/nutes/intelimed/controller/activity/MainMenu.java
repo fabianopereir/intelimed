@@ -22,9 +22,7 @@ public class MainMenu extends Activity{
 	        
 	        back = (ImageButton) findViewById(R.bt.btBack);
 			logout = (ImageButton) findViewById(R.bt.btLogoff);
-			
 	        btMenuPaciente = (Button) findViewById(R.bt.menuPaciente);
-	        
 	        back.setVisibility(ImageButton.GONE);
 	        
 	        btMenuPaciente.setOnClickListener(new OnClickListener() {

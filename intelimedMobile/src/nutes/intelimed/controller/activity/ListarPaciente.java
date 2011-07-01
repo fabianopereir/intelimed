@@ -2,8 +2,11 @@ package nutes.intelimed.controller.activity;
 
 import java.util.List;
 
+import test.MyList;
 
 
+
+import nutes.intelimed.R;
 import nutes.intelimed.controller.PacienteListAdapter;
 import nutes.intelimed.model.InterfaceModelPaciente;
 import nutes.intelimed.model.DAO.PacienteScript;
@@ -14,6 +17,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +29,7 @@ public class ListarPaciente extends ListActivity{
 	public void onCreate(Bundle iclicle){
 		super.onCreate(iclicle);	
 		dao = new PacienteScript(this);
+		//setContentView(R.layout.main);
 		updateList();
 	}
 	@Override
@@ -41,6 +46,7 @@ public class ListarPaciente extends ListActivity{
 		pacientes = dao.listarPacientes();
 		Log.i("jamilson", "foi chamado o metodo listarPacientes");
 		setListAdapter(new PacienteListAdapter(this, pacientes));
+		
 	}
 	
 	@Override
