@@ -1,8 +1,11 @@
 package nutes.intelimed.controller.activity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import nutes.intelimed.R;
+import nutes.intelimed.controller.TreeQuestionnaire;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +25,8 @@ public class QuestionnaireAsma extends Activity{
 	String[] arrQuest = new String[28];
 	JSONArray arrayJason;
 	ImageButton back, logout;
+	TreeQuestionnaire treeQ;
+	JSONObject treeObj;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,168 +84,214 @@ public class QuestionnaireAsma extends Activity{
         rQuest2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
 				//arrQuest[1] =  Integer.toString(checkedId);
-				RadioButton teste2 = (RadioButton) findViewById(checkedId);
-				//arrQuest[0] =  teste.getText().toString();
-				arrQuest[1] = teste2.getTag().toString();
-				//arrQuest[1] =  Integer.toString(teste.getId());
-				//arrayJason.put(arrQuest[1]);
+				RadioButton q1 = (RadioButton) findViewById(checkedId);
+				arrQuest[1] = q1.getTag().toString();
+				
 			}
 		});
         
         rQuest3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[2] =  Integer.toString(checkedId);
+				//arrQuest[2] =  Integer.toString(checkedId);
+				RadioButton q2 = (RadioButton) findViewById(checkedId);
+				arrQuest[2] = q2.getTag().toString();
 				//arrayJason.put(arrQuest[2]);
 			}
 		});
         rQuest4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[3] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[3]);
+				//arrQuest[3] =  Integer.toString(checkedId);
+				RadioButton q3 = (RadioButton) findViewById(checkedId);
+				arrQuest[3] = q3.getTag().toString();
 			}
 		});
         rQuest5.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[4] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[4]);
+				//arrQuest[4] =  Integer.toString(checkedId);
+				RadioButton q4 = (RadioButton) findViewById(checkedId);
+				arrQuest[4] = q4.getTag().toString();
+			
 			}
 		});
         rQuest6.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[5] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[5]);
+				//arrQuest[5] =  Integer.toString(checkedId);
+				RadioButton q5 = (RadioButton) findViewById(checkedId);
+				arrQuest[5] = q5.getTag().toString();
 			}
 		});
         rQuest7.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[6] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[6]);
+				//arrQuest[6] =  Integer.toString(checkedId);
+				RadioButton q6 = (RadioButton) findViewById(checkedId);
+				arrQuest[6] = q6.getTag().toString();
+				
 			}
 		});
         rQuest8.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[7] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[7]);
+				//arrQuest[7] =  Integer.toString(checkedId);
+				RadioButton q7 = (RadioButton) findViewById(checkedId);
+				arrQuest[7] = q7.getTag().toString();
+				
 			}
 		});
         rQuest9.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[8] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[8]);
+				//arrQuest[8] =  Integer.toString(checkedId);
+				RadioButton q8 = (RadioButton) findViewById(checkedId);
+				arrQuest[8] = q8.getTag().toString();
+				
 			}
 		});
         rQuest10.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[9] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[9]);
+				//arrQuest[9] =  Integer.toString(checkedId);
+				RadioButton q9 = (RadioButton) findViewById(checkedId);
+				arrQuest[9] = q9.getTag().toString();
+				
 			}
 		});
         rQuest11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[10] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[10]);
+				//arrQuest[10] =  Integer.toString(checkedId);
+				RadioButton q10 = (RadioButton) findViewById(checkedId);
+				arrQuest[10] = q10.getTag().toString();
+				
 			}
 		});
         rQuest12.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[11] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[11]);
+				//arrQuest[11] =  Integer.toString(checkedId);
+				RadioButton q11 = (RadioButton) findViewById(checkedId);
+				arrQuest[11] = q11.getTag().toString();
+				
 			}
 		});
         rQuest13.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[12] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[12]);
+				//arrQuest[12] =  Integer.toString(checkedId);
+				RadioButton q12 = (RadioButton) findViewById(checkedId);
+				arrQuest[12] = q12.getTag().toString();
+				
 			}
 		});
         rQuest14.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[13] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[13]);
+				//arrQuest[13] =  Integer.toString(checkedId);
+				RadioButton q13 = (RadioButton) findViewById(checkedId);
+				arrQuest[13] = q13.getTag().toString();
+				
 			}
 		});
         rQuest15.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[14] =  Integer.toString(checkedId);
-				//	arrayJason.put(arrQuest[14]);
+				//arrQuest[14] =  Integer.toString(checkedId);
+				RadioButton q14 = (RadioButton) findViewById(checkedId);
+				arrQuest[14] = q14.getTag().toString();
+				
 			}
 		});
         rQuest16.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[15] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[15] =  Integer.toString(checkedId);
+				RadioButton q15 = (RadioButton) findViewById(checkedId);
+				arrQuest[15] = q15.getTag().toString();
+				
 			}
 		});
         rQuest17.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[16] =  Integer.toString(checkedId);
-				//arrayJason.put(arrQuest[16]);
+				//arrQuest[16] =  Integer.toString(checkedId);
+				RadioButton q16 = (RadioButton) findViewById(checkedId);
+				arrQuest[16] = q16.getTag().toString();
+			
 			}
 		});
         rQuest18.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[17] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[17] =  Integer.toString(checkedId);
+				RadioButton q17 = (RadioButton) findViewById(checkedId);
+				arrQuest[17] = q17.getTag().toString();
+			
 			}
 		});
         rQuest19.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[18] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[18] =  Integer.toString(checkedId);
+				RadioButton q18 = (RadioButton) findViewById(checkedId);
+				arrQuest[18] = q18.getTag().toString();
+			
 			}
 		});
         rQuest20.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[19] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[19] =  Integer.toString(checkedId);
+				RadioButton q19 = (RadioButton) findViewById(checkedId);
+				arrQuest[19] = q19.getTag().toString();
+			
 			}
 		});
         rQuest21.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[20] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[20] =  Integer.toString(checkedId);
+				RadioButton q20 = (RadioButton) findViewById(checkedId);
+				arrQuest[20] = q20.getTag().toString();
+			
 			}
 		});
         rQuest22.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[21] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[21] =  Integer.toString(checkedId);
+				RadioButton q21 = (RadioButton) findViewById(checkedId);
+				arrQuest[21] = q21.getTag().toString();
+			
 			}
 		});
         rQuest23.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[22] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[22] =  Integer.toString(checkedId);
+				RadioButton q22 = (RadioButton) findViewById(checkedId);
+				arrQuest[22] = q22.getTag().toString();
+			
 			}
 		});
         rQuest24.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[23] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[23] =  Integer.toString(checkedId);
+				RadioButton q23 = (RadioButton) findViewById(checkedId);
+				arrQuest[23] = q23.getTag().toString();
+			
 			}
 		});
         rQuest25.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[24] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[24] =  Integer.toString(checkedId);
+				RadioButton q24 = (RadioButton) findViewById(checkedId);
+				arrQuest[24] = q24.getTag().toString();
+			
 			}
 		});
         rQuest26.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[25] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[25] =  Integer.toString(checkedId);
+				RadioButton q25 = (RadioButton) findViewById(checkedId);
+				arrQuest[25] = q25.getTag().toString();
+			
 			}
 		});
         rQuest27.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[26] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[26] =  Integer.toString(checkedId);
+				RadioButton q26 = (RadioButton) findViewById(checkedId);
+				arrQuest[26] = q26.getTag().toString();
 			}
 		});
         rQuest28.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				arrQuest[27] =  Integer.toString(checkedId);
-				//arrayJason.put(checkedId);
+				//arrQuest[27] =  Integer.toString(checkedId);
+				RadioButton q27 = (RadioButton) findViewById(checkedId);
+				arrQuest[27] = q27.getTag().toString();
 			}
 		});
         
@@ -270,12 +321,27 @@ public class QuestionnaireAsma extends Activity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				arrayJason = new JSONArray();
+				treeObj = new JSONObject();
+				int cont = 1;
+				treeQ = new TreeQuestionnaire();
 				for(int i=0; i<arrQuest.length;i++)
 				{
+					try {
+						treeObj.put("Q"+cont, arrQuest[i]);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					arrayJason.put(arrQuest[i]);
+					cont++;
 				}
-				System.out.println(arrayJason);
-				Toast.makeText(QuestionnaireAsma.this, arrQuest[0]+"--"+arrQuest[1], Toast.LENGTH_LONG).show();
+				if (treeQ.controlTree(arrQuest,arrayJason, treeObj)=="imprime")
+				{
+					System.out.println(arrayJason);
+					System.out.println(treeObj);
+					Toast.makeText(QuestionnaireAsma.this,"Q1: " +arrQuest[0]+"--"+ "Q2: " +arrQuest[1]+"--"+ "Q24: " +arrQuest[27], Toast.LENGTH_LONG).show();
+				}
+				
 				
 			}
 		});
