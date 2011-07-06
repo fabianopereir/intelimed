@@ -2,8 +2,6 @@ package nutes.intelimed.controller.activity;
 
 import java.util.List;
 
-import test.MyList;
-
 
 
 import nutes.intelimed.R;

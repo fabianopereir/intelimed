@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainMenu extends Activity{
-	Button btMenuPaciente;
+	Button btMenuPaciente, btMenuDiagnostico;
 	ImageButton back, logout;
 	
 	 @Override
@@ -23,6 +23,7 @@ public class MainMenu extends Activity{
 	        back = (ImageButton) findViewById(R.bt.btBack);
 			logout = (ImageButton) findViewById(R.bt.btLogoff);
 	        btMenuPaciente = (Button) findViewById(R.bt.menuPaciente);
+	        btMenuDiagnostico = (Button) findViewById(R.bt.menuDiagnosticar);
 	        back.setVisibility(ImageButton.GONE);
 	        
 	        btMenuPaciente.setOnClickListener(new OnClickListener() {
@@ -31,6 +32,15 @@ public class MainMenu extends Activity{
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					startMenuPaciente();	
+				}
+			});
+	        
+	        btMenuDiagnostico.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					startMenuDiagnostico();
 				}
 			});
 	        
@@ -54,6 +64,9 @@ public class MainMenu extends Activity{
 		
 	}
 	
+	public void startMenuDiagnostico(){
+		startActivity(new Intent(this, QuestionnaireAsma.class));
+	}
 	@Override
 	protected void onPause() {
 		super.onPause();
