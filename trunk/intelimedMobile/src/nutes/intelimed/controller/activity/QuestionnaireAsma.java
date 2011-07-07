@@ -22,7 +22,7 @@ public class QuestionnaireAsma extends Activity{
     rQuest11,rQuest12,rQuest13,rQuest14,rQuest15,rQuest16,rQuest17,rQuest18,rQuest19,rQuest20,rQuest21,rQuest22,
     rQuest23,rQuest24,rQuest25,rQuest26,rQuest27,rQuest28;
 	Button validar;
-	String[] arrQuest = new String[28];
+	String[] arrQuest = new String[4];
 	JSONArray arrayJason;
 	ImageButton back, logout;
 	TreeQuestionnaire treeQ;
@@ -39,7 +39,7 @@ public class QuestionnaireAsma extends Activity{
         rQuest2 = (RadioGroup) findViewById(R.id.rq2);
         rQuest3 = (RadioGroup) findViewById(R.id.rq3);
         rQuest4 = (RadioGroup) findViewById(R.id.rq4);
-        rQuest5 = (RadioGroup) findViewById(R.id.rq5);
+        /*rQuest5 = (RadioGroup) findViewById(R.id.rq5);
         rQuest6 = (RadioGroup) findViewById(R.id.rq6);
         rQuest7 = (RadioGroup) findViewById(R.id.rq7);
         rQuest8 = (RadioGroup) findViewById(R.id.rq8);
@@ -62,7 +62,7 @@ public class QuestionnaireAsma extends Activity{
         rQuest25 = (RadioGroup) findViewById(R.id.rq25);
         rQuest26 = (RadioGroup) findViewById(R.id.rq26);
         rQuest27 = (RadioGroup) findViewById(R.id.rq27);
-        rQuest28 = (RadioGroup) findViewById(R.id.rq28);
+        rQuest28 = (RadioGroup) findViewById(R.id.rq28);*/
         
         
         validar = (Button) findViewById(R.id.ok);
@@ -105,6 +105,7 @@ public class QuestionnaireAsma extends Activity{
 				arrQuest[3] = q3.getTag().toString();
 			}
 		});
+        /*
         rQuest5.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
 				//arrQuest[4] =  Integer.toString(checkedId);
@@ -293,7 +294,7 @@ public class QuestionnaireAsma extends Activity{
 				RadioButton q27 = (RadioButton) findViewById(checkedId);
 				arrQuest[27] = q27.getTag().toString();
 			}
-		});
+		});*/
         
         back.setOnClickListener(new OnClickListener() {
 			
@@ -335,15 +336,35 @@ public class QuestionnaireAsma extends Activity{
 					arrayJason.put(arrQuest[i]);
 					cont++;
 				}
-				if (treeQ.controlTree(arrQuest,arrayJason, treeObj)=="imprime")
+				
+								
+				if (treeQ.controlTree(arrQuest,arrayJason, treeObj)=="ok")
 				{
 					System.out.println(arrayJason);
 					System.out.println(treeObj);
-					Toast.makeText(QuestionnaireAsma.this,"Q1: " +arrQuest[0]+"--"+ "Q2: " +arrQuest[1]+"--"+ "Q24: " +arrQuest[27], Toast.LENGTH_LONG).show();
+					//Toast.makeText(QuestionnaireAsma.this,"Q1: " +arrQuest[0]+"--"+ "Q2: " +arrQuest[1]+"--"+ "Q3: " +arrQuest[2], Toast.LENGTH_LONG).show();
+				
+					Intent it = new Intent(getBaseContext(),ResultQuestionnaire.class);
+					it.putExtra("questionnaireData", arrQuest);
+					startActivity(it);
+				
 				}
 				
 				
+				
+				
+				
 			}
+			
 		});
     }
+    @Override
+	protected void onPause() {
+		super.onPause();
+		// Cancela para não ficar nada na tela pendente
+		setResult(RESULT_CANCELED);
+
+		// Fecha a tela
+		finish();
+	}
 }
