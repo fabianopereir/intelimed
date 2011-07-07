@@ -151,7 +151,7 @@
 				android:text="@string/r3q4" />
 		</RadioGroup>
 
-		<TextView
+		<!--<TextView
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/tq5"
@@ -954,6 +954,7 @@
 				android:tag="5"
 				android:text="@string/r5q24" />
 		</RadioGroup>
+		-->
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

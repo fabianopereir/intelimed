@@ -12,8 +12,8 @@ public class TreeQuestionnaire {
 	
 	public String controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj) {
 		// TODO Auto-generated method stub
-		
-		return "imprime";
+		String res = "ok";
+		return res;
 	}
 	
 }
