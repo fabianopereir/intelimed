@@ -9,6 +9,7 @@ import nutes.intelimed.controller.TreeQuestionnaire;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -338,17 +339,16 @@ public class QuestionnaireAsma extends Activity{
 				}
 				
 								
-				if (treeQ.controlTree(arrQuest,arrayJason, treeObj)=="ok")
-				{
-					System.out.println(arrayJason);
-					System.out.println(treeObj);
-					//Toast.makeText(QuestionnaireAsma.this,"Q1: " +arrQuest[0]+"--"+ "Q2: " +arrQuest[1]+"--"+ "Q3: " +arrQuest[2], Toast.LENGTH_LONG).show();
 				
-					Intent it = new Intent(getBaseContext(),ResultQuestionnaire.class);
-					it.putExtra("questionnaireData", arrQuest);
-					startActivity(it);
+					/*System.out.println(arrayJason);
+					System.out.println(treeObj);*/
 				
-				}
+				
+				Intent it = new Intent(getBaseContext(),ResultQuestionnaire.class);
+				it.putExtra("questionnaireData", treeQ.controlTree(arrQuest,arrayJason, treeObj));
+				startActivity(it);
+				
+				
 				
 				
 				
@@ -358,6 +358,22 @@ public class QuestionnaireAsma extends Activity{
 			
 		});
     }
+    
+    /**
+	 * @author jamilson
+	 * @Description Implementation for button  back of Activity
+	 * @param Indentification of onclick for mouse
+	 * @return value boolean
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+	    	startActivity(new Intent(getBaseContext(), MainMenu.class));
+	    	//finish();
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
     @Override
 	protected void onPause() {
 		super.onPause();
