@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string
+		name="app_name">Diagnostico</string>
+
+	<string
+		name="tq1">1. Nos últimos 12 (doze) meses, você teve sibilos (chiado no
+		peito)?</string>
+	<string
+		name="r1q1">Sim</string>
+	<string
+		name="r2q1">Não</string>
+
+	<string
+		name="tq2">2. Nos últimos 12 (doze) meses, quantas crises de sibilos (chiado
+		no peito) você teve?</string>
+	<string
+		name="r1q2">Nenhuma</string>
+	<string
+		name="r2q2">1 a 3 crises</string>
+	<string
+		name="r3q2">4 a 12 crises</string>
+	<string
+		name="r4q2">Mais de 12 crises</string>
+
+	<string
+		name="tq3">3. Você apresenta aperto no peito ou dificuldade para respirar?
+	</string>
+	<string
+		name="r1q3">Não</string>
+	<string
+		name="r2q3">Sim, no último mês</string>
+	<string
+		name="r3q3">Sim, no último ano</string>
+
+	<string
+		name="tq4">4. No último mês, com que freqüência você teve seu sono
+		perturbado por chiado no peito?</string>
+	<string
+		name="r1q4">Nenhuma vez no último mês</string>
+	<string
+		name="r2q4">Uma noite por semana</string>
+	<string
+		name="r3q4">Mais de uma noite por semana</string>
+
+	<string
+		name="tq5">5. Você tem crises de tosse ou sibilos (chiado no peito) quando
+		faz exercícios físicos, do tipo correr ou jogar bola?</string>
+	<string
+		name="r1q5">Sim</string>
+	<string
+		name="r2q5">Não</string>
+
+	<string
+		name="tq6">6. Você tosse ou tem chiado no peito mesmo quando não está
+		resfriado?</string>
+	<string
+		name="r1q6">Sim</string>
+	<string
+		name="r2q6">Não</string>
+
+	<string
+		name="tq7">7. Você tosse ou tem chiado no peito quando se deita à noite?
+	</string>
+	<string
+		name="r1q7">Sim</string>
+	<string
+		name="r2q7">Não</string>
+
+	<string
+		name="tq8">8. Você tosse ou tem chiado no peito quando se acorda?</string>
+	<string
+		name="r1q8">Sim</string>
+	<string
+		name="r2q8">Não</string>
+
+	<string
+		name="tq9">9. Você tem crises de tosse ou chiado no peito quando tem contato
+		com:</string>
+	<string	name="tq9.1">a) Mofo</string>
+	<string	name="r1q9.1">Sim</string>
+	<string	name="r2q9.1">Não</string>
+	<string	name="r3q9.1">Não sei</string>
+
+	<string	name="tq9.2">b) Poeira de casa</string>
+	<string	name="r1q9.2">Sim</string>
+	<string	name="r2q9.2">Não</string>
+	<string	name="r3q9.2">Não sei</string>
+
+	<string	name="tq9.3">c) Pelo de animais</string>
+	<string	name="r1q9.3">Sim</string>
+	<string	name="r2q9.3">Não</string>
+	<string	name="r3q9.3">Não sei</string>
+
+	<string	name="tq9.4">d) Produtos químicos</string>
+	<string	name="r1q9.4">Sim</string>
+	<string	name="r2q9.4">Não</string>
+	<string	name="r3q9.4">Não sei</string>
+	
+	<string	name="tq9.5">e) Fumaça de cigarro</string>
+	<string	name="r1q9.5">Sim</string>
+	<string	name="r2q9.5">Não</string>
+	<string	name="r3q9.5">Não sei</string>
+	
+	<string	name="tq9.6">f) Pólen</string>
+	<string	name="r1q9.6">Sim</string>
+	<string	name="r2q9.6">Não</string>
+	<string	name="r3q9.6">Não sei</string>
+
+	<string
+		name="tq10">10. Você piora da tosse ou do chiado quando muda o clima?
+	</string>
+	<string
+		name="r1q10">Sim</string>
+	<string
+		name="r2q10">Não</string>
+	<string
+		name="r3q10">Não sei</string>
+
+	<string
+		name="tq11">11. Você piora da tosse ou do chiado quando usa Aspirina (AAS) ou
+		Melhoral ou Sonrisal? </string>
+	<string
+		name="r1q11">Sim</string>
+	<string
+		name="r2q11">Não</string>
+	<string
+		name="r3q11">Não sei</string>
+
+	<string
+		name="tq12">12. Você piora da tosse ou do chiado quando fica resfriado ou
+		gripado?</string>
+	<string
+		name="r1q12">Sim</string>
+	<string
+		name="r2q12">Não</string>
+
+	<string
+		name="tq13">13. Você piora da tosse ou do chiado quando sorri ou chora ?
+	</string>
+	<string
+		name="r1q13">Sim, com riso</string>
+	<string
+		name="r2q13">Sim, com choro</string>
+	<string
+		name="r3q13">Não</string>
+
+	<string
+		name="tq14">14. Você melhora da tosse ou chiado quando usa “sprays” ou
+		bombinhas ou nebulizações?</string>
+	<string
+		name="r1q14">Sim, com sprays ou bombinhas</string>
+	<string
+		name="r2q14">Sim, com nebulizações</string>
+	<string
+		name="r3q14">Não</string>
+
+	<string
+		name="tq15">15. Você já foi a hospitais ou emergências por causa da tosse ou
+		chiado no   </string>
+	<string
+		name="r1q15">Sim</string>
+	<string
+		name="r2q15">Não</string>
+
+	<string
+		name="tq16">16. Você tem alergia a algum alimento? </string>
+	<string
+		name="r1q16">Sim</string>
+	<string
+		name="r2q16">Não</string>
+
+	<string
+		name="tq17">17. Você tem alergia no nariz: espirros, coriza, coceira?
+	</string>
+	<string
+		name="r1q17">Sim</string>
+	<string
+		name="r2q17">Não</string>
+
+	<string
+		name="tq18">18. Você tem alergia na pele?</string>
+	<string
+		name="r1q18">Sim</string>
+	<string
+		name="r2q18">Não</string>
+
+	<string
+		name="txtAlergia">Respondas as questões abaixo com relação ao histórico de alergia
+		na família:</string>
+	<string
+		name="tq19">19. Mãe</string>
+	<string
+		name="r1q19">Asma chiado no peito ou “cansaço”</string>
+	<string
+		name="r2q19">Rinite espirros, coriza, coceira no nariz</string>
+	<string
+		name="r3q19">Pele</string>
+	<string
+		name="r4q19">Comida</string>
+	<string
+		name="r5q19">Não</string>
+	<string
+		name="r6q19">Não sei</string>
+
+	<string
+		name="tq20">20. Pai</string>
+	<string
+		name="r1q20">Asma chiado no peito ou “cansaço”</string>
+	<string
+		name="r2q20">Rinite espirros, coriza, coceira no nariz</string>
+	<string
+		name="r3q20">Pele</string>
+	<string
+		name="r4q20">Comida</string>
+	<string
+		name="r5q20">Não</string>
+	<string
+		name="r6q20">Não sei</string>
+
+	<string
+		name="tq21">21. Irmão ou Irmã</string>
+	<string
+		name="r1q21">Asma chiado no peito ou “cansaço”</string>
+	<string
+		name="r2q21">Rinite espirros, coriza, coceira no nariz</string>
+	<string
+		name="r3q21">Pele</string>
+	<string
+		name="r4q21">Comida</string>
+	<string
+		name="r5q21">Não</string>
+	<string
+		name="r6q21">Não sei</string>
+
+	<string
+		name="tq22">22. Algum médico já disse que você teve ou tem asma?</string>
+	<string
+		name="r1q22">Sim</string>
+	<string
+		name="r2q22">Não</string>
+
+	<string
+		name="tq23">23. Você fez algum teste alérgico?</string>
+	<string
+		name="r1q23">Sim, Positivo para Poeira ou ácaros</string>
+	<string
+		name="r2q23">Sim, Positivo para Fungos ou Mofo</string>
+	<string
+		name="r3q23">Sim, Positivo para Baratas</string>
+	<string
+		name="r4q23">Não, nunca fiz</string>
+	<string
+		name="r5q23">Não sei</string>
+
+	<string
+		name="tq24">24. Você já fez algum teste tipo prova de função pulmonar ou
+		espirometria?</string>
+	<string
+		name="r1q24">Sim, asma confirmada</string>
+	<string
+		name="r2q24">Sim, resultado inconclusivo ou desconhecido</string>
+	<string
+		name="r3q24">Sim, resultado normal</string>
+	<string
+		name="r4q24">Não, nunca fiz</string>
+	<string
+		name="r5q24">Não sei</string>
+</resources>
