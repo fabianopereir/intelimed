@@ -11,7 +11,11 @@ public class BlackBox {
 	{
 		
 	}
-	
+	/**
+	 * 
+	 * @param arrayJason
+	 * @return array com respostas
+	 */
 	public String[] controlTree(JSONArray arrayJason) {
 		// TODO Auto-generated method stub
 		String[] res = new String[4];

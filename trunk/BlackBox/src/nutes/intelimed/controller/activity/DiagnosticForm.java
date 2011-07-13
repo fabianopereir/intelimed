@@ -17,6 +17,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Jamilson Batista and Dyego Carlos
+ * @Description classe responsável pela montagem do formulário de diagnóstico
+ */
 public class DiagnosticForm extends Activity{
 	RadioGroup rQuest1,rQuest2,rQuest3,rQuest4,rQuest5,rQuest6,rQuest7,rQuest8,rQuest9,rQuest10,
     rQuest11,rQuest12,rQuest13,rQuest14,rQuest15,rQuest16,rQuest17,rQuest18,rQuest19,rQuest20,rQuest21,rQuest22,
