@@ -32,7 +32,6 @@ public class DiagnosticForm extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questionnaire_asma);
         
-        
         rQuest1 = (RadioGroup) findViewById(R.id.rq1);
         rQuest2 = (RadioGroup) findViewById(R.id.rq2);
         rQuest3 = (RadioGroup) findViewById(R.id.rq3);
@@ -40,8 +39,6 @@ public class DiagnosticForm extends Activity{
         
         validar = (Button) findViewById(R.id.ok);
        
-        
-        
         rQuest1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
 				RadioButton q1 = (RadioButton) findViewById(checkedId);
