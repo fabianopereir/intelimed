@@ -14,7 +14,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="nutes.intelimed.deusdara.activity.ResultQuestionnaire" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".DiagnosticResult" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"/>
 
     </application>
 </manifest>
