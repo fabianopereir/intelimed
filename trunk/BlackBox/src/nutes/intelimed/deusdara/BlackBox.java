@@ -1,9 +1,9 @@
-package nutes.intelimed.controller;
+package nutes.intelimed.deusdara;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class TreeQuestionnaire {
+public class BlackBox {
 
 	
 	
