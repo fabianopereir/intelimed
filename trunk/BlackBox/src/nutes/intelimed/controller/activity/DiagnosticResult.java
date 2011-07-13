@@ -17,9 +17,9 @@ public class DiagnosticResult extends Activity {
 	public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
-		setContentView(R.layout.result_questionnaire);
-
-		resultado = (TextView) findViewById(R.id.Resultado);
+		
+		setContentView(R.layout.questionnaire_asma);
+		
 
 		Intent intent = getIntent();
 		if (intent != null) {
@@ -29,7 +29,7 @@ public class DiagnosticResult extends Activity {
 					DiagnosticResult.this,
 					questData[0] + questData[1] + questData[2]+ questData[3], Toast.LENGTH_LONG).show();
 		
-				resultado.setText(questData[0] + questData[1] + questData[2]+ questData[3]);
+				
 		}
 	}
 }
