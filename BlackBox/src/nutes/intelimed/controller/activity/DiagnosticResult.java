@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ResultQuestionnaire extends Activity {
+public class DiagnosticResult extends Activity {
 	String[] questData = new String[4];
 	TextView resultado;
 
@@ -26,7 +26,7 @@ public class ResultQuestionnaire extends Activity {
 			questData = (String[]) intent
 					.getSerializableExtra("questionnaireData");
 			Toast.makeText(
-					ResultQuestionnaire.this,
+					DiagnosticResult.this,
 					questData[0] + questData[1] + questData[2]+ questData[3], Toast.LENGTH_LONG).show();
 		
 				resultado.setText(questData[0] + questData[1] + questData[2]+ questData[3]);
