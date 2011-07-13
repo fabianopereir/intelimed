@@ -23,6 +23,7 @@ public class DiagnosticForm extends Activity{
     rQuest23,rQuest24,rQuest25,rQuest26,rQuest27,rQuest28;
 	Button validar;
 	String[] arrQuest = new String[4];
+	String[] arrQuestIndex = new String[4];
 	JSONArray arrayJason;
 	ImageButton back, logout;
 	BlackBox treeQ;
@@ -33,6 +34,7 @@ public class DiagnosticForm extends Activity{
         setContentView(R.layout.questionnaire_asma);
         
         rQuest1 = (RadioGroup) findViewById(R.id.rq1);
+      
         rQuest2 = (RadioGroup) findViewById(R.id.rq2);
         rQuest3 = (RadioGroup) findViewById(R.id.rq3);
         rQuest4 = (RadioGroup) findViewById(R.id.rq4);
@@ -44,6 +46,7 @@ public class DiagnosticForm extends Activity{
 				RadioButton q1 = (RadioButton) findViewById(checkedId);
 				
 				arrQuest[0] = q1.getTag().toString();
+				arrQuestIndex[0] = Integer.toString(checkedId);
 				
 			}
 		});
@@ -78,23 +81,21 @@ public class DiagnosticForm extends Activity{
 			public void onClick(View v) {
 				arrayJason = new JSONArray();
 				treeObj = new JSONObject();
-				int cont = 1;
 				treeQ = new BlackBox();
 				for(int i=0; i<arrQuest.length;i++)
 				{
 					try {
-						treeObj.put("Q"+cont, arrQuest[i]);
+						treeObj.put(arrQuestIndex[i], arrQuest[i]);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-					arrayJason.put(arrQuest[i]);
-					cont++;
+					arrayJason.put(treeObj);
+					treeObj = new JSONObject();
 				}
 					System.out.println(arrayJason);
-					System.out.println(treeObj);
 					
 					Intent it = new Intent(getBaseContext(),DiagnosticResult.class);
-					it.putExtra("questionnaireData", treeQ.controlTree(arrQuest,arrayJason, treeObj));
+					it.putExtra("questionnaireData", treeQ.controlTree(arrayJason));
 					startActivity(it);
 			}
 			
