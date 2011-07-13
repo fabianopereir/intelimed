@@ -1,4 +1,4 @@
-package nutes.intelimed.deusdara;
+package nutes.intelimed.controller.deusdara;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

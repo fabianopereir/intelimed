@@ -1,6 +1,6 @@
 package nutes.intelimed.controller.activity;
 
-import nutes.intelimed.deusdara.BlackBox;
+import nutes.intelimed.controller.deusdara.BlackBox;
 
 import org.json.JSONArray;
 import org.json.JSONException;
