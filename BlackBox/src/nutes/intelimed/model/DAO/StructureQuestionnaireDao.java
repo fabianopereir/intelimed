@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import nutes.intelimed.model.InterfaceStructureQuestionnaire;
+import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 import nutes.intelimed.model.entity.StructureQuestionnaire.Perguntas;
 import android.content.Context;
@@ -14,7 +14,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
-public class StructureQuestionnaireDao implements InterfaceStructureQuestionnaire{
+public class StructureQuestionnaireDao implements InterfaceModelStructureQuestionnaire{
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
 	public static final String NOME_TABELA = "questao";
@@ -48,7 +48,7 @@ public class StructureQuestionnaireDao implements InterfaceStructureQuestionnair
 		List<StructureQuestionnaire> perguntas = new ArrayList<StructureQuestionnaire>();
 		
 		// Recupera os índices das colunas
-		int idxId = c.getColumnIndex(Perguntas._ID);
+		int idxId = c.getColumnIndex(Perguntas.IDPERGUNTA);
 		int idxPergunta = c.getColumnIndex(Perguntas.PERGUNTA);
 		int idxMetrica = c.getColumnIndex(Perguntas.IDMETRICA);
 

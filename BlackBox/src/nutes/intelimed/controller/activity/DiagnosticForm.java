@@ -1,9 +1,12 @@
 package nutes.intelimed.controller.activity;
 
 import java.util.ArrayList;
-import java.util.Vector;
+import java.util.List;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
+import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
+import nutes.intelimed.model.StructureQuestionnaireScript;
+import nutes.intelimed.model.entity.StructureQuestionnaire;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +21,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 /**
  * 
@@ -26,7 +28,11 @@ import android.widget.Toast;
  * @Description classe responsável pela montagem do formulário de diagnóstico
  */
 public class DiagnosticForm extends Activity {
+	
+	public static InterfaceModelStructureQuestionnaire dao;
 	RadioGroup rQuest1, rQuest2, rQuest3, rQuest4;
+	private List<StructureQuestionnaire> perguntas;
+	
 	ArrayList<RadioGroup> arrQuestions = new ArrayList<RadioGroup>();
 	Button validar;
 	String[] arrQuest = new String[4];
@@ -35,37 +41,16 @@ public class DiagnosticForm extends Activity {
 	BlackBox treeQ;
 	JSONObject treeObj;
 	int i;
-
-	// itera em todas as questões e captura suas respectivas respostas
-	// armazenando-as em um array
-	public void respostaQuestao() {
-		
-		for (i = 0; i < arrQuestions.size(); i++) {	
-			//quando o RadioButton da questão i é marcado, então é chamado o seguinte método
-			arrQuestions.get(i).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-				
-				public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				    for(int cont=0;cont<arrQuest.length;cont++){  
-
-				    	RadioButton answer = (RadioButton) findViewById(checkedId);
-				    	
-				    	//captura resposta da questão i e armazena em array na posição i
-				    	arrQuest[cont] = answer.getTag().toString();
-						System.out.println("arrQuest["+cont+"]"+arrQuest[cont]);    
-				      }  
-				}
-				
-			});	
-			System.out.println("i"+i);
-
-		}
-	}
+	
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionnaire_asma);
 		
+		dao = new StructureQuestionnaireScript(this);
+		montarQuest();
 		rQuest1 = (RadioGroup) findViewById(R.id.rq1);
 		rQuest2 = (RadioGroup) findViewById(R.id.rq2);
 		rQuest3 = (RadioGroup) findViewById(R.id.rq3);
@@ -80,41 +65,6 @@ public class DiagnosticForm extends Activity {
 		
 		respostaQuestao();
 		
-
-/*
-		rQuest1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				RadioButton q1 = (RadioButton) findViewById(checkedId);
-
-				arrQuest[0] = q1.getTag().toString();
-
-			}
-		});
-
-		rQuest2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-
-				RadioButton q2 = (RadioButton) findViewById(checkedId);
-				arrQuest[1] = q2.getTag().toString();
-
-			}
-		});
-
-		rQuest3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-				RadioButton q3 = (RadioButton) findViewById(checkedId);
-				arrQuest[2] = q3.getTag().toString();
-
-			}
-		});
-		rQuest4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-			public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-
-				RadioButton q4 = (RadioButton) findViewById(checkedId);
-				arrQuest[3] = q4.getTag().toString();
-			}
-		});
-*/
 		validar.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -142,6 +92,39 @@ public class DiagnosticForm extends Activity {
 
 		});
 	}
+	public void montarQuest()
+	{
+		dao.listarPerguntas();
+		String teste;
+		teste = "1";
+	}
+	
+	// itera em todas as questões e captura suas respectivas respostas
+	// armazenando-as em um array
+	public void respostaQuestao() {
+		
+		for (i = 0; i < arrQuestions.size(); i++) {	
+			//quando o RadioButton da questão i é marcado, então é chamado o seguinte método
+			arrQuestions.get(i).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+				
+				public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+				    for(int cont=0;cont<arrQuest.length;cont++){  
+
+				    	RadioButton answer = (RadioButton) findViewById(checkedId);
+				    	
+				    	//captura resposta da questão i e armazena em array na posição i
+				    	arrQuest[cont] = answer.getTag().toString();
+						System.out.println("arrQuest["+cont+"]"+arrQuest[cont]);    
+				      }  
+				}
+				
+			});	
+			System.out.println("i"+i);
+
+		}
+	}
+	
+
 
 	@Override
 	protected void onPause() {
