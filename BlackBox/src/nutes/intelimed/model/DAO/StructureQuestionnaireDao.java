@@ -43,17 +43,15 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 	
 	@Override
 	public List<StructureQuestionnaire> listarPerguntas() {
-		Log.i("jamilson", "dentro do metodo listarPacientes");
+		Log.i("jamilson", "dentro do metodo listarPerguntas");
 		Cursor c = getCursor();
 		List<StructureQuestionnaire> perguntas = new ArrayList<StructureQuestionnaire>();
 		
-		// Recupera os índices das colunas
 		int idxId = c.getColumnIndex(Perguntas.IDPERGUNTA);
 		int idxPergunta = c.getColumnIndex(Perguntas.PERGUNTA);
 		int idxMetrica = c.getColumnIndex(Perguntas.IDMETRICA);
 
 		if (c.moveToFirst()) {
-			// Loop até o final
 			do {
 				StructureQuestionnaire sqt = new StructureQuestionnaire();
 				perguntas.add(sqt);

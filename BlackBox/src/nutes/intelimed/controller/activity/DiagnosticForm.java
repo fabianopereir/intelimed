@@ -1,6 +1,7 @@
 package nutes.intelimed.controller.activity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
@@ -15,19 +16,25 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * 
  * @author Jamilson Batista and Dyego Carlos
  * @Description classe responsável pela montagem do formulário de diagnóstico
  */
-public class DiagnosticForm extends Activity {
+public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 	
 	public static InterfaceModelStructureQuestionnaire dao;
 	RadioGroup rQuest1, rQuest2, rQuest3, rQuest4;
@@ -47,11 +54,24 @@ public class DiagnosticForm extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.questionnaire_asma);
+		//setContentView(R.layout.questionnaire_asma);
 		
 		dao = new StructureQuestionnaireScript(this);
 		montarQuest();
-		rQuest1 = (RadioGroup) findViewById(R.id.rq1);
+		
+        /*RadioGroup radio_group = new RadioGroup ( this );
+        RadioButton radio_button_1 = new RadioButton ( this );
+        radio_button_1.setId ( 1 );
+        RadioButton radio_button_2 = new RadioButton ( this );
+        radio_button_2.setId ( 2 );
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams ( 100, 30 );
+        radio_group.addView ( radio_button_1, 0, params );
+        radio_group.addView ( radio_button_2, 1, params );
+        radio_group.check ( 2 );
+        radio_group.setOnCheckedChangeListener ( this );
+        setContentView ( radio_group );*/
+	        
+		/*rQuest1 = (RadioGroup) findViewById(R.id.rq1);
 		rQuest2 = (RadioGroup) findViewById(R.id.rq2);
 		rQuest3 = (RadioGroup) findViewById(R.id.rq3);
 		rQuest4 = (RadioGroup) findViewById(R.id.rq4);
@@ -91,12 +111,44 @@ public class DiagnosticForm extends Activity {
 			}
 
 		});
+		*/
 	}
+	 public void onCheckedChanged ( RadioGroup group, int checkedId ) 
+	    {
+			Toast.makeText(DiagnosticForm.this, Integer.toString(checkedId), Toast.LENGTH_SHORT).show();
+	    }
 	public void montarQuest()
 	{
-		dao.listarPerguntas();
-		String teste;
-		teste = "1";
+		ArrayList<StructureQuestionnaire>  arrayQuestion = (ArrayList<StructureQuestionnaire>) dao.listarPerguntas();
+		TextView perguntas = null;
+		Iterator itr = arrayQuestion.iterator(); 
+		while(itr.hasNext()) {
+
+		    //Object element = itr.next();
+			StructureQuestionnaire element = (StructureQuestionnaire) itr.next();
+		    if (element.getPergunta()!="" && element.getPergunta()!=null)
+		    {
+		    	/*RadioGroup radio_group = new RadioGroup ( this );
+		        RadioButton radio_button_1 = new RadioButton ( this );
+		        radio_button_1.setId ( 1 );
+		        RadioButton radio_button_2 = new RadioButton ( this );
+		        radio_button_2.setId ( 2 );
+		        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams ( 100, 30 );
+		        radio_group.addView ( radio_button_1, 0, params );
+		        radio_group.addView ( radio_button_2, 1, params );
+		        radio_group.check ( 2 );
+		        radio_group.setOnCheckedChangeListener ( this );
+		        setContentView ( radio_group );*/
+		    	perguntas = new TextView(this);
+		    	perguntas.setText(element.getPergunta());
+		    	
+		        
+		    }
+			System.out.print("jamilson "+element.getPergunta());
+		    //System.out.print("jamilson "+element + " ");
+
+		} 
+		setContentView (perguntas);
 	}
 	
 	// itera em todas as questões e captura suas respectivas respostas
