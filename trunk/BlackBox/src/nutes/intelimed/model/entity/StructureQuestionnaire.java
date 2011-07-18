@@ -20,7 +20,7 @@ public class StructureQuestionnaire {
 	}
 
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
-	public static String[] colunas = new String[] { Perguntas._ID, Perguntas.PERGUNTA, Perguntas.IDMETRICA };
+	public static String[] colunas = new String[] { Perguntas.IDPERGUNTA, Perguntas.PERGUNTA, Perguntas.IDMETRICA };
 	
 	public int getIdmetrica() {
 		return idmetrica;
@@ -51,6 +51,7 @@ public class StructureQuestionnaire {
 	
 		public static final String DEFAULT_SORT_ORDER = "idquestao ASC";
 	
+		public static final String IDPERGUNTA = "idquestao";	
 		public static final String PERGUNTA = "pergunta";
 		public static final String IDMETRICA = "fk_idmetrica";
 		
