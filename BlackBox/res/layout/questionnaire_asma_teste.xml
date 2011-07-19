@@ -18,35 +18,7 @@
 			android:layout_width="fill_parent"
 			android:id="@+id/LinearLayout02"
 			android:orientation="vertical">
-		<TextView
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="Diagnóstico" />
-		<TextView
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:id="@+id/tq1"
-			android:text="@string/tq1" />
-		<RadioGroup
-			android:layout_height="wrap_content"
-			android:layout_width="fill_parent"
-			android:id="@+id/rq1"
-			android:orientation="vertical"
-			android:visibility="visible">
-			<RadioButton
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:id="@+id/r1q1"
-				android:tag="1"
-				android:text="@string/r1q1"
-				/>
-			<RadioButton
-				android:layout_height="wrap_content"
-				android:layout_width="fill_parent"
-				android:id="@+id/r2q1"
-				android:tag="2"
-				android:text="@string/r2q1" />
-		</RadioGroup>
+		
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

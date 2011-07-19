@@ -3,10 +3,10 @@ package nutes.intelimed.model.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
+import nutes.intelimed.model.entity.Question;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
-import nutes.intelimed.model.entity.StructureQuestionnaire.Perguntas;
+import nutes.intelimed.model.entity.StructureQuestionnaire.StructureQuestionnaireQuestion;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -15,10 +15,11 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
 public class StructureQuestionnaireDao implements InterfaceModelStructureQuestionnaire{
+	
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
-	public static final String NOME_TABELA = "questao";
-	
+	public static final String NOME_TABELA = "estrutura_questionario INNER JOIN"+
+											"uestao ON (estrutura_questionario.fk_idquestao = questao.idquestao)";
 	protected SQLiteDatabase db;
 	
 	public StructureQuestionnaireDao()
@@ -32,7 +33,7 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 	public Cursor getCursor() {
 		try {
 			Log.i("jamilson", "dentro do metodo getCursor");
-			Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaire.colunas, null, null, null,
+			Cursor cursor = db.query(NOME_TABELA, Question.colunas, null, null, null,
 					null, null, null);
 			return cursor;
 		} catch (SQLException e) {
@@ -40,29 +41,34 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 			return null;
 		}
 	}
-	
 	@Override
-	public List<StructureQuestionnaire> listarPerguntas() {
-		Log.i("jamilson", "dentro do metodo listarPerguntas");
+	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
+		Log.i("jamilson", "dentro do metodo listarEstruturaQuestionario");
 		Cursor c = getCursor();
-		List<StructureQuestionnaire> perguntas = new ArrayList<StructureQuestionnaire>();
+		List<StructureQuestionnaire> estrutura = new ArrayList<StructureQuestionnaire>();
 		
-		int idxId = c.getColumnIndex(Perguntas.IDPERGUNTA);
-		int idxPergunta = c.getColumnIndex(Perguntas.PERGUNTA);
-		int idxMetrica = c.getColumnIndex(Perguntas.IDMETRICA);
-
+		int idxIdEstruturaQuestionario = c.getColumnIndex(StructureQuestionnaireQuestion.IDESTRUTURA_QUESTIONARIO);
+		int idxOrdem = c.getColumnIndex(StructureQuestionnaireQuestion.ORDDEM);
+		int idxFkIdDiagnostico = c.getColumnIndex(StructureQuestionnaireQuestion.FK_IDDIAGNOSTICO);
+		int idxFkIdPergunta = c.getColumnIndex(StructureQuestionnaireQuestion.FK_IDPERGUNTA);
+		int idxPergunta = c.getColumnIndex(StructureQuestionnaireQuestion.PERGUNTA);
+		int idxFkIdMetrica = c.getColumnIndex(StructureQuestionnaireQuestion.FK_IDMETRICA);
+		
 		if (c.moveToFirst()) {
 			do {
 				StructureQuestionnaire sqt = new StructureQuestionnaire();
-				perguntas.add(sqt);
+				estrutura.add(sqt);
 
-				sqt.id = c.getLong(idxId);
+				sqt.idestrutura_questionario = c.getLong(idxIdEstruturaQuestionario);
+				sqt.ordem = c.getInt(idxOrdem);
+				sqt.fk_iddiagnostico = c.getInt(idxFkIdDiagnostico);
+				sqt.fk_idquestao = c.getInt(idxFkIdPergunta);
 				sqt.pergunta = c.getString(idxPergunta);
-				sqt.idmetrica = c.getInt(idxMetrica);
+				sqt.idmetrica = c.getInt(idxFkIdMetrica);
 				
 			} while (c.moveToNext());
 		}
-		return perguntas;
+		return estrutura;
 	}
 	
 	/**
@@ -82,5 +88,4 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 			db.close();
 		}
 	}
-	
 }

@@ -5,9 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
-import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
+import nutes.intelimed.model.InterfaceModelQuestion;
 import nutes.intelimed.model.StructureQuestionnaireScript;
-import nutes.intelimed.model.entity.StructureQuestionnaire;
+import nutes.intelimed.model.entity.Question;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +23,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -36,9 +37,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  */
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 	
-	public static InterfaceModelStructureQuestionnaire dao;
+	public static InterfaceModelQuestion dao;
 	RadioGroup rQuest1, rQuest2, rQuest3, rQuest4;
-	private List<StructureQuestionnaire> perguntas;
+	private List<Question> perguntas;
 	
 	ArrayList<RadioGroup> arrQuestions = new ArrayList<RadioGroup>();
 	Button validar;
@@ -48,13 +49,12 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	BlackBox treeQ;
 	JSONObject treeObj;
 	int i;
-	
-	
+	LinearLayout linerLayout;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.questionnaire_asma);
+		setContentView(R.layout.questionnaire_asma_teste);
 		
 		dao = new StructureQuestionnaireScript(this);
 		montarQuest();
@@ -119,13 +119,14 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	    }
 	public void montarQuest()
 	{
-		ArrayList<StructureQuestionnaire>  arrayQuestion = (ArrayList<StructureQuestionnaire>) dao.listarPerguntas();
+		ArrayList<Question>  arrayQuestion = (ArrayList<Question>) dao.listarPerguntas();
 		TextView perguntas = null;
+		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
 		Iterator itr = arrayQuestion.iterator(); 
 		while(itr.hasNext()) {
 
 		    //Object element = itr.next();
-			StructureQuestionnaire element = (StructureQuestionnaire) itr.next();
+			Question element = (Question) itr.next();
 		    if (element.getPergunta()!="" && element.getPergunta()!=null)
 		    {
 		    	/*RadioGroup radio_group = new RadioGroup ( this );
@@ -141,14 +142,14 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		        setContentView ( radio_group );*/
 		    	perguntas = new TextView(this);
 		    	perguntas.setText(element.getPergunta());
-		    	
+		    	linerLayout.addView(perguntas);
 		        
 		    }
 			System.out.print("jamilson "+element.getPergunta());
 		    //System.out.print("jamilson "+element + " ");
 
 		} 
-		setContentView (perguntas);
+		//setContentView (perguntas);
 	}
 	
 	// itera em todas as questões e captura suas respectivas respostas
