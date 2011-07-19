@@ -5,16 +5,15 @@ import java.util.Iterator;
 import java.util.List;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
-import nutes.intelimed.model.InterfaceModelQuestion;
+import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
 import nutes.intelimed.model.StructureQuestionnaireScript;
-import nutes.intelimed.model.entity.Question;
+import nutes.intelimed.model.entity.StructureQuestionnaire;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,9 +36,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  */
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 	
-	public static InterfaceModelQuestion dao;
+	public static InterfaceModelStructureQuestionnaire dao;
 	RadioGroup rQuest1, rQuest2, rQuest3, rQuest4;
-	private List<Question> perguntas;
+	private List<StructureQuestionnaire> estrutura;
 	
 	ArrayList<RadioGroup> arrQuestions = new ArrayList<RadioGroup>();
 	Button validar;
@@ -119,14 +118,14 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	    }
 	public void montarQuest()
 	{
-		ArrayList<Question>  arrayQuestion = (ArrayList<Question>) dao.listarPerguntas();
+		ArrayList<StructureQuestionnaire>  arrayQuestion = (ArrayList<StructureQuestionnaire>) dao.listarEstruturaQuestionario();
 		TextView perguntas = null;
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
 		Iterator itr = arrayQuestion.iterator(); 
 		while(itr.hasNext()) {
 
 		    //Object element = itr.next();
-			Question element = (Question) itr.next();
+			StructureQuestionnaire element = (StructureQuestionnaire) itr.next();
 		    if (element.getPergunta()!="" && element.getPergunta()!=null)
 		    {
 		    	/*RadioGroup radio_group = new RadioGroup ( this );

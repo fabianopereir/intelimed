@@ -10,7 +10,7 @@ public class StructureQuestionnaire {
 	public int fk_iddiagnostico;
 	public int fk_idquestao;
 	public  String pergunta;
-	public int idmetrica;
+	public int fk_idmetrica;
 	
 	
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
@@ -49,10 +49,10 @@ public class StructureQuestionnaire {
 		this.pergunta = pergunta;
 	}
 	public int getIdmetrica() {
-		return idmetrica;
+		return fk_idmetrica;
 	}
 	public void setIdmetrica(int idmetrica) {
-		this.idmetrica = idmetrica;
+		this.fk_idmetrica = idmetrica;
 	}
 	
 	public static final class StructureQuestionnaireQuestion implements BaseColumns {
@@ -73,7 +73,7 @@ public class StructureQuestionnaire {
 		public static final String FK_IDDIAGNOSTICO = "fk_iddiagnostico";
 		public static final String FK_IDPERGUNTA = "fk_idquestao";
 		public static final String PERGUNTA = "pergunta";
-		public static final String FK_IDMETRICA = "idmetrica";
+		public static final String FK_IDMETRICA = "fk_idmetrica";
 	
 		/**
 		 * Método que constrói uma Uri para um StructureQuestionnaireQuestion específico, com o seu id
