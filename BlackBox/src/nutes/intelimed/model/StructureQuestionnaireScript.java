@@ -3,9 +3,9 @@ package nutes.intelimed.model;
 import android.content.Context;
 import android.util.Log;
 import nutes.intelimed.model.SQLiteHelper;
-import nutes.intelimed.model.DAO.QuestionDao;
+import nutes.intelimed.model.DAO.StructureQuestionnaireDao;
 
-public class StructureQuestionnaireScript extends QuestionDao{
+public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	
 	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {
 		"DROP TABLE IF EXISTS padra_validacao;",
@@ -35,7 +35,7 @@ public class StructureQuestionnaireScript extends QuestionDao{
 			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,1);"
 			 };
 	private static final String NOME_BANCO = "caixapreta";
-	private static final int VERSAO_BANCO = 1;
+	private static final int VERSAO_BANCO = 2;
 	
 	//public static final String NOME_TABELA = "questao";
 	

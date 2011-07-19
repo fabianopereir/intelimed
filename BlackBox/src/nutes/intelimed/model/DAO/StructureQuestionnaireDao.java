@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
-import nutes.intelimed.model.entity.Question;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 import nutes.intelimed.model.entity.StructureQuestionnaire.StructureQuestionnaireQuestion;
 import android.content.Context;
@@ -19,7 +18,7 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
 	public static final String NOME_TABELA = "estrutura_questionario INNER JOIN"+
-											"uestao ON (estrutura_questionario.fk_idquestao = questao.idquestao)";
+											" questao ON (estrutura_questionario.fk_idquestao = questao.idquestao)";
 	protected SQLiteDatabase db;
 	
 	public StructureQuestionnaireDao()
@@ -33,7 +32,7 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 	public Cursor getCursor() {
 		try {
 			Log.i("jamilson", "dentro do metodo getCursor");
-			Cursor cursor = db.query(NOME_TABELA, Question.colunas, null, null, null,
+			Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaire.colunas, null, null, null,
 					null, null, null);
 			return cursor;
 		} catch (SQLException e) {
@@ -64,7 +63,7 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 				sqt.fk_iddiagnostico = c.getInt(idxFkIdDiagnostico);
 				sqt.fk_idquestao = c.getInt(idxFkIdPergunta);
 				sqt.pergunta = c.getString(idxPergunta);
-				sqt.idmetrica = c.getInt(idxFkIdMetrica);
+				sqt.fk_idmetrica = c.getInt(idxFkIdMetrica);
 				
 			} while (c.moveToNext());
 		}
