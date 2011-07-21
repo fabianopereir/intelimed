@@ -19,11 +19,19 @@ class UsuarioController {
 	}
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	
 	def rest = {
 		switch(request.method){
 			case "POST":
-				render "Create\n"
+				def usuario = new Usuario(params.usuario)
+				if(usuario.save()){
+					response.status = 201 // Created
+					render usuario as XML
+				}
+				else{
+					response.status = 500 //Internal Server Error
+					render "Could not create new Usuario due to errors:\n ${usuario.errors}"
+				}
 				break
 			case "GET":
 				if(params.cpf){
@@ -34,10 +42,34 @@ class UsuarioController {
 				}
 				break
 			case "PUT":
-				render "Update\n"
+				def usuario = Usuario.findByCpf(params.usuario.cpf)
+				usuario.properties = params.usuario
+				if(usuario.save()){
+					response.status = 200 // OK
+					render usuario as XML
+				}
+				else{
+					response.status = 500 //Internal Server Error
+					render "Could not create new Usuario due to errors:\n ${usuario.errors}"
+				}
 				break
 			case "DELETE":
-				render "Delete\n"
+				if(params.cpf){
+					def usuario = Usuario.findByCpf(params.cpf)
+					if(usuario){
+						usuario.delete()
+						render "Successfully Deleted."
+					}
+					else{
+						response.status = 404 //Not Found
+						render "${params.cpf} not found."
+					}
+				}
+				else{
+					response.status = 400 //Bad Request
+					render """DELETE request must include the CPF
+                  Example: /rest/usuario/cpf"""
+				}
 				break
 		}
 	}

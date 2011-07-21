@@ -6,9 +6,9 @@ class UrlMappings {
 				// apply constraints here
 			}
 		}
-
+		
 		"/"(view:"/index")
-		"/rest/usuario/$cpf?"(controller:"usuario", action:"rest")
+		"/rest/usuario/$cpf?"(controller:"usuario", parseRequest:true, action:"rest")
 		"500"(view:'/error')
 	}
 }
