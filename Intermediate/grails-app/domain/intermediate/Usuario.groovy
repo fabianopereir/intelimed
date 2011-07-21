@@ -10,12 +10,12 @@ static constraints = {
 		senha(blank:false, maxSize:250, password:true)
 		tipoDeUsuario(inList:["Admin","Medico","Agente de saude"])
 		cpf(blank:false, minSize:11, maxSize:11, matches:"[0-9]+", unique:true)
-		dataDeNascimento()
+		//dataDeNascimento()
     }
 
 	String nome
 	String cpf
-	Date dataDeNascimento
+	//Date dataDeNascimento
 	String tipoDeUsuario
 	String senha
 	String login

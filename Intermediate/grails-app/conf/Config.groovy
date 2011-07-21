@@ -95,3 +95,5 @@ grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'intelimed.acc
 grails.plugins.springsecurity.authority.className = 'intelimed.access.Role'
 grails.plugins.springsecurity.requestMap.className = 'intelimed.access.Requestmap'
 grails.plugins.springsecurity.securityConfigType = 'Requestmap'
+grails.plugins.springsecurity.useBasicAuth = true
+grails.plugins.springsecurity.basic.realmName = "InteliMED"
