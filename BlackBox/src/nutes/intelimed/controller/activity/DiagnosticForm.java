@@ -122,32 +122,52 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	{
 		ArrayList<StructureQuestionnaireTest>  arrayQuestion = (ArrayList<StructureQuestionnaireTest>) dao.listarEstruturaQuestionario();
 		TextView perguntas = null;
+		treeQ = new BlackBox();
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
-		Iterator itr = arrayQuestion.iterator(); 
+		Iterator itr = arrayQuestion.iterator();
+		long aux=0;
+		
+		ArrayList<String> questionOption = new ArrayList<String>();
+		String question = null;
 		while(itr.hasNext()) {
-
 		    //Object element = itr.next();
-			StructureQuestionnaire element = (StructureQuestionnaire) itr.next();
+			StructureQuestionnaireTest element = (StructureQuestionnaireTest) itr.next();
 		    if (element.getPergunta()!="" && element.getPergunta()!=null)
 		    {
-		    	/*RadioGroup radio_group = new RadioGroup ( this );
-		        RadioButton radio_button_1 = new RadioButton ( this );
-		        radio_button_1.setId ( 1 );
-		        RadioButton radio_button_2 = new RadioButton ( this );
-		        radio_button_2.setId ( 2 );
-		        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams ( 100, 30 );
-		        radio_group.addView ( radio_button_1, 0, params );
-		        radio_group.addView ( radio_button_2, 1, params );
-		        radio_group.check ( 2 );
-		        radio_group.setOnCheckedChangeListener ( this );
-		        setContentView ( radio_group );*/
-		    	perguntas = new TextView(this);
+		    	
+		        //setContentView ( radio_group );
+		    	
+		    	
+		    	if (aux!=0)
+		    	{
+		    		if (aux==element.getIdestrutura_questionario())
+			    	{
+		    			questionOption.add(element.getDescricao());
+			    	}else
+			    	{
+			    		linerLayout.addView(treeQ.createTypeMetrics(question,element.getTipo(),questionOption, this));	
+			    		linerLayout.addView(treeQ.createTypeMetricsG(question,element.getTipo(),questionOption, this));
+			    		aux=0;
+			    		questionOption = new ArrayList<String>();
+			    	}
+		    	}else
+		    	{
+		    		
+		    		question = element.getPergunta();
+			    	questionOption.add(element.getDescricao()); 
+		    	}
+		    	
+		    	aux = element.getIdestrutura_questionario();
+		    	
+		 
+		    	/*perguntas = new TextView(this);
 		    	perguntas.setText(element.getPergunta());
-		    	linerLayout.addView(perguntas);
+		    	linerLayout.addView(perguntas);*/
 		        
 		    }
 			System.out.print("jamilson "+element.getPergunta());
 		    //System.out.print("jamilson "+element + " ");
+			
 
 		} 
 		//setContentView (perguntas);

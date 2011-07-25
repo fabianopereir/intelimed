@@ -25,7 +25,7 @@ public class StructureQuestionnaireTest {
 													StructureQuestionnaireAll.TIPO,
 													StructureQuestionnaireAll.FK_IDPADRAO_VALIDACAO,
 													StructureQuestionnaireAll.DESCRICAO,
-													StructureQuestionnaireAll.ORDDEM,
+													StructureQuestionnaireAll.ORDDEM
 													//StructureQuestionnaireAll.FK_IDDIAGNOSTICO, 
 													};
 	
@@ -101,7 +101,7 @@ public class StructureQuestionnaireTest {
 		public static final String FK_IDPERGUNTA = "estrutura.fk_idquestao";
 		public static final String PERGUNTA = "quest.pergunta";
 		public static final String FK_IDMETRICA = "quest.fk_idmetrica";
-		public static final String TIPO = "metric.descricao as tipo";
+		public static final String TIPO = "metric.tipo";
 		public static final String FK_IDPADRAO_VALIDACAO = "valmetic.fk_idpadrao_validacao";
 		public static final String DESCRICAO = "pval.descricao";
 		public static final String ORDDEM = "estrutura.ordem";
