@@ -6,8 +6,10 @@ import java.util.List;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
 import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
+import nutes.intelimed.model.InterfaceModelStructureQuestionnaireTest;
 import nutes.intelimed.model.StructureQuestionnaireScript;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
+import nutes.intelimed.model.entity.StructureQuestionnaireTest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,9 +38,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  */
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 	
-	public static InterfaceModelStructureQuestionnaire dao;
+	public static InterfaceModelStructureQuestionnaireTest dao;
 	RadioGroup rQuest1, rQuest2, rQuest3, rQuest4;
-	private List<StructureQuestionnaire> estrutura;
+	private List<StructureQuestionnaireTest> estrutura;
 	
 	ArrayList<RadioGroup> arrQuestions = new ArrayList<RadioGroup>();
 	Button validar;
@@ -55,7 +57,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionnaire_asma_teste);
 		
-		dao = new StructureQuestionnaireScript(this);
+		dao = (InterfaceModelStructureQuestionnaireTest) new StructureQuestionnaireScript(this);
 		montarQuest();
 		
         /*RadioGroup radio_group = new RadioGroup ( this );
@@ -118,7 +120,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	    }
 	public void montarQuest()
 	{
-		ArrayList<StructureQuestionnaire>  arrayQuestion = (ArrayList<StructureQuestionnaire>) dao.listarEstruturaQuestionario();
+		ArrayList<StructureQuestionnaireTest>  arrayQuestion = (ArrayList<StructureQuestionnaireTest>) dao.listarEstruturaQuestionario();
 		TextView perguntas = null;
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
 		Iterator itr = arrayQuestion.iterator(); 
