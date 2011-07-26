@@ -125,52 +125,53 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		treeQ = new BlackBox();
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
 		Iterator itr = arrayQuestion.iterator();
-		long aux=0;
+		Iterator itrAux = arrayQuestion.iterator();
+		//long aux=0;
 		
 		ArrayList<String> questionOption = new ArrayList<String>();
 		String question = null;
-		while(itr.hasNext()) {
+		
+		/*while(itr.hasNext()) {
 		    //Object element = itr.next();
 			StructureQuestionnaireTest element = (StructureQuestionnaireTest) itr.next();
-		    if (element.getPergunta()!="" && element.getPergunta()!=null)
-		    {
-		    	
-		        //setContentView ( radio_group );
-		    	
-		    	
-		    	if (aux!=0)
-		    	{
-		    		if (aux==element.getIdestrutura_questionario())
-			    	{
-		    			questionOption.add(element.getDescricao());
-			    	}else
-			    	{
-			    		linerLayout.addView(treeQ.createTypeMetrics(question,element.getTipo(),questionOption, this));	
-			    		linerLayout.addView(treeQ.createTypeMetricsG(question,element.getTipo(),questionOption, this));
-			    		aux=0;
-			    		questionOption = new ArrayList<String>();
-			    	}
-		    	}else
-		    	{
-		    		
-		    		question = element.getPergunta();
-			    	questionOption.add(element.getDescricao()); 
-		    	}
-		    	
-		    	aux = element.getIdestrutura_questionario();
-		    	
-		 
-		    	/*perguntas = new TextView(this);
-		    	perguntas.setText(element.getPergunta());
-		    	linerLayout.addView(perguntas);*/
-		        
-		    }
-			System.out.print("jamilson "+element.getPergunta());
-		    //System.out.print("jamilson "+element + " ");
+			StructureQuestionnaireTest elementAux = (StructureQuestionnaireTest) itrAux.next();
 			
-
-		} 
-		//setContentView (perguntas);
+			if (element.getTipo().equals("radio group"))
+			{
+				linerLayout.addView(treeQ.createTypeMetrics(element.getPergunta(), this));
+				while (element.getIdestrutura_questionario() == elementAux.getIdestrutura_questionario() && itrAux.hasNext())
+				{
+						questionOption.add(elementAux.getDescricao());	
+						elementAux = (StructureQuestionnaireTest) itrAux.next();
+				}
+				linerLayout.addView(treeQ.createTypeMetricsG(questionOption, this));
+				questionOption.clear();
+				itr = itrAux;
+			}
+		}*/ 
+		int aux;
+		StructureQuestionnaireTest vAux;
+		 for(int i = 0; i < arrayQuestion.size(); i++)
+		 {
+			 aux = i;
+			 vAux = arrayQuestion.get(aux);
+			 if (arrayQuestion.get(i).getTipo().equals("radio group"))
+				{
+				 linerLayout.addView(treeQ.createTypeMetrics(arrayQuestion.get(i).getPergunta(), this));
+				 while (arrayQuestion.get(i).getIdestrutura_questionario() == vAux.getIdestrutura_questionario() && aux < arrayQuestion.size())
+					{
+							questionOption.add(arrayQuestion.get(aux).getDescricao());
+							aux++;
+							if (aux<arrayQuestion.size())
+							{
+								vAux = arrayQuestion.get(aux);
+							}	
+					}
+				 	linerLayout.addView(treeQ.createTypeMetricsG(questionOption, this));
+				 	questionOption.clear();
+				 	i = aux-1;
+				}
+		 }
 	}
 	
 	// itera em todas as questões e captura suas respectivas respostas
