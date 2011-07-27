@@ -14,6 +14,6 @@
 		<TextView android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:id="@+id/campoResultado"
 			android:text="" />
-
+		
 	</LinearLayout>
 </LinearLayout>

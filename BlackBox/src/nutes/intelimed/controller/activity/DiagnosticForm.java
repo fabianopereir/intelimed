@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
+import nutes.intelimed.model.InterfaceModelStructureQuestionnaire_;
 import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
-import nutes.intelimed.model.InterfaceModelStructureQuestionnaireTest;
 import nutes.intelimed.model.StructureQuestionnaireScript;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 import nutes.intelimed.model.entity.StructureQuestionnaireTest;
@@ -39,13 +39,13 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  */
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 	
-	public static InterfaceModelStructureQuestionnaireTest dao;
+	public static InterfaceModelStructureQuestionnaire dao;
 	RadioGroup rQuest1, rQuest2, rQuest3, rQuest4;
 	private List<StructureQuestionnaireTest> estrutura;
 	
 	ArrayList<RadioGroup> arrQuestions = new ArrayList<RadioGroup>();
 	Button validar;
-	String[] arrQuest = new String[50];
+	String[] arrQuest;
 	JSONArray arrayJason;
 	ImageButton back, logout;
 	BlackBox treeQ;
@@ -57,7 +57,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionnaire_asma_teste);
 		
-		dao = (InterfaceModelStructureQuestionnaireTest) new StructureQuestionnaireScript(this);
+		dao = (InterfaceModelStructureQuestionnaire) new StructureQuestionnaireScript(this);
 		montarQuest();
 		
 		validar = (Button) findViewById(R.id.ok);
@@ -91,11 +91,6 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	public void onCheckedChanged ( RadioGroup group, int checkedId ) 
 	    {
 			Toast.makeText(DiagnosticForm.this, Integer.toString(checkedId), Toast.LENGTH_SHORT).show();
-			
-			//RadioButton answer = (RadioButton) findViewById(checkedId);
-	    	
-	    	//captura resposta da questão i e armazena em array na posição i
-	    	//arrQuest[group.getId()] = answer.getTag().toString();
 			arrQuest[Integer.parseInt(group.getTag().toString())] = Integer.toString(checkedId);
 	    }
 	 
@@ -107,9 +102,9 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
 		
 		ArrayList<String> questionOption = new ArrayList<String>();
-		 
+		arrQuest = new String[arrayQuestion.size()];
 		int aux;
-		int aux2=0;
+		int index=0;
 		StructureQuestionnaireTest vAux;
 		 for(int i = 0; i < arrayQuestion.size(); i++)
 		 {
@@ -125,10 +120,10 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 							if (aux<arrayQuestion.size())
 							{
 								vAux = arrayQuestion.get(aux);
-							}	
+							}
 					}
-				 	aux2++;
-				 	linerLayout.addView(treeQ.createTypeMetricsG(questionOption, aux2, this));
+				 	index++;
+				 	linerLayout.addView(treeQ.createTypeMetricsG(questionOption, index, this));
 				 	questionOption.clear();
 				 	i = aux-1;
 				}

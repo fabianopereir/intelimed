@@ -36,13 +36,14 @@ public class BlackBox {
 	 * @return array de Strings com questões e suas respectivas respostas
 	 */
 	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj) {
-		// TODO Auto-generated method stub
 		String[] res = new String[arrQuest.length];
+		int aux=0;
 		for (int i=0;i<arrQuest.length;i++){
 			
 			System.out.println("arrQuest["+i+"] = "+arrQuest[i]);
 			if (arrQuest[i]!=null)
 			{
+				aux++;
 				if(arrQuest[i].equals("1")){
 					arrQuest[i]="a";
 				}else if(arrQuest[i].equals("2")){
@@ -52,7 +53,7 @@ public class BlackBox {
 				}else if(arrQuest[i].equals("4")){
 					arrQuest[i]="d";
 				}
-				res[i] = "Questão "+ (i+1) +": Resposta "+ arrQuest[i]+". ";
+				res[i] = "Questão "+ (aux) +": Resposta "+ arrQuest[i]+". ";
 			}
 		}
 		
@@ -73,7 +74,6 @@ public class BlackBox {
 	public View createTypeMetricsG(ArrayList<String> questionOption, int radioId, DiagnosticForm diagnosticForm) {
 		
 		RadioGroup radio_group = new RadioGroup (diagnosticForm);
-		//radio_group.setId(radioId);
 		radio_group.setTag(radioId);
 		RadioButton radio_button;
 		
