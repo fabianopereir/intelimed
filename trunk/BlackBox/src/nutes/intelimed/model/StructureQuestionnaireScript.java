@@ -28,30 +28,23 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDaoTest{
 			"insert into padrao_validacao (padrao,descricao) values(1,'não');",
 			"insert into padrao_validacao (padrao,descricao) values(2,'sim');",
 			"insert into padrao_validacao (padrao,descricao) values(3,'não sei');",
-			"insert into padrao_validacao (padrao,descricao) values(4,'não sei');",
-			"insert into padrao_validacao (padrao,descricao) values(5,'não');",
-			"insert into padrao_validacao (padrao,descricao) values(6,'sim');",
+			"insert into padrao_validacao (padrao,descricao) values(4,'não');",
+			"insert into padrao_validacao (padrao,descricao) values(5,'sim');",
 			"insert into metrica (tipo,unidade) values('radio group','pergunta 1');",
-			"insert into metrica (tipo,unidade) values('texto','pergunta 2');",
 			"insert into metrica (tipo,unidade) values('radio group','pergunta 2');",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(1,1);",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(1,2);",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(1,3);",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(2,4);",
-			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(3,5);",
-			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(3,6);",
+			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(2,5);",
 			"insert into questao (pergunta,fk_idmetrica) values('Qual seu nome?',1);",
-			"insert into questao (pergunta,fk_idmetrica) values('Qual seu sobrenome?',2);",
-			"insert into questao (pergunta,fk_idmetrica) values('Qual seu apelido?',3);",
+			"insert into questao (pergunta,fk_idmetrica) values('Qual seu apelido?',2);",
 			"insert into diagnostico (date,resultado_sis,resultado_medico,explicacao) values('21/05/2011',1,1,'-');",
 			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,1);",
-			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,2);",
-			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,3);"
+			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,2);"
 			 };
 	private static final String NOME_BANCO = "caixapreta";
-	private static final int VERSAO_BANCO = 1;
-	
-	//public static final String NOME_TABELA = "questao";
+	private static final int VERSAO_BANCO = 2;
 	
 	private SQLiteHelper dbHelper;
 
