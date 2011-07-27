@@ -23,36 +23,34 @@ import android.widget.LinearLayout.LayoutParams;
  */
 public class DiagnosticResult extends Activity {
 
-	String[] questData = new String[4];
+	String[] questData;
 
 	public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
-		//setContentView(R.layout.result_questionnaire);
 		
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);
 		layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
 		layout.setBackgroundResource(R.drawable.gradientbg);
 		
-		//TextView resultado;
-		//resultado = (TextView) findViewById(R.id.campoResultado);
-		
-		/*LayoutInflater layoutInflater = (LayoutInflater) 
-        this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);    
-		layout.addView(1, layoutInflater.inflate(R.layout.navbar, this, false) ); */
-		
 		TextView resultado = new TextView(this);
 		resultado.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-		resultado.setText("testeee");
+		resultado.setText("teste");
 		layout.addView(resultado);
 		
 		Intent intent = getIntent();
 		if (intent != null) {
-			questData= (String[]) intent.getSerializableExtra("questionnaireData");
+			questData = (String[]) intent.getSerializableExtra("questionnaireData");
 			
 			System.out.println(questData[0] + questData[1] + questData[2] + questData[3]);
-			resultado.setText(questData[0] +"\n" + questData[1] +"\n"+ questData[2] +"\n"+ questData[3]);
+			for (int i=0; i<questData.length; i++)
+			{
+				if (questData[i]!=null)
+					resultado.setText(questData[i] +"\n");
+					//resultado.setText(questData[0] +"\n" + questData[1] +"\n"+ questData[2] +"\n"+ questData[3]);
+			}
+			
 		}
 		setContentView(layout);
 	}

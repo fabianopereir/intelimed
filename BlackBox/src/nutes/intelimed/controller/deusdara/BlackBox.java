@@ -37,23 +37,23 @@ public class BlackBox {
 	 */
 	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj) {
 		// TODO Auto-generated method stub
-		String[] res = new String[4];
-		for (int i=0;i<4;i++){
+		String[] res = new String[arrQuest.length];
+		for (int i=0;i<arrQuest.length;i++){
 			
-			System.out.println("arrQuest[i] = "+arrQuest[i]);
-			
-			if(arrQuest[i]=="1"){
-				arrQuest[i]="a";
-			}else if(arrQuest[i]=="2"){
-				arrQuest[i]="b";
-			}else if(arrQuest[i]=="3"){
-				arrQuest[i]="c";
-			}else if(arrQuest[i]=="4"){
-				arrQuest[i]="d";
+			System.out.println("arrQuest["+i+"] = "+arrQuest[i]);
+			if (arrQuest[i]!=null)
+			{
+				if(arrQuest[i].equals("1")){
+					arrQuest[i]="a";
+				}else if(arrQuest[i].equals("2")){
+					arrQuest[i]="b";
+				}else if(arrQuest[i].equals("3")){
+					arrQuest[i]="c";
+				}else if(arrQuest[i].equals("4")){
+					arrQuest[i]="d";
+				}
+				res[i] = "Questão "+ (i+1) +": Resposta "+ arrQuest[i]+". ";
 			}
-			
-			
-			res[i] = "Questão "+ (i+1) +": Resposta "+ arrQuest[i]+". ";
 		}
 		
 		System.out.println(res);
@@ -70,9 +70,11 @@ public class BlackBox {
     	return perguntas;
 	}
 
-	public View createTypeMetricsG(ArrayList<String> questionOption, DiagnosticForm diagnosticForm) {
+	public View createTypeMetricsG(ArrayList<String> questionOption, int radioId, DiagnosticForm diagnosticForm) {
 		
 		RadioGroup radio_group = new RadioGroup (diagnosticForm);
+		//radio_group.setId(radioId);
+		radio_group.setTag(radioId);
 		RadioButton radio_button;
 		
 		 for(int i = 0; i < questionOption.size(); i++)
