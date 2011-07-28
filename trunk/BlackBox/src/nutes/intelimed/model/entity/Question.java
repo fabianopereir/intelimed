@@ -56,9 +56,7 @@ public class Question {
 		public static final String IDMETRICA = "fk_idmetrica";
 		
 	
-		/**
-		 * Método que constrói uma Uri para um Paciente específico, com o seu id
-		 */
+		
 		public static Uri getUriId(long id) {
 			Uri uriPaciente = ContentUris.withAppendedId(Perguntas.CONTENT_URI, id);
 			return uriPaciente;

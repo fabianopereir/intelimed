@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import nutes.intelimed.controller.activity.DiagnosticForm;
-import nutes.intelimed.model.entity.StructureQuestionnaireTest;
+import nutes.intelimed.model.entity.StructureQuestionnaire;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -31,9 +32,8 @@ public class BlackBox {
 	}
 	
 	/**
-	 * 
 	 * @param arrQuest, arrayJason, treeObj
-	 * @return array de Strings com questões e suas respectivas respostas
+	 * @return array de Strings com questões e suas respectivas respostas marcadas
 	 */
 	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj) {
 		String[] res = new String[arrQuest.length];
@@ -62,6 +62,10 @@ public class BlackBox {
 		return res;
 	}
 	
+	/**
+	 * @param pergunta, diagnosticForm
+	 * @return TextView com todas as perguntas
+	 */
 	public TextView createTypeMetrics(String pergunta, DiagnosticForm diagnosticForm)
 	{
 		TextView perguntas = null;
@@ -71,6 +75,10 @@ public class BlackBox {
     	return perguntas;
 	}
 
+	/**
+	 * @param questionOption, radioId, diagnosticForm
+	 * @return View com radio group de todas as questões
+	 */
 	public View createTypeMetricsG(ArrayList<String> questionOption, int radioId, DiagnosticForm diagnosticForm) {
 		
 		RadioGroup radio_group = new RadioGroup (diagnosticForm);
@@ -83,7 +91,7 @@ public class BlackBox {
 	        radio_button.setId (i+1);
 	        radio_button.setText(questionOption.get(i));
 	        
-	        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams (200, 50);
+	        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 	        radio_group.addView (radio_button, 0, params);
 		 }
 		radio_group.setOnCheckedChangeListener (diagnosticForm);
