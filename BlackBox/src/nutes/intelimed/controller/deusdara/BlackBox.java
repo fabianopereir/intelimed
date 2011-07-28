@@ -64,7 +64,7 @@ public class BlackBox {
 	
 	/**
 	 * @param pergunta, diagnosticForm
-	 * @return TextView com todas as perguntas
+	 * @return TextView com uma questão específica
 	 */
 	public TextView createTypeMetrics(String pergunta, DiagnosticForm diagnosticForm)
 	{
@@ -77,7 +77,7 @@ public class BlackBox {
 
 	/**
 	 * @param questionOption, radioId, diagnosticForm
-	 * @return View com radio group de todas as questões
+	 * @return View com radio group de um questão específica
 	 */
 	public View createTypeMetricsG(ArrayList<String> questionOption, int radioId, DiagnosticForm diagnosticForm) {
 		
@@ -90,9 +90,7 @@ public class BlackBox {
 			radio_button = new RadioButton (diagnosticForm);
 	        radio_button.setId (i+1);
 	        radio_button.setText(questionOption.get(i));
-	        
-	        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
-	        radio_group.addView (radio_button, 0, params);
+	        radio_group.addView (radio_button);
 		 }
 		radio_group.setOnCheckedChangeListener (diagnosticForm);
 		
