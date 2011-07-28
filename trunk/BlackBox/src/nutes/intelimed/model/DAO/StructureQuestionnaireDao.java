@@ -38,7 +38,6 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 	
 	public Cursor getCursor() {
 		try {
-			Log.i("jamilson", "dentro do metodo getCursor");
 			Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaire.colunas, null, null, null,
 					null, null, null);
 			return cursor;
@@ -49,7 +48,6 @@ public class StructureQuestionnaireDao implements InterfaceModelStructureQuestio
 	}
 	@Override
 	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
-		Log.i("jamilson", "dentro do metodo listarEstruturaQuestionario");
 		Cursor c = getCursor();
 		List<StructureQuestionnaire> estrutura = new ArrayList<StructureQuestionnaire>();
 		
