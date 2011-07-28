@@ -18,7 +18,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-
 /**
  * 
  * @author Jamilson Batista and Dyego Carlos
@@ -40,7 +39,6 @@ public class BlackBox {
 		int aux=0;
 		for (int i=0;i<arrQuest.length;i++){
 			
-			System.out.println("arrQuest["+i+"] = "+arrQuest[i]);
 			if (arrQuest[i]!=null)
 			{
 				aux++;
@@ -56,8 +54,6 @@ public class BlackBox {
 				res[i] = "Questão "+ (aux) +": Resposta "+ arrQuest[i]+". ";
 			}
 		}
-		
-		System.out.println(res);
 		
 		return res;
 	}

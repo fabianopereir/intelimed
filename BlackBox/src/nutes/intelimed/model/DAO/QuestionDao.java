@@ -31,7 +31,6 @@ public class QuestionDao implements InterfaceModelQuestion{
 	
 	public Cursor getCursor() {
 		try {
-			Log.i("jamilson", "dentro do metodo getCursor");
 			Cursor cursor = db.query(NOME_TABELA, Question.colunas, null, null, null,
 					null, null, null);
 			return cursor;
@@ -43,7 +42,6 @@ public class QuestionDao implements InterfaceModelQuestion{
 	
 	@Override
 	public List<Question> listarPerguntas() {
-		Log.i("jamilson", "dentro do metodo listarPerguntas");
 		Cursor c = getCursor();
 		List<Question> perguntas = new ArrayList<Question>();
 		

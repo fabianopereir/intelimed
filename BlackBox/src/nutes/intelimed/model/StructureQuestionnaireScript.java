@@ -5,6 +5,12 @@ import android.util.Log;
 import nutes.intelimed.model.SQLiteHelper;
 import nutes.intelimed.model.DAO.StructureQuestionnaireDao;
 
+
+/**
+ * 
+ * @author Jamilson Batista and Dyego Carlos
+ * @Description script responsável pela criação, povoamento e remoção do banco
+ */
 public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	
 	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {
@@ -26,17 +32,17 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 			"create table estrutura_questionario (idestrutura_questionario integer primary key autoincrement, ordem integer, fk_iddiagnostico integer,fk_idquestao integer, Foreign Key (fk_iddiagnostico) references diagnostico(iddiagnostico), Foreign Key (fk_idquestao) references questao(idquestao));",
 			"create table resposta (idresposta integer, valor varchar(255), fk_idestrutura_questionario integer, Foreign Key (fk_idestrutura_questionario) references estrutura_questionario(idestrutura_questionario));",
 			
-			"insert into padrao_validacao (padrao,descricao) values(3,'não');",
+			"insert into padrao_validacao (padrao,descricao) values(1,'não');",
 			"insert into padrao_validacao (padrao,descricao) values(2,'sim, no último mês');",
-			"insert into padrao_validacao (padrao,descricao) values(1,'sim, no último ano');",
+			"insert into padrao_validacao (padrao,descricao) values(3,'sim, no último ano');",
 			"insert into padrao_validacao (padrao,descricao) values(4,'não');",
 			"insert into padrao_validacao (padrao,descricao) values(5,'sim');",
-			"insert into padrao_validacao (padrao,descricao) values(6,'não sei');",
+			"insert into padrao_validacao (padrao,descricao) values(6,'sim');",
 			"insert into padrao_validacao (padrao,descricao) values(7,'não');",
-			"insert into padrao_validacao (padrao,descricao) values(8,'sim');",
-			"insert into padrao_validacao (padrao,descricao) values(9,'não sei');",
+			"insert into padrao_validacao (padrao,descricao) values(8,'não sei');",
+			"insert into padrao_validacao (padrao,descricao) values(9,'sim');",
 			"insert into padrao_validacao (padrao,descricao) values(10,'não');",
-			"insert into padrao_validacao (padrao,descricao) values(11,'sim');",
+			"insert into padrao_validacao (padrao,descricao) values(11,'não sei');",
 			"insert into metrica (tipo,unidade) values('radio group','pergunta 1');",
 			"insert into metrica (tipo,unidade) values('radio group','pergunta 2');",
 			"insert into metrica (tipo,unidade) values('radio group','pergunta 3');",
@@ -44,14 +50,14 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(1,1);",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(1,2);",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(1,3);",
-			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(2,5);",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(2,4);",
-			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(3,8);",
-			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(3,7);",
+			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(2,5);",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(3,6);",
-			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(4,11);",
-			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(4,10);",
+			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(3,7);",
+			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(3,8);",
 			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(4,9);",
+			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(4,10);",
+			"insert into validacao_metrica (fk_idmetrica,fk_idpadrao_validacao) values(4,11);",
 			"insert into questao (pergunta,fk_idmetrica) values('Você apresenta aperto no peito ou dificuldade para respirar?',1);",
 			"insert into questao (pergunta,fk_idmetrica) values('Nos últimos 12 (doze) meses, você teve sibilos (chiado no peito)?',2);",
 			"insert into questao (pergunta,fk_idmetrica) values('Você tosse ou tem chiado no peito quando se acorda?',3);",
@@ -77,7 +83,6 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	@Override
 	public void fechar() {
 		super.fechar();
-		Log.i("jamilson", "Mandou fechar o banco");
 		if (dbHelper != null) {
 			dbHelper.close();
 		}
