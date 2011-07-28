@@ -68,8 +68,6 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
                     arrayJason.put(arrQuest[i]);
                     cont++;
                 }
-                System.out.println(arrayJason);
-                System.out.println(treeObj);
 
                 Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
                 it.putExtra("questionnaireData",treeQ.controlTree(arrQuest, arrayJason, treeObj));
