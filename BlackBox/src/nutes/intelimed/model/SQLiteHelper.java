@@ -6,8 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * @author Jamilson Batista e Dyego
- * @Description classe responsável pela implementacao de SQLiteOpenHelper. Classe utilitária para abrir, criar, e atualizar o banco de dados.
+ * @author Jamilson Batista e Dyego Carlos
+ * @Description classe responsável pela implementacao de SQLiteOpenHelper. 
+ * Classe utilitária para abrir, criar, e atualizar o banco de dados.
  */
 class SQLiteHelper extends SQLiteOpenHelper {
 

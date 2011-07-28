@@ -65,10 +65,7 @@ public class QuestionDao implements InterfaceModelQuestion{
 		return perguntas;
 	}
 	
-	/**
-	 * Busca um paciente utilizando as configurações definidas no
-	 * SQLiteQueryBuilder Utilizado pelo Content Provider de paciente
-	 */
+	
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,
 			String selection, String[] selectionArgs, String groupBy,
 			String having, String orderBy) {

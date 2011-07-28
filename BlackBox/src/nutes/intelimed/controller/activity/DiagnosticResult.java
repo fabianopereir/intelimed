@@ -19,7 +19,8 @@ import android.widget.LinearLayout.LayoutParams;
 /**
  * 
  * @author Jamilson Batista and Dyego Carlos
- * @Description classe responsável pela montagem da tela de questionário
+ * @Description classe responsável pela montagem da tela de resultado do questionário, 
+ *  	com suas questões e respectivas respostas obtidas através de questionnaireData da Activity DiagnosticForm
  */
 public class DiagnosticResult extends Activity {
 
@@ -34,10 +35,6 @@ public class DiagnosticResult extends Activity {
 		layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT));
 		layout.setBackgroundResource(R.drawable.gradientbg);
 		
-		/*TextView resultado = new TextView(this);
-		resultado.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-		layout.addView(resultado);
-		*/
 		Intent intent = getIntent();
 		if (intent != null) {
 			
