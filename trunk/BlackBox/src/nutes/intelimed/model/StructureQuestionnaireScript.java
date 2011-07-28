@@ -63,7 +63,7 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,4);"
 	};
 	private static final String NOME_BANCO = "caixapreta";
-	private static final int VERSAO_BANCO = 2;
+	private static final int VERSAO_BANCO = 1;
 	
 	private SQLiteHelper dbHelper;
 
