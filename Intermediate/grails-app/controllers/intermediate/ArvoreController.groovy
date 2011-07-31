@@ -33,13 +33,12 @@ class ArvoreController {
 				break
 			case "GET":
 				if(params.id){
-					def marinha = Arvore.findById(params.id)
-					println marinha.nos as JSON 					
+					def marinha = Arvore.findById(params.id)	
 					
 					render Arvore.findById(params.id) as XML
 				}
 				else{
-					render Arvore.list() as XML
+					render Arvore.list() as JSON
 				}
 				break
 			case "PUT":

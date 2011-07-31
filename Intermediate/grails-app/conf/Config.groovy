@@ -35,7 +35,6 @@ grails.views.default.codec = "none" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
 grails.converters.encoding = "UTF-8"
 
-//TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!
 grails.converters.json.default.deep = true
 grails.converters.xml.default.deep = true
 

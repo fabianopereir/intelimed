@@ -2,11 +2,11 @@ package intermediate
 
 class Resposta {
 	
-	String resposta
+	String descricao
 	static belongsTo = No
 	
 	String toString(){
-		resposta
+		descricao
 	}
 	
     static constraints = {
