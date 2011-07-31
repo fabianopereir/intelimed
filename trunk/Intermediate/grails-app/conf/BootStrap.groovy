@@ -4,6 +4,7 @@ import intelimed.access.SecUser
 import intelimed.access.SecUserRole
 import intermediate.Aresta
 import intermediate.Arvore
+import intermediate.Evidencia
 import intermediate.No
 import intermediate.Resposta
 
@@ -35,14 +36,14 @@ class BootStrap {
 
 		new Requestmap(url: '/**', configAttribute: 'ROLE_ADMIN').save()
 		
-		//Testes para a arvore!
-		def resposta1 = new Resposta(resposta: 'Sunny').save()
-		def resposta2 = new Resposta(resposta: 'Overcast').save()
-		def resposta3 = new Resposta(resposta: 'Rain').save()
-		def resposta4 = new Resposta(resposta: 'High').save()
-		def resposta5 = new Resposta(resposta: 'Normal').save()
-		def resposta6 = new Resposta(resposta: 'Strong').save()
-		def resposta7 = new Resposta(resposta: 'Weak').save()
+		//Testes para a arvore e afins!
+		def resposta1 = new Resposta(descricao: 'Sunny').save()
+		def resposta2 = new Resposta(descricao: 'Overcast').save()
+		def resposta3 = new Resposta(descricao: 'Rain').save()
+		def resposta4 = new Resposta(descricao: 'High').save()
+		def resposta5 = new Resposta(descricao: 'Normal').save()
+		def resposta6 = new Resposta(descricao: 'Strong').save()
+		def resposta7 = new Resposta(descricao: 'Weak').save()
 		
 		def aresta1 = new Aresta(resposta: resposta1).save()
 		def aresta2 = new Aresta(resposta: resposta2).save()
@@ -59,6 +60,7 @@ class BootStrap {
 		def no5 = new No(descricao: 'No', arestasEntrada:[aresta4, aresta6]).save()
 		
 		def arvore = new Arvore(nos:[no1,no2,no3,no4,no5], arestas:[aresta1,aresta2,aresta3,aresta4,aresta5,aresta6,aresta7], respostas:[resposta1,resposta2,resposta3,resposta4,resposta5,resposta6,resposta7]).save()
+		def evidencia = new Evidencia(respostas:[resposta3,resposta4]).save()
 	}
 
 	def destroy = {

@@ -10,6 +10,7 @@ class UrlMappings {
 		"/"(view:"/index")
 		"/rest/usuario/$cpf?"(controller:"usuario", parseRequest:true, action:"rest")
 		"/rest/arvore/$id?"(controller:"arvore", parseRequest:true, action:"rest")
+		"/rest/evidencia/$id?"(controller:"evidencia", parseRequest:true, action:"rest")
 		"500"(view:'/error')
 	}
 }
