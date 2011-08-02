@@ -1,4 +1,4 @@
-package nutes.intelimed.model;
+package nutes.intelimed.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +10,7 @@ import android.util.Log;
  * @Description classe responsável pela implementacao de SQLiteOpenHelper. 
  * Classe utilitária para abrir, criar, e atualizar o banco de dados.
  */
-class SQLiteHelper extends SQLiteOpenHelper {
+public class SQLiteHelper extends SQLiteOpenHelper {
 
 	private static final String CATEGORIA = "nutes";
 
@@ -25,7 +25,7 @@ class SQLiteHelper extends SQLiteOpenHelper {
 	 * @param scriptDatabaseDelete SQL com o drop table...
 	 * @Description Cria uma instância de SQLiteHelper
 	 */
-	SQLiteHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
+	public SQLiteHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
 		super(context, nomeBanco, null, versaoBanco);
 		this.scriptSQLCreate = scriptSQLCreate;
 		this.scriptSQLDelete = scriptDatabaseDelete;

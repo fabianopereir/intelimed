@@ -3,7 +3,7 @@ package nutes.intelimed.controller.activity;
 import java.util.ArrayList;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
-import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
+import nutes.intelimed.model.IModelStructureQuestionnaire;
 import nutes.intelimed.model.StructureQuestionnaireScript;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 
@@ -30,7 +30,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  */
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 
-	public static InterfaceModelStructureQuestionnaire dao;
+	public static IModelStructureQuestionnaire dao;
 	RadioGroup rQuest1, rQuest2, rQuest3, rQuest4;
 
 	ArrayList<RadioGroup> arrQuestions = new ArrayList<RadioGroup>();
@@ -47,7 +47,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionnaire_asma);
 
-		dao = (InterfaceModelStructureQuestionnaire) new StructureQuestionnaireScript(
+		dao = (IModelStructureQuestionnaire) new StructureQuestionnaireScript(
 				this);
 		montarQuest();
 

@@ -3,7 +3,7 @@ package nutes.intelimed.model.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
-import nutes.intelimed.model.InterfaceModelStructureQuestionnaire;
+import nutes.intelimed.model.IModelStructureQuestionnaire;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 import nutes.intelimed.model.entity.StructureQuestionnaire.StructureQuestionnaireAll;
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
-public class StructureQuestionnaireDao implements InterfaceModelStructureQuestionnaire{
+public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
 	
