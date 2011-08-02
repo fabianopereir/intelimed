@@ -23,7 +23,20 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	};
 	
 	private static final String[] SCRIPT_DATABASE_CREATE = new String[] {
-			"create table padrao_validacao(idpadrao_validacao integer primary key autoincrement, padrao int, descricao varchar(255));",
+		"create table pergunta_diagnostico(id_pergunta_diagnostico integer primary key autoincrement, descricao_pergunta_diagnostico varchar(255));",
+		"create table resposta(id_resposta integer primary key autoincrement, descricao_resposta varchar(255), fk_id_pergunta_diagnostico_saida integer);",
+		"create table aresta(id_aresta integer primary key autoincrement, fk_id_pergunta_diagnostico_entrada integer,  fk_id_resposta integer);",
+		
+		"insert into pergunta_diagnostico(descricao_pergunta_diagnostico) values('OUTLOOK');",
+		"insert into pergunta_diagnostico(descricao_pergunta_diagnostico) values('HUMIDITY');",
+		"insert into pergunta_diagnostico(descricao_pergunta_diagnostico) values('WIND');",
+		"insert into pergunta_diagnostico(descricao_pergunta_diagnostico) values('YES');",
+		"insert into pergunta_diagnostico(descricao_pergunta_diagnostico) values('NO');",
+		"insert into resposta(descricao_resposta, fk_id_pergunta_diagnostico_saida) values('Sunny',1);",
+		"insert into resposta(descricao_resposta, fk_id_pergunta_diagnostico_saida) values('OverCast',1);",
+		"insert into resposta(descricao_resposta, fk_id_pergunta_diagnostico_saida) values('Rain',1);",
+		"insert into aresta(fk_id_pergunta_diagnostico_entrada, fk_id_resposta) values(1);",
+			/*"create table padrao_validacao(idpadrao_validacao integer primary key autoincrement, padrao int, descricao varchar(255));",
 			"create table metrica (idmetrica integer primary key autoincrement, tipo varchar(20), unidade varchar(45));",
 			"create table validacao_metrica (idvalidacao_metrica integer primary key autoincrement,fk_idmetrica integer, fk_idpadrao_validacao integer, Foreign Key (fk_idpadrao_validacao) references padrao_validacao(idpadrao_validacao),Foreign Key (fk_idmetrica) references metrica(idmetrica));",
 			"create table questao (idquestao integer primary key autoincrement, pergunta varchar(255), fk_idmetrica integer, Foreign Key (fk_idmetrica) references metrica(idmetrica));",
@@ -65,7 +78,7 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,1);",
 			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,2);",
 			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,3);",
-			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,4);"
+			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,4);"*/
 	};
 	private static final String NOME_BANCO = "caixapreta";
 	private static final int VERSAO_BANCO = 2;
