@@ -1,8 +1,7 @@
 package nutes.intelimed.model;
 
 import android.content.Context;
-import android.util.Log;
-import nutes.intelimed.model.SQLiteHelper;
+import nutes.intelimed.helper.SQLiteHelper;
 import nutes.intelimed.model.DAO.StructureQuestionnaireDao;
 
 
@@ -69,7 +68,7 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 			"insert into estrutura_questionario (ordem,fk_iddiagnostico,fk_idquestao) values(1,1,4);"
 	};
 	private static final String NOME_BANCO = "caixapreta";
-	private static final int VERSAO_BANCO = 1;
+	private static final int VERSAO_BANCO = 2;
 	
 	private SQLiteHelper dbHelper;
 
