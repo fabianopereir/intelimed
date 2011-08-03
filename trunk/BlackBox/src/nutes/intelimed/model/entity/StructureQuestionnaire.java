@@ -4,6 +4,11 @@ import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+/**
+ * 
+ * @author Jamilson Batista and Dyego Carlos
+ * @Description Entidade da estrutura do questionário
+ */
 public class StructureQuestionnaire {
 	
 	public long idno;

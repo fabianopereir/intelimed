@@ -8,7 +8,7 @@ import nutes.intelimed.model.DAO.StructureQuestionnaireDao;
 /**
  * 
  * @author Jamilson Batista and Dyego Carlos
- * @Description script responsável pela criação, povoamento e remoção do banco
+ * @Description script responsável pela criação, povoamento e remoção do banco que armazena a estrutura do questionário
  */
 public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	
@@ -30,11 +30,19 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 		"insert into resposta(descricao_resposta, fk_idno) values('Sunny',1);",
 		"insert into resposta(descricao_resposta, fk_idno) values('OverCast',1);",
 		"insert into resposta(descricao_resposta, fk_idno) values('Rain',1);",
-		"insert into aresta(fk_idno, fk_idresposta) values(3,1);",
-		"insert into aresta(fk_idno, fk_idresposta) values(2,2);"
+		"insert into resposta(descricao_resposta, fk_idno) values('High',2);",
+		"insert into resposta(descricao_resposta, fk_idno) values('Normal',2);",
+		"insert into resposta(descricao_resposta, fk_idno) values('Strong',3);",
+		"insert into resposta(descricao_resposta, fk_idno) values('Weak',3);",
+		"insert into aresta(fk_idno, fk_idresposta) values(2,1);",
+		"insert into aresta(fk_idno, fk_idresposta) values(4,2);",
+		"insert into aresta(fk_idno, fk_idresposta) values(3,3);",		
+		"insert into aresta(fk_idno, fk_idresposta) values(5,4);",
+		"insert into aresta(fk_idno, fk_idresposta) values(5,5);",
+		"insert into aresta(fk_idno, fk_idresposta) values(4,6);",
 	};
 	private static final String NOME_BANCO = "caixapreta";
-	private static final int VERSAO_BANCO = 2;
+	private static final int VERSAO_BANCO = 1;
 	
 	private SQLiteHelper dbHelper;
 
