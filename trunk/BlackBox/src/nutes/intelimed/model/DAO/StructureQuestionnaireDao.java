@@ -18,12 +18,7 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	private static final String NOME_BANCO = "caixapreta";
 	
 	
-	public static final String NOME_TABELA = " estrutura_questionario as estrutura"+
-		" INNER JOIN questao as quest ON  quest.idquestao = estrutura.fk_idquestao" +
-		" INNER JOIN metrica as metric ON quest.fk_idmetrica = metric.idmetrica"+
-		" INNER JOIN validacao_metrica as valmetic ON valmetic.fk_idmetrica = quest.fk_idmetrica" +
-		" INNER JOIN padrao_validacao as pval ON valmetic.fk_idpadrao_validacao = pval.idpadrao_validacao";
-		
+	public static final String NOME_TABELA = " no"+" INNER JOIN resposta";
 		
 	
 	protected SQLiteDatabase db;
@@ -51,15 +46,11 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 		Cursor c = getCursor();
 		List<StructureQuestionnaire> estrutura = new ArrayList<StructureQuestionnaire>();
 		
-		int idxIdEstruturaQuestionario = c.getColumnIndex(StructureQuestionnaireAll.IDESTRUTURA_QUESTIONARIO);
-		int idxFkIdPergunta = c.getColumnIndex(StructureQuestionnaireAll.FK_IDPERGUNTA);
-		int idxPergunta = c.getColumnIndex(StructureQuestionnaireAll.PERGUNTA);
-		int idxFkIdMetrica = c.getColumnIndex(StructureQuestionnaireAll.FK_IDMETRICA);
-		int idxTipo = c.getColumnIndex(StructureQuestionnaireAll.TIPO);
-		int idxFkIdPadraoValidacao = c.getColumnIndex(StructureQuestionnaireAll.FK_IDPADRAO_VALIDACAO);
-		int idxDescricao = c.getColumnIndex(StructureQuestionnaireAll.DESCRICAO);		
-		int idxOrdem = c.getColumnIndex(StructureQuestionnaireAll.ORDDEM);
-		//int idxFkIdDiagnostico = c.getColumnIndex(StructureQuestionnaireAll.FK_IDDIAGNOSTICO);
+		int idxIdNo = c.getColumnIndex(StructureQuestionnaireAll.IDNO);
+		int idxDescricao_no = c.getColumnIndex(StructureQuestionnaireAll.DESCRICAO_NO);
+		int idxIdReposta = c.getColumnIndex(StructureQuestionnaireAll.IDRESPOSTA);
+		int idxDescricao_reposta = c.getColumnIndex(StructureQuestionnaireAll.DESCRICAO_RESPOSTA);
+		int idxFkIdNo = c.getColumnIndex(StructureQuestionnaireAll.FK_IDNO);
 		
 		
 		if (c.moveToFirst()) {
@@ -67,15 +58,11 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 				StructureQuestionnaire sqt = new StructureQuestionnaire();
 				estrutura.add(sqt);
 
-				sqt.idestrutura_questionario = c.getLong(idxIdEstruturaQuestionario);
-				sqt.fk_idquestao = c.getInt(idxFkIdPergunta);
-				sqt.pergunta = c.getString(idxPergunta);
-				sqt.fk_idmetrica = c.getInt(idxFkIdMetrica);
-				sqt.tipo = c.getString(idxTipo);
-				sqt.fk_idpadrao_validacao = c.getInt(idxFkIdPadraoValidacao);
-				sqt.descricao = c.getString(idxDescricao);
-				sqt.ordem = c.getInt(idxOrdem);
-				//sqt.fk_iddiagnostico = c.getInt(idxFkIdDiagnostico);
+				sqt.idno = c.getLong(idxIdNo);
+				sqt.descricao_no = c.getString(idxDescricao_no);
+				sqt.idresposta = c.getInt(idxIdReposta);
+				sqt.descricao_resposta = c.getString(idxDescricao_reposta);
+				sqt.fk_idno = c.getInt(idxFkIdNo);
 				
 			} while (c.moveToNext());
 		}

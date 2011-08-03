@@ -20,7 +20,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
@@ -88,8 +87,8 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		arrQuest[Integer.parseInt(group.getTag().toString())] = Integer
 				.toString(checkedId);
+		
 	}
-
 	/**
 	 * Método resposável por montar as questões do questionário dinamicamente
 	 */
@@ -108,14 +107,14 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		for (int i = 0; i < arrayQuestion.size(); i++) {
 			aux = i;
 			vAux = arrayQuestion.get(aux);
-			if (arrayQuestion.get(i).getTipo().equals("radio group")) {
-				linerLayout.addView(treeQ.createTypeMetrics(arrayQuestion
-						.get(i).getPergunta(), this));
-				while (arrayQuestion.get(i).getIdestrutura_questionario() == vAux
-						.getIdestrutura_questionario()
-						&& aux < arrayQuestion.size()) {
-					questionOption.add(arrayQuestion.get(aux).getDescricao());
+			//if (arrayQuestion.get(i).getTipo().equals("radio group")) {
+				linerLayout.addView(treeQ.createTypeMetrics(arrayQuestion.get(i).getDescricao_no(), this));
+				
+				while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
+					
+					questionOption.add(arrayQuestion.get(aux).getDescricao_resposta());
 					aux++;
+					
 					if (aux < arrayQuestion.size()) {
 						vAux = arrayQuestion.get(aux);
 					}
@@ -125,10 +124,9 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 						aux2, this));
 				questionOption.clear();
 				i = aux - 1;
-			}
+			//}
 		}
 	}
-
 	@Override
 	protected void onPause() {
 		super.onPause();
