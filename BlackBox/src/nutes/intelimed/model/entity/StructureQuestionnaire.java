@@ -6,84 +6,80 @@ import android.provider.BaseColumns;
 
 public class StructureQuestionnaire {
 	
-	public long idestrutura_questionario;
-	public int fk_idquestao;
-	public  String pergunta;
-	public int fk_idmetrica;
-	public  String tipo;
-	public int fk_idpadrao_validacao;
-	public  String descricao;	
-	public int ordem;
-	public int fk_iddiagnostico;
-	
+	public long idno;
+	public String descricao_no;
+	public  int idresposta;
+	public String descricao_resposta;
+	public  int fk_idno;
 	
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
-	public static String[] colunas = new String[] { StructureQuestionnaireAll.IDESTRUTURA_QUESTIONARIO,
-													StructureQuestionnaireAll.FK_IDPERGUNTA,
-													StructureQuestionnaireAll.PERGUNTA,
-													StructureQuestionnaireAll.FK_IDMETRICA,
-													StructureQuestionnaireAll.TIPO,
-													StructureQuestionnaireAll.FK_IDPADRAO_VALIDACAO,
-													StructureQuestionnaireAll.DESCRICAO,
-													StructureQuestionnaireAll.ORDDEM
-													//StructureQuestionnaireAll.FK_IDDIAGNOSTICO, 
+	public static String[] colunas = new String[] { StructureQuestionnaireAll.IDNO,
+													StructureQuestionnaireAll.DESCRICAO_NO,
+													StructureQuestionnaireAll.IDRESPOSTA,
+													StructureQuestionnaireAll.DESCRICAO_RESPOSTA,
+													StructureQuestionnaireAll.FK_IDNO
 													};
 	
-	public long getIdestrutura_questionario() {
-		return idestrutura_questionario;
+	public long getIdno() {
+		return idno;
 	}
-	public void setIdestrutura_questionario(long idestruturaQuestionario) {
-		idestrutura_questionario = idestruturaQuestionario;
+
+
+
+	public void setIdno(long idno) {
+		this.idno = idno;
 	}
-	public int getFk_idquestao() {
-		return fk_idquestao;
+
+
+
+	public String getDescricao_no() {
+		return descricao_no;
 	}
-	public void setFk_idquestao(int fkIdquestao) {
-		fk_idquestao = fkIdquestao;
+
+
+
+	public void setDescricao_no(String descricaoNo) {
+		descricao_no = descricaoNo;
 	}
-	public String getPergunta() {
-		return pergunta;
+
+
+
+	public int getIdresposta() {
+		return idresposta;
 	}
-	public void setPergunta(String pergunta) {
-		this.pergunta = pergunta;
+
+
+
+	public void setIdresposta(int idresposta) {
+		this.idresposta = idresposta;
 	}
-	public int getFk_idmetrica() {
-		return fk_idmetrica;
+
+
+
+	public String getDescricao_resposta() {
+		return descricao_resposta;
 	}
-	public void setFk_idmetrica(int fkIdmetrica) {
-		fk_idmetrica = fkIdmetrica;
+
+
+
+	public void setDescricao_resposta(String descricaoResposta) {
+		descricao_resposta = descricaoResposta;
 	}
-	public String getTipo() {
-		return tipo;
+
+
+
+	public int getFk_idno() {
+		return fk_idno;
 	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+
+
+
+	public void setFk_idno(int fkIdno) {
+		fk_idno = fkIdno;
 	}
-	public int getFk_idpadrao_validacao() {
-		return fk_idpadrao_validacao;
-	}
-	public void setFk_idpadrao_validacao(int fkIdpadraoValidacao) {
-		fk_idpadrao_validacao = fkIdpadraoValidacao;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public int getOrdem() {
-		return ordem;
-	}
-	public void setOrdem(int ordem) {
-		this.ordem = ordem;
-	}
-	public int getFk_iddiagnostico() {
-		return fk_iddiagnostico;
-	}
-	public void setFk_iddiagnostico(int fkIddiagnostico) {
-		fk_iddiagnostico = fkIddiagnostico;
-	}
-	
+
+
+
 	public static final class StructureQuestionnaireAll implements BaseColumns {
 		
 		private StructureQuestionnaireAll() {
@@ -95,17 +91,14 @@ public class StructureQuestionnaire {
 	
 		public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.google.perguntas";
 	
-		public static final String DEFAULT_SORT_ORDER = "idestrutura_questionario ASC";
+		public static final String DEFAULT_SORT_ORDER = "idno ASC";
 	
-		public static final String IDESTRUTURA_QUESTIONARIO = "estrutura.idestrutura_questionario";
-		public static final String FK_IDPERGUNTA = "estrutura.fk_idquestao";
-		public static final String PERGUNTA = "quest.pergunta";
-		public static final String FK_IDMETRICA = "quest.fk_idmetrica";
-		public static final String TIPO = "metric.tipo";
-		public static final String FK_IDPADRAO_VALIDACAO = "valmetic.fk_idpadrao_validacao";
-		public static final String DESCRICAO = "pval.descricao";
-		public static final String ORDDEM = "estrutura.ordem";
-		//public static final String FK_IDDIAGNOSTICO = "fk_iddiagnostico";
+		
+		public static final String IDNO = "idno";
+		public static final String DESCRICAO_NO = "descricao_no";
+		public static final String IDRESPOSTA = "idresposta";
+		public static final String DESCRICAO_RESPOSTA = "descricao_resposta";
+		public static final String FK_IDNO = "fk_idno";
 		
 				
 		public static Uri getUriId(long id) {
