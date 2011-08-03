@@ -24,7 +24,6 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	
 	
 	public static final String NOME_TABELA = " no"+" INNER JOIN resposta";
-		
 	
 	protected SQLiteDatabase db;
 	
@@ -42,13 +41,15 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 					null, null, null);
 			return cursor;
 		} catch (SQLException e) {
-			Log.e(CATEGORIA, "Erro ao buscar as pacientes: " + e.toString());
+			Log.e(CATEGORIA, "Erro ao buscar: " + e.toString());
 			return null;
 		}
 	}
+	
 	@Override
 	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
-		Cursor c = getCursor();
+		//Cursor c = getCursor();
+		Cursor c = db.query(NOME_TABELA, StructureQuestionnaire.colunas, StructureQuestionnaireAll.FK_IDNO + "=" + StructureQuestionnaireAll.IDNO, null, null, null, null);
 		List<StructureQuestionnaire> estrutura = new ArrayList<StructureQuestionnaire>();
 		
 		int idxIdNo = c.getColumnIndex(StructureQuestionnaireAll.IDNO);

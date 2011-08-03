@@ -30,7 +30,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 
 	public static IModelStructureQuestionnaire dao;
-	RadioGroup rQuest1, rQuest2, rQuest3, rQuest4;
+	RadioGroup rQuest1, rQuest2, rQuest3;
 
 	ArrayList<RadioGroup> arrQuestions = new ArrayList<RadioGroup>();
 	Button validar;
@@ -79,10 +79,10 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	}
 
 	/**
-	 * Evento é disparado ao clicar em radio button armazenado o valor em array
+	 * Evento é disparado ao clicar em um radio button (que são resposta), 
+	 * armazenando o valor em um array de respostas assinaladas chamado arrQuest
 	 * 
-	 * @param group
-	 *            , checkedId
+	 * @param group, checkedId
 	 */
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		arrQuest[Integer.parseInt(group.getTag().toString())] = Integer
@@ -93,6 +93,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	 * Método resposável por montar as questões do questionário dinamicamente
 	 */
 	public void montarQuest() {
+		//Array de cada pergunta com suas respectivas opções de resposta 
 		ArrayList<StructureQuestionnaire> arrayQuestion = (ArrayList<StructureQuestionnaire>) dao
 				.listarEstruturaQuestionario();
 
@@ -104,8 +105,12 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		int aux;
 		int aux2 = 0;
 		StructureQuestionnaire vAux;
+		
+		//itera em cada questão completa (questão e alternativas)
 		for (int i = 0; i < arrayQuestion.size(); i++) {
 			aux = i;
+			
+			//armazena em um array de questões completas
 			vAux = arrayQuestion.get(aux);
 			//if (arrayQuestion.get(i).getTipo().equals("radio group")) {
 				linerLayout.addView(treeQ.createTypeMetrics(arrayQuestion.get(i).getDescricao_no(), this));

@@ -19,14 +19,14 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	};
 	
 	private static final String[] SCRIPT_DATABASE_CREATE = new String[] {
-		"create table no(idno integer primary key autoincrement, descricao_no varchar(255));",
+		"create table no(idno integer primary key autoincrement, descricao_no varchar(255), diagnostico integer);",
 		"create table resposta(idresposta integer primary key autoincrement, descricao_resposta varchar(255), fk_idno integer, Foreign Key (fk_idno) references no(idno));",
 		"create table aresta(idaresta integer primary key autoincrement, fk_idno integer,  fk_idresposta integer, Foreign Key (fk_idno) references no(idno), Foreign Key (fk_idresposta) references resposta(idresposta));",
-		"insert into no(descricao_no) values('OUTLOOK');",
-		"insert into no(descricao_no) values('HUMIDITY');",
-		"insert into no(descricao_no) values('WIND');",
-		"insert into no(descricao_no) values('YES');",
-		"insert into no(descricao_no) values('NO');",
+		"insert into no(descricao_no, diagnostico) values('OUTLOOK',0);",
+		"insert into no(descricao_no, diagnostico) values('HUMIDITY',0);",
+		"insert into no(descricao_no, diagnostico) values('WIND',0);",
+		"insert into no(descricao_no, diagnostico) values('YES',1);",
+		"insert into no(descricao_no, diagnostico) values('NO',1);",
 		"insert into resposta(descricao_resposta, fk_idno) values('Sunny',1);",
 		"insert into resposta(descricao_resposta, fk_idno) values('OverCast',1);",
 		"insert into resposta(descricao_resposta, fk_idno) values('Rain',1);",
