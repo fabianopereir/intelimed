@@ -13,6 +13,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
+/**
+ * 
+ * @author Jamilson Batista and Dyego Carlos
+ * @Description Classe responsável por consultas no banco
+ */
 public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
@@ -69,10 +74,6 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 		return estrutura;
 	}
 	
-	/**
-	 * Busca um paciente utilizando as configurações definidas no
-	 * SQLiteQueryBuilder Utilizado pelo Content Provider de paciente
-	 */
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,
 			String selection, String[] selectionArgs, String groupBy,
 			String having, String orderBy) {
