@@ -6,16 +6,16 @@ import android.provider.BaseColumns;
 
 /**
  * 
- * @author Jamilson Batista and Dyego Carlos
+ * @author Jamilson Batista e Dyego Carlos
  * @Description Entidade da estrutura do questionário
  */
 public class StructureQuestionnaire {
 	
 	public long idno;
 	public String descricao_no;
-	public  int idresposta;
+	public int idresposta;
 	public String descricao_resposta;
-	public  int fk_idno;
+	private int fk_idno;
 	
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { StructureQuestionnaireAll.IDNO,
@@ -65,6 +65,11 @@ public class StructureQuestionnaire {
 		fk_idno = fkIdno;
 	}
 
+	/**
+	 * 
+	 * @author Jamilson Batista e Dyego Carlos
+	 * @Description Classe interna necessária para Content Provider de estrutura de questionário
+	 */
 	public static final class StructureQuestionnaireAll implements BaseColumns {
 		
 		private StructureQuestionnaireAll() {
@@ -85,10 +90,14 @@ public class StructureQuestionnaire {
 		public static final String DESCRICAO_RESPOSTA = "descricao_resposta";
 		public static final String FK_IDNO = "fk_idno";
 		
-				
+		/**
+		 * @Description Método que constrói uma Uri para uma estrutura de questionário específico, com seu id
+		 * @param id - identificador da estrutura de questionário
+		 * @return uriStructure
+		 */
 		public static Uri getUriId(long id) {
-			Uri uriPaciente = ContentUris.withAppendedId(StructureQuestionnaireAll.CONTENT_URI, id);
-			return uriPaciente;
+			Uri uriStructure = ContentUris.withAppendedId(StructureQuestionnaireAll.CONTENT_URI, id);
+			return uriStructure;
 		}
 	}
 	

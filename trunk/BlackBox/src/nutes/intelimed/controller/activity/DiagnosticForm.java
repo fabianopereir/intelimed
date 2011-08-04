@@ -37,6 +37,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	private JSONObject treeObj;
 	private LinearLayout linerLayout;
 
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,8 +47,9 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 				this);
 		montarQuest();
 
-		validar = (Button) findViewById(R.id.ok);
-
+		validar = new Button(this);
+		validar.setText("OK");
+        linerLayout.addView(validar);
 		validar.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -121,6 +123,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 				questionOption.clear();
 				i = aux - 1;
 		}
+		
 	}
 	
 	@Override
