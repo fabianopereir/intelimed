@@ -24,66 +24,46 @@ public class StructureQuestionnaire {
 													StructureQuestionnaireAll.DESCRICAO_RESPOSTA,
 													StructureQuestionnaireAll.FK_IDNO
 													};
-	
 	public long getIdno() {
 		return idno;
 	}
-
-
 
 	public void setIdno(long idno) {
 		this.idno = idno;
 	}
 
-
-
 	public String getDescricao_no() {
 		return descricao_no;
 	}
 
-
-
 	public void setDescricao_no(String descricaoNo) {
 		descricao_no = descricaoNo;
 	}
-
-
 
 	public int getIdresposta() {
 		return idresposta;
 	}
 
 
-
 	public void setIdresposta(int idresposta) {
 		this.idresposta = idresposta;
 	}
-
-
 
 	public String getDescricao_resposta() {
 		return descricao_resposta;
 	}
 
-
-
 	public void setDescricao_resposta(String descricaoResposta) {
 		descricao_resposta = descricaoResposta;
 	}
-
-
 
 	public int getFk_idno() {
 		return fk_idno;
 	}
 
-
-
 	public void setFk_idno(int fkIdno) {
 		fk_idno = fkIdno;
 	}
-
-
 
 	public static final class StructureQuestionnaireAll implements BaseColumns {
 		
