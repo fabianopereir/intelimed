@@ -42,7 +42,7 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 		"insert into aresta(fk_idno, fk_idresposta) values(4,6);",
 	};
 	private static final String NOME_BANCO = "caixapreta";
-	private static final int VERSAO_BANCO = 1;
+	private static final int VERSAO_BANCO = 3;
 	
 	private SQLiteHelper dbHelper;
 
