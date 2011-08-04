@@ -6,9 +6,9 @@ import android.provider.BaseColumns;
 
 
 public class Edge {
-	private Long idaresta;
-	private Long fk_idno;
-	private Long fk_idresposta;
+	public static Long idaresta;
+	public static Long fk_idno;
+	public static Long fk_idresposta;
 	
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { EdgeTable.IDARESTA,
