@@ -1,26 +1,20 @@
 package nutes.intelimed.controller.deusdara;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import nutes.intelimed.controller.activity.DiagnosticForm;
-import nutes.intelimed.model.entity.StructureQuestionnaire;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 /**
  * 
- * @author Jamilson Batista and Dyego Carlos
+ * @author Jamilson Batista e Dyego Carlos
  * @Description classe responsável pela engine inteligente
  */
 public class BlackBox {
@@ -31,7 +25,10 @@ public class BlackBox {
 	}
 	
 	/**
-	 * @param arrQuest, arrayJason, treeObj
+	 * @Description Método que processa resultado
+	 * @param arrQuest - array de respostas
+	 * @param arrayJason - array de respostas em JSON
+	 * @param treeObj - objeto JSON com respostas
 	 * @return array de Strings com questões e suas respectivas respostas marcadas
 	 */
 	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj) {
@@ -59,7 +56,9 @@ public class BlackBox {
 	}
 	
 	/**
-	 * @param pergunta, diagnosticForm
+	 * @Description Monta uma questão específica
+	 * @param pergunta - pergunta que se deseja imprimir na tela
+	 * @param diagnosticForm - tela de questionário
 	 * @return TextView com uma questão específica
 	 */
 	public TextView createTypeMetrics(String pergunta, DiagnosticForm diagnosticForm)
@@ -72,7 +71,10 @@ public class BlackBox {
 	}
 
 	/**
-	 * @param questionOption, radioId, diagnosticForm
+	 * @Description Monta as opções de respostas de uma questão específica
+	 * @param questionOption - array de respostas
+	 * @param radioId - identificador da pergunta
+	 * @param diagnosticForm - tela de questionário
 	 * @return View com radio group de um questão específica
 	 */
 	public View createTypeMetricsG(ArrayList<String> questionOption, int radioId, DiagnosticForm diagnosticForm) {

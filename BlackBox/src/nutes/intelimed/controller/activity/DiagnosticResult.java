@@ -9,13 +9,13 @@ import android.widget.LinearLayout.LayoutParams;
 
 /**
  * 
- * @author Jamilson Batista and Dyego Carlos
+ * @author Jamilson Batista e Dyego Carlos
  * @Description classe responsável pela montagem da tela de resultado do questionário, 
  *  	com suas questões e respectivas respostas obtidas através de questionnaireData da Activity DiagnosticForm
  */
 public class DiagnosticResult extends Activity {
 
-	String[] questData;
+	private String[] questData;
 
 	public void onCreate(Bundle icicle) {
 

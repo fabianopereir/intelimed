@@ -15,42 +15,51 @@ import android.util.Log;
 
 /**
  * 
- * @author Jamilson Batista and Dyego Carlos
- * @Description Classe responsável por consultas no banco
+ * @author Jamilson Batista e Dyego Carlos
+ * @Description Classe responsável por realizar consultas no banco
  */
 public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
-	
-	
+		
 	public static final String NOME_TABELA = " no"+" INNER JOIN resposta";
 	
 	protected SQLiteDatabase db;
 	
-	public StructureQuestionnaireDao()
-	{
-		
+	public StructureQuestionnaireDao()	{
+	
 	}
 	public StructureQuestionnaireDao(Context ctx) {
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
 	}
 	
+	/**
+	 * @Description Captura cursor
+	 * @return Cursor - cursor com a consulta ao banco que retorna perguntas e respectivas alternativas (sem diagnósticos)
+	 */
 	public Cursor getCursor() {
 		try {
+
 			/*Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaire.colunas, null, null, null,
 					null, null, null);*/
 			Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaire.colunas, StructureQuestionnaireAll.FK_IDNO + "=" + StructureQuestionnaireAll.IDNO, null, null, null, null);
 			return cursor;
+
 		} catch (SQLException e) {
 			Log.e(CATEGORIA, "Erro ao buscar: " + e.toString());
 			return null;
 		}
 	}
 	
-	@Override
+	/**
+	 * @Description Lista toda a estrutura do questionário (perguntas e alternativas)
+	 * @return List<StructureQuestionnaire> 
+	 */
 	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
+
 		Cursor c = getCursor();
 		//Cursor c = db.query(NOME_TABELA, StructureQuestionnaire.colunas, StructureQuestionnaireAll.FK_IDNO + "=" + StructureQuestionnaireAll.IDNO, null, null, null, null);
+
 		List<StructureQuestionnaire> estrutura = new ArrayList<StructureQuestionnaire>();
 		
 		int idxIdNo = c.getColumnIndex(StructureQuestionnaireAll.IDNO);
@@ -65,17 +74,29 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 				StructureQuestionnaire sqt = new StructureQuestionnaire();
 				estrutura.add(sqt);
 
-				sqt.idno = c.getLong(idxIdNo);
-				sqt.descricao_no = c.getString(idxDescricao_no);
-				sqt.idresposta = c.getInt(idxIdReposta);
-				sqt.descricao_resposta = c.getString(idxDescricao_reposta);
-				sqt.fk_idno = c.getInt(idxFkIdNo);
+				sqt.setIdno(c.getLong(idxIdNo));
+				sqt.setDescricao_no(c.getString(idxDescricao_no));
+				sqt.setIdresposta(c.getInt(idxIdReposta));
+				sqt.setDescricao_resposta(c.getString(idxDescricao_reposta));
+				sqt.setFk_idno(c.getInt(idxFkIdNo));
 				
 			} while (c.moveToNext());
 		}
 		return estrutura;
 	}
 	
+	/**
+	 *  @Description Busca utilizando as configurações definidas no SQLiteQueryBuilder
+	 *    Utilizado pelo Content Provider da estrutura do questionário
+	 *  @param queryBuilder
+	 *  @param projection
+	 *  @param selection
+	 *  @param selectionArgs
+	 *  @param groupBy
+	 *  @param having
+	 *  @param orderBy
+	 *  @return Cursor - cursor com o retorno da consulta desejada
+	 */
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,
 			String selection, String[] selectionArgs, String groupBy,
 			String having, String orderBy) {

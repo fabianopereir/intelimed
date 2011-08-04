@@ -7,7 +7,7 @@ import nutes.intelimed.model.DAO.StructureQuestionnaireDao;
 
 /**
  * 
- * @author Jamilson Batista and Dyego Carlos
+ * @author Jamilson Batista e Dyego Carlos
  * @Description script responsável pela criação, povoamento e remoção do banco que armazena a estrutura do questionário
  */
 public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
@@ -46,6 +46,10 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	
 	private SQLiteHelper dbHelper;
 
+	/**
+	 * @Description Cria o banco de dados com um script SQL
+	 * @param ctx - contexto que será criado o banco
+	 */
 	public StructureQuestionnaireScript(Context ctx) {
 		dbHelper = new SQLiteHelper(ctx, StructureQuestionnaireScript.NOME_BANCO, StructureQuestionnaireScript.VERSAO_BANCO,
 				StructureQuestionnaireScript.SCRIPT_DATABASE_CREATE, StructureQuestionnaireScript.SCRIPT_DATABASE_DELETE);

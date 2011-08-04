@@ -20,7 +20,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 	/**
 	 * @param context
 	 * @param nomeBanco nome do banco de dados
-	 * @param versaoBanco versão do banco de dados (se for diferente é para atualizar)
+	 * @param versaoBanco versão do banco de dados (se for diferente atualiza)
 	 * @param scriptSQLCreate SQL com o create table..
 	 * @param scriptDatabaseDelete SQL com o drop table...
 	 * @Description Cria uma instância de SQLiteHelper
