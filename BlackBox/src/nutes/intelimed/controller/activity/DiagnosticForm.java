@@ -17,29 +17,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * 
- * @author Jamilson Batista and Dyego Carlos
- * @Description classe responsável pela montagem do formulário de diagnóstico
+ * @author Jamilson Batista e Dyego Carlos
+ * @Description classe responsável pela montagem do formulário de diagnóstico na tela
  */
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 
 	public static IModelStructureQuestionnaire dao;
-	RadioGroup rQuest1, rQuest2, rQuest3;
-
-	ArrayList<RadioGroup> arrQuestions = new ArrayList<RadioGroup>();
-	Button validar;
-	String[] arrQuest = new String[50];
-	JSONArray arrayJason;
-	ImageButton back, logout;
-	BlackBox treeQ;
-	JSONObject treeObj;
-	LinearLayout linerLayout;
+	
+	private Button validar;
+	private String[] arrQuest = new String[50];
+	private JSONArray arrayJason;
+	private BlackBox treeQ;
+	private JSONObject treeObj;
+	private LinearLayout linerLayout;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -79,40 +75,35 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	}
 
 	/**
-	 * Evento é disparado ao clicar em um radio button (que são resposta), 
-	 * armazenando o valor em um array de respostas assinaladas chamado arrQuest
-	 * 
-	 * @param group, checkedId
+	 * @Description O método é chamado ao clicar em uma resposta, armazenando o valor em array
+	 * @param group -  instância do RadioGroup
+	 * @param checkedId - índice da resposta selecionada
+	 * @return void
 	 */
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		arrQuest[Integer.parseInt(group.getTag().toString())] = Integer
 				.toString(checkedId);
-		
 	}
+	
 	/**
-	 * Método resposável por montar as questões do questionário dinamicamente
+	 * @Description Método resposável por montar as questões do questionário dinamicamente
+	 * @return void
 	 */
 	public void montarQuest() {
-		//Array de cada pergunta com suas respectivas opções de resposta 
+
 		ArrayList<StructureQuestionnaire> arrayQuestion = (ArrayList<StructureQuestionnaire>) dao
 				.listarEstruturaQuestionario();
-
 		treeQ = new BlackBox();
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
-
 		ArrayList<String> questionOption = new ArrayList<String>();
 
 		int aux;
 		int aux2 = 0;
 		StructureQuestionnaire vAux;
 		
-		//itera em cada questão completa (questão e alternativas)
 		for (int i = 0; i < arrayQuestion.size(); i++) {
 			aux = i;
-			
-			//armazena em um array de questões completas
 			vAux = arrayQuestion.get(aux);
-			//if (arrayQuestion.get(i).getTipo().equals("radio group")) {
 				linerLayout.addView(treeQ.createTypeMetrics(arrayQuestion.get(i).getDescricao_no(), this));
 				
 				while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
@@ -129,9 +120,9 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 						aux2, this));
 				questionOption.clear();
 				i = aux - 1;
-			//}
 		}
 	}
+	
 	@Override
 	protected void onPause() {
 		super.onPause();
