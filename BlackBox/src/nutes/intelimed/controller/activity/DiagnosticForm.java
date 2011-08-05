@@ -6,6 +6,7 @@ import nutes.intelimed.controller.deusdara.BlackBox;
 import nutes.intelimed.model.IModelStructureQuestionnaire;
 import nutes.intelimed.model.StructureQuestionnaireScript;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
+import nutes.intelimed.util.AnswerOption;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -97,20 +98,25 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 				.listarEstruturaQuestionario();
 		treeQ = new BlackBox();
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
-		ArrayList<String> questionOption = new ArrayList<String>();
+		ArrayList<AnswerOption> questionOption = new ArrayList<AnswerOption>();
 
 		int aux;
 		int aux2 = 0;
 		StructureQuestionnaire vAux;
-		
+		AnswerOption option;
 		for (int i = 0; i < arrayQuestion.size(); i++) {
 			aux = i;
 			vAux = arrayQuestion.get(aux);
-				linerLayout.addView(treeQ.createTypeMetrics(arrayQuestion.get(i).getDescricao_no(), this));
+				linerLayout.addView(treeQ.createTypeMetrics(arrayQuestion.get(i).getDescricao_no(),arrayQuestion.get(i).getIdno(), this));
 				
 				while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
+					option = new AnswerOption();
+					option.codeResposta = arrayQuestion.get(aux).getCodeResposta();
+					option.resposta = arrayQuestion.get(aux).getDescricao_resposta();
 					
-					questionOption.add(arrayQuestion.get(aux).getDescricao_resposta());
+					questionOption.add(option);
+					//questionOption.add(arrayQuestion.get(aux).getDescricao_resposta());
+					
 					aux++;
 					
 					if (aux < arrayQuestion.size()) {

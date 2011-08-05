@@ -65,6 +65,7 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 		int idxIdNo = c.getColumnIndex(StructureQuestionnaireAll.IDNO);
 		int idxDescricao_no = c.getColumnIndex(StructureQuestionnaireAll.DESCRICAO_NO);
 		int idxIdReposta = c.getColumnIndex(StructureQuestionnaireAll.IDRESPOSTA);
+		int idxCodeReposta = c.getColumnIndex(StructureQuestionnaireAll.CODERESPOSTA);
 		int idxDescricao_reposta = c.getColumnIndex(StructureQuestionnaireAll.DESCRICAO_RESPOSTA);
 		int idxFkIdNo = c.getColumnIndex(StructureQuestionnaireAll.FK_IDNO);
 		
@@ -77,6 +78,7 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 				sqt.setIdno(c.getLong(idxIdNo));
 				sqt.setDescricao_no(c.getString(idxDescricao_no));
 				sqt.setIdresposta(c.getInt(idxIdReposta));
+				sqt.setCodeResposta(c.getInt(idxCodeReposta));
 				sqt.setDescricao_resposta(c.getString(idxDescricao_reposta));
 				sqt.setFk_idno(c.getInt(idxFkIdNo));
 				

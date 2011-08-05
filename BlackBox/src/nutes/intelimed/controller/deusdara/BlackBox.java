@@ -1,8 +1,10 @@
 package nutes.intelimed.controller.deusdara;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import nutes.intelimed.controller.activity.DiagnosticForm;
+import nutes.intelimed.util.AnswerOption;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -55,13 +57,15 @@ public class BlackBox {
 	/**
 	 * @Description Monta uma questão específica
 	 * @param pergunta - pergunta que se deseja imprimir na tela
+	 * @param idno 
 	 * @param diagnosticForm - tela de questionário
 	 * @return TextView com uma questão específica
 	 */
-	public TextView createTypeMetrics(String pergunta, DiagnosticForm diagnosticForm)
+	public TextView createTypeMetrics(String pergunta, long idno, DiagnosticForm diagnosticForm)
 	{
 		TextView perguntas = null;
 		perguntas = new TextView(diagnosticForm);
+		perguntas.setId((int)idno);
     	perguntas.setText(pergunta);
     	
     	return perguntas;
@@ -74,19 +78,31 @@ public class BlackBox {
 	 * @param diagnosticForm - tela de questionário
 	 * @return View com radio group de um questão específica
 	 */
-	public View createTypeMetricsG(ArrayList<String> questionOption, int radioId, DiagnosticForm diagnosticForm) {
+	public View createTypeMetricsG(ArrayList<AnswerOption> questionOption, int radioId, DiagnosticForm diagnosticForm) {
 		
 		RadioGroup radio_group = new RadioGroup (diagnosticForm);
 		radio_group.setTag(radioId);
 		RadioButton radio_button;
-		
-		 for(int i = 0; i < questionOption.size(); i++)
+		int i = 0;
+		Iterator<AnswerOption> option = questionOption.iterator();
+		while (option.hasNext()) {
+			AnswerOption nextOption = option.next();
+			radio_button = new RadioButton (diagnosticForm);
+	        radio_button.setId (nextOption.codeResposta);
+	        radio_button.setText(nextOption.resposta);
+	        radio_group.addView (radio_button);
+	        i++;
+			
+		}
+		 /*for(int i = 0; i < questionOption.size(); i++)
 		 {
+			
+			
 			radio_button = new RadioButton (diagnosticForm);
 	        radio_button.setId (i+1);
 	        radio_button.setText(questionOption.get(i));
 	        radio_group.addView (radio_button);
-		 }
+		 }*/
 		radio_group.setOnCheckedChangeListener (diagnosticForm);
 		
 		return radio_group;
