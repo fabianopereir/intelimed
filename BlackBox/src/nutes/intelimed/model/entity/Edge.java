@@ -15,8 +15,7 @@ public class Edge {
 	public Long fk_idresposta;
 
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
-	public static String[] colunas = new String[] { EdgeTable.IDARESTA,
-			EdgeTable.FK_IDNO, EdgeTable.FK_IDRESPOSTA };
+	public static String[] colunas = new String[] { EdgeTable.IDARESTA, EdgeTable.FK_IDNO, EdgeTable.FK_IDRESPOSTA };
 
 	public Long getIdaresta() {
 		return idaresta;
@@ -66,8 +65,7 @@ public class Edge {
 		public static final String FK_IDRESPOSTA = "fk_idresposta";
 
 		public static Uri getUriId(long id) {
-			Uri uriPaciente = ContentUris.withAppendedId(EdgeTable.CONTENT_URI,
-					id);
+			Uri uriPaciente = ContentUris.withAppendedId(EdgeTable.CONTENT_URI,id);
 			return uriPaciente;
 		}
 	}
