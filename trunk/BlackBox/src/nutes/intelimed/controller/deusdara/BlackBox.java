@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import nutes.intelimed.controller.activity.DiagnosticForm;
+import nutes.intelimed.model.DAO.EdgeDao;
+import nutes.intelimed.model.entity.Edge;
 import nutes.intelimed.util.AnswerOption;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,6 +24,8 @@ import android.widget.TextView;
  */
 public class BlackBox {
 	
+	private EdgeDao edgeDao;
+	private Edge entEdge;
 	public BlackBox(){}
 	
 	/**
@@ -33,9 +38,16 @@ public class BlackBox {
 	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj) {
 		String[] res = new String[arrQuest.length];
 		int aux=0;
+		edgeDao = new EdgeDao();
+		entEdge = new Edge();
 		for (int i=0;i<arrQuest.length;i++){
-			
 			if (arrQuest[i]!=null)
+			{
+				Log.i("jamilson", "Resposta"+arrQuest[i]);
+				entEdge = edgeDao.searchEdge(Long.parseLong(arrQuest[i]));
+				Log.i("jamilson","Jamilson Batista"+entEdge.getFk_idno());
+			}
+			/*if (arrQuest[i]!=null)
 			{
 				aux++;
 				if(arrQuest[i].equals("1")){
@@ -48,7 +60,7 @@ public class BlackBox {
 					arrQuest[i]="d";
 				}
 				res[i] = "Questão "+ (aux) +": Resposta "+ arrQuest[i]+". ";
-			}
+			}*/
 		}
 		
 		return res;

@@ -42,16 +42,22 @@ public class EdgeDao implements IModelEdge {
 	}
 
 	@Override
-	public Edge searchEdge(Long fk_idno, Long fk_idresposta) {
+	public Edge searchEdge(Long codeResposta) {
 
 		Edge edge = null;
-		
+	 	Long n = codeResposta;  
+	    Integer n1 = Integer.valueOf(n.toString());  
+		    
 		try {
-			Cursor c = db.query(NOME_TABELA, Edge.colunas, EdgeTable.FK_IDRESPOSTA
-					+ "='" + fk_idresposta + "'", null, null, null, null);
+			Log.i("jamilson", "dentro do método searchEdge "+n1);
+			Cursor c = db.query(NOME_TABELA, Edge.colunas,  EdgeTable.FK_IDRESPOSTA +  "= 1", null, null, null, null);
+			Log.i("jamilson","Passou1");
+
+			
+
 
 			if (c.moveToNext()) {
-
+				Log.i("jamilson","Passou");
 				edge = new Edge();
 				edge.idaresta = c.getLong(0);
 				edge.fk_idno = c.getLong(1);
@@ -59,8 +65,8 @@ public class EdgeDao implements IModelEdge {
 			}
 			// c.close();
 		} catch (SQLException e) {
-			Log.e(CATEGORIA,
-					"Erro ao buscar a aresta: " + e.toString());
+
+			Log.e(CATEGORIA, "Erro ao buscar a aresta pelo código da resposta: " + e.toString());
 			return null;
 		}
 
