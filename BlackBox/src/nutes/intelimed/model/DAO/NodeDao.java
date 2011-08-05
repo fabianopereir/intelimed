@@ -1,21 +1,16 @@
 package nutes.intelimed.model.DAO;
 
+import nutes.intelimed.model.IModelNode;
+import nutes.intelimed.model.entity.Node;
+import nutes.intelimed.model.entity.Node.NodeTable;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
-import nutes.intelimed.model.IModelEdge;
-import nutes.intelimed.model.entity.Edge;
-import nutes.intelimed.model.entity.Edge.EdgeTable;
 
-/**
- * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Classe responsável por realizar consultas em banco de arestas
- */
-public class EdgeDao implements IModelEdge {
+public class NodeDao implements IModelNode{
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
 
@@ -23,16 +18,16 @@ public class EdgeDao implements IModelEdge {
 
 	protected SQLiteDatabase db;
 
-	public EdgeDao() {
+	public NodeDao() {
 	}
 
-	public EdgeDao(Context ctx) {
+	public NodeDao(Context ctx) {
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
 	}
 
 	public Cursor getCursor() {
 		try {
-			Cursor cursor = db.query(NOME_TABELA, Edge.colunas, null, null,
+			Cursor cursor = db.query(NOME_TABELA, Node.colunas, null, null,
 					null, null, null, null);
 			return cursor;
 		} catch (SQLException e) {
@@ -41,30 +36,31 @@ public class EdgeDao implements IModelEdge {
 		}
 	}
 
-	@Override
-	public Edge searchEdge(Long fk_idno, Long fk_idresposta) {
+	public Node searchNode(Long fk_idno) {
 
-		Edge edge = null;
+		Node node = null;
 		
 		try {
-			Cursor c = db.query(NOME_TABELA, Edge.colunas, EdgeTable.FK_IDRESPOSTA
-					+ "='" + fk_idresposta + "'", null, null, null, null);
+			Cursor c = db.query(NOME_TABELA, Node.colunas, NodeTable.IDNO
+					+ "='" + fk_idno + "' AND " + NodeTable.DIAGNOSTICO + "= 1", null, null, null, null);
 
 			if (c.moveToNext()) {
 
-				edge = new Edge();
-				edge.idaresta = c.getLong(0);
-				edge.fk_idno = c.getLong(1);
-				edge.fk_idresposta = c.getLong(2);
+				node = new Node();
+				node.idno = c.getLong(0);
+				node.descricaoNo = c.getString(1);
+				node.diagnostico = c.getInt(2);
+			} else{
+				return null;
 			}
 			// c.close();
 		} catch (SQLException e) {
 			Log.e(CATEGORIA,
-					"Erro ao buscar a aresta: " + e.toString());
+					"Erro ao buscar o nó: " + e.toString());
 			return null;
 		}
 
-		return edge;
+		return node;
 	}
 
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,
@@ -81,5 +77,4 @@ public class EdgeDao implements IModelEdge {
 			db.close();
 		}
 	}
-
 }
