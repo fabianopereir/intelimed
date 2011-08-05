@@ -14,6 +14,7 @@ public class StructureQuestionnaire {
 	public long idno;
 	public String descricao_no;
 	public int idresposta;
+	private int code_resposta;
 	public String descricao_resposta;
 	private int fk_idno;
 	
@@ -21,6 +22,7 @@ public class StructureQuestionnaire {
 	public static String[] colunas = new String[] { StructureQuestionnaireAll.IDNO,
 													StructureQuestionnaireAll.DESCRICAO_NO,
 													StructureQuestionnaireAll.IDRESPOSTA,
+													StructureQuestionnaireAll.CODERESPOSTA,
 													StructureQuestionnaireAll.DESCRICAO_RESPOSTA,
 													StructureQuestionnaireAll.FK_IDNO
 													};
@@ -44,11 +46,18 @@ public class StructureQuestionnaire {
 		return idresposta;
 	}
 
-
-	public void setIdresposta(int idresposta) {
-		this.idresposta = idresposta;
+	public void setIdresposta(int codeResposta) {
+		this.idresposta = codeResposta;
+	}
+	
+	public int getCodeResposta() {
+		return code_resposta;
 	}
 
+	public void setCodeResposta(int codeResposta) {
+		this.code_resposta = codeResposta;
+	}
+	
 	public String getDescricao_resposta() {
 		return descricao_resposta;
 	}
@@ -87,6 +96,7 @@ public class StructureQuestionnaire {
 		public static final String IDNO = "idno";
 		public static final String DESCRICAO_NO = "descricao_no";
 		public static final String IDRESPOSTA = "idresposta";
+		public static final String CODERESPOSTA = "code_resposta";
 		public static final String DESCRICAO_RESPOSTA = "descricao_resposta";
 		public static final String FK_IDNO = "fk_idno";
 		
