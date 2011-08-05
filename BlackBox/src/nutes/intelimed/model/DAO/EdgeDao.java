@@ -8,8 +8,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 import nutes.intelimed.model.IModelEdge;
 import nutes.intelimed.model.entity.Edge;
-import nutes.intelimed.model.entity.StructureQuestionnaire;
-import nutes.intelimed.model.entity.StructureQuestionnaire.StructureQuestionnaireAll;
+import nutes.intelimed.model.entity.Edge.EdgeTable;
 
 public class EdgeDao implements IModelEdge {
 	private static final String CATEGORIA = "nutes";
@@ -40,29 +39,28 @@ public class EdgeDao implements IModelEdge {
 	@Override
 	public Edge searchEdge(Long fk_idno, Long fk_idresposta) {
 
-		Edge edge;
-
-		/*try {
+		Edge edge = null;
+		
+		try {
 			Log.i("jamilson", "dentro do método buscarPacientePorNome");
-			Cursor c = db.query(NOME_TABELA, Edge.colunas, Edge.fk_idresposta
-					+ "='" + nome + "'", null, null, null, null);
+			Cursor c = db.query(NOME_TABELA, Edge.colunas, EdgeTable.FK_IDRESPOSTA
+					+ "='" + fk_idresposta + "'", null, null, null, null);
 
 			if (c.moveToNext()) {
 
 				edge = new Edge();
-
-				paciente.id = c.getLong(0);
-				paciente.nome = c.getString(1);
-				paciente.datanascimento = c.getString(2);
+				edge.idaresta = c.getLong(0);
+				edge.fk_idno = c.getLong(1);
+				edge.fk_idresposta = c.getLong(2);
 			}
 			// c.close();
 		} catch (SQLException e) {
 			Log.e(CATEGORIA,
 					"Erro ao buscar a paciente pelo nome: " + e.toString());
 			return null;
-		}*/
+		}
 
-		return null;
+		return edge;
 	}
 
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,

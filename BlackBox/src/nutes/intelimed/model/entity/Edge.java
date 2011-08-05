@@ -10,9 +10,9 @@ import android.provider.BaseColumns;
  * @Description Entidade da engine
  */
 public class Edge {
-	public static Long idaresta;
-	public static Long fk_idno;
-	public static Long fk_idresposta;
+	public Long idaresta;
+	public Long fk_idno;
+	public Long fk_idresposta;
 
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { EdgeTable.IDARESTA,
