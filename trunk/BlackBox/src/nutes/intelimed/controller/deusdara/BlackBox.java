@@ -19,10 +19,7 @@ import android.widget.TextView;
  */
 public class BlackBox {
 	
-	public void TreeQuestionnaire()
-	{
-		
-	}
+	public BlackBox(){}
 	
 	/**
 	 * @Description Método que processa resultado
