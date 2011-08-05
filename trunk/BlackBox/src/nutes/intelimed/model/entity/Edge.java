@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
 /**
  * 
  * @author Jamilson Batista e Dyego Carlos
- * @Description Entidade da engine
+ * @Description Entidade da aresta
  */
 public class Edge {
 	public Long idaresta;
@@ -45,7 +45,7 @@ public class Edge {
 	/**
 	 * 
 	 * @author Jamilson Batista e Dyego Carlos
-	 * @Description Classe interna necessária para Content Provider da engine
+	 * @Description Classe interna necessária para Content Provider de arestas
 	 */
 	public static final class EdgeTable implements BaseColumns {
 
