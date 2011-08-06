@@ -2,6 +2,7 @@ package nutes.intelimed.model.DAO;
 
 import android.content.Context;
 import android.database.Cursor;
+
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -23,8 +24,7 @@ public class EdgeDao implements IModelEdge {
 
 	protected SQLiteDatabase db;
 
-	public EdgeDao() {
-	}
+	public EdgeDao() {}
 
 	public EdgeDao(Context ctx) {
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
@@ -47,15 +47,13 @@ public class EdgeDao implements IModelEdge {
 		Edge edge = null;
 	 	Long n = codeResposta;  
 	    Integer n1 = Integer.valueOf(n.toString());  
-		    
+	  
+	    Log.i("jamilson", "dentro do método searchEdge "+n1);
+
+		Cursor c = db.query(NOME_TABELA, Edge.colunas,  EdgeTable.FK_IDRESPOSTA +  "= 1", null, null, null, null);
+		Log.i("jamilson","Passou1");
+
 		try {
-			Log.i("jamilson", "dentro do método searchEdge "+n1);
-			Cursor c = db.query(NOME_TABELA, Edge.colunas,  EdgeTable.FK_IDRESPOSTA +  "= 1", null, null, null, null);
-			Log.i("jamilson","Passou1");
-
-			
-
-
 			if (c.moveToNext()) {
 				Log.i("jamilson","Passou");
 				edge = new Edge();

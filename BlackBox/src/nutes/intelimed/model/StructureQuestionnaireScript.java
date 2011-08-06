@@ -41,8 +41,8 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 		"insert into aresta(fk_idno, fk_idresposta) values(5,5);",
 		"insert into aresta(fk_idno, fk_idresposta) values(4,6);",
 	};
-	private static final String NOME_BANCO = "caixapreta";
-	private static final int VERSAO_BANCO = 1;
+	public static final String NOME_BANCO = "caixapreta";
+	public static final int VERSAO_BANCO = 1;
 	
 	private SQLiteHelper dbHelper;
 
@@ -52,16 +52,23 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	 */
 	public StructureQuestionnaireScript(Context ctx) {
 		dbHelper = new SQLiteHelper(ctx, StructureQuestionnaireScript.NOME_BANCO, StructureQuestionnaireScript.VERSAO_BANCO,
-				StructureQuestionnaireScript.SCRIPT_DATABASE_CREATE, StructureQuestionnaireScript.SCRIPT_DATABASE_DELETE);
+				StructureQuestionnaireScript.getScriptDatabaseCreate(), StructureQuestionnaireScript.getScriptDatabaseDelete());
 
 		db = dbHelper.getWritableDatabase();
 	}
 
+	public static String[] getScriptDatabaseCreate() {
+		return SCRIPT_DATABASE_CREATE;
+	}
+	
+	public static String[] getScriptDatabaseDelete() {
+		return SCRIPT_DATABASE_DELETE;
+	}
 	@Override
 	public void fechar() {
 		super.fechar();
 		if (dbHelper != null) {
 			dbHelper.close();
 		}
-	}
+	}	
 }

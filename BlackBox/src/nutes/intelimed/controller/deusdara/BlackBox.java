@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import nutes.intelimed.controller.activity.DiagnosticForm;
+import nutes.intelimed.model.EdgeScript;
+import nutes.intelimed.model.IModelEdge;
+import nutes.intelimed.model.IModelStructureQuestionnaire;
+import nutes.intelimed.model.StructureQuestionnaireScript;
 import nutes.intelimed.model.DAO.EdgeDao;
 import nutes.intelimed.model.entity.Edge;
 import nutes.intelimed.util.AnswerOption;
@@ -11,6 +15,7 @@ import nutes.intelimed.util.AnswerOption;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
@@ -24,21 +29,27 @@ import android.widget.TextView;
  */
 public class BlackBox {
 	
-	private EdgeDao edgeDao;
+	public static IModelEdge edgeDao;
 	private Edge entEdge;
-	public BlackBox(){}
+	private Context ctx;
+	
+	public BlackBox(Context context){
+		this.ctx = context;
+		edgeDao = (IModelEdge) new EdgeScript(ctx);
+	}
 	
 	/**
 	 * @Description Método que processa resultado
 	 * @param arrQuest - array de respostas
 	 * @param arrayJason - array de respostas em JSON
 	 * @param treeObj - objeto JSON com respostas
+	 * @param context 
+	 * @param edgeDao2 
 	 * @return array de Strings com questões e suas respectivas respostas marcadas
 	 */
 	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj) {
 		String[] res = new String[arrQuest.length];
 		int aux=0;
-		edgeDao = new EdgeDao();
 		entEdge = new Edge();
 		for (int i=0;i<arrQuest.length;i++){
 			if (arrQuest[i]!=null)
