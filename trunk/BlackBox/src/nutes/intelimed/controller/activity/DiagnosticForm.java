@@ -44,8 +44,8 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionnaire_asma);
 
-		dao = (IModelStructureQuestionnaire) new StructureQuestionnaireScript(
-				this);
+		dao = (IModelStructureQuestionnaire) new StructureQuestionnaireScript(this);
+		
 		montarQuest();
 
 		validar = new Button(this);
@@ -57,7 +57,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 				arrayJason = new JSONArray();
 				treeObj = new JSONObject();
 				int cont = 1;
-				treeQ = new BlackBox();
+				treeQ = new BlackBox(getBaseContext());
 				for (int i = 0; i < arrQuest.length; i++) {
 					try {
 						treeObj.put("Q" + cont, arrQuest[i]);
@@ -67,7 +67,6 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 					arrayJason.put(arrQuest[i]);
 					cont++;
 				}
-				treeQ.controlTree(arrQuest, arrayJason, treeObj);
 				
 				Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
 				it.putExtra("questionnaireData",
@@ -95,9 +94,8 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	 */
 	public void montarQuest() {
 
-		ArrayList<StructureQuestionnaire> arrayQuestion = (ArrayList<StructureQuestionnaire>) dao
-				.listarEstruturaQuestionario();
-		treeQ = new BlackBox();
+		ArrayList<StructureQuestionnaire> arrayQuestion = (ArrayList<StructureQuestionnaire>) dao.listarEstruturaQuestionario();
+		treeQ = new BlackBox(getBaseContext());
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
 		ArrayList<AnswerOption> questionOption = new ArrayList<AnswerOption>();
 

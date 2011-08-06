@@ -26,9 +26,8 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	
 	protected SQLiteDatabase db;
 	
-	public StructureQuestionnaireDao()	{
+	public StructureQuestionnaireDao()	{}
 	
-	}
 	public StructureQuestionnaireDao(Context ctx) {
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
 	}
