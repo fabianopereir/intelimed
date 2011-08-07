@@ -8,6 +8,7 @@ package nutes.intelimed.util;
 public class AnswerOption {
 	public String resposta;
 	public int codeResposta;
+	public int fk_idno;
 	
 	public String getResposta() {
 		return resposta;
@@ -19,7 +20,12 @@ public class AnswerOption {
 		return codeResposta;
 	}
 	public void setCodeResposta(int codResposta) {
-		this.codeResposta = codResposta;
+		this.fk_idno = codResposta;
 	}
-	
+	public int getFk_Idano() {
+		return fk_idno;
+	}
+	public void getFk_Idano(int fk_idano) {
+		this.fk_idno = fk_idano;
+	}
 }

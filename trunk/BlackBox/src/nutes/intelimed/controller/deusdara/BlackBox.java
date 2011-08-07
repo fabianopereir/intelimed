@@ -6,10 +6,10 @@ import java.util.Iterator;
 import nutes.intelimed.controller.activity.DiagnosticForm;
 import nutes.intelimed.model.EdgeScript;
 import nutes.intelimed.model.IModelEdge;
-import nutes.intelimed.model.IModelStructureQuestionnaire;
-import nutes.intelimed.model.StructureQuestionnaireScript;
-import nutes.intelimed.model.DAO.EdgeDao;
+import nutes.intelimed.model.IModelNode;
+import nutes.intelimed.model.NodeScript;
 import nutes.intelimed.model.entity.Edge;
+import nutes.intelimed.model.entity.Node;
 import nutes.intelimed.util.AnswerOption;
 
 import org.json.JSONArray;
@@ -30,33 +30,65 @@ import android.widget.TextView;
 public class BlackBox {
 	
 	public static IModelEdge edgeDao;
+	public static IModelNode nodeDao;
 	private Edge entEdge;
+	private Node node;
 	private Context ctx;
+	
 	
 	public BlackBox(Context context){
 		this.ctx = context;
 		edgeDao = (IModelEdge) new EdgeScript(ctx);
+		nodeDao = (IModelNode)new NodeScript(ctx);
 	}
 	
 	/**
 	 * @Description Método que processa resultado
 	 * @param arrQuest - array de respostas
+	 * @param arrNO 
 	 * @param arrayJason - array de respostas em JSON
 	 * @param treeObj - objeto JSON com respostas
+	 * @param arrNO 
 	 * @param context 
 	 * @param edgeDao2 
 	 * @return array de Strings com questões e suas respectivas respostas marcadas
 	 */
-	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj) {
-		String[] res = new String[arrQuest.length];
+	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj, String[] arrNO) {
+		String[] res = new String[1];
 		int aux=0;
 		entEdge = new Edge();
+		node = new Node();
+
+		
 		for (int i=0;i<arrQuest.length;i++){
 			if (arrQuest[i]!=null)
 			{
-				Log.i("jamilson", "Resposta"+arrQuest[i]);
+				Log.i("jamilson", "Id da Resposta para busca: "+arrQuest[i]);
 				entEdge = edgeDao.searchEdge(Long.parseLong(arrQuest[i]));
-				Log.i("jamilson","Jamilson Batista"+entEdge.getFk_idno());
+				Log.i("jamilson","Node retorna da aresta: "+entEdge.getFk_idno());
+				//Log.i("jamilson","Id do nó: "+arrNO[i]);
+				
+				
+					node = nodeDao.searchNode(entEdge.getFk_idno());
+					if(node!=null)
+					{
+						Log.i("jamilson", "Resultado: "+node.getDescricaoNo());
+						res[0]="Resultado: "+node.getDescricaoNo();
+						break;
+					}
+
+					for (int j = 0; j < arrNO.length; j++){
+						if (arrNO[j]!=null)
+						{
+							if (arrNO[j].equals(entEdge.getFk_idno().toString()))
+							{
+								i = j-1;
+								break;
+							}
+						}
+					}
+						
+				
 			}
 			/*if (arrQuest[i]!=null)
 			{
@@ -98,6 +130,7 @@ public class BlackBox {
 	 * @Description Monta as opções de respostas de uma questão específica
 	 * @param questionOption - array de respostas
 	 * @param radioId - identificador da pergunta
+	 * @param idno 
 	 * @param diagnosticForm - tela de questionário
 	 * @return View com radio group de um questão específica
 	 */
@@ -105,6 +138,8 @@ public class BlackBox {
 		
 		RadioGroup radio_group = new RadioGroup (diagnosticForm);
 		radio_group.setTag(radioId);
+		//radio_group.setId((int)idno);
+
 		RadioButton radio_button;
 		int i = 0;
 		Iterator<AnswerOption> option = questionOption.iterator();
@@ -112,6 +147,7 @@ public class BlackBox {
 			AnswerOption nextOption = option.next();
 			radio_button = new RadioButton (diagnosticForm);
 	        radio_button.setId (nextOption.codeResposta);
+	        radio_button.setTag(nextOption.fk_idno);
 	        radio_button.setText(nextOption.resposta);
 	        radio_group.addView (radio_button);
 	        i++;

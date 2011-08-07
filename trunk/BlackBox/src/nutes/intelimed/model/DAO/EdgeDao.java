@@ -50,16 +50,16 @@ public class EdgeDao implements IModelEdge {
 	  
 	    Log.i("jamilson", "dentro do método searchEdge "+n1);
 
-		Cursor c = db.query(NOME_TABELA, Edge.colunas,  EdgeTable.FK_IDRESPOSTA +  "= 1", null, null, null, null);
+		Cursor c = db.query(NOME_TABELA, Edge.colunas,  EdgeTable.FK_IDRESPOSTA +  "="+n1, null, null, null, null);
 		Log.i("jamilson","Passou1");
 
 		try {
 			if (c.moveToNext()) {
 				Log.i("jamilson","Passou");
 				edge = new Edge();
-				edge.idaresta = c.getLong(0);
-				edge.fk_idno = c.getLong(1);
-				edge.fk_idresposta = c.getLong(2);
+				edge.setIdaresta(c.getLong(0));
+				edge.setFk_idno(c.getLong(1));
+				edge.setFk_idresposta(c.getLong(2));
 			}
 			// c.close();
 		} catch (SQLException e) {
