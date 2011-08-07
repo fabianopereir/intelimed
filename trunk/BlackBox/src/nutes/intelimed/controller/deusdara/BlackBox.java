@@ -16,7 +16,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -34,7 +33,6 @@ public class BlackBox {
 	private Edge entEdge;
 	private Node node;
 	private Context ctx;
-	
 	
 	public BlackBox(Context context){
 		this.ctx = context;
@@ -55,28 +53,19 @@ public class BlackBox {
 	 */
 	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj, String[] arrNO) {
 		String[] res = new String[1];
-		int aux=0;
 		entEdge = new Edge();
 		node = new Node();
 
-		
 		for (int i=0;i<arrQuest.length;i++){
 			if (arrQuest[i]!=null)
 			{
-				Log.i("jamilson", "Id da Resposta para busca: "+arrQuest[i]);
 				entEdge = edgeDao.searchEdge(Long.parseLong(arrQuest[i]));
-				Log.i("jamilson","Node retorna da aresta: "+entEdge.getFk_idno());
-				//Log.i("jamilson","Id do nó: "+arrNO[i]);
-				
-				
 					node = nodeDao.searchNode(entEdge.getFk_idno());
 					if(node!=null)
 					{
-						Log.i("jamilson", "Resultado: "+node.getDescricaoNo());
 						res[0]="Resultado: "+node.getDescricaoNo();
 						break;
 					}
-
 					for (int j = 0; j < arrNO.length; j++){
 						if (arrNO[j]!=null)
 						{
@@ -87,23 +76,7 @@ public class BlackBox {
 							}
 						}
 					}
-						
-				
 			}
-			/*if (arrQuest[i]!=null)
-			{
-				aux++;
-				if(arrQuest[i].equals("1")){
-					arrQuest[i]="a";
-				}else if(arrQuest[i].equals("2")){
-					arrQuest[i]="b";
-				}else if(arrQuest[i].equals("3")){
-					arrQuest[i]="c";
-				}else if(arrQuest[i].equals("4")){
-					arrQuest[i]="d";
-				}
-				res[i] = "Questão "+ (aux) +": Resposta "+ arrQuest[i]+". ";
-			}*/
 		}
 		
 		return res;
@@ -138,10 +111,7 @@ public class BlackBox {
 		
 		RadioGroup radio_group = new RadioGroup (diagnosticForm);
 		radio_group.setTag(radioId);
-		//radio_group.setId((int)idno);
-
 		RadioButton radio_button;
-		int i = 0;
 		Iterator<AnswerOption> option = questionOption.iterator();
 		while (option.hasNext()) {
 			AnswerOption nextOption = option.next();
@@ -150,18 +120,7 @@ public class BlackBox {
 	        radio_button.setTag(nextOption.fk_idno);
 	        radio_button.setText(nextOption.resposta);
 	        radio_group.addView (radio_button);
-	        i++;
-			
 		}
-		 /*for(int i = 0; i < questionOption.size(); i++)
-		 {
-			
-			
-			radio_button = new RadioButton (diagnosticForm);
-	        radio_button.setId (i+1);
-	        radio_button.setText(questionOption.get(i));
-	        radio_group.addView (radio_button);
-		 }*/
 		radio_group.setOnCheckedChangeListener (diagnosticForm);
 		
 		return radio_group;

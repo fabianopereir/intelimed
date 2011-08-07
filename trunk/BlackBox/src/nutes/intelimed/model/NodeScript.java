@@ -4,6 +4,11 @@ import android.content.Context;
 import nutes.intelimed.helper.SQLiteHelper;
 import nutes.intelimed.model.DAO.NodeDao;
 
+/**
+ * 
+ * @author Jamilson Batista e Dyego Carlos
+ * @Description classe responsável pela criação do script da tabela no 
+ */
 public class NodeScript extends NodeDao{
 	
 	private SQLiteHelper dbHelper;
