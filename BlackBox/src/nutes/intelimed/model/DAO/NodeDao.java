@@ -10,6 +10,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
+/**
+* 
+* @author Jamilson Batista e Dyego Carlos
+* @Description Classe responsável por realizar consultas no banco
+*/
 public class NodeDao implements IModelNode{
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
@@ -23,7 +28,11 @@ public class NodeDao implements IModelNode{
 	public NodeDao(Context ctx) {
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
 	}
-
+	
+	/**
+	 * @Description Captura cursor
+	 * @return Cursor - cursor para consulta ao banco de dados
+	 */
 	public Cursor getCursor() {
 		try {
 			Cursor cursor = db.query(NOME_TABELA, Node.colunas, null, null,
@@ -34,7 +43,12 @@ public class NodeDao implements IModelNode{
 			return null;
 		}
 	}
-
+	
+	/**
+	 * @Description Busca um nó na base de dados
+	 * @param Long fk_idno (identificador do nó)
+	 * @return Node 
+	 */
 	public Node searchNode(Long fk_idno) {
 
 		Node node = null;
@@ -52,16 +66,26 @@ public class NodeDao implements IModelNode{
 			} else{
 				return null;
 			}
-			// c.close();
 		} catch (SQLException e) {
-			Log.e(CATEGORIA,
-					"Erro ao buscar o nó: " + e.toString());
+			Log.e(CATEGORIA,"Erro ao buscar o nó: " + e.toString());
 			return null;
 		}
 
 		return node;
 	}
-
+	
+	/**
+	 *  @Description Busca utilizando as configurações definidas no SQLiteQueryBuilder
+	 *    Utilizado pelo Content Provider da estrutura do questionário
+	 *  @param queryBuilder
+	 *  @param projection
+	 *  @param selection
+	 *  @param selectionArgs
+	 *  @param groupBy
+	 *  @param having
+	 *  @param orderBy
+	 *  @return Cursor - cursor com o retorno da consulta desejada
+	 */
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,
 			String selection, String[] selectionArgs, String groupBy,
 			String having, String orderBy) {

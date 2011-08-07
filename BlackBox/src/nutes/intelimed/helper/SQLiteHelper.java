@@ -30,6 +30,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 		this.scriptSQLCreate = scriptSQLCreate;
 		this.scriptSQLDelete = scriptDatabaseDelete;
 	}
+	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		Log.i(CATEGORIA, "Criando banco com sql");
@@ -40,6 +41,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 			db.execSQL(sql);
 		}
 	}
+	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int versaoAntiga, int novaVersao) {
 		Log.w(CATEGORIA, "Atualizando da versão " + versaoAntiga + " para " + novaVersao + ". Todos os registros serão deletados.");

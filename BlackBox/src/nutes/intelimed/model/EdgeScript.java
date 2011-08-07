@@ -4,6 +4,11 @@ import android.content.Context;
 import nutes.intelimed.helper.SQLiteHelper;
 import nutes.intelimed.model.DAO.EdgeDao;
 
+/**
+ * 
+ * @author Jamilson Batista e Dyego Carlos
+ * @Description classe responsável pela criação do script da tabela aresta 
+ */
 public class EdgeScript extends EdgeDao{
 	
 	private SQLiteHelper dbHelper;

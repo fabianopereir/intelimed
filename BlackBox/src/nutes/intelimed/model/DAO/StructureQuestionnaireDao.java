@@ -38,9 +38,6 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	 */
 	public Cursor getCursor() {
 		try {
-
-			/*Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaire.colunas, null, null, null,
-					null, null, null);*/
 			Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaire.colunas, StructureQuestionnaireAll.FK_IDNO + "=" + StructureQuestionnaireAll.IDNO, null, null, null, null);
 			return cursor;
 
@@ -57,8 +54,7 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
 
 		Cursor c = getCursor();
-		//Cursor c = db.query(NOME_TABELA, StructureQuestionnaire.colunas, StructureQuestionnaireAll.FK_IDNO + "=" + StructureQuestionnaireAll.IDNO, null, null, null, null);
-
+		
 		List<StructureQuestionnaire> estrutura = new ArrayList<StructureQuestionnaire>();
 		
 		int idxIdNo = c.getColumnIndex(StructureQuestionnaireAll.IDNO);
@@ -67,7 +63,6 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 		int idxCodeReposta = c.getColumnIndex(StructureQuestionnaireAll.CODERESPOSTA);
 		int idxDescricao_reposta = c.getColumnIndex(StructureQuestionnaireAll.DESCRICAO_RESPOSTA);
 		int idxFkIdNo = c.getColumnIndex(StructureQuestionnaireAll.FK_IDNO);
-		
 		
 		if (c.moveToFirst()) {
 			do {
@@ -105,6 +100,7 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 				selectionArgs, groupBy, having, orderBy);
 		return c;
 	}
+	
 	@Override
 	public void fechar() {
 		if (db != null) {

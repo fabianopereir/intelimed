@@ -8,7 +8,7 @@ import nutes.intelimed.model.DAO.StructureQuestionnaireDao;
 /**
  * 
  * @author Jamilson Batista e Dyego Carlos
- * @Description script responsável pela criação, povoamento e remoção do banco que armazena a estrutura do questionário
+ * @Description classe responsável pela criação, povoamento e remoção do banco que armazena a estrutura do questionário
  */
 public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	
@@ -43,7 +43,7 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 		"insert into aresta(fk_idno, fk_idresposta) values(4,7);"
 	};
 	public static final String NOME_BANCO = "caixapreta";
-	public static final int VERSAO_BANCO = 1;
+	public static final int VERSAO_BANCO = 10;
 	
 	private SQLiteHelper dbHelper;
 
@@ -57,11 +57,19 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 
 		db = dbHelper.getWritableDatabase();
 	}
-
+	
+	/**
+	 * @Description Busca script de criação da base de dados
+	 * @return script da base de dados
+	 */
 	public static String[] getScriptDatabaseCreate() {
 		return SCRIPT_DATABASE_CREATE;
 	}
 	
+	/**
+	 * @Description Busca script para deletar a base de dados
+	 * @return script da base de dados
+	 */
 	public static String[] getScriptDatabaseDelete() {
 		return SCRIPT_DATABASE_DELETE;
 	}
