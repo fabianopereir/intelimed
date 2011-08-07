@@ -17,8 +17,7 @@ public class Node{
 	public int diagnostico;
 	
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
-	public static String[] colunas = new String[] { NodeTable.DESCRICAO_NO,
-		NodeTable.IDNO, NodeTable.DIAGNOSTICO };
+	public static String[] colunas = new String[] { NodeTable.IDNO, NodeTable.DESCRICAO_NO, NodeTable.DIAGNOSTICO};
 	
 	public Long getIdno() {
 		return idno;

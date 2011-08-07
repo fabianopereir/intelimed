@@ -14,12 +14,11 @@ public class NodeDao implements IModelNode{
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
 
-	public static final String NOME_TABELA = "aresta";
+	public static final String NOME_TABELA = "no";
 
 	protected SQLiteDatabase db;
 
-	public NodeDao() {
-	}
+	public NodeDao() {}
 
 	public NodeDao(Context ctx) {
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
@@ -41,15 +40,15 @@ public class NodeDao implements IModelNode{
 		Node node = null;
 		
 		try {
-			Cursor c = db.query(NOME_TABELA, Node.colunas, NodeTable.IDNO
-					+ "='" + fk_idno + "' AND " + NodeTable.DIAGNOSTICO + "= 1", null, null, null, null);
+
+			Cursor c = db.query(NOME_TABELA, Node.colunas, NodeTable.IDNO + "=" + fk_idno + " AND " + NodeTable.DIAGNOSTICO + "= 1", null, null, null, null);
 
 			if (c.moveToNext()) {
 
 				node = new Node();
-				node.idno = c.getLong(0);
-				node.descricaoNo = c.getString(1);
-				node.diagnostico = c.getInt(2);
+				node.setIdno(c.getLong(0));
+				node.setDescricaoNo(c.getString(1));
+				node.setDiagnostico(c.getInt(2));
 			} else{
 				return null;
 			}

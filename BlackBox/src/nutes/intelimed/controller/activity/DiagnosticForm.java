@@ -15,10 +15,12 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -33,6 +35,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	
 	private Button validar;
 	private String[] arrQuest = new String[50];
+	private String[] arrNO = new String[50];
 	private JSONArray arrayJason;
 	private BlackBox treeQ;
 	private JSONObject treeObj;
@@ -69,8 +72,10 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 				}
 				
 				Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
-				it.putExtra("questionnaireData",
-						treeQ.controlTree(arrQuest, arrayJason, treeObj));
+				//Modificando
+				it.putExtra("questionnaireData",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
+				//it.putExtra("questionnaireData",treeQ.controlTree(arrQuest,arrNO, arrayJason, treeObj));
+				
 				startActivity(it);
 			}
 
@@ -84,12 +89,14 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	 * @return void
 	 */
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
-		arrQuest[Integer.parseInt(group.getTag().toString())] = Integer
-				.toString(checkedId);
+	arrQuest[Integer.parseInt(group.getTag().toString())] = Integer.toString(checkedId);
+	Log.i("jamilson", "Consegui "+ arrNO[Integer.valueOf(group.getTag().toString())]);
+	
+	//arrNO[Integer.parseInt(group.getTag().toString())] = Integer.toString(group.getId());
 	}
 	
 	/**
-	 * @Description Método resposável por montar as questões do questionário dinamicamente
+	 * @Description Método responsável por montar as questões do questionário dinamicamente
 	 * @return void
 	 */
 	public void montarQuest() {
@@ -110,11 +117,12 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 				
 				while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
 					option = new AnswerOption();
-					option.codeResposta = arrayQuestion.get(aux).getCodeResposta();
+					//option.codeResposta = arrayQuestion.get(aux).getCodeResposta();
+					option.codeResposta = arrayQuestion.get(aux).getIdresposta();
+					option.fk_idno = arrayQuestion.get(aux).getFk_idno();
 					option.resposta = arrayQuestion.get(aux).getDescricao_resposta();
 					
 					questionOption.add(option);
-					//questionOption.add(arrayQuestion.get(aux).getDescricao_resposta());
 					
 					aux++;
 					
@@ -123,8 +131,10 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 					}
 				}
 				aux2++;
-				linerLayout.addView(treeQ.createTypeMetricsG(questionOption,
-						aux2, this));
+				//Modificando para verificar no posterior
+				linerLayout.addView(treeQ.createTypeMetricsG(questionOption,aux2, this));
+				arrNO[aux2] = Integer.toString(arrayQuestion.get(aux-1).getFk_idno());
+				//linerLayout.addView(treeQ.createTypeMetricsG(questionOption,aux2,arrayQuestion.get(i).getIdno(), this));
 				questionOption.clear();
 				i = aux - 1;
 		}
@@ -135,6 +145,6 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	protected void onPause() {
 		super.onPause();
 		setResult(RESULT_CANCELED);
-		finish();
+		//finish();
 	}
 }

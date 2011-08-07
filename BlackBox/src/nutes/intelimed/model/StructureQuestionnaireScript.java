@@ -38,8 +38,9 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 		"insert into aresta(fk_idno, fk_idresposta) values(4,2);",
 		"insert into aresta(fk_idno, fk_idresposta) values(3,3);",		
 		"insert into aresta(fk_idno, fk_idresposta) values(5,4);",
-		"insert into aresta(fk_idno, fk_idresposta) values(5,5);",
-		"insert into aresta(fk_idno, fk_idresposta) values(4,6);",
+		"insert into aresta(fk_idno, fk_idresposta) values(4,5);",
+		"insert into aresta(fk_idno, fk_idresposta) values(5,6);",
+		"insert into aresta(fk_idno, fk_idresposta) values(4,7);"
 	};
 	public static final String NOME_BANCO = "caixapreta";
 	public static final int VERSAO_BANCO = 1;
