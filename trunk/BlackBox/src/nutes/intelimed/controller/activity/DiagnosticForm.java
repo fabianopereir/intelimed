@@ -3,10 +3,10 @@ package nutes.intelimed.controller.activity;
 import java.util.ArrayList;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
+import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.IModelStructureQuestionnaire;
 import nutes.intelimed.model.StructureQuestionnaireScript;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
-import nutes.intelimed.util.AnswerOption;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +33,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	
 	private Button validar;
 	private String[] arrQuest = new String[50];
-	private String[] arrNO = new String[50];
+	private String[] arrNO;
 	private JSONArray arrayJason;
 	private BlackBox treeQ;
 	private JSONObject treeObj;
@@ -100,10 +100,11 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		int aux2 = 0;
 		StructureQuestionnaire vAux;
 		AnswerOption option;
+		arrNO = new String[arrayQuestion.size()];
 		for (int i = 0; i < arrayQuestion.size(); i++) {
 			aux = i;
 			vAux = arrayQuestion.get(aux);
-				linerLayout.addView(treeQ.createTypeMetrics(arrayQuestion.get(i).getDescricao_no(),arrayQuestion.get(i).getIdno(), this));
+				linerLayout.addView(treeQ.createQuestionLabel(arrayQuestion.get(i).getDescricao_no(),arrayQuestion.get(i).getIdno(), this));
 				
 				while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
 					option = new AnswerOption();
@@ -117,7 +118,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 					}
 				}
 				aux2++;
-				linerLayout.addView(treeQ.createTypeMetricsG(questionOption,aux2, this));
+				linerLayout.addView(treeQ.createQuestionOption(questionOption,aux2, this));
 				arrNO[aux2] = Integer.toString(arrayQuestion.get(aux-1).getFk_idno());
 				questionOption.clear();
 				i = aux - 1;

@@ -1,9 +1,9 @@
-package nutes.intelimed.util;
+package nutes.intelimed.controller.util;
 
 /**
  * 
  * @author Jamilson Batista e Dyego Carlos
- * @Description Classe auxiliar para tratamento das opções de respostas
+ * @Description Classe auxiliar para o tratamento das opções de respostas
  */
 public class AnswerOption {
 	public String resposta;

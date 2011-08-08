@@ -1,4 +1,4 @@
-package nutes.intelimed.helper;
+package nutes.intelimed.model.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
