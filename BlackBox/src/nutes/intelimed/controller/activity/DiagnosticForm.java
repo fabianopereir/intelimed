@@ -32,7 +32,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	public static IModelStructureQuestionnaire dao;
 	
 	private Button validar;
-	private String[] arrQuest = new String[50];
+	private String[] arrQuest;
 	private String[] arrNO;
 	private JSONArray arrayJason;
 	private BlackBox treeQ;
@@ -52,29 +52,32 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		validar.setText("OK");
         linerLayout.addView(validar);
 		validar.setOnClickListener(new OnClickListener() {
-
 			public void onClick(View v) {
-				arrayJason = new JSONArray();
-				treeObj = new JSONObject();
-				int cont = 1;
-				treeQ = new BlackBox(getBaseContext());
-				for (int i = 0; i < arrQuest.length; i++) {
-					try {
-						treeObj.put("Q" + cont, arrQuest[i]);
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-					arrayJason.put(arrQuest[i]);
-					cont++;
-				}
-				
-				Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
-				it.putExtra("questionnaireData",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
-				startActivity(it);
+				validar();
 			}
 		});
 	}
 
+	public void validar(){
+		arrayJason = new JSONArray();
+		treeObj = new JSONObject();
+		int cont = 1;
+		treeQ = new BlackBox(getBaseContext());
+		for (int i = 0; i < arrQuest.length; i++) {
+			try {
+				treeObj.put("Q" + cont, arrQuest[i]);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			arrayJason.put(arrQuest[i]);
+			cont++;
+		}
+		
+		Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
+		it.putExtra("questionnaireData",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
+		startActivity(it);
+	}
+	
 	/**
 	 * @Description O método é chamado ao clicar em uma resposta, armazenando o valor em array
 	 * @param group -  instância do RadioGroup
@@ -101,6 +104,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		StructureQuestionnaire vAux;
 		AnswerOption option;
 		arrNO = new String[arrayQuestion.size()];
+		arrQuest = new String[arrayQuestion.size()];
 		for (int i = 0; i < arrayQuestion.size(); i++) {
 			aux = i;
 			vAux = arrayQuestion.get(aux);
