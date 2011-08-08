@@ -12,9 +12,9 @@ import android.provider.BaseColumns;
  */
 public class Node{
 	
-	public Long idno;
-	public String descricaoNo;
-	public int diagnostico;
+	private Long idno;
+	private String descricaoNo;
+	private int diagnostico;
 	
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { NodeTable.IDNO, NodeTable.DESCRICAO_NO, NodeTable.DIAGNOSTICO};

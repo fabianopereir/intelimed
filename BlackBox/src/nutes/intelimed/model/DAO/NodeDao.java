@@ -13,7 +13,7 @@ import android.util.Log;
 /**
 * 
 * @author Jamilson Batista e Dyego Carlos
-* @Description Classe responsável por realizar consultas no banco
+* @Description Classe responsável por realizar consultas no banco na tabela de nós
 */
 public class NodeDao implements IModelNode{
 	private static final String CATEGORIA = "nutes";
