@@ -15,7 +15,7 @@ import android.widget.LinearLayout.LayoutParams;
  */
 public class DiagnosticResult extends Activity {
 
-	private String[] questData;
+	private String questData;
 
 	public void onCreate(Bundle icicle) {
 
@@ -29,19 +29,18 @@ public class DiagnosticResult extends Activity {
 		Intent intent = getIntent();
 		if (intent != null) {
 			
-			questData = (String[]) intent.getSerializableExtra("questionnaireData");
+			questData = (String) intent.getSerializableExtra("questionnaireData");
 			
-			for (int i=0; i<questData.length; i++)
-			{
-				if (questData[i]!=null)
+			
+				if (questData!=null)
 				{
 					TextView resultado = new TextView(this);
 					resultado.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-					resultado.setText(questData[i] +"\n");
+					resultado.setText(questData);
 					layout.addView(resultado);
 				}
 					
-			}
+			
 			
 		}
 		setContentView(layout);

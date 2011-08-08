@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import nutes.intelimed.controller.activity.DiagnosticForm;
+import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.EdgeScript;
 import nutes.intelimed.model.IModelEdge;
 import nutes.intelimed.model.IModelNode;
 import nutes.intelimed.model.NodeScript;
 import nutes.intelimed.model.entity.Edge;
 import nutes.intelimed.model.entity.Node;
-import nutes.intelimed.util.AnswerOption;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -51,8 +51,8 @@ public class BlackBox {
 	 * @param edgeDao2 
 	 * @return array de Strings com questões e suas respectivas respostas marcadas
 	 */
-	public String[] controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj, String[] arrNO) {
-		String[] res = new String[1];
+	public String controlTree(String[] arrQuest, JSONArray arrayJason, JSONObject treeObj, String[] arrNO) {
+		String res = null;
 		entEdge = new Edge();
 		node = new Node();
 
@@ -63,7 +63,7 @@ public class BlackBox {
 					node = nodeDao.searchNode(entEdge.getFk_idno());
 					if(node!=null)
 					{
-						res[0]="Resultado: "+node.getDescricaoNo();
+						res="Resultado: "+node.getDescricaoNo();
 						break;
 					}
 					for (int j = 0; j < arrNO.length; j++){
@@ -89,7 +89,7 @@ public class BlackBox {
 	 * @param diagnosticForm - tela de questionário
 	 * @return TextView com uma questão específica
 	 */
-	public TextView createTypeMetrics(String pergunta, long idno, DiagnosticForm diagnosticForm)
+	public TextView createQuestionLabel(String pergunta, long idno, DiagnosticForm diagnosticForm)
 	{
 		TextView perguntas = null;
 		perguntas = new TextView(diagnosticForm);
@@ -107,7 +107,7 @@ public class BlackBox {
 	 * @param diagnosticForm - tela de questionário
 	 * @return View com radio group de um questão específica
 	 */
-	public View createTypeMetricsG(ArrayList<AnswerOption> questionOption, int radioId, DiagnosticForm diagnosticForm) {
+	public View createQuestionOption(ArrayList<AnswerOption> questionOption, int radioId, DiagnosticForm diagnosticForm) {
 		
 		RadioGroup radio_group = new RadioGroup (diagnosticForm);
 		radio_group.setTag(radioId);

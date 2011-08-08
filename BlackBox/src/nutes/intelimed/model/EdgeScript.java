@@ -1,8 +1,8 @@
 package nutes.intelimed.model;
 
 import android.content.Context;
-import nutes.intelimed.helper.SQLiteHelper;
 import nutes.intelimed.model.DAO.EdgeDao;
+import nutes.intelimed.model.helper.SQLiteHelper;
 
 /**
  * 
