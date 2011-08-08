@@ -11,11 +11,11 @@ import android.provider.BaseColumns;
  */
 public class StructureQuestionnaire {
 	
-	public long idno;
-	public String descricao_no;
-	public int idresposta;
+	private long idno;
+	private String descricao_no;
+	private int idresposta;
 	private int code_resposta;
-	public String descricao_resposta;
+	private String descricao_resposta;
 	private int fk_idno;
 	
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";

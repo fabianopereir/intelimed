@@ -1,5 +1,11 @@
 package nutes.intelimed.model.DAO;
 
+
+
+import nutes.intelimed.model.IModelEvidenceAnswers;
+import nutes.intelimed.model.entity.EvidenceAnswers;
+import nutes.intelimed.model.entity.EvidenceAnswers.EvidenceAnswersTable;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
@@ -7,72 +13,55 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
-import nutes.intelimed.model.IModelEdge;
-import nutes.intelimed.model.entity.Edge;
-import nutes.intelimed.model.entity.Edge.EdgeTable;
+
 
 /**
  * 
  * @author Jamilson Batista e Dyego Carlos
- * @Description Classe responsável por realizar consultas em banco na tabela de arestas
+ * @Description Classe responsável por realizar consultas em banco na tabela de evidências
  */
-public class EdgeDao implements IModelEdge {
+public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 	private static final String CATEGORIA = "nutes";
 	private static final String NOME_BANCO = "caixapreta";
 
-	public static final String NOME_TABELA = "aresta";
+	public static final String NOME_TABELA = "evidencia_respostas";
 
 	protected SQLiteDatabase db;
 
-	public EdgeDao() {}
+	public EvidenceAnswersDao() {}
 
-	public EdgeDao(Context ctx) {
+	public EvidenceAnswersDao(Context ctx) {
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
 	}
 
+	/**
+	 * @Description Insere nova evidência no banco
+	 * @return id da evidência
+	 */
+	public long insertEvidenceAnswers(EvidenceAnswers evidenceAnswers) {
+		ContentValues values = new ContentValues();
+		values.put(EvidenceAnswersTable.FK_IDEVIDENCIA, evidenceAnswers.getFk_idevidencia());
+		values.put(EvidenceAnswersTable.FK_IDNO, evidenceAnswers.getFk_idno());
+		values.put(EvidenceAnswersTable.RESPOSTA, evidenceAnswers.getResposta());
+		
+		
+		long id = db.insert(NOME_TABELA, "", values);
+		return id;
+	}
+	
 	/**
 	 * @Description Captura cursor
 	 * @return Cursor - cursor para consulta ao banco de dados
 	 */
 	public Cursor getCursor() {
 		try {
-			Cursor cursor = db.query(NOME_TABELA, Edge.colunas, null, null,
+			Cursor cursor = db.query(NOME_TABELA, EvidenceAnswers.colunas, null, null,
 					null, null, null, null);
 			return cursor;
 		} catch (SQLException e) {
 			Log.e(CATEGORIA, "Erro ao buscar: " + e.toString());
 			return null;
 		}
-	}
-	
-	/**
-	 * @Description Busca uma aresta na base de dados
-	 * @param Long codeResposta (código da resposta)
-	 * @return edge 
-	 */
-	@Override
-	public Edge searchEdge(Long codeResposta) {
-
-		Edge edge = null;
-	 	Long n = codeResposta;  
-	    Integer n1 = Integer.valueOf(n.toString());  
-	  
-		Cursor c = db.query(NOME_TABELA, Edge.colunas,  EdgeTable.FK_IDRESPOSTA +  "="+n1, null, null, null, null);
-		
-		try {
-			if (c.moveToNext()) {
-				edge = new Edge();
-				edge.setIdaresta(c.getLong(0));
-				edge.setFk_idno(c.getLong(1));
-				edge.setFk_idresposta(c.getLong(2));
-			}
-		} catch (SQLException e) {
-
-			Log.e(CATEGORIA, "Erro ao buscar a aresta pelo código da resposta: " + e.toString());
-			return null;
-		}
-
-		return edge;
 	}
 	
 	/**

@@ -10,9 +10,9 @@ import android.provider.BaseColumns;
  * @Description Entidade da aresta
  */
 public class Edge {
-	public Long idaresta;
-	public Long fk_idno;
-	public Long fk_idresposta;
+	private Long idaresta;
+	private Long fk_idno;
+	private Long fk_idresposta;
 
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { EdgeTable.IDARESTA, EdgeTable.FK_IDNO, EdgeTable.FK_IDRESPOSTA };
@@ -65,8 +65,8 @@ public class Edge {
 		public static final String FK_IDRESPOSTA = "fk_idresposta";
 
 		public static Uri getUriId(long id) {
-			Uri uriPaciente = ContentUris.withAppendedId(EdgeTable.CONTENT_URI,id);
-			return uriPaciente;
+			Uri uriEdge = ContentUris.withAppendedId(EdgeTable.CONTENT_URI,id);
+			return uriEdge;
 		}
 	}
 
