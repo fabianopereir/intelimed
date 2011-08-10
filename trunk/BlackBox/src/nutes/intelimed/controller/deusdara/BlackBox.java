@@ -2,6 +2,7 @@ package nutes.intelimed.controller.deusdara;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import nutes.intelimed.controller.activity.DiagnosticForm;
 import nutes.intelimed.controller.util.AnswerOption;
@@ -11,12 +12,16 @@ import nutes.intelimed.model.IModelNode;
 import nutes.intelimed.model.NodeScript;
 import nutes.intelimed.model.entity.Edge;
 import nutes.intelimed.model.entity.Node;
+import nutes.intelimed.model.helper.SQLiteHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -122,8 +127,9 @@ public class BlackBox {
 	        radio_group.addView (radio_button);
 		}
 		radio_group.setOnCheckedChangeListener (diagnosticForm);
-		
+				
 		return radio_group;
 	}
 	
+		
 }

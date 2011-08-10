@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -56,7 +57,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 				validar();
 			}
 		});
-	}
+	};
 
 	public void validar(){
 		arrayJason = new JSONArray();
@@ -71,12 +72,19 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 			}
 			arrayJason.put(arrQuest[i]);
 			cont++;
+			
+			
+			Log.i("dyego", "ID: " + arrQuest[i]);
+
 		}
+		
 		
 		Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
 		it.putExtra("questionnaireData",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
 		startActivity(it);
 	}
+	
+	
 	
 	/**
 	 * @Description O método é chamado ao clicar em uma resposta, armazenando o valor em array
@@ -86,6 +94,8 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	 */
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		arrQuest[Integer.parseInt(group.getTag().toString())] = Integer.toString(checkedId);
+		
+		
 	}
 	
 	/**
