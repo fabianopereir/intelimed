@@ -10,27 +10,27 @@ import android.provider.BaseColumns;
  * @Description Entidade respostas de evidência
  */
 public class EvidenceAnswers {
-	private Long idresposta;
+	private Long idevidencia_respostas;
 	private Long fk_idno;
 	private Long fk_idevidencia;
-	private Long resposta;
+	private Long fk_idresposta;
 
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { EvidenceAnswersTable.IDEVIDENCIARESPOSTAS,
 													EvidenceAnswersTable.FK_IDNO,
 													EvidenceAnswersTable.FK_IDEVIDENCIA, 
-													EvidenceAnswersTable.RESPOSTA };
+													EvidenceAnswersTable.FK_IDRESPOSTA };
 
 	
 
-	public Long getIdresposta() {
-		return idresposta;
+	public Long getIdvidencia_respostas() {
+		return idevidencia_respostas;
 	}
 
 
 
-	public void setIdresposta(Long idresposta) {
-		this.idresposta = idresposta;
+	public void setIdvidencia_respostas(Long idevidencia_respostas) {
+		this.idevidencia_respostas = idevidencia_respostas;
 	}
 
 
@@ -59,14 +59,14 @@ public class EvidenceAnswers {
 
 
 
-	public Long getResposta() {
-		return resposta;
+	public Long getFk_idResposta() {
+		return fk_idresposta;
 	}
 
 
 
-	public void setResposta(Long resposta) {
-		this.resposta = resposta;
+	public void setFk_idResposta(Long fk_idresposta) {
+		this.fk_idresposta = fk_idresposta;
 	}
 
 
@@ -94,7 +94,7 @@ public class EvidenceAnswers {
 		public static final String IDEVIDENCIARESPOSTAS = "idevidencia_respostas";
 		public static final String FK_IDNO = "fk_idno";
 		public static final String FK_IDEVIDENCIA = "fk_idevidencia";
-		public static final String RESPOSTA = "resposta";
+		public static final String FK_IDRESPOSTA = "fk_idresposta";
 
 		public static Uri getUriId(long id) {
 			Uri uriRespostasEvidencia = ContentUris.withAppendedId(

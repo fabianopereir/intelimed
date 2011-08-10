@@ -1,5 +1,6 @@
 package nutes.intelimed.model.entity;
 
+import android.R.integer;
 import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -11,8 +12,8 @@ import android.provider.BaseColumns;
  */
 public class Evidence {
 	private Long idevidencia;
-	private Long sistema;
-	private Long medico;
+	private String sistema;
+	private String medico;
 	private String justificativa;
 
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
@@ -29,19 +30,19 @@ public class Evidence {
 		this.idevidencia = idevidencia;
 	}
 
-	public Long getSistema() {
+	public String getSistema() {
 		return sistema;
 	}
 
-	public void setSistema(Long sistema) {
+	public void setSistema(String sistema) {
 		this.sistema = sistema;
 	}
 
-	public Long getMedico() {
+	public String getMedico() {
 		return medico;
 	}
 
-	public void setMedico(Long medico) {
+	public void setMedico(String medico) {
 		this.medico = medico;
 	}
 
