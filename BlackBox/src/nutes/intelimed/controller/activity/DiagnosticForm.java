@@ -78,9 +78,10 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 
 		}
 		
-		
 		Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
-		it.putExtra("questionnaireData",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
+		it.putExtra("answer",arrQuest);
+		it.putExtra("no",arrNO);
+		it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
 		startActivity(it);
 	}
 	
@@ -94,7 +95,6 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	 */
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		arrQuest[Integer.parseInt(group.getTag().toString())] = Integer.toString(checkedId);
-		
 		
 	}
 	

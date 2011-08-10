@@ -42,7 +42,7 @@ public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 		ContentValues values = new ContentValues();
 		values.put(EvidenceAnswersTable.FK_IDEVIDENCIA, evidenceAnswers.getFk_idevidencia());
 		values.put(EvidenceAnswersTable.FK_IDNO, evidenceAnswers.getFk_idno());
-		values.put(EvidenceAnswersTable.RESPOSTA, evidenceAnswers.getResposta());
+		values.put(EvidenceAnswersTable.FK_IDRESPOSTA, evidenceAnswers.getFk_idResposta());
 		
 		
 		long id = db.insert(NOME_TABELA, "", values);
