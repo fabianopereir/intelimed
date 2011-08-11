@@ -83,7 +83,7 @@ public class DiagnosticResult extends Activity implements OnCheckedChangeListene
 	    justification = new EditText(this);
 	    justification.setLines(5);
 	    justification.setWidth(250);
-	    //justificativa.setGravity(TOP);
+	    justification.setGravity(48);
 	    justification.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		layout.addView(justification);
 	    
