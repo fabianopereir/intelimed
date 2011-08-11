@@ -1,6 +1,7 @@
 package nutes.intelimed.controller.activity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
 import nutes.intelimed.controller.util.AnswerOption;
@@ -15,23 +16,24 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Toast;
 
 /**
  * 
  * @author Jamilson Batista e Dyego Carlos
- * @Description classe responsável pela montagem do formulário de diagnóstico na tela
+ * @Description classe responsável pela montagem do formulário de diagnóstico na
+ *              tela
  */
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 
 	public static IModelStructureQuestionnaire dao;
-	
+
 	private Button validar;
 	private String[] arrQuest;
 	private String[] arrNO;
@@ -45,21 +47,29 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionnaire_asma);
 
-		dao = (IModelStructureQuestionnaire) new StructureQuestionnaireScript(this);
-		
+		dao = (IModelStructureQuestionnaire) new StructureQuestionnaireScript(
+				this);
+
 		montarQuest();
 
 		validar = new Button(this);
 		validar.setText("OK");
-        linerLayout.addView(validar);
+		linerLayout.addView(validar);
 		validar.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				validar();
 			}
 		});
 	};
-
-	public void validar(){
+	
+	/**
+	 * 
+	 * @author Jamilson Batista e Dyego Carlos
+	 * @Description método responsável pela validação das respostas e passagem para DiagnosticResult, 
+	 * 				chamado quando o botão "OK" é clicado
+	 * @return void
+	 */
+	public void validar() {
 		arrayJason = new JSONArray();
 		treeObj = new JSONObject();
 		int cont = 1;
@@ -72,32 +82,48 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 			}
 			arrayJason.put(arrQuest[i]);
 			cont++;
-			
-			
-			Log.i("dyego", "ID: " + arrQuest[i]);
+
+		}
+
+		List<String> stringListWithouNull = new ArrayList<String>();
+		List<String> stringListWithouNullNO = new ArrayList<String>();
+
+		for(int i=0;i<arrQuest.length; i++) { 
+		    if(arrQuest[i] != null){
+		    	stringListWithouNull.add(arrQuest[i]);
+		    }
+		}
+		
+		for(int i=0;i<arrNO.length; i++) { 
+		    if(arrNO[i] != null){
+		    	stringListWithouNullNO.add(arrQuest[i]);
+		    }
+		}
+		
+		if(stringListWithouNull.size() == stringListWithouNullNO.size()){
+			Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
+			it.putExtra("answer",arrQuest);
+			it.putExtra("no",arrNO);
+			it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
+			startActivity(it);
+		}else{
+			Toast.makeText(DiagnosticForm.this, "Alguma pergunta não foi respondida. Favor responder todas as perguntas.", Toast.LENGTH_SHORT).show();
 
 		}
 		
-		Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
-		it.putExtra("answer",arrQuest);
-		it.putExtra("no",arrNO);
-		it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
-		startActivity(it);
 	}
-	
-	
-	
+
 	/**
 	 * @Description O método é chamado ao clicar em uma resposta, armazenando o valor em array
-	 * @param group -  instância do RadioGroup
+	 * @param group - instância do RadioGroup
 	 * @param checkedId - índice da resposta selecionada
 	 * @return void
 	 */
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		arrQuest[Integer.parseInt(group.getTag().toString())] = Integer.toString(checkedId);
-		
+
 	}
-	
+
 	/**
 	 * @Description Método responsável por montar as questões do questionário dinamicamente
 	 * @return void
@@ -118,32 +144,32 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 		for (int i = 0; i < arrayQuestion.size(); i++) {
 			aux = i;
 			vAux = arrayQuestion.get(aux);
-				linerLayout.addView(treeQ.createQuestionLabel(arrayQuestion.get(i).getDescricao_no(),arrayQuestion.get(i).getIdno(), this));
-				
-				while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
-					option = new AnswerOption();
-					option.codeResposta = arrayQuestion.get(aux).getIdresposta();
-					option.fk_idno = arrayQuestion.get(aux).getFk_idno();
-					option.resposta = arrayQuestion.get(aux).getDescricao_resposta();
-					questionOption.add(option);
-					aux++;
-					if (aux < arrayQuestion.size()) {
-						vAux = arrayQuestion.get(aux);
-					}
+			linerLayout.addView(treeQ.createQuestionLabel(arrayQuestion.get(i).getDescricao_no(), arrayQuestion.get(i).getIdno(), this));
+
+			while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
+				option = new AnswerOption();
+				option.codeResposta = arrayQuestion.get(aux).getIdresposta();
+				option.fk_idno = arrayQuestion.get(aux).getFk_idno();
+				option.resposta = arrayQuestion.get(aux).getDescricao_resposta();
+				questionOption.add(option);
+				aux++;
+				if (aux < arrayQuestion.size()) {
+					vAux = arrayQuestion.get(aux);
 				}
-				aux2++;
-				linerLayout.addView(treeQ.createQuestionOption(questionOption,aux2, this));
-				arrNO[aux2] = Integer.toString(arrayQuestion.get(aux-1).getFk_idno());
-				questionOption.clear();
-				i = aux - 1;
+			}
+			aux2++;
+			linerLayout.addView(treeQ.createQuestionOption(questionOption,aux2, this));
+			arrNO[aux2] = Integer.toString(arrayQuestion.get(aux - 1).getFk_idno());
+			questionOption.clear();
+			i = aux - 1;
 		}
-		
+
 	}
-	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
 		setResult(RESULT_CANCELED);
-		//finish();
+		// finish();
 	}
 }
