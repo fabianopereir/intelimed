@@ -25,7 +25,7 @@ import android.widget.LinearLayout.LayoutParams;
 /**
  * Classe responsável pela montagem da tela de resultado do
  *  questionário, com suas questões e respectivas respostas obtidas
- *  através de questionnaireData da Activity DiagnosticForm
+ *  através de questionnaireData da Activity FormDiagnostic
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
