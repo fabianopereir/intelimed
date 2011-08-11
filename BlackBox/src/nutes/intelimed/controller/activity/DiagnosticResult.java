@@ -10,7 +10,6 @@ import nutes.intelimed.model.entity.EvidenceAnswers;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -24,11 +23,12 @@ import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 
 /**
+ * Classe responsável pela montagem da tela de resultado do
+ *  questionário, com suas questões e respectivas respostas obtidas
+ *  através de questionnaireData da Activity DiagnosticForm
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description classe responsável pela montagem da tela de resultado do
- *              questionário, com suas questões e respectivas respostas obtidas
- *              através de questionnaireData da Activity DiagnosticForm
  */
 public class DiagnosticResult extends Activity implements OnCheckedChangeListener {
 
@@ -79,7 +79,7 @@ public class DiagnosticResult extends Activity implements OnCheckedChangeListene
 		}
 		
 	    layout.addView(createRadioButton());
-
+	    
 	    justification = new EditText(this);
 	    justification.setLines(5);
 	    justification.setWidth(250);
@@ -98,6 +98,14 @@ public class DiagnosticResult extends Activity implements OnCheckedChangeListene
 		setContentView(layout);
 	}
 
+	/**
+	 * O método é chamado ao clicar em uma opção do radio group
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param group - instância do RadioGroup
+	 * @param checkedId - índice da resposta selecionada
+	 * @return void
+	 */
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		if (checkedId==1) medico = "yes"; 
 			else medico = "no"; 
@@ -107,8 +115,10 @@ public class DiagnosticResult extends Activity implements OnCheckedChangeListene
 	}
 	
 	/**
-	 * @Description Método responsável por criar dinamicamente radio group da tela de resultado
-	 * @return RadioGroup
+	 * Método responsável por criar dinamicamente radio group da tela de resultado
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @return RadioGroup com 2 radioButtons criados dinamicamente
 	 */
 	private RadioGroup createRadioButton() {
 		
@@ -130,9 +140,20 @@ public class DiagnosticResult extends Activity implements OnCheckedChangeListene
         radio_button2.setText("Não Concordo");
         radio_group.addView (radio_button2);
         radio_group.setOnCheckedChangeListener (this);
+        
+        
 	    return radio_group;
 	}
 	
+	/**
+	 * Método responsável por validar e mandar a classe EvidenceAnswersDao inserir a evidência no banco
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param answerData
+	 * @param noData
+	 * @param result 
+	 * @return void
+	 */
 	public void validar(String[] answerData, String[] noData, String result){
 		Toast.makeText(DiagnosticResult.this, answerData.length + " :: " + noData.length, Toast.LENGTH_LONG).show();
 		evidence.setMedico(medico);
@@ -150,7 +171,6 @@ public class DiagnosticResult extends Activity implements OnCheckedChangeListene
 				evidenceAnswer.setFk_idResposta(Long.parseLong(answerData[i]));
 
 				daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);
-				Log.i("jamilson", "NO: " + noData[i]+ " Resposta: "+ answerData[i]);
 			}
 				
 		}

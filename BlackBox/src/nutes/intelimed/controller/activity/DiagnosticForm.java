@@ -25,10 +25,11 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 /**
- * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description classe responsável pela montagem do formulário de diagnóstico na
+ * Classe responsável pela montagem do formulário de diagnóstico na
  *              tela
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
+ * 
  */
 public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
 
@@ -63,10 +64,10 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	};
 	
 	/**
-	 * 
-	 * @author Jamilson Batista e Dyego Carlos
-	 * @Description método responsável pela validação das respostas e passagem para DiagnosticResult, 
-	 * 				chamado quando o botão "OK" é clicado
+	 * Método responsável pela validação das respostas e passagem para DiagnosticResult, 
+	 * chamado quando o botão "OK" é clicado
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return void
 	 */
 	public void validar() {
@@ -114,7 +115,9 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	}
 
 	/**
-	 * @Description O método é chamado ao clicar em uma resposta, armazenando o valor em array
+	 * O método é chamado ao clicar em uma resposta, armazenando o valor em array
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param group - instância do RadioGroup
 	 * @param checkedId - índice da resposta selecionada
 	 * @return void
@@ -125,7 +128,9 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 	}
 
 	/**
-	 * @Description Método responsável por montar as questões do questionário dinamicamente
+	 * Método responsável por montar as questões do questionário dinamicamente
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return void
 	 */
 	public void montarQuest() {

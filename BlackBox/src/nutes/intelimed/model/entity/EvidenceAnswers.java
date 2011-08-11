@@ -5,9 +5,9 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
- * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Entidade respostas de evidência
+ * Entidade respostas de evidência
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  */
 public class EvidenceAnswers {
 	private Long idevidencia_respostas;
@@ -72,10 +72,11 @@ public class EvidenceAnswers {
 
 
 	/**
-	 * 
-	 * @author Jamilson Batista e Dyego Carlos
-	 * @Description Classe interna necessária para Content Provider de
+	 * Classe interna necessária para Content Provider de
 	 *              respostas de evidência
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * 
 	 */
 	public static final class EvidenceAnswersTable implements BaseColumns {
 
@@ -96,6 +97,13 @@ public class EvidenceAnswers {
 		public static final String FK_IDEVIDENCIA = "fk_idevidencia";
 		public static final String FK_IDRESPOSTA = "fk_idresposta";
 
+		/**
+		 * Método que constrói uma Uri para respostas de evidência, com seu id
+		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+		 * @author Dyego Carlos (dyego12345@gmail.com)
+		 * @param id - identificador de respostas de evidência
+		 * @return uriRespostasEvidencia
+		 */
 		public static Uri getUriId(long id) {
 			Uri uriRespostasEvidencia = ContentUris.withAppendedId(
 					EvidenceAnswersTable.CONTENT_URI, id);

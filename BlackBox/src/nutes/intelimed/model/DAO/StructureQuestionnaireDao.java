@@ -14,9 +14,9 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
 /**
- * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Classe responsável por realizar consultas no banco
+ * Classe responsável por realizar consultas no banco
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  */
 public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	private static final String CATEGORIA = "nutes";
@@ -33,9 +33,11 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	}
 	
 	/**
-	 * @Description Captura cursor
-	 * @return Cursor - cursor com a consulta ao banco que retorna perguntas e respectivas alternativas (sem diagnósticos)
-	 */
+	  * Método responsável pela captura do cursor
+	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	  * @author Dyego Carlos (dyego12345@gmail.com)
+	  * @return Cursor - cursor para consulta ao banco de dados
+	  */
 	public Cursor getCursor() {
 		try {
 			Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaire.colunas, StructureQuestionnaireAll.FK_IDNO + "=" + StructureQuestionnaireAll.IDNO, null, null, null, null);
@@ -48,7 +50,9 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	}
 	
 	/**
-	 * @Description Lista toda a estrutura do questionário (perguntas e alternativas)
+	 *  Lista toda a estrutura do questionário (perguntas e alternativas)
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return List<StructureQuestionnaire> 
 	 */
 	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
@@ -82,16 +86,18 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	}
 	
 	/**
-	 *  @Description Busca utilizando as configurações definidas no SQLiteQueryBuilder
+	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
 	 *    Utilizado pelo Content Provider da estrutura do questionário
-	 *  @param queryBuilder
-	 *  @param projection
-	 *  @param selection
-	 *  @param selectionArgs
-	 *  @param groupBy
-	 *  @param having
-	 *  @param orderBy
-	 *  @return Cursor - cursor com o retorno da consulta desejada
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param queryBuilder
+	 * @param projection - condição de projeção
+	 * @param selection - condição de seleção
+	 * @param selectionArgs - argumentos da seleção
+	 * @param groupBy - condição de agrupamento
+	 * @param having - condição
+	 * @param orderBy - condição de ordenamento
+	 * @return Cursor - cursor com o retorno da consulta desejada
 	 */
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,
 			String selection, String[] selectionArgs, String groupBy,

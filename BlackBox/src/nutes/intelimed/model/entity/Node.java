@@ -6,9 +6,10 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
+ * Entidade nó
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Entidade nó
  */
 public class Node{
 	
@@ -39,9 +40,10 @@ public class Node{
 	}
 	
 	/**
+	 * Classe interna necessária para Content Provider de nós
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * 
-	 * @author Jamilson Batista e Dyego Carlos
-	 * @Description Classe interna necessária para Content Provider de nós
 	 */
 	public static final class NodeTable implements BaseColumns {
 
@@ -61,6 +63,13 @@ public class Node{
 		public static final String DESCRICAO_NO = "descricao_no";
 		public static final String DIAGNOSTICO = "diagnostico";
 
+		/**
+		 * Método que constrói uma Uri para um nó específico, com seu id
+		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+		 * @author Dyego Carlos (dyego12345@gmail.com)
+		 * @param id - identificador da respostas de nó
+		 * @return uriNode
+		 */
 		public static Uri getUriId(long id) {
 			Uri uriNode = ContentUris.withAppendedId(EdgeTable.CONTENT_URI,
 					id);

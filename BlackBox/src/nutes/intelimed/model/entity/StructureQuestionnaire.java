@@ -5,9 +5,10 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
+ * Entidade da estrutura do questionário
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Entidade da estrutura do questionário
  */
 public class StructureQuestionnaire {
 	
@@ -75,9 +76,10 @@ public class StructureQuestionnaire {
 	}
 
 	/**
-	 * 
-	 * @author Jamilson Batista e Dyego Carlos
-	 * @Description Classe interna necessária para Content Provider de estrutura de questionário
+	 * Classe interna necessária para Content Provider de estrutura de questionário
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * Classe interna necessária para Content Provider de estrutura de questionário
 	 */
 	public static final class StructureQuestionnaireAll implements BaseColumns {
 		
@@ -101,7 +103,9 @@ public class StructureQuestionnaire {
 		public static final String FK_IDNO = "fk_idno";
 		
 		/**
-		 * @Description Método que constrói uma Uri para uma estrutura de questionário específico, com seu id
+		 * Método que constrói uma Uri para uma estrutura de questionário específica, com seu id
+		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+		 * @author Dyego Carlos (dyego12345@gmail.com)
 		 * @param id - identificador da estrutura de questionário
 		 * @return uriStructure
 		 */

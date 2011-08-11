@@ -22,9 +22,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 /**
+ * Classe controladora das activities, reponsável pela engine inteligente
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description classe responsável pela engine inteligente
  */
 public class BlackBox {
 
@@ -41,18 +42,16 @@ public class BlackBox {
 	}
 
 	/**
-	 * @Description Método que processa resultado
-	 * @param arrQuest
-	 *            - array de respostas
+	 * Método que processa resultado
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param arrQuest - array de respostas
 	 * @param arrNO
-	 * @param arrayJason
-	 *            - array de respostas em JSON
-	 * @param treeObj
-	 *            - objeto JSON com respostas
-	 * @param arrNO
+	 * @param arrayJason - array de respostas em JSON
+	 * @param treeObj - objeto JSON com respostas
 	 * @param context
 	 * @param edgeDao2
-	 * @return array de Strings com questões e suas respectivas respostas
+	 * @return String com questões e suas respectivas respostas
 	 *         marcadas
 	 */
 	public String controlTree(String[] arrQuest, JSONArray arrayJason,
@@ -86,12 +85,12 @@ public class BlackBox {
 	}
 
 	/**
-	 * @Description Monta uma questão específica
-	 * @param pergunta
-	 *            - pergunta que se deseja imprimir na tela
-	 * @param idno
-	 * @param diagnosticForm
-	 *            - tela de questionário
+	 * Monta uma questão específica
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param pergunta - pergunta que se deseja imprimir na tela
+	 * @param idno - identificador da pergunta
+	 * @param diagnosticForm - tela de questionário
 	 * @return TextView com uma questão específica
 	 */
 	public TextView createQuestionLabel(String pergunta, long idno,
@@ -105,14 +104,13 @@ public class BlackBox {
 	}
 
 	/**
-	 * @Description Monta as opções de respostas de uma questão específica
-	 * @param questionOption
-	 *            - array de respostas
-	 * @param radioId
-	 *            - identificador da pergunta
-	 * @param idno
-	 * @param diagnosticForm
-	 *            - tela de questionário
+	 * Monta as opções de respostas de uma questão específica
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param questionOption - array de respostas
+	 * @param radioId - identificador da pergunta
+	 * @param idno - identificador da pergunta
+	 * @param diagnosticForm - tela de questionário
 	 * @return View com radio group de um questão específica
 	 */
 	public View createQuestionOption(ArrayList<AnswerOption> questionOption,

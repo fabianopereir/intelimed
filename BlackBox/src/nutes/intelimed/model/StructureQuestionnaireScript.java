@@ -6,9 +6,9 @@ import nutes.intelimed.model.helper.SQLiteHelper;
 
 
 /**
- * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description classe responsável pela criação, povoamento e remoção do banco que armazena a estrutura do questionário
+ * Classe responsável pela criação, povoamento e remoção do banco que armazena a estrutura do questionário
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  */
 public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	
@@ -52,7 +52,9 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	private SQLiteHelper dbHelper;
 
 	/**
-	 * @Description Cria o banco de dados com um script SQL
+	 * Cria o banco de dados com um script SQL
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public StructureQuestionnaireScript(Context ctx) {
@@ -63,7 +65,9 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	}
 	
 	/**
-	 * @Description Busca script de criação da base de dados
+	 * Busca script de criação da base de dados
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return script da base de dados
 	 */
 	public static String[] getScriptDatabaseCreate() {
@@ -71,12 +75,15 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	}
 	
 	/**
-	 * @Description Busca script para deletar a base de dados
+	 * Busca script para deletar a base de dados
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return script da base de dados
 	 */
 	public static String[] getScriptDatabaseDelete() {
 		return SCRIPT_DATABASE_DELETE;
 	}
+	
 	@Override
 	public void fechar() {
 		super.fechar();

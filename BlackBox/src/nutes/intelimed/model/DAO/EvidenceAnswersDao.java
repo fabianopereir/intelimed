@@ -16,9 +16,9 @@ import android.util.Log;
 
 
 /**
- * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Classe responsável por realizar consultas em banco na tabela de evidências
+ * Classe responsável por realizar consultas em banco na tabela de evidências
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  */
 public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 	private static final String CATEGORIA = "nutes";
@@ -35,8 +35,11 @@ public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 	}
 
 	/**
-	 * @Description Insere nova evidência no banco
-	 * @return id da evidência
+	 * Insere nova evidência no banco
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param EvidenceAnswers - respostas da evidência a ser inserida no banco
+	 * @return id - identificador de evidência
 	 */
 	public long insertEvidenceAnswers(EvidenceAnswers evidenceAnswers) {
 		ContentValues values = new ContentValues();
@@ -50,9 +53,11 @@ public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 	}
 	
 	/**
-	 * @Description Captura cursor
-	 * @return Cursor - cursor para consulta ao banco de dados
-	 */
+	  * Método responsável pela captura do cursor
+	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	  * @author Dyego Carlos (dyego12345@gmail.com) 
+	  * @return Cursor - cursor para consulta ao banco de dados
+	  */
 	public Cursor getCursor() {
 		try {
 			Cursor cursor = db.query(NOME_TABELA, EvidenceAnswers.colunas, null, null,
@@ -65,16 +70,18 @@ public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 	}
 	
 	/**
-	 *  @Description Busca utilizando as configurações definidas no SQLiteQueryBuilder
-	 *    Utilizado pelo Content Provider da estrutura do questionário
-	 *  @param queryBuilder
-	 *  @param projection
-	 *  @param selection
-	 *  @param selectionArgs
-	 *  @param groupBy
-	 *  @param having
-	 *  @param orderBy
-	 *  @return Cursor - cursor com o retorno da consulta desejada
+	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
+	 *    Utilizado pelo Content Provider de respostas de evidência
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param queryBuilder
+	 * @param projection - condição de projeção
+	 * @param selection - condição de seleção
+	 * @param selectionArgs - argumentos da seleção
+	 * @param groupBy - condição de agrupamento
+	 * @param having - condição
+	 * @param orderBy - condição de ordenamento
+	 * @return Cursor - cursor com o retorno da consulta desejada
 	 */
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,
 			String selection, String[] selectionArgs, String groupBy,
