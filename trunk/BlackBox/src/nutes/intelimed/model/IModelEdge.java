@@ -3,9 +3,11 @@ package nutes.intelimed.model;
 import nutes.intelimed.model.entity.Edge;
 
 /**
+ * Interface de Aresta
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)	
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Interface de ARESTA
+ * 
  */
 
 public interface IModelEdge {

@@ -3,9 +3,10 @@ package nutes.intelimed.model;
 import nutes.intelimed.model.entity.Node;
 
 /**
+ * Interface de NÓ
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Interface de NO
  */
 
 public interface IModelNode {

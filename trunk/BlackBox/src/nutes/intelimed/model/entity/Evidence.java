@@ -1,14 +1,15 @@
 package nutes.intelimed.model.entity;
 
-import android.R.integer;
+
 import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
+ * Entidade evidência
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Entidade evidência
  */
 public class Evidence {
 	private Long idevidencia;
@@ -55,10 +56,10 @@ public class Evidence {
 	}
 
 	/**
+	 * Classe interna necessária para Content Provider de evidências
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * 
-	 * @author Jamilson Batista e Dyego Carlos
-	 * @Description Classe interna necessária para Content Provider de
-	 *              evidências
 	 */
 	public static final class EvidenceTable implements BaseColumns {
 
@@ -79,6 +80,13 @@ public class Evidence {
 		public static final String MEDICO = "medico";
 		public static final String JUSTIFICATIVA = "justificativa";
 
+		/**
+		 * Método que constrói uma Uri para uma evidência específica, com seu id
+		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+		 * @author Dyego Carlos (dyego12345@gmail.com)
+		 * @param id - identificador da evidência
+		 * @return uriEvidence
+		 */
 		public static Uri getUriId(long id) {
 			Uri uriEvidence = ContentUris.withAppendedId(
 					EvidenceTable.CONTENT_URI, id);

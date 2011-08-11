@@ -12,9 +12,9 @@ import nutes.intelimed.model.entity.Edge;
 import nutes.intelimed.model.entity.Edge.EdgeTable;
 
 /**
- * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Classe responsável por realizar consultas em banco na tabela de arestas
+ * Classe responsável por realizar consultas em banco na tabela de arestas
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  */
 public class EdgeDao implements IModelEdge {
 	private static final String CATEGORIA = "nutes";
@@ -31,9 +31,11 @@ public class EdgeDao implements IModelEdge {
 	}
 
 	/**
-	 * @Description Captura cursor
-	 * @return Cursor - cursor para consulta ao banco de dados
-	 */
+	  * Método responsável pela captura do cursor
+	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	  * @author Dyego Carlos (dyego12345@gmail.com)
+	  * @return Cursor - cursor para consulta ao banco de dados
+	  */
 	public Cursor getCursor() {
 		try {
 			Cursor cursor = db.query(NOME_TABELA, Edge.colunas, null, null,
@@ -46,10 +48,12 @@ public class EdgeDao implements IModelEdge {
 	}
 	
 	/**
-	 * @Description Busca uma aresta na base de dados
-	 * @param Long codeResposta (código da resposta)
-	 * @return edge 
-	 */
+	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	  * @author Dyego Carlos (dyego12345@gmail.com)
+	  * Busca uma aresta na base de dados
+	  * @param Long codeResposta (código da resposta)
+	  * @return edge 
+	  */
 	@Override
 	public Edge searchEdge(Long codeResposta) {
 
@@ -76,16 +80,18 @@ public class EdgeDao implements IModelEdge {
 	}
 	
 	/**
-	 *  @Description Busca utilizando as configurações definidas no SQLiteQueryBuilder
-	 *    Utilizado pelo Content Provider da estrutura do questionário
-	 *  @param queryBuilder
-	 *  @param projection
-	 *  @param selection
-	 *  @param selectionArgs
-	 *  @param groupBy
-	 *  @param having
-	 *  @param orderBy
-	 *  @return Cursor - cursor com o retorno da consulta desejada
+	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
+	 *    Utilizado pelo Content Provider de aresta
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * @param queryBuilder
+	 * @param projection - condição de projeção
+	 * @param selection - condição de seleção
+	 * @param selectionArgs - argumentos da seleção
+	 * @param groupBy - condição de agrupamento
+	 * @param having - condição
+	 * @param orderBy - condição de ordenamento
+	 * @return Cursor - cursor com o retorno da consulta desejada
 	 */
 	public Cursor query(SQLiteQueryBuilder queryBuilder, String[] projection,
 			String selection, String[] selectionArgs, String groupBy,

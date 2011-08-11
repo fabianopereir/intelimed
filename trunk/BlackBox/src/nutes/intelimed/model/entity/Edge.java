@@ -5,9 +5,10 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
+ * Entidade aresta
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Entidade da aresta
  */
 public class Edge {
 	private Long idaresta;
@@ -42,9 +43,9 @@ public class Edge {
 	}
 
 	/**
-	 * 
-	 * @author Jamilson Batista e Dyego Carlos
-	 * @Description Classe interna necessária para Content Provider de arestas
+	 * Classe interna necessária para Content Provider de arestas
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 */
 	public static final class EdgeTable implements BaseColumns {
 
@@ -64,6 +65,13 @@ public class Edge {
 		public static final String FK_IDNO = "fk_idno";
 		public static final String FK_IDRESPOSTA = "fk_idresposta";
 
+		/**
+		 * Método que constrói uma Uri para uma aresta específica, com seu id
+		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+		 * @author Dyego Carlos (dyego12345@gmail.com)
+		 * @param id - identificador da aresta
+		 * @return uriEdge
+		 */
 		public static Uri getUriId(long id) {
 			Uri uriEdge = ContentUris.withAppendedId(EdgeTable.CONTENT_URI,id);
 			return uriEdge;

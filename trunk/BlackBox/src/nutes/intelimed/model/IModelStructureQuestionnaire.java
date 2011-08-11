@@ -5,9 +5,10 @@ import java.util.List;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 
 /**
+ * Interface de estrutura de questionário
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
- * @author Jamilson Batista e Dyego Carlos
- * @Description Interface de estrutura questionário
  */
 public interface IModelStructureQuestionnaire {
 	public abstract List<StructureQuestionnaire> listarEstruturaQuestionario();

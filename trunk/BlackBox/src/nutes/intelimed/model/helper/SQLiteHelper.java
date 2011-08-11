@@ -6,9 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * @author Jamilson Batista e Dyego Carlos
- * @Description classe responsável pela implementacao de SQLiteOpenHelper. 
- * Classe utilitária para abrir, criar, e atualizar o banco de dados.
+ * Classe utilitária para abrir, criar, e atualizar o banco de dados.Responsável pela implementacao de SQLiteOpenHelper. 
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
+ * 
  */
 public class SQLiteHelper extends SQLiteOpenHelper {
 
@@ -18,12 +19,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 	private String[] scriptSQLDelete;
 
 	/**
+	 * Método construtor - Cria uma instância de SQLiteHelper
+	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
+	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param context
 	 * @param nomeBanco nome do banco de dados
 	 * @param versaoBanco versão do banco de dados (se for diferente atualiza)
 	 * @param scriptSQLCreate SQL com o create table..
 	 * @param scriptDatabaseDelete SQL com o drop table...
-	 * @Description Cria uma instância de SQLiteHelper
 	 */
 	public SQLiteHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
 		super(context, nomeBanco, null, versaoBanco);
