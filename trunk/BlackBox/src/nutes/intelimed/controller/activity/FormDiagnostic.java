@@ -31,7 +31,7 @@ import android.widget.Toast;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class DiagnosticForm extends Activity implements OnCheckedChangeListener {
+public class FormDiagnostic extends Activity implements OnCheckedChangeListener {
 
 	public static IModelStructureQuestionnaire dao;
 
@@ -108,7 +108,7 @@ public class DiagnosticForm extends Activity implements OnCheckedChangeListener 
 			it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
 			startActivity(it);
 		}else{
-			Toast.makeText(DiagnosticForm.this, "Alguma pergunta não foi respondida. Favor responder todas as perguntas.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(FormDiagnostic.this, "Alguma pergunta não foi respondida. Favor responder todas as perguntas.", Toast.LENGTH_SHORT).show();
 
 		}
 		

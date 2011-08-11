@@ -3,7 +3,7 @@ package nutes.intelimed.controller.deusdara;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import nutes.intelimed.controller.activity.DiagnosticForm;
+import nutes.intelimed.controller.activity.FormDiagnostic;
 import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.EdgeScript;
 import nutes.intelimed.model.IModelEdge;
@@ -90,13 +90,13 @@ public class BlackBox {
 	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param pergunta - pergunta que se deseja imprimir na tela
 	 * @param idno - identificador da pergunta
-	 * @param diagnosticForm - tela de questionário
+	 * @param formDiagnostic - tela de questionário
 	 * @return TextView com uma questão específica
 	 */
 	public TextView createQuestionLabel(String pergunta, long idno,
-			DiagnosticForm diagnosticForm) {
+			FormDiagnostic formDiagnostic) {
 		TextView perguntas = null;
-		perguntas = new TextView(diagnosticForm);
+		perguntas = new TextView(formDiagnostic);
 		perguntas.setId((int) idno);
 		perguntas.setText(pergunta);
 
@@ -110,25 +110,25 @@ public class BlackBox {
 	 * @param questionOption - array de respostas
 	 * @param radioId - identificador da pergunta
 	 * @param idno - identificador da pergunta
-	 * @param diagnosticForm - tela de questionário
+	 * @param formDiagnostic - tela de questionário
 	 * @return View com radio group de um questão específica
 	 */
 	public View createQuestionOption(ArrayList<AnswerOption> questionOption,
-			int radioId, DiagnosticForm diagnosticForm) {
+			int radioId, FormDiagnostic formDiagnostic) {
 
-		RadioGroup radio_group = new RadioGroup(diagnosticForm);
+		RadioGroup radio_group = new RadioGroup(formDiagnostic);
 		radio_group.setTag(radioId);
 		RadioButton radio_button;
 		Iterator<AnswerOption> option = questionOption.iterator();
 		while (option.hasNext()) {
 			AnswerOption nextOption = option.next();
-			radio_button = new RadioButton(diagnosticForm);
+			radio_button = new RadioButton(formDiagnostic);
 			radio_button.setId(nextOption.codeResposta);
 			radio_button.setTag(nextOption.fk_idno);
 			radio_button.setText(nextOption.resposta);
 			radio_group.addView(radio_button);
 		}
-		radio_group.setOnCheckedChangeListener(diagnosticForm);
+		radio_group.setOnCheckedChangeListener(formDiagnostic);
 
 		return radio_group;
 	}

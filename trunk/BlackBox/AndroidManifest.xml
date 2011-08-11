@@ -7,7 +7,7 @@
     <uses-sdk android:minSdkVersion="4" />
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".DiagnosticForm"
+        <activity android:name="FormDiagnostic"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
