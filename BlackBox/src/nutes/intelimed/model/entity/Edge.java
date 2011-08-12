@@ -67,8 +67,6 @@ public class Edge {
 
 		/**
 		 * Método que constrói uma Uri para uma aresta específica, com seu id
-		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-		 * @author Dyego Carlos (dyego12345@gmail.com)
 		 * @param id - identificador da aresta
 		 * @return uriEdge
 		 */

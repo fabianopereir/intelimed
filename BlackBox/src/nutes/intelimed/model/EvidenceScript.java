@@ -2,7 +2,7 @@ package nutes.intelimed.model;
 
 import android.content.Context;
 import nutes.intelimed.model.DAO.EvidenceDao;
-import nutes.intelimed.model.helper.SQLiteHelper;
+import nutes.intelimed.model.helper.DatabaseHelper;
 
 /**
  * Classe responsável pela criação do script da tabela evidencia
@@ -12,16 +12,14 @@ import nutes.intelimed.model.helper.SQLiteHelper;
  */
 public class EvidenceScript extends EvidenceDao{
 	
-	private SQLiteHelper dbHelper;
+	private DatabaseHelper dbHelper;
 
 	/**
 	 * Cria o banco de dados com um script SQL
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public EvidenceScript(Context ctx) {
-		dbHelper = new SQLiteHelper(ctx, StructureQuestionnaireScript.NOME_BANCO, StructureQuestionnaireScript.VERSAO_BANCO,
+		dbHelper = new DatabaseHelper(ctx, StructureQuestionnaireScript.NOME_BANCO, StructureQuestionnaireScript.VERSAO_BANCO,
 				StructureQuestionnaireScript.getScriptDatabaseCreate(), StructureQuestionnaireScript.getScriptDatabaseDelete());
 		db = dbHelper.getWritableDatabase();
 	}

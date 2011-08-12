@@ -31,8 +31,6 @@ public class NodeDao implements IModelNode{
 	
 	/**
 	  * Método responsável pela captura do cursor
-	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	  * @author Dyego Carlos (dyego12345@gmail.com)
 	  * @return Cursor - cursor para consulta ao banco de dados
 	  */
 	public Cursor getCursor() {
@@ -48,8 +46,6 @@ public class NodeDao implements IModelNode{
 	
 	/**
 	 * Busca um nó na base de dados
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param Long fk_idno (identificador do nó)
 	 * @return Node 
 	 */
@@ -81,8 +77,6 @@ public class NodeDao implements IModelNode{
 	/**
 	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
 	 *    Utilizado pelo Content Provider de nó
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param queryBuilder
 	 * @param projection - condição de projeção
 	 * @param selection - condição de seleção

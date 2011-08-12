@@ -43,8 +43,6 @@ public class BlackBox {
 
 	/**
 	 * Método que processa resultado
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param arrQuest - array de respostas
 	 * @param arrNO
 	 * @param arrayJason - array de respostas em JSON
@@ -86,8 +84,6 @@ public class BlackBox {
 
 	/**
 	 * Monta uma questão específica
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param pergunta - pergunta que se deseja imprimir na tela
 	 * @param idno - identificador da pergunta
 	 * @param formDiagnostic - tela de questionário
@@ -105,8 +101,6 @@ public class BlackBox {
 
 	/**
 	 * Monta as opções de respostas de uma questão específica
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param questionOption - array de respostas
 	 * @param radioId - identificador da pergunta
 	 * @param idno - identificador da pergunta
