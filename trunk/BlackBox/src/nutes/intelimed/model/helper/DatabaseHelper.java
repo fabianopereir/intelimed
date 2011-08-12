@@ -11,7 +11,7 @@ import android.util.Log;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class SQLiteHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 
 	private static final String CATEGORIA = "nutes";
 
@@ -19,16 +19,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 	private String[] scriptSQLDelete;
 
 	/**
-	 * Método construtor - Cria uma instância de SQLiteHelper
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
+	 * Método construtor - Cria uma instância de DatabaseHelper
 	 * @param context
 	 * @param nomeBanco nome do banco de dados
 	 * @param versaoBanco versão do banco de dados (se for diferente atualiza)
 	 * @param scriptSQLCreate SQL com o create table..
 	 * @param scriptDatabaseDelete SQL com o drop table...
 	 */
-	public SQLiteHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
+	public DatabaseHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
 		super(context, nomeBanco, null, versaoBanco);
 		this.scriptSQLCreate = scriptSQLCreate;
 		this.scriptSQLDelete = scriptDatabaseDelete;

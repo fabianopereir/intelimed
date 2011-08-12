@@ -2,7 +2,7 @@ package nutes.intelimed.model;
 
 import android.content.Context;
 import nutes.intelimed.model.DAO.StructureQuestionnaireDao;
-import nutes.intelimed.model.helper.SQLiteHelper;
+import nutes.intelimed.model.helper.DatabaseHelper;
 
 
 /**
@@ -49,16 +49,14 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	public static final String NOME_BANCO = "caixapreta";
 	public static final int VERSAO_BANCO = 6;
 	
-	private SQLiteHelper dbHelper;
+	private DatabaseHelper dbHelper;
 
 	/**
 	 * Cria o banco de dados com um script SQL
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public StructureQuestionnaireScript(Context ctx) {
-		dbHelper = new SQLiteHelper(ctx, StructureQuestionnaireScript.NOME_BANCO, StructureQuestionnaireScript.VERSAO_BANCO,
+		dbHelper = new DatabaseHelper(ctx, StructureQuestionnaireScript.NOME_BANCO, StructureQuestionnaireScript.VERSAO_BANCO,
 				StructureQuestionnaireScript.getScriptDatabaseCreate(), StructureQuestionnaireScript.getScriptDatabaseDelete());
 
 		db = dbHelper.getWritableDatabase();
@@ -66,8 +64,6 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	
 	/**
 	 * Busca script de criação da base de dados
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return script da base de dados
 	 */
 	public static String[] getScriptDatabaseCreate() {
@@ -76,8 +72,6 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 	
 	/**
 	 * Busca script para deletar a base de dados
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return script da base de dados
 	 */
 	public static String[] getScriptDatabaseDelete() {

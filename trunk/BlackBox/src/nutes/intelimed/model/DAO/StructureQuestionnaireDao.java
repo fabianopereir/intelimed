@@ -34,8 +34,6 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	
 	/**
 	  * Método responsável pela captura do cursor
-	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	  * @author Dyego Carlos (dyego12345@gmail.com)
 	  * @return Cursor - cursor para consulta ao banco de dados
 	  */
 	public Cursor getCursor() {
@@ -51,8 +49,6 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	
 	/**
 	 *  Lista toda a estrutura do questionário (perguntas e alternativas)
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return List<StructureQuestionnaire> 
 	 */
 	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
@@ -88,8 +84,6 @@ public class StructureQuestionnaireDao implements IModelStructureQuestionnaire{
 	/**
 	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
 	 *    Utilizado pelo Content Provider da estrutura do questionário
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param queryBuilder
 	 * @param projection - condição de projeção
 	 * @param selection - condição de seleção

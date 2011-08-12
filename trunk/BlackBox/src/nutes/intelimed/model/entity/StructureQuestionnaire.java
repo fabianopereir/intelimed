@@ -104,8 +104,6 @@ public class StructureQuestionnaire {
 		
 		/**
 		 * Método que constrói uma Uri para uma estrutura de questionário específica, com seu id
-		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-		 * @author Dyego Carlos (dyego12345@gmail.com)
 		 * @param id - identificador da estrutura de questionário
 		 * @return uriStructure
 		 */

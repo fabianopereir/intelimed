@@ -32,8 +32,6 @@ public class EdgeDao implements IModelEdge {
 
 	/**
 	  * Método responsável pela captura do cursor
-	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	  * @author Dyego Carlos (dyego12345@gmail.com)
 	  * @return Cursor - cursor para consulta ao banco de dados
 	  */
 	public Cursor getCursor() {
@@ -48,8 +46,6 @@ public class EdgeDao implements IModelEdge {
 	}
 	
 	/**
-	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	  * @author Dyego Carlos (dyego12345@gmail.com)
 	  * Busca uma aresta na base de dados
 	  * @param Long codeResposta (código da resposta)
 	  * @return edge 
@@ -82,8 +78,6 @@ public class EdgeDao implements IModelEdge {
 	/**
 	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
 	 *    Utilizado pelo Content Provider de aresta
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param queryBuilder
 	 * @param projection - condição de projeção
 	 * @param selection - condição de seleção

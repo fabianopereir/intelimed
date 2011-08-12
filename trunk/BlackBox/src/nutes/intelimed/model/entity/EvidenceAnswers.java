@@ -72,8 +72,7 @@ public class EvidenceAnswers {
 
 
 	/**
-	 * Classe interna necessária para Content Provider de
-	 *              respostas de evidência
+	 * Classe interna necessária para Content Provider de respostas de evidência
 	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
 	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * 
@@ -99,8 +98,6 @@ public class EvidenceAnswers {
 
 		/**
 		 * Método que constrói uma Uri para respostas de evidência, com seu id
-		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-		 * @author Dyego Carlos (dyego12345@gmail.com)
 		 * @param id - identificador de respostas de evidência
 		 * @return uriRespostasEvidencia
 		 */

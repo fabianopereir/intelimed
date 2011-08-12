@@ -25,8 +25,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 /**
- * Classe responsável pela montagem do formulário de diagnóstico na
- *              tela
+ * Classe responsável pela montagem do formulário de diagnóstico na tela
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
@@ -66,8 +65,6 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 	/**
 	 * Método responsável pela validação das respostas e passagem para DiagnosticResult, 
 	 * chamado quando o botão "OK" é clicado
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return void
 	 */
 	public void validar() {
@@ -83,7 +80,6 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 			}
 			arrayJason.put(arrQuest[i]);
 			cont++;
-
 		}
 
 		List<String> stringListWithouNull = new ArrayList<String>();
@@ -108,7 +104,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 			it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
 			startActivity(it);
 		}else{
-			Toast.makeText(FormDiagnostic.this, "Alguma pergunta não foi respondida. Favor responder todas as perguntas.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(FormDiagnostic.this, "Por favor responda todas as perguntas.", Toast.LENGTH_SHORT).show();
 
 		}
 		
@@ -116,8 +112,6 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 
 	/**
 	 * O método é chamado ao clicar em uma resposta, armazenando o valor em array
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param group - instância do RadioGroup
 	 * @param checkedId - índice da resposta selecionada
 	 * @return void
@@ -129,8 +123,6 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 
 	/**
 	 * Método responsável por montar as questões do questionário dinamicamente
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return void
 	 */
 	public void montarQuest() {

@@ -65,8 +65,6 @@ public class Node{
 
 		/**
 		 * Método que constrói uma Uri para um nó específico, com seu id
-		 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-		 * @author Dyego Carlos (dyego12345@gmail.com)
 		 * @param id - identificador da respostas de nó
 		 * @return uriNode
 		 */
