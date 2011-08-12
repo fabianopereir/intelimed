@@ -19,8 +19,8 @@ public class EvidenceAnswersScript extends EvidenceAnswersDao{
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public EvidenceAnswersScript(Context ctx) {
-		dbHelper = new DatabaseHelper(ctx, StructureQuestionnaireScript.NOME_BANCO, StructureQuestionnaireScript.VERSAO_BANCO,
-				StructureQuestionnaireScript.getScriptDatabaseCreate(), StructureQuestionnaireScript.getScriptDatabaseDelete());
+		dbHelper = new DatabaseHelper(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
+				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
 		db = dbHelper.getWritableDatabase();
 	}
 

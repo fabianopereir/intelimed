@@ -29,7 +29,7 @@ import android.widget.LinearLayout.LayoutParams;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class DiagnosticResult extends Activity implements OnCheckedChangeListener {
+public class Result extends Activity implements OnCheckedChangeListener {
 
 	private String result;
 	private String[] answer;
