@@ -1,12 +1,13 @@
 package nutes.intelimed.controller.activity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import nutes.intelimed.controller.deusdara.BlackBox;
 import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.IModelStructureQuestionnaire;
-import nutes.intelimed.model.StructureQuestionnaireScript;
+import nutes.intelimed.model.BaseScript;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 
 import org.json.JSONArray;
@@ -20,7 +21,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
@@ -47,7 +50,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionnaire_asma);
 
-		dao = (IModelStructureQuestionnaire) new StructureQuestionnaireScript(
+		dao = (IModelStructureQuestionnaire) new BaseScript(
 				this);
 
 		montarQuest();
@@ -63,7 +66,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 	};
 	
 	/**
-	 * Método responsável pela validação das respostas e passagem para DiagnosticResult, 
+	 * Método responsável pela validação das respostas e passagem para Result, 
 	 * chamado quando o botão "OK" é clicado
 	 * @return void
 	 */
@@ -98,7 +101,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 		}
 		
 		if(stringListWithouNull.size() == stringListWithouNullNO.size()){
-			Intent it = new Intent(getBaseContext(), DiagnosticResult.class);
+			Intent it = new Intent(getBaseContext(), Result.class);
 			it.putExtra("answer",arrQuest);
 			it.putExtra("no",arrNO);
 			it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
@@ -141,7 +144,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 		for (int i = 0; i < arrayQuestion.size(); i++) {
 			aux = i;
 			vAux = arrayQuestion.get(aux);
-			linerLayout.addView(treeQ.createQuestionLabel(arrayQuestion.get(i).getDescricao_no(), arrayQuestion.get(i).getIdno(), this));
+			linerLayout.addView(createQuestionLabel(arrayQuestion.get(i).getDescricao_no(), arrayQuestion.get(i).getIdno(), this));
 
 			while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
 				option = new AnswerOption();
@@ -155,12 +158,57 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 				}
 			}
 			aux2++;
-			linerLayout.addView(treeQ.createQuestionOption(questionOption,aux2, this));
+			linerLayout.addView(createQuestionOption(questionOption,aux2, this));
 			arrNO[aux2] = Integer.toString(arrayQuestion.get(aux - 1).getFk_idno());
 			questionOption.clear();
 			i = aux - 1;
 		}
 
+	}
+	
+	/**
+	 * Monta uma questão específica
+	 * @param pergunta - pergunta que se deseja imprimir na tela
+	 * @param idno - identificador da pergunta
+	 * @param formDiagnostic - tela de questionário
+	 * @return TextView com uma questão específica
+	 */
+	public TextView createQuestionLabel(String pergunta, long idno,
+			FormDiagnostic formDiagnostic) {
+		TextView perguntas = null;
+		perguntas = new TextView(formDiagnostic);
+		perguntas.setId((int) idno);
+		perguntas.setText(pergunta);
+
+		return perguntas;
+	}
+	
+	/**
+	 * Monta as opções de respostas de uma questão específica
+	 * @param questionOption - array de respostas
+	 * @param radioId - identificador da pergunta
+	 * @param idno - identificador da pergunta
+	 * @param formDiagnostic - tela de questionário
+	 * @return View com radio group de um questão específica
+	 */
+	public View createQuestionOption(ArrayList<AnswerOption> questionOption,
+			int radioId, FormDiagnostic formDiagnostic) {
+
+		RadioGroup radio_group = new RadioGroup(formDiagnostic);
+		radio_group.setTag(radioId);
+		RadioButton radio_button;
+		Iterator<AnswerOption> option = questionOption.iterator();
+		while (option.hasNext()) {
+			AnswerOption nextOption = option.next();
+			radio_button = new RadioButton(formDiagnostic);
+			radio_button.setId(nextOption.codeResposta);
+			radio_button.setTag(nextOption.fk_idno);
+			radio_button.setText(nextOption.resposta);
+			radio_group.addView(radio_button);
+		}
+		radio_group.setOnCheckedChangeListener(formDiagnostic);
+
+		return radio_group;
 	}
 
 	@Override

@@ -10,7 +10,12 @@ import nutes.intelimed.model.helper.DatabaseHelper;
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  */
-public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
+public class BaseScript extends StructureQuestionnaireDao{
+	
+	public static final String NOME_BANCO = "caixapreta";
+	public static final int VERSAO_BANCO = 8;
+	
+	private DatabaseHelper dbHelper;
 	
 	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {
 		"DROP TABLE IF EXISTS no;",
@@ -46,18 +51,15 @@ public class StructureQuestionnaireScript extends StructureQuestionnaireDao{
 		"insert into aresta(fk_idno, fk_idresposta) values(5,6);",
 		"insert into aresta(fk_idno, fk_idresposta) values(4,7);"
 	};
-	public static final String NOME_BANCO = "caixapreta";
-	public static final int VERSAO_BANCO = 6;
 	
-	private DatabaseHelper dbHelper;
 
 	/**
 	 * Cria o banco de dados com um script SQL
 	 * @param ctx - contexto que será criado o banco
 	 */
-	public StructureQuestionnaireScript(Context ctx) {
-		dbHelper = new DatabaseHelper(ctx, StructureQuestionnaireScript.NOME_BANCO, StructureQuestionnaireScript.VERSAO_BANCO,
-				StructureQuestionnaireScript.getScriptDatabaseCreate(), StructureQuestionnaireScript.getScriptDatabaseDelete());
+	public BaseScript(Context ctx) {
+		dbHelper = new DatabaseHelper(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
+				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
 
 		db = dbHelper.getWritableDatabase();
 	}
