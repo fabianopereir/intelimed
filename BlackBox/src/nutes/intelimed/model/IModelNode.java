@@ -8,7 +8,6 @@ import nutes.intelimed.model.entity.Node;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-
 public interface IModelNode {
 	public abstract Node searchNode(Long fk_idno);
 	public abstract void fechar();

@@ -35,8 +35,6 @@ public class EvidenceDao implements IModelEvidence {
 
 	/**
 	 * Insere nova evidência no banco
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param Evidence - evidência a ser inserida no banco
 	 * @return id da evidência
 	 */
@@ -52,8 +50,6 @@ public class EvidenceDao implements IModelEvidence {
 	
 	/**
 	 * Captura cursor
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @return Cursor - cursor para consulta ao banco de dados
 	 */
 	public Cursor getCursor() {
@@ -70,8 +66,6 @@ public class EvidenceDao implements IModelEvidence {
 	/**
 	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
 	 *    Utilizado pelo Content Provider da evidência
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param queryBuilder
 	 * @param projection - condição de projeção
 	 * @param selection - condição de seleção
