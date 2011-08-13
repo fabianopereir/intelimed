@@ -47,8 +47,8 @@ public class EdgeDao implements IModelEdge {
 	
 	/**
 	  * Busca uma aresta na base de dados
-	  * @param Long codeResposta (código da resposta)
-	  * @return edge 
+	  * @param codeResposta -  código da resposta
+	  * @return aresta 
 	  */
 	@Override
 	public Edge searchEdge(Long codeResposta) {

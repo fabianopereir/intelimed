@@ -28,7 +28,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 /**
- * Classe responsável pela montagem do formulário de diagnóstico na tela
+ * Classe responsável por montar o diagnóstico na tela e validação das opções de respostas
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
@@ -40,7 +40,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 	private Button validar;
 	private String[] arrQuest;
 	private String[] arrNO;
-	private JSONArray arrayJason;
+	private JSONArray arrJason;
 	private BlackBox treeQ;
 	private JSONObject treeObj;
 	private LinearLayout linerLayout;
@@ -71,7 +71,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 	 * @return void
 	 */
 	public void validar() {
-		arrayJason = new JSONArray();
+		arrJason = new JSONArray();
 		treeObj = new JSONObject();
 		int cont = 1;
 		treeQ = new BlackBox(getBaseContext());
@@ -81,7 +81,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			arrayJason.put(arrQuest[i]);
+			arrJason.put(arrQuest[i]);
 			cont++;
 		}
 
@@ -104,7 +104,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 			Intent it = new Intent(getBaseContext(), Result.class);
 			it.putExtra("answer",arrQuest);
 			it.putExtra("no",arrNO);
-			it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrayJason, treeObj,arrNO));
+			it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrJason, treeObj,arrNO));
 			startActivity(it);
 		}else{
 			Toast.makeText(FormDiagnostic.this, "Por favor responda todas as perguntas.", Toast.LENGTH_SHORT).show();

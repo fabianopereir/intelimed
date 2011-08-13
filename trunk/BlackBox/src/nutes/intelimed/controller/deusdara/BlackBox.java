@@ -1,10 +1,5 @@
 package nutes.intelimed.controller.deusdara;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import nutes.intelimed.controller.activity.FormDiagnostic;
-import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.EdgeScript;
 import nutes.intelimed.model.IModelEdge;
 import nutes.intelimed.model.IModelNode;
@@ -16,13 +11,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 /**
- * Classe controladora das activities, reponsável pela engine inteligente
+ * Classe responsável 
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
@@ -42,18 +33,14 @@ public class BlackBox {
 	}
 
 	/**
-	 * Método que processa resultado
+	 * Método responsável por percorrer a árvore de decisão e retornar o diagnóstico
 	 * @param arrQuest - array de respostas
-	 * @param arrNO
 	 * @param arrayJason - array de respostas em JSON
 	 * @param treeObj - objeto JSON com respostas
-	 * @param context
-	 * @param edgeDao2
-	 * @return String com questões e suas respectivas respostas
-	 *         marcadas
+	 * @param arrNO - array de nós
+	 * @return resultado do diagnóstico, tipo String
 	 */
-	public String controlTree(String[] arrQuest, JSONArray arrayJason,
-			JSONObject treeObj, String[] arrNO) {
+	public String controlTree(String[] arrQuest, JSONArray arrayJason,JSONObject treeObj, String[] arrNO) {
 		String res = null;
 		entEdge = new Edge();
 		node = new Node();

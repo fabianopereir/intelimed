@@ -36,8 +36,6 @@ public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 
 	/**
 	 * Insere nova evidência no banco
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param EvidenceAnswers - respostas da evidência a ser inserida no banco
 	 * @return id - identificador de evidência
 	 */
@@ -53,9 +51,7 @@ public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 	}
 	
 	/**
-	  * Método responsável pela captura do cursor
-	  * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	  * @author Dyego Carlos (dyego12345@gmail.com) 
+	  * Método responsável pela captura do cursor 
 	  * @return Cursor - cursor para consulta ao banco de dados
 	  */
 	public Cursor getCursor() {
@@ -72,8 +68,6 @@ public class EvidenceAnswersDao implements IModelEvidenceAnswers {
 	/**
 	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
 	 *    Utilizado pelo Content Provider de respostas de evidência
-	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
-	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * @param queryBuilder
 	 * @param projection - condição de projeção
 	 * @param selection - condição de seleção
