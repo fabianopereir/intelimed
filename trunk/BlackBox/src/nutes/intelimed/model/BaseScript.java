@@ -12,8 +12,6 @@ import nutes.intelimed.model.helper.DatabaseHelper;
  */
 public class BaseScript extends StructureQuestionnaireDao{
 	
-	public static final String NOME_BANCO = "caixapreta";
-	public static final int VERSAO_BANCO = 8;
 	
 	private DatabaseHelper dbHelper;
 	
