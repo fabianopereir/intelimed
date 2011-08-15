@@ -1,7 +1,7 @@
 package nutes.intelimed.controller.util;
 
 /**
- * Classe útil para o tratamento das opções de respostas
+ * Classe útil para o tratamento das opções de respostas de cada pergunta
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 

@@ -9,7 +9,7 @@ import android.content.ContentValues;
 import android.content.Context;
 
 /**
- * Classe responsável por realizar consultas em banco na tabela de evidências
+ * Classe responsável por realizar manipulação em banco na tabela de evidências
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  */

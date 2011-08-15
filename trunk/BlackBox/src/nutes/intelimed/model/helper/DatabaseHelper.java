@@ -20,11 +20,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	/**
 	 * Método construtor - Cria uma instância de DatabaseHelper
-	 * @param context
-	 * @param nomeBanco nome do banco de dados
-	 * @param versaoBanco versão do banco de dados (se for diferente atualiza)
-	 * @param scriptSQLCreate SQL com o create table..
-	 * @param scriptDatabaseDelete SQL com o drop table...
+	 * @param context - contexto onde será usado os dados do banco de dados
+	 * @param nomeBanco - nome do banco de dados
+	 * @param versaoBanco - versão do banco de dados (se for diferente atualiza)
+	 * @param scriptSQLCreate - SQL com o create table
+	 * @param scriptDatabaseDelete - SQL com o drop table
 	 */
 	public DatabaseHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
 		super(context, nomeBanco, null, versaoBanco);

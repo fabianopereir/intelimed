@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import nutes.intelimed.controller.IBlackBox;
 import nutes.intelimed.controller.deusdara.BlackBox;
 import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.IModelStructureQuestionnaire;
@@ -36,12 +37,12 @@ import android.widget.Toast;
 public class FormDiagnostic extends Activity implements OnCheckedChangeListener {
 
 	public static IModelStructureQuestionnaire dao;
-
+	public static IBlackBox treeQ;
+	
 	private Button validar;
 	private String[] arrQuest;
 	private String[] arrNO;
 	private JSONArray arrJason;
-	private BlackBox treeQ;
 	private JSONObject treeObj;
 	private LinearLayout linerLayout;
 
@@ -74,7 +75,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 		arrJason = new JSONArray();
 		treeObj = new JSONObject();
 		int cont = 1;
-		treeQ = new BlackBox(getBaseContext());
+		treeQ = (IBlackBox) new BlackBox(getBaseContext());
 		for (int i = 0; i < arrQuest.length; i++) {
 			try {
 				treeObj.put("Q" + cont, arrQuest[i]);
@@ -131,7 +132,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 	public void montarQuest() {
 
 		ArrayList<StructureQuestionnaire> arrayQuestion = (ArrayList<StructureQuestionnaire>) dao.listarEstruturaQuestionario();
-		treeQ = new BlackBox(getBaseContext());
+		treeQ = (IBlackBox) new BlackBox(getBaseContext());
 		linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
 		ArrayList<AnswerOption> questionOption = new ArrayList<AnswerOption>();
 

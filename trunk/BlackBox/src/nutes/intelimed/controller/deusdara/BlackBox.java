@@ -1,5 +1,6 @@
 package nutes.intelimed.controller.deusdara;
 
+import nutes.intelimed.controller.IBlackBox;
 import nutes.intelimed.model.EdgeScript;
 import nutes.intelimed.model.IModelEdge;
 import nutes.intelimed.model.IModelNode;
@@ -13,12 +14,12 @@ import org.json.JSONObject;
 import android.content.Context;
 
 /**
- * Classe responsável 
+ * Classe responsável pelo engenho inteligente
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class BlackBox {
+public class BlackBox implements IBlackBox {
 
 	public static IModelEdge edgeDao;
 	public static IModelNode nodeDao;

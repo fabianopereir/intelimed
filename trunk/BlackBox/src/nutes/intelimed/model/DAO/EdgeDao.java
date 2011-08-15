@@ -26,7 +26,7 @@ public class EdgeDao extends GenericDao implements IModelEdge {
 	
 	/**
 	  * Busca uma aresta na base de dados
-	  * @param codeResposta -  código da resposta
+	  * @param codeResposta - código da resposta
 	  * @return aresta 
 	  */
 	@Override
