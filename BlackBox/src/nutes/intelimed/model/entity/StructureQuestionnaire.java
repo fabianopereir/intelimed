@@ -79,7 +79,6 @@ public class StructureQuestionnaire {
 	 * Classe interna necessária para Content Provider de estrutura de questionário
 	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
 	 * @author Dyego Carlos (dyego12345@gmail.com)
-	 * Classe interna necessária para Content Provider de estrutura de questionário
 	 */
 	public static final class StructureQuestionnaireAll implements BaseColumns {
 		

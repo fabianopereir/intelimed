@@ -7,7 +7,6 @@ import nutes.intelimed.model.entity.Edge;
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)	
  * 
- * 
  */
 
 public interface IModelEdge {

@@ -115,7 +115,7 @@ public class Result extends Activity implements OnCheckedChangeListener {
 	}
 	
 	/**
-	 * Método responsável por criar dinamicamente radio group da tela de resultado
+	 * Método responsável por criar radio group da tela de resultado
 	 * @return RadioGroup com 2 radioButtons criados dinamicamente
 	 */
 	private RadioGroup createRadioButton() {
