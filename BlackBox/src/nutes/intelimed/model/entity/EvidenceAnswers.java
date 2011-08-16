@@ -11,13 +11,13 @@ import android.provider.BaseColumns;
  */
 public class EvidenceAnswers {
 	private Long idevidencia_respostas;
-	private Long fk_idno;
+	
 	private Long fk_idevidencia;
 	private Long fk_idresposta;
 
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { EvidenceAnswersTable.IDEVIDENCIARESPOSTAS,
-													EvidenceAnswersTable.FK_IDNO,
+		
 													EvidenceAnswersTable.FK_IDEVIDENCIA, 
 													EvidenceAnswersTable.FK_IDRESPOSTA };
 
@@ -35,15 +35,7 @@ public class EvidenceAnswers {
 
 
 
-	public Long getFk_idno() {
-		return fk_idno;
-	}
-
-
-
-	public void setFk_idno(Long fk_idno) {
-		this.fk_idno = fk_idno;
-	}
+	
 
 
 
@@ -92,7 +84,7 @@ public class EvidenceAnswers {
 		public static final String DEFAULT_SORT_ORDER = "idevidencia_respostas ASC";
 
 		public static final String IDEVIDENCIARESPOSTAS = "idevidencia_respostas";
-		public static final String FK_IDNO = "fk_idno";
+		
 		public static final String FK_IDEVIDENCIA = "fk_idevidencia";
 		public static final String FK_IDRESPOSTA = "fk_idresposta";
 

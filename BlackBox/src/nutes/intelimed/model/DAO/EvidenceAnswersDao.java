@@ -31,7 +31,7 @@ public class EvidenceAnswersDao extends GenericDao implements IModelEvidenceAnsw
 	public long insertEvidenceAnswers(EvidenceAnswers evidenceAnswers) {
 		ContentValues values = new ContentValues();
 		values.put(EvidenceAnswersTable.FK_IDEVIDENCIA, evidenceAnswers.getFk_idevidencia());
-		values.put(EvidenceAnswersTable.FK_IDNO, evidenceAnswers.getFk_idno());
+
 		values.put(EvidenceAnswersTable.FK_IDRESPOSTA, evidenceAnswers.getFk_idResposta());
 		
 		
