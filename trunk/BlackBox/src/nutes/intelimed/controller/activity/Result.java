@@ -159,18 +159,17 @@ public class Result extends Activity implements OnCheckedChangeListener {
 		for (int i=0; i<answerData.length; i++)
 		{
 			if (noData[i]!=null && answerData[i]!=null)
-			{
-				
+			{	
 				evidenceAnswer.setFk_idevidencia(idevidencia);
-				evidenceAnswer.setFk_idno(Long.parseLong(noData[i]));
+				/*
+				 * Não Implementado
+				 * evidenceAnswer.setFk_idno(Long.parseLong(noData[i]));
+				 */
 				evidenceAnswer.setFk_idResposta(Long.parseLong(answerData[i]));
 
 				daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);
-			}
-				
+			}		
 		}
-		
-		
 	}
 
 }

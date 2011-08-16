@@ -28,7 +28,7 @@ public class BaseScript extends StructureQuestionnaireDao{
 		"create table resposta(idresposta integer primary key autoincrement, descricao_resposta varchar(255), fk_idno integer, code_resposta integer, Foreign Key (fk_idno) references no(idno));",
 		"create table aresta(idaresta integer primary key autoincrement, fk_idno integer,  fk_idresposta integer, Foreign Key (fk_idno) references no(idno), Foreign Key (fk_idresposta) references resposta(idresposta));",
 		"create table evidencia(idevidencia integer primary key autoincrement, sistema varchar(5),  medico varchar(5), justificativa varchar(255));",
-		"create table evidencia_respostas(idevidencia_respostas integer primary key autoincrement, fk_idresposta integer, fk_idno integer,  fk_idevidencia integer, Foreign Key (fk_idno) references no(idno), Foreign Key (fk_idevidencia) references evidencia(idevidencia), Foreign Key (fk_idresposta) references resposta(idresposta));",
+		"create table evidencia_respostas(idevidencia_respostas integer primary key autoincrement, fk_idresposta integer, fk_idevidencia integer, Foreign Key (fk_idevidencia) references evidencia(idevidencia), Foreign Key (fk_idresposta) references resposta(idresposta));",
 		"insert into no(descricao_no, diagnostico) values('OUTLOOK',0);",
 		"insert into no(descricao_no, diagnostico) values('HUMIDITY',0);",
 		"insert into no(descricao_no, diagnostico) values('WIND',0);",
