@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import nutes.intelimed.R;
 import nutes.intelimed.controller.IBlackBox;
 import nutes.intelimed.controller.deusdara.BlackBox;
 import nutes.intelimed.controller.util.AnswerOption;
@@ -51,8 +52,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionnaire_asma);
 
-		dao = (IModelStructureQuestionnaire) new BaseScript(
-				this);
+		dao = (IModelStructureQuestionnaire) new BaseScript(this);
 
 		montarQuest();
 
@@ -199,6 +199,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 		radio_group.setTag(radioId);
 		RadioButton radio_button;
 		Iterator<AnswerOption> option = questionOption.iterator();
+		
 		while (option.hasNext()) {
 			AnswerOption nextOption = option.next();
 			radio_button = new RadioButton(formDiagnostic);

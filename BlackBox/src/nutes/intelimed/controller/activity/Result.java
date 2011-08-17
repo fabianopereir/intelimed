@@ -1,6 +1,7 @@
 package nutes.intelimed.controller.activity;
 
 
+import nutes.intelimed.R;
 import nutes.intelimed.model.EvidenceAnswersScript;
 import nutes.intelimed.model.EvidenceScript;
 import nutes.intelimed.model.IModelEvidence;
@@ -161,7 +162,7 @@ public class Result extends Activity implements OnCheckedChangeListener {
 			if (noData[i]!=null && answerData[i]!=null)
 			{	
 				evidenceAnswer.setFk_idevidencia(idevidencia);
-				
+
 				evidenceAnswer.setFk_idResposta(Long.parseLong(answerData[i]));
 
 				daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);

@@ -1,7 +1,8 @@
-package nutes.intelimed.controller.activity;
+package nutes.intelimed.communication;
 
+import nutes.intelimed.R;
 import nutes.intelimed.communication.helper.Http;
-import nutes.intelimed.controller.activity.R;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
