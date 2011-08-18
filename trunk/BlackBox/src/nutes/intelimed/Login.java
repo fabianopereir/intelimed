@@ -16,11 +16,13 @@ import android.widget.TextView;
 
 public class Login extends Activity implements OnClickListener,Runnable {
 
-	protected static final String CATEGORIA = "livro";
-	protected static final String URL = "http://10.0.2.2:8080/livro_android/arquivo.txt";
+	protected static final String CATEGORIA = "nutes";
+	protected static final String URL = "http://10.0.2.2:8080/livro_android/arvore.txt";
 	//Handler utilizado para atualizar a View
 	private Handler handler = new Handler();
 	private ProgressDialog dialog;
+	
+	private ParserSimulation parserJason;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -32,7 +34,7 @@ public class Login extends Activity implements OnClickListener,Runnable {
 		b.setOnClickListener(this);
 	}
 	public void onClick(View view) {
-		dialog = ProgressDialog.show(this,"Exemplo", "Buscando texto, por favor aguarde...", false,true);
+		dialog = ProgressDialog.show(this,"InteliMED", "Efetuando login...", false,true);
 
 		//faz download em uma Thread
 		new Thread(this).start();
@@ -49,6 +51,9 @@ public class Login extends Activity implements OnClickListener,Runnable {
 				public void run() {
 					TextView text = (TextView) findViewById(R.id.texto);
 					text.setText(arquivo);
+					parserJason = new ParserSimulation();
+					parserJason.parserJson(arquivo);
+					
 					Intent it = new Intent(getBaseContext(), FormDiagnostic.class);
 					startActivity(it);
 				}

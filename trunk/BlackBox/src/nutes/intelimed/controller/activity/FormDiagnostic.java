@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import nutes.intelimed.R;
-import nutes.intelimed.controller.IBlackBox;
-import nutes.intelimed.controller.deusdara.BlackBox;
 import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.IModelStructureQuestionnaire;
 import nutes.intelimed.model.BaseScript;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
+import nutes.intelimed.service.BlackBox;
+import nutes.intelimed.service.IBlackBox;
 
 import org.json.JSONArray;
 import org.json.JSONException;

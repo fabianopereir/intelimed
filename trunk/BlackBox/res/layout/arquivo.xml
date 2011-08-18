@@ -6,7 +6,7 @@
 	<Button
 		android:id="@+id/btDownload"
 		android:layout_width="wrap_content" android:layout_height="wrap_content" 
-		android:text="Fazer Download"
+		android:text="Efetuar Login"
 	/>
 	<View 	
 		android:layout_height="1dip" android:layout_width="fill_parent" 
