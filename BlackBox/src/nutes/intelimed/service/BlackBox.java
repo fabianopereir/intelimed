@@ -1,6 +1,5 @@
-package nutes.intelimed.controller.deusdara;
+package nutes.intelimed.service;
 
-import nutes.intelimed.controller.IBlackBox;
 import nutes.intelimed.model.EdgeScript;
 import nutes.intelimed.model.IModelEdge;
 import nutes.intelimed.model.IModelNode;

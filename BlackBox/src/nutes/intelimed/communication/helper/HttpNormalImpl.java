@@ -19,7 +19,7 @@ import android.util.Log;
  * 
  */
 public class HttpNormalImpl extends Http {
-	private final String CATEGORIA = "livro";
+	private final String CATEGORIA = "nutes";
 
 	@Override
 	public final String downloadArquivo(String url) {

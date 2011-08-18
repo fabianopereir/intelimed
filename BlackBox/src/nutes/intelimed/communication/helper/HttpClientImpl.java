@@ -33,7 +33,7 @@ import android.util.Log;
  * 
  */
 public class HttpClientImpl extends Http {
-	private final String CATEGORIA = "livro";
+	private final String CATEGORIA = "nutes";
 
 	@Override
 	public final String downloadArquivo(String url) {
