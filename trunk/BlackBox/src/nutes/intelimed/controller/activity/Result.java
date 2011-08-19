@@ -168,6 +168,7 @@ public class Result extends Activity implements OnCheckedChangeListener {
 				daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);
 			}		
 		}
+		
 	}
 
 }

@@ -42,7 +42,7 @@ public class StructureQuestionnaireDao extends GenericDao implements IModelStruc
 	}
 	
 	/**
-	 *  Lista toda a estrutura do questionário (perguntas e alternativas)
+	 * Lista toda a estrutura do questionário (perguntas e alternativas)
 	 * @return List<StructureQuestionnaire> 
 	 */
 	public List<StructureQuestionnaire> listarEstruturaQuestionario() {

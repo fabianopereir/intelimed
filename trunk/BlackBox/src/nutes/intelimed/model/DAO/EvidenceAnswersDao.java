@@ -1,12 +1,11 @@
 package nutes.intelimed.model.DAO;
 
-
-
 import nutes.intelimed.model.IModelEvidenceAnswers;
 import nutes.intelimed.model.entity.EvidenceAnswers;
 import nutes.intelimed.model.entity.EvidenceAnswers.EvidenceAnswersTable;
 import android.content.ContentValues;
 import android.content.Context;
+
 
 /**
  * Classe responsável por realizar manipulação em banco na tabela de evidências

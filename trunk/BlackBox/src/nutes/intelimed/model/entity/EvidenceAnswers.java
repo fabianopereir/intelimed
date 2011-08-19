@@ -23,13 +23,13 @@ public class EvidenceAnswers {
 
 	
 
-	public Long getIdvidencia_respostas() {
+	public Long getIdevidencia_respostas() {
 		return idevidencia_respostas;
 	}
 
 
 
-	public void setIdvidencia_respostas(Long idevidencia_respostas) {
+	public void setIdevidencia_respostas(Long idevidencia_respostas) {
 		this.idevidencia_respostas = idevidencia_respostas;
 	}
 
