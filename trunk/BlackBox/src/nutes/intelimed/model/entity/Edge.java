@@ -21,7 +21,7 @@ public class Edge {
 	public Long getIdaresta() {
 		return idaresta;
 	}
-
+	
 	public void setIdaresta(Long idaresta) {
 		this.idaresta = idaresta;
 	}
