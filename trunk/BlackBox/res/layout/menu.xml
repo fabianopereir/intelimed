@@ -8,17 +8,22 @@
 	android:layout_height="match_parent">
 	
 	<include layout="@layout/navbar" />
-
-	<ScrollView
+	
+	<LinearLayout
 		android:layout_height="fill_parent"
 		android:layout_width="fill_parent"
-		android:id="@+id/ScrollView01">
-		<LinearLayout
-			android:layout_height="fill_parent"
-			android:layout_width="fill_parent"
-			android:id="@+id/ResultLinearLayout02"
-			android:orientation="vertical">
+		android:id="@+id/LinearLayout02"
+		android:orientation="vertical">
+		<Button
+			android:id="@+id/btDiagnostico"
+			android:layout_width="fill_parent" android:layout_height="wrap_content" 
+			android:text="Diagnóstico"
+		/>
+		<Button
+			android:id="@+id/btSincronizarDados"
+			android:layout_width="fill_parent" android:layout_height="wrap_content" 
+			android:text="Sincronizar Dados"
+		/>
 	</LinearLayout>
-	</ScrollView>
 
 </LinearLayout>

@@ -1,7 +1,7 @@
 package nutes.intelimed;
 
 import nutes.intelimed.communication.helper.Http;
-import nutes.intelimed.controller.activity.FormDiagnostic;
+import nutes.intelimed.controller.activity.Menu;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,7 +14,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class Login extends Activity implements OnClickListener,Runnable {
+/**
+ * Classe responsável por realizar download da árvore do servidor
+ *  
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
+ * 
+ */
+public class Login extends Activity implements OnClickListener, Runnable {
 
 	protected static final String CATEGORIA = "nutes";
 	protected static final String URL = "http://10.0.2.2:8080/livro_android/arvore.txt";
@@ -33,12 +40,14 @@ public class Login extends Activity implements OnClickListener,Runnable {
 		Button b = (Button) findViewById(R.id.btDownload);
 		b.setOnClickListener(this);
 	}
+	
 	public void onClick(View view) {
 		dialog = ProgressDialog.show(this,"InteliMED", "Efetuando login...", false,true);
 
 		//faz download em uma Thread
 		new Thread(this).start();
 	}
+	
 	public void run() {
 		try {
 			// faz o download
@@ -54,7 +63,7 @@ public class Login extends Activity implements OnClickListener,Runnable {
 					parserJason = new ParserSimulation();
 					parserJason.parserJson(arquivo);
 					
-					Intent it = new Intent(getBaseContext(), FormDiagnostic.class);
+					Intent it = new Intent(getBaseContext(), Menu.class);
 					startActivity(it);
 				}
 			});
