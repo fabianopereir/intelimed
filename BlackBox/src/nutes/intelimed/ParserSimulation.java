@@ -4,18 +4,28 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.array;
 
-
+/**
+ * Classe responsável por simular parser para leitura do json da árvore
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
+ * 
+ */
 public class ParserSimulation {
 	private JSONObject jObject;
 	
 	//private String jString = "{\"menu\":	{\"id\": \"file\", \"value\": \"File\", \"popup\": { \"menuitem\": [ {\"value\": \"New\", \"onclick\": \"CreateNewDoc()\"}, {\"value\": \"Open\", \"onclick\": \"OpenDoc()\"}, {\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}]}}}";
 	private String jString = "{'menu':	{'id': 'file', 'value': 'File', 'popup': { 'menuitem': [ {'value': 'New', 'onclick': 'CreateNewDoc()'}, {'value': 'Open', 'onclick': 'OpenDoc()'}, {'value': 'Close', 'onclick': 'CloseDoc()'}]}}}";
+	
 	public ParserSimulation()
 	{
 		
 	}
+	/**
+	 * Método responsável por simular parser para leitura do json
+	 * @param String - arquivo do servidor
+	 * @return void
+	 */
 	public void parserJson(String arquivo)
 	{
 		//JSONObject teste = new JSONObject();

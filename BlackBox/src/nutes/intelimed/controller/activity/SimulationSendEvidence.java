@@ -15,52 +15,58 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
 
+/**
+ * Classe responsável por simular o envio de evidências ao servidor
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
+ * 
+ */
 public class SimulationSendEvidence extends Activity {
 
 
-	private LinearLayout layout;
+        private LinearLayout layout;
 
-	private IModelEvidenceToServer daoEvidenceToServer;
+        private IModelEvidenceToServer daoEvidenceToServer;
 
-	public void onCreate(Bundle icicle) {
+        public void onCreate(Bundle icicle) {
 
-		super.onCreate(icicle);
+                super.onCreate(icicle);
 
-		layout = new LinearLayout(this);
-		layout.setOrientation(LinearLayout.VERTICAL);
-		layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-				LayoutParams.FILL_PARENT));
-		layout.setBackgroundResource(R.drawable.gradientbg);
+                layout = new LinearLayout(this);
+                layout.setOrientation(LinearLayout.VERTICAL);
+                layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+                                LayoutParams.FILL_PARENT));
+                layout.setBackgroundResource(R.drawable.gradientbg);
 
-		daoEvidenceToServer = (IModelEvidenceToServer) new EvidenceToServerScript(this);
-		
-		Button validar = new Button(this);
-		validar.setText("OK");
-		layout.addView(validar);
-		validar.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				validar();
-			}
-		});
-		setContentView(layout);
-	}
+                daoEvidenceToServer = (IModelEvidenceToServer) new EvidenceToServerScript(this);
+                
+                Button validar = new Button(this);
+                validar.setText("OK");
+                layout.addView(validar);
+                validar.setOnClickListener(new OnClickListener() {
+                        public void onClick(View v) {
+                                validar();
+                        }
+                });
+                setContentView(layout);
+        }
 
-	/**
-	 * Método responsável por preparar o conteúdo a ser enviado ao servidor, 
-	 * chamado quando o botão "OK" é clicado
-	 * @return void
-	 */
-	public void validar() {
-		ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
-	
-		String result = "";
-	    if (arrayData.size() > 0) {
-	        for (int i=0; i<arrayData.size(); i++) {
-	            result = result + "\n" + arrayData.get(i).getFk_idno();
-	        }
-	    }
-		
-		Toast.makeText(SimulationSendEvidence.this, result, Toast.LENGTH_SHORT).show();
-		
-	}
+        /**
+         * Método responsável por preparar o conteúdo a ser enviado ao servidor, 
+         * chamado quando o botão "OK" é clicado
+         * @return void
+         */
+        public void validar() {
+                ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
+        
+                String result = "";
+            if (arrayData.size() > 0) {
+                for (int i=0; i<arrayData.size(); i++) {
+                    result = result + "\n" + arrayData.get(i).getFk_idno();
+                }
+            }
+                
+                Toast.makeText(SimulationSendEvidence.this, result, Toast.LENGTH_SHORT).show();
+                
+        }
 }
