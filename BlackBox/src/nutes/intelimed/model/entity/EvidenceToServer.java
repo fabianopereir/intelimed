@@ -108,55 +108,17 @@ public class EvidenceToServer {
 	 * 
 	 */
 	public static final class EvidenceToServerTable implements BaseColumns {
-
-		public static String getIdevidencia() {
-			return IDEVIDENCIA;
-		}
-
-		public static String getSistema() {
-			return SISTEMA;
-		}
-
-		public static String getMedico() {
-			return MEDICO;
-		}
-
-		public static String getIdevidencia_respostas() {
-			return IDEVIDENCIA_RESPOSTAS;
-		}
 		
-		public static String getJustificativa() {
-			return JUSTIFICATIVA;
-		}
-		
-		public static String getFk_idno() {
-			return FK_IDNO;
-		}
-		
-		public static String getIdresposta() {
-			return IDRESPOSTA;
-		}
-		
-		public static String getFk_idresposta() {
-			return FK_IDRESPOSTA;
-		}
-		
-		public static String getFk_idevidencia() {
-			return FK_IDEVIDENCIA;
-		}
-
-
 		private EvidenceToServerTable() {
 		}
 
-		public static final Uri CONTENT_URI = Uri.parse("content://"
-				+ AUTHORITY + "/evidenciasToServer");
+		public static final Uri CONTENT_URI = Uri.parse("content://"+ AUTHORITY + "/evidenciasToServer");
 
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.google.evidenciasToServer";
 
 		public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.google.evidenciasToServer";
 
-		public static final String DEFAULT_SORT_ORDER = "idevidencia ASC";
+		//public static final String DEFAULT_SORT_ORDER = "idevidencia ASC";
 
 		public static final String IDEVIDENCIA = "idevidencia";
 		public static final String SISTEMA = "sistema";
