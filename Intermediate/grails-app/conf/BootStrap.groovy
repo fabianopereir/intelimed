@@ -54,7 +54,7 @@ class BootStrap {
 		def aresta7 = new Aresta(resposta: resposta7).save()
 		
 		def no1 = new No(descricao: 'Outlook', respostas:[resposta1,resposta2,resposta3]).save()
-		def no2 = new No(descricao: 'Humidity', repostas:[resposta4,resposta5], arestasEntrada:[aresta1]).save()
+		def no2 = new No(descricao: 'Humidity', respostas:[resposta4,resposta5], arestasEntrada:[aresta1]).save()
 		def no3 = new No(descricao: 'Wind', respostas:[resposta6,resposta7], arestasEntrada:[aresta3]).save()
 		def no4 = new No(descricao: 'Yes', arestasEntrada:[aresta2, aresta5, aresta7]).save()
 		def no5 = new No(descricao: 'No', arestasEntrada:[aresta4, aresta6]).save()
