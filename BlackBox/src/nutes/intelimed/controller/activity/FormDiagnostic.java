@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import nutes.intelimed.Login;
 import nutes.intelimed.R;
 import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.IModelStructureQuestionnaire;
@@ -22,6 +23,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -47,6 +49,8 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         private JSONObject treeObj;
         private LinearLayout linerLayout;
 
+        private ImageButton back, logout;
+        
         @Override
         public void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
@@ -64,10 +68,34 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                                 validar();
                         }
                 });
+                
+                back = (ImageButton) findViewById(R.bt.btBack);
+        		logout = (ImageButton) findViewById(R.bt.btLogoff);
+                
+                back.setOnClickListener(new OnClickListener() {
+        			
+        			@Override
+        			public void onClick(View v) {
+        				
+        				startActivity(new Intent(getBaseContext(), Menu.class));
+        				//	finish();
+        				
+        			}
+        		});
+                logout.setOnClickListener(new OnClickListener() {
+        			
+        			@Override
+        			public void onClick(View v) {
+        				
+        				startActivity(new Intent(getBaseContext(), Login.class));
+        				//	finish();
+        				
+        			}
+        		});
         };
         
         /**
-         * Método responsável pela validação das respostas e passagem para Result, 
+         * Método responsável pela validação das respostas e passagem para ResultDiagnostic, 
          * chamado quando o botão "OK" é clicado
          * @return void
          */
@@ -102,7 +130,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 }
                 
                 if(stringListWithouNull.size() == stringListWithouNullNO.size()){
-                        Intent it = new Intent(getBaseContext(), Result.class);
+                        Intent it = new Intent(getBaseContext(), ResultDiagnostic.class);
                         it.putExtra("answer",arrQuest);
                         it.putExtra("no",arrNO);
                         it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrJason, treeObj,arrNO));
