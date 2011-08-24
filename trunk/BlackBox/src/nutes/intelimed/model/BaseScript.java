@@ -47,7 +47,9 @@ public class BaseScript extends StructureQuestionnaireDao{
 		"insert into aresta(fk_idno, fk_idresposta) values(5,4);",
 		"insert into aresta(fk_idno, fk_idresposta) values(4,5);",
 		"insert into aresta(fk_idno, fk_idresposta) values(5,6);",
-		"insert into aresta(fk_idno, fk_idresposta) values(4,7);"
+		"insert into aresta(fk_idno, fk_idresposta) values(4,7);",
+		"insert into evidencia(sistema, medico, justificativa) values('yes','no','nao concordo, pq ta errado');",
+		"insert into evidencia_respostas(fk_idresposta, fk_idevidencia) values(1,2);"
 	};
 	
 

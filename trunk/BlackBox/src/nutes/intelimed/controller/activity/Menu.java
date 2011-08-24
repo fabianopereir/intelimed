@@ -1,7 +1,12 @@
 package nutes.intelimed.controller.activity;
 
+import java.util.ArrayList;
+
 import nutes.intelimed.Login;
 import nutes.intelimed.R;
+import nutes.intelimed.model.EvidenceToServerScript;
+import nutes.intelimed.model.IModelEvidenceToServer;
+import nutes.intelimed.model.entity.EvidenceToServer;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 /**
@@ -18,8 +24,10 @@ import android.widget.ImageButton;
  * 
  */
 public class Menu extends Activity{
-	ImageButton back, logout;
+	private ImageButton back, logout;
 	
+    private IModelEvidenceToServer daoEvidenceToServer;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,6 +41,7 @@ public class Menu extends Activity{
         back.setVisibility(ImageButton.GONE);
         logout = (ImageButton) findViewById(R.bt.btLogoff);
         
+        daoEvidenceToServer = (IModelEvidenceToServer) new EvidenceToServerScript(this);
 
         
 		diagnostic.setOnClickListener(new OnClickListener() {
@@ -44,9 +53,10 @@ public class Menu extends Activity{
 		
 		sync.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent it = new Intent(getBaseContext(), SimulationSendEvidence.class);
-				startActivity(it);
+				
+	            ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
 			}
+	            
 		});	
 		
 		

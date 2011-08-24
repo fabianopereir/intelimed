@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".controller.activity.Result" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:name=".controller.activity.ResultDiagnostic" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".controller.activity.Menu" android:label="@string/app_name" >
 		<intent-filter>
 	              <action android:name="android.intent.action.MAIN" />
