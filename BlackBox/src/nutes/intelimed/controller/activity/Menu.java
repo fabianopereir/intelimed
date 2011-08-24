@@ -2,11 +2,17 @@ package nutes.intelimed.controller.activity;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import nutes.intelimed.Login;
 import nutes.intelimed.R;
+import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.EvidenceToServerScript;
 import nutes.intelimed.model.IModelEvidenceToServer;
 import nutes.intelimed.model.entity.EvidenceToServer;
+import nutes.intelimed.model.entity.StructureQuestionnaire;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -53,10 +59,8 @@ public class Menu extends Activity{
 		
 		sync.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				
-	            ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
+				sendData();
 			}
-	            
 		});	
 		
 		
@@ -71,6 +75,109 @@ public class Menu extends Activity{
 			}
 		});
 		
+	}
+	public void sendData()
+	{
+		 ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
+		 int aux;
+         int aux2 = 0;
+         EvidenceToServer vAux;
+         
+		 JSONObject obj1 = new JSONObject();
+		 JSONObject obj2;
+		 JSONObject obj3;
+		 JSONArray arr1 = new JSONArray();
+		 JSONArray arr2 = new JSONArray();
+		 try {
+				
+			/*
+			 //Loop1
+			 obj2 = new JSONObject();
+			 obj2.put("idevidencia_respostas", 1);
+			 obj2.put("idevidencia", 2);
+			 obj2.put("sistema", "sim");
+			 obj2.put("medico", "sim");
+			 obj2.put("justificativa", "");
+			 
+			 //Loop 2
+			 obj3 = new JSONObject();
+			 obj3.put("fk_idno", 3);
+			 obj3.put("idresposta", 4);
+			 arr2.put(obj3);
+			//End Loop 2
+			 
+			 obj2.put("respostas", arr2);
+			 arr1.put(obj2);
+			 
+			//End Loop1
+			 
+			 obj1.put("dados", arr1);
+			 
+			 */
+			 for (int i = 0; i < arrayData.size(); i++) {
+	             aux = i;
+	             vAux = arrayData.get(aux);
+	             
+	             obj2 = new JSONObject();
+				 
+				 obj2.put("idevidencia", arrayData.get(i).getIdevidencia());
+				 obj2.put("sistema", arrayData.get(i).getSistema());
+				 obj2.put("medico", arrayData.get(i).getMedico());
+				 obj2.put("justificativa", arrayData.get(i).getJustificativa());
+				 
+	             while (arrayData.get(i).getIdevidencia() == vAux.getIdevidencia() && aux < arrayData.size()) {
+	                     
+		            	 obj3 = new JSONObject();
+		    			 obj3.put("fk_idno", arrayData.get(aux).getFk_idno());
+		    			 obj3.put("idresposta", arrayData.get(aux).getIdresposta());
+		    			 arr2.put(obj3);
+		    			
+	                     aux++;
+	                     if (aux < arrayData.size()) {
+	                             vAux = arrayData.get(aux);
+	                     }
+	             }
+	             obj2.put("respostas", arr2);
+				 arr1.put(obj2);
+	             aux2++;
+	            
+	             i = aux - 1;
+	         }
+			 obj1.put("dados", arr1);
+			 System.out.println(obj1);
+			
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+        
+         /*int aux;
+         int aux2 = 0;
+         EvidenceToServer vAux;
+         for (int i = 0; i < arrayData.size(); i++) {
+             aux = i;
+             vAux = arrayData.get(aux);
+             System.out.println("IdEvidence: "+arrayData.get(i).getIdevidencia());
+             System.out.println("Sistema: "+arrayData.get(i).getSistema());
+             System.out.println("Medico: "+arrayData.get(i).getMedico());
+             System.out.println("Justificativa: "+arrayData.get(i).getJustificativa());
+             while (arrayData.get(i).getIdevidencia() == vAux.getIdevidencia() && aux < arrayData.size()) {
+                     
+                     System.out.println("IdNO: "+arrayData.get(aux).getFk_idno());
+                     System.out.println("IdResposta: "+arrayData.get(aux).getIdresposta());
+                     aux++;
+                     if (aux < arrayData.size()) {
+                             vAux = arrayData.get(aux);
+                     }
+             }
+             aux2++;
+            
+             i = aux - 1;
+         }*/
+             
+             
 	}
 	
 	@Override

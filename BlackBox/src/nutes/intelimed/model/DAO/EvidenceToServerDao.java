@@ -64,7 +64,6 @@ public class EvidenceToServerDao extends GenericDao implements IModelEvidenceToS
 				
 				EvidenceToServer toServer = new EvidenceToServer();
 				estrutura.add(toServer);
-				System.out.println("Resposta: "+idxIdevidencia_respostas);
 				toServer.setIdevidencia_respostas(c.getLong(idxIdevidencia_respostas));
 				toServer.setFk_idno(c.getLong(idxFkIdNo));
 				toServer.setIdresposta(c.getLong(idxIdresposta));

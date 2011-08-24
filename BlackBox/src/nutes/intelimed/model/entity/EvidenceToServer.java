@@ -118,7 +118,6 @@ public class EvidenceToServer {
 
 		public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.google.evidenciasToServer";
 
-		//public static final String DEFAULT_SORT_ORDER = "idevidencia ASC";
 
 		public static final String IDEVIDENCIA = "idevidencia";
 		public static final String SISTEMA = "sistema";
