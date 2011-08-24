@@ -2,25 +2,24 @@ package nutes.intelimed.controller.activity;
 
 import java.util.ArrayList;
 
+import nutes.intelimed.Login_false;
+import nutes.intelimed.R;
+import nutes.intelimed.model.EvidenceToServerScript;
+import nutes.intelimed.model.IModelEvidenceToServer;
+import nutes.intelimed.model.entity.EvidenceToServer;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import nutes.intelimed.Login;
-import nutes.intelimed.R;
-import nutes.intelimed.controller.util.AnswerOption;
-import nutes.intelimed.model.EvidenceToServerScript;
-import nutes.intelimed.model.IModelEvidenceToServer;
-import nutes.intelimed.model.entity.EvidenceToServer;
-import nutes.intelimed.model.entity.StructureQuestionnaire;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 
 /**
@@ -30,6 +29,8 @@ import android.widget.Toast;
  * 
  */
 public class Menu extends Activity{
+	private ProgressDialog dialog;
+	
 	private ImageButton back, logout;
 	
     private IModelEvidenceToServer daoEvidenceToServer;
@@ -69,7 +70,7 @@ public class Menu extends Activity{
 			@Override
 			public void onClick(View v) {
 				
-				startActivity(new Intent(getBaseContext(), Login.class));
+				startActivity(new Intent(getBaseContext(), Login_false.class));
 				//	finish();
 				
 			}
@@ -78,6 +79,8 @@ public class Menu extends Activity{
 	}
 	public void sendData()
 	{
+		dialog = ProgressDialog.show(this,"InteliMED", "Efetuando login...", false,true);
+		
 		 ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
 		 int aux;
          int aux2 = 0;

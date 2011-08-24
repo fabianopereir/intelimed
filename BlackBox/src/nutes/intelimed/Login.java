@@ -1,76 +1,104 @@
 package nutes.intelimed;
 
-import nutes.intelimed.communication.helper.Http;
-import nutes.intelimed.controller.activity.Menu;
+
+import java.security.NoSuchAlgorithmException;
+
+
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Toast;
 
+
+
+import nutes.intelimed.R;
+import nutes.intelimed.controller.activity.Menu;
+import nutes.intelimed.model.IModelUser;
+import nutes.intelimed.model.MD5Password;
+import nutes.intelimed.model.UserScript;
+import nutes.intelimed.model.entity.User;
 
 /**
- * Classe responsável por realizar download da árvore do servidor
+ * Classe responsável por apresentação da tela de autenticação de usuário
  *  
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class Login extends Activity implements OnClickListener, Runnable {
-
-	protected static final String CATEGORIA = "nutes";
-	protected static final String URL = "http://10.0.2.2:8080/livro_android/arvore.txt";
-	//Handler utilizado para atualizar a View
-	private Handler handler = new Handler();
-	private ProgressDialog dialog;
+public class Login extends Activity implements OnClickListener{
 	
-	private ParserSimulation parserJason;
+	public static IModelUser dao;
+	
+	Button btlogin;
+	EditText user, password;
+	
+	User usuario = new User();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+    	
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
+       
+        dao = new UserScript(this);
+       
+        btlogin = (Button) findViewById(R.bt.btLogin);
+        btlogin.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String Vuser, Vpassword;
+				User userFinal=null;
+				
+				user = (EditText) findViewById(R.campo.user);
+				password = (EditText) findViewById(R.campo.password);
+				
+				Vuser = user.getText().toString();
+				Vpassword = password.getText().toString();
+				try {
+					usuario.setVuser(Vuser);
+					usuario.setVpassword(MD5Password.getPassword(Vpassword));
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				userFinal = dao.login(usuario);
+				if (userFinal!=null)
+				{
+					init();
+				}else{
+					Toast.makeText(Login.this, "Usuário ou senha incorreto!", Toast.LENGTH_SHORT).show();
+				}
+				
+			}
+		}); 
+    }
+    
+    @Override
+	protected void onPause() {
+		super.onPause();
+		setResult(RESULT_CANCELED);
+		// Fecha a tela
+		finish();
+	}
+
+    public void init(){
+    	startActivity(new Intent(this, Login_false.class));
+    }
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		// Fecha o banco
+		dao.fechar();
+	}
 
 	@Override
-	protected void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
-
-		setContentView(R.layout.arquivo);
-
-		Button b = (Button) findViewById(R.id.btDownload);
-		b.setOnClickListener(this);
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public void onClick(View view) {
-		dialog = ProgressDialog.show(this,"InteliMED", "Efetuando login...", false,true);
-
-		//faz download em uma Thread
-		new Thread(this).start();
-	}
-	
-	public void run() {
-		try {
-			// faz o download
-			final String arquivo = Http.getInstance(Http.NORMAL).downloadArquivo(URL);
-
-			Log.i(CATEGORIA,"Texto retornado: " + arquivo);
-
-			//Precisa do Handler para atualizar a view de outra thread
-			handler.post(new Runnable() {
-				public void run() {
-					TextView text = (TextView) findViewById(R.id.texto);
-					text.setText(arquivo);
-					parserJason = new ParserSimulation();
-					parserJason.parserJson(arquivo);
-					
-					Intent it = new Intent(getBaseContext(), Menu.class);
-					startActivity(it);
-				}
-			});
-		} catch (Throwable e) {
-			Log.i(CATEGORIA, e.getMessage(),e);
-		} finally {
-			dialog.dismiss();
-		}
-	}
-	}
+}
