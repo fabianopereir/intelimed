@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import nutes.intelimed.Login;
+import nutes.intelimed.Login_false;
 import nutes.intelimed.R;
 import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.IModelStructureQuestionnaire;
@@ -87,7 +87,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         			@Override
         			public void onClick(View v) {
         				
-        				startActivity(new Intent(getBaseContext(), Login.class));
+        				startActivity(new Intent(getBaseContext(), Login_false.class));
         				//	finish();
         				
         			}

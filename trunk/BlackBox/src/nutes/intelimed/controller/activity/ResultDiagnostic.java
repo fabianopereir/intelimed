@@ -1,6 +1,6 @@
 package nutes.intelimed.controller.activity;
 
-import nutes.intelimed.Login;
+import nutes.intelimed.Login_false;
 import nutes.intelimed.R;
 import nutes.intelimed.model.EvidenceAnswersScript;
 import nutes.intelimed.model.EvidenceScript;
@@ -118,7 +118,7 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 			@Override
 			public void onClick(View v) {
 				
-				startActivity(new Intent(getBaseContext(), Login.class));
+				startActivity(new Intent(getBaseContext(), Login_false.class));
 				//	finish();
 				
 			}
