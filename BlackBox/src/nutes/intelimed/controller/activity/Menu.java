@@ -80,7 +80,7 @@ public class Menu extends Activity{
 	}
 	public void sendData()
 	{
-		dialog = ProgressDialog.show(this,"InteliMED", "Efetuando login...", false,true);
+		dialog = ProgressDialog.show(this,"InteliMED", "Eviando dados", false,true);
 		
 		 ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
 		 int aux;
