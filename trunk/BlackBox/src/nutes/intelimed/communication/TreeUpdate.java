@@ -27,7 +27,6 @@ public class TreeUpdate extends Activity implements OnClickListener, Runnable {
 
 	protected static final String CATEGORIA = "nutes";
 	protected static final String URL = "http://10.0.2.2:8080/livro_android/arvore.txt";
-	//Handler utilizado para atualizar a View
 	private Handler handler = new Handler();
 	private ProgressDialog dialog;
 	
@@ -43,21 +42,28 @@ public class TreeUpdate extends Activity implements OnClickListener, Runnable {
 		b.setOnClickListener(this);
 	}
 	
+	/**
+	 * 
+	 * Exibe uma barra de progresso para realizar login
+	 * @param view - contexto
+	 * @return void
+	 */
 	public void onClick(View view) {
 		dialog = ProgressDialog.show(this,"InteliMED", "Efetuando login...", false,true);
 
-		//faz download em uma Thread
 		new Thread(this).start();
 	}
 	
+	/**
+	 * Faz download de um arquivo texto e atualiza a tela
+	 * @return void
+	 */
 	public void run() {
 		try {
-			// faz o download
 			final String arquivo = Http.getInstance(Http.NORMAL).downloadArquivo(URL);
 
 			Log.i(CATEGORIA,"Texto retornado: " + arquivo);
 
-			//Precisa do Handler para atualizar a view de outra thread
 			handler.post(new Runnable() {
 				public void run() {
 					TextView text = (TextView) findViewById(R.id.texto);
