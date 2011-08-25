@@ -87,6 +87,10 @@ public class Login extends Activity implements OnClickListener{
 		finish();
 	}
 
+    /**
+     * Método que direciona para Activity Menu
+     * @return void
+     */
     public void init(){
     	startActivity(new Intent(this, Menu.class));
     }

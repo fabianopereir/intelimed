@@ -22,19 +22,20 @@ import org.apache.http.protocol.HTTP;
 import android.util.Log;
 
 /**
- * Exemplo do HttpClient
+ * Classe que encapsula as requests HTTP utilizando a "HttpClient"
  * 
- * Exemplos HttpClient: http://hc.apache.org/httpcomponents-client/examples.html
- * 
- * http://svn.apache.org/repos/asf/httpcomponents/httpclient/trunk/module-client
- * /src/examples/org/apache/http/examples/client/ClientConnectionRelease.java
- * 
- * @author ricardo
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
 public class HttpClientImpl extends Http {
 	private final String CATEGORIA = "nutes";
 
+	/**
+	 * Método responsável por realizar download de arquivo texto do servidor
+	 * @param String url
+	 * @return String
+	 */
 	@Override
 	public final String downloadArquivo(String url) {
 		try {
@@ -62,6 +63,11 @@ public class HttpClientImpl extends Http {
 		return null;
 	}
 
+	/**
+	 * Método responsável por realizar download de imagem do servidor
+	 * @param String url
+	 * @return byte[] - array de bytes da imagem
+	 */
 	@Override
 	public final byte[] downloadImagem(String url) {
 		try {
@@ -91,6 +97,14 @@ public class HttpClientImpl extends Http {
 		return null;
 	}
 
+	/**
+	 * Faz um requsição POST na URL informada e retorna o texto
+	 * Os parâmetros são enviados ao servidor
+	 * @param String url
+	 * @param String params
+	 * @return
+	 * @throws IOException
+	 */
 	@Override
 	public final String doPost(String url, Map map) {
 		try {
@@ -99,9 +113,7 @@ public class HttpClientImpl extends Http {
 
 			Log.i(CATEGORIA, "HttpClient.post " + httpPost.getURI());
 
-			// cria os parâmetros
 			List<NameValuePair> params = getParams(map);
-			// seta os parametros para enviar
 			httpPost.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 
 			Log.i(CATEGORIA, "HttpClient.params " + params);
@@ -126,6 +138,12 @@ public class HttpClientImpl extends Http {
 		return null;
 	}
 
+	/**
+	 * Faz a leitura do array de bytes da InputStream retornada
+	 * @param InputStream in
+	 * @return byte[] - array de bytes consumido
+	 * @throws IOException
+	 */
 	private byte[] readBytes(InputStream in) throws IOException {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		try {
@@ -142,12 +160,24 @@ public class HttpClientImpl extends Http {
 		}
 	}
 
+	/**
+	 * Faz a leitura do texto da InputStream retornada
+	 * @param InputStream in
+	 * @return String texto - texto consumido
+	 * @throws IOException
+	 */
 	private String readString(InputStream in) throws IOException {
 		byte[] bytes = readBytes(in);
 		String texto = new String(bytes);
 		return texto;
 	}
 
+	/**
+	 * Faz a leitura do texto da InputStream retornada
+	 * @param Map map
+	 * @return List<NameValuePair>
+	 * @throws IOException
+	 */
 	private List<NameValuePair> getParams(Map map) throws IOException {
 		if (map == null || map.size() == 0) {
 			return null;

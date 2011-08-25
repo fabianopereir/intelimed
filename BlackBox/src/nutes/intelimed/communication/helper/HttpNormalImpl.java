@@ -15,22 +15,25 @@ import android.util.Log;
 /**
  * Classe que encapsula as requests HTTP utilizando a "HttpURLConnection"
  * 
- * @author ricardo
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
 public class HttpNormalImpl extends Http {
 	private final String CATEGORIA = "nutes";
 
+	/**
+	 * Método responsável por realizar download de arquivo texto do servidor
+	 * @param String url
+	 * @return String
+	 */
 	@Override
 	public final String downloadArquivo(String url) {
 		Log.i(CATEGORIA, "Http.downloadArquivo: " + url);
 		try {
-			// Cria a URL
 			URL u = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) u.openConnection();
 
-			// Configura a requisição para get
-			// connection.setRequestProperty("Request-Method","GET");
 			conn.setRequestMethod("GET");
 			conn.setDoInput(true);
 			conn.setDoOutput(false);
@@ -38,7 +41,6 @@ public class HttpNormalImpl extends Http {
 
 			InputStream in = conn.getInputStream();
 
-			// String arquivo = readBufferedString(sb, in);
 			String arquivo = readString(in);
 
 			conn.disconnect();
@@ -52,15 +54,18 @@ public class HttpNormalImpl extends Http {
 		return null;
 	}
 
+	/**
+	 * Método responsável por realizar download de imagem do servidor
+	 * @param String url
+	 * @return byte[] array de bytes da imagem
+	 */
 	@Override
 	public final byte[] downloadImagem(String url) {
 		Log.i(CATEGORIA, "Http.downloadImagem: " + url);
 		try {
-			// Cria a URL
 			URL u = new URL(url);
 
 			HttpURLConnection connection = (HttpURLConnection) u.openConnection();
-			// Configura a requisição para get
 			connection.setRequestProperty("Request-Method", "GET");
 			connection.setDoInput(true);
 			connection.setDoOutput(false);
@@ -69,7 +74,6 @@ public class HttpNormalImpl extends Http {
 
 			InputStream in = connection.getInputStream();
 
-			// String arquivo = readBufferedString(sb, in);
 			byte[] bytes = readBytes(in);
 
 			Log.i(CATEGORIA, "imagem retornada com: " + bytes.length + " bytes");
@@ -86,6 +90,12 @@ public class HttpNormalImpl extends Http {
 		return null;
 	}
 
+	/**
+	 * Realiza o envio ao servidor
+	 * @param String url
+	 * @param Map params
+	 * @return String url
+	 */
 	@Override
 	public String doPost(String url, Map params) {
 		try {
@@ -98,8 +108,14 @@ public class HttpNormalImpl extends Http {
 		return url;
 	}
 
-	// Faz um requsição POST na URL informada e retorna o texto
-	// Os parâmetros são enviados ao servidor
+	/**
+	 * Faz um requsição POST na URL informada e retorna o texto
+	 * Os parâmetros são enviados ao servidor
+	 * @param String url
+	 * @param String params
+	 * @return
+	 * @throws IOException
+	 */
 	private String doPost(String url, String params) throws IOException {
 		Log.i(CATEGORIA, "Http.doPost: " + url + "?" + params);
 		URL u = new URL(url);
@@ -127,7 +143,13 @@ public class HttpNormalImpl extends Http {
 		return texto;
 	}
 
-	// Transforma o HashMap em uma query string fazer o POST
+	// 
+	/**
+	 * Transforma o HashMap em uma query string fazer o POST
+	 * @param Map params
+	 * @return String urlParams
+	 * @throws IOException
+	 */
 	private String getQueryString(Map params) throws IOException {
 		if (params == null || params.size() == 0) {
 			return null;
@@ -144,7 +166,13 @@ public class HttpNormalImpl extends Http {
 		return urlParams;
 	}
 
-	// Faz a leitura do array de bytes da InputStream retornada
+	
+	/**
+	 * Faz a leitura do array de bytes da InputStream retornada
+	 * @param InputStream in
+	 * @return byte[] - array de bytes consumido
+	 * @throws IOException
+	 */
 	private byte[] readBytes(InputStream in) throws IOException {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		try {
@@ -161,7 +189,12 @@ public class HttpNormalImpl extends Http {
 		}
 	}
 
-	// Faz a leitura do texto da InputStream retornada
+	/**
+	 * Faz a leitura do texto da InputStream retornada
+	 * @param InputStream in
+	 * @return String texto - texto consumido
+	 * @throws IOException
+	 */
 	private String readString(InputStream in) throws IOException {
 		byte[] bytes = readBytes(in);
 		String texto = new String(bytes);

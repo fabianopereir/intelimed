@@ -78,6 +78,11 @@ public class Menu extends Activity{
 		});
 		
 	}
+	
+	/**
+	 * Evento disparado quando o botão de "sincronizar dados" da Activity Menu recebe um click
+	 * @return void
+	 */
 	public void sendData()
 	{
 		dialog = ProgressDialog.show(this,"InteliMED", "Eviando dados", false,true);
@@ -188,7 +193,7 @@ public class Menu extends Activity{
 	 * 
 	 * Implementação para botão voltar de Activity
 	 * @param Indentificação de onclick
-	 * @return value boolean
+	 * @return boolean
 	 */
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
