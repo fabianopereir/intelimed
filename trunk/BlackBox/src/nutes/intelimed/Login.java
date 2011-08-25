@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 
 import nutes.intelimed.R;
+import nutes.intelimed.communication.TreeUpdate;
 import nutes.intelimed.controller.activity.Menu;
 import nutes.intelimed.model.IModelUser;
 import nutes.intelimed.model.MD5Password;
@@ -87,7 +88,7 @@ public class Login extends Activity implements OnClickListener{
 	}
 
     public void init(){
-    	startActivity(new Intent(this, Login_false.class));
+    	startActivity(new Intent(this, Menu.class));
     }
 	@Override
 	protected void onDestroy() {

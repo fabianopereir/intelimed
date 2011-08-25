@@ -2,8 +2,9 @@ package nutes.intelimed.controller.activity;
 
 import java.util.ArrayList;
 
-import nutes.intelimed.Login_false;
+import nutes.intelimed.Login;
 import nutes.intelimed.R;
+import nutes.intelimed.communication.TreeUpdate;
 import nutes.intelimed.model.EvidenceToServerScript;
 import nutes.intelimed.model.IModelEvidenceToServer;
 import nutes.intelimed.model.entity.EvidenceToServer;
@@ -70,7 +71,7 @@ public class Menu extends Activity{
 			@Override
 			public void onClick(View v) {
 				
-				startActivity(new Intent(getBaseContext(), Login_false.class));
+				startActivity(new Intent(getBaseContext(), Login.class));
 				//	finish();
 				
 			}
