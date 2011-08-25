@@ -1,5 +1,7 @@
-package nutes.intelimed;
+package nutes.intelimed.communication;
 
+import nutes.intelimed.ParserSimulation;
+import nutes.intelimed.R;
 import nutes.intelimed.communication.helper.Http;
 import nutes.intelimed.controller.activity.Menu;
 import android.app.Activity;
@@ -21,7 +23,7 @@ import android.widget.TextView;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class Login_false extends Activity implements OnClickListener, Runnable {
+public class TreeUpdate extends Activity implements OnClickListener, Runnable {
 
 	protected static final String CATEGORIA = "nutes";
 	protected static final String URL = "http://10.0.2.2:8080/livro_android/arvore.txt";
