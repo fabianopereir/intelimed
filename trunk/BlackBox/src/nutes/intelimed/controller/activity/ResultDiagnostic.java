@@ -2,7 +2,6 @@ package nutes.intelimed.controller.activity;
 
 import nutes.intelimed.Login;
 import nutes.intelimed.R;
-import nutes.intelimed.communication.TreeUpdate;
 import nutes.intelimed.model.EvidenceAnswersScript;
 import nutes.intelimed.model.EvidenceScript;
 import nutes.intelimed.model.IModelEvidence;
@@ -12,6 +11,7 @@ import nutes.intelimed.model.entity.EvidenceAnswers;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -200,4 +200,19 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 
 	}
 
+	/**
+	 * 
+	 * Implementação para botão voltar de Activity
+	 * @param Indentificação de onclick
+	 * @return value boolean
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+	        	//finish();
+	    	startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
 }

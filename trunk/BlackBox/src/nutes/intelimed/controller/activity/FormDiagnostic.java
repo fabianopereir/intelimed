@@ -6,7 +6,6 @@ import java.util.List;
 
 import nutes.intelimed.Login;
 import nutes.intelimed.R;
-import nutes.intelimed.communication.TreeUpdate;
 import nutes.intelimed.controller.util.AnswerOption;
 import nutes.intelimed.model.IModelStructureQuestionnaire;
 import nutes.intelimed.model.BaseScript;
@@ -21,6 +20,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -94,6 +94,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         			}
         		});
         };
+        
         
         /**
          * Método responsável pela validação das respostas e passagem para ResultDiagnostic, 
@@ -242,6 +243,22 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 return radio_group;
         }
 
+        /**
+    	 * 
+    	 * Implementação para botão voltar de Activity
+    	 * @param Indentificação de onclick
+    	 * @return value boolean
+    	 */
+    	@Override
+    	public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+    	        	//finish();
+    	    	startActivity(new Intent(getBaseContext(), Menu.class));
+    	        return true;
+    	    }
+    	    return super.onKeyDown(keyCode, event);
+    	}
+        
         @Override
         protected void onPause() {
                 super.onPause();
