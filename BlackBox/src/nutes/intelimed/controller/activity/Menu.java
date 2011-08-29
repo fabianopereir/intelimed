@@ -65,7 +65,6 @@ public class Menu extends Activity{
 			}
 		});	
 		
-		
 		logout.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -85,107 +84,60 @@ public class Menu extends Activity{
 	 */
 	public void sendData()
 	{
-		dialog = ProgressDialog.show(this,"InteliMED", "Eviando dados", false,true);
+		dialog = ProgressDialog.show(this,"InteliMED", "Enviando dados", false,true);
 		
 		 ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
 		 int aux;
          int aux2 = 0;
          EvidenceToServer vAux;
          
-		 JSONObject obj1 = new JSONObject();
-		 JSONObject obj2;
-		 JSONObject obj3;
-		 JSONArray arr1 = new JSONArray();
-		 JSONArray arr2 = new JSONArray();
+		 JSONObject data = new JSONObject();
+		 JSONObject dataEvidence;
+		 JSONObject dataAnswer;
+		 JSONArray arrData = new JSONArray();
+		 JSONArray arrAnswer;
 		 try {
-				
-			/*
-			 //Loop1
-			 obj2 = new JSONObject();
-			 obj2.put("idevidencia_respostas", 1);
-			 obj2.put("idevidencia", 2);
-			 obj2.put("sistema", "sim");
-			 obj2.put("medico", "sim");
-			 obj2.put("justificativa", "");
-			 
-			 //Loop 2
-			 obj3 = new JSONObject();
-			 obj3.put("fk_idno", 3);
-			 obj3.put("idresposta", 4);
-			 arr2.put(obj3);
-			//End Loop 2
-			 
-			 obj2.put("respostas", arr2);
-			 arr1.put(obj2);
-			 
-			//End Loop1
-			 
-			 obj1.put("dados", arr1);
-			 
-			 */
+
 			 for (int i = 0; i < arrayData.size(); i++) {
 	             aux = i;
 	             vAux = arrayData.get(aux);
 	             
-	             obj2 = new JSONObject();
+	             arrAnswer = new JSONArray();
+	             dataEvidence = new JSONObject();
 				 
-				 obj2.put("idevidencia", arrayData.get(i).getIdevidencia());
-				 obj2.put("sistema", arrayData.get(i).getSistema());
-				 obj2.put("medico", arrayData.get(i).getMedico());
-				 obj2.put("justificativa", arrayData.get(i).getJustificativa());
+				 dataEvidence.put("idevidencia", arrayData.get(i).getIdevidencia());
+				 dataEvidence.put("sistema", arrayData.get(i).getSistema());
+				 dataEvidence.put("medico", arrayData.get(i).getMedico());
+				 dataEvidence.put("justificativa", arrayData.get(i).getJustificativa());
 				 
 	             while (arrayData.get(i).getIdevidencia() == vAux.getIdevidencia() && aux < arrayData.size()) {
 	                     
-		            	 obj3 = new JSONObject();
-		    			 obj3.put("fk_idno", arrayData.get(aux).getFk_idno());
-		    			 obj3.put("idresposta", arrayData.get(aux).getIdresposta());
-		    			 arr2.put(obj3);
+		            	 dataAnswer = new JSONObject();
+		    			 dataAnswer.put("fk_idno", arrayData.get(aux).getFk_idno());
+		    			 dataAnswer.put("idresposta", arrayData.get(aux).getIdresposta());
+		    			 arrAnswer.put(dataAnswer);
 		    			
 	                     aux++;
 	                     if (aux < arrayData.size()) {
 	                             vAux = arrayData.get(aux);
 	                     }
 	             }
-	             obj2.put("respostas", arr2);
-				 arr1.put(obj2);
+	             dataEvidence.put("respostas", arrAnswer);
+				 arrData.put(dataEvidence);
 	             aux2++;
 	            
 	             i = aux - 1;
 	         }
-			 obj1.put("dados", arr1);
-			 System.out.println(obj1);
+			 data.put("dados", arrData);
+			 System.out.println(data);
 			
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			dialog.dismiss();
 		}
-		 
-        
-         /*int aux;
-         int aux2 = 0;
-         EvidenceToServer vAux;
-         for (int i = 0; i < arrayData.size(); i++) {
-             aux = i;
-             vAux = arrayData.get(aux);
-             System.out.println("IdEvidence: "+arrayData.get(i).getIdevidencia());
-             System.out.println("Sistema: "+arrayData.get(i).getSistema());
-             System.out.println("Medico: "+arrayData.get(i).getMedico());
-             System.out.println("Justificativa: "+arrayData.get(i).getJustificativa());
-             while (arrayData.get(i).getIdevidencia() == vAux.getIdevidencia() && aux < arrayData.size()) {
-                     
-                     System.out.println("IdNO: "+arrayData.get(aux).getFk_idno());
-                     System.out.println("IdResposta: "+arrayData.get(aux).getIdresposta());
-                     aux++;
-                     if (aux < arrayData.size()) {
-                             vAux = arrayData.get(aux);
-                     }
-             }
-             aux2++;
-            
-             i = aux - 1;
-         }*/
-             
              
 	}
 	
@@ -210,6 +162,6 @@ public class Menu extends Activity{
 		super.onPause();
 		setResult(RESULT_CANCELED);
 		// Fecha a tela
-		finish();
+		//finish();
 	}
 }

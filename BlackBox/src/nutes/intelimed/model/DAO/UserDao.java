@@ -6,7 +6,6 @@ import nutes.intelimed.model.entity.User.Users;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.util.Log;
 
 /**
 * Classe responsável por realizar consultas sobre usuários no banco de dados 
@@ -43,8 +42,6 @@ public class UserDao extends GenericDao implements IModelUser{
 			if (c.getCount() > 0) {
 				c.moveToFirst();
 				user = new User();
-				Log.i("jamilson", "Result1: "+c.getString(0));
-				Log.i("jamilson", "Result2: "+c.getString(1));
 				user.Vuser = c.getString(1);
 				user.Vpassword = c.getString(2);
 				return u;
@@ -54,7 +51,6 @@ public class UserDao extends GenericDao implements IModelUser{
 			}
 			
 		} catch (SQLException e) {
-			Log.e("jamilson", "Erro ao buscar a usuario: " + e.toString());
 			e.printStackTrace();
 			return null;
 		}	 	

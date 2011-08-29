@@ -26,7 +26,8 @@ import android.widget.TextView;
 public class TreeUpdate extends Activity implements OnClickListener, Runnable {
 
 	protected static final String CATEGORIA = "nutes";
-	protected static final String URL = "http://10.0.2.2:8080/livro_android/arvore.txt";
+	//protected static final String URL = "http://10.0.2.2:8080/livro_android/arvore.txt";
+	protected static final String URL = "http://lagarage.dyndns.biz:35355/intermediate/rest/arvore/";
 	private Handler handler = new Handler();
 	private ProgressDialog dialog;
 	
