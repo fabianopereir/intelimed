@@ -30,7 +30,7 @@ import nutes.intelimed.model.entity.User;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class Login extends Activity implements OnClickListener{
+public class Login extends Activity{
 	
 	public static IModelUser dao;
 	
@@ -79,14 +79,6 @@ public class Login extends Activity implements OnClickListener{
 		}); 
     }
     
-    @Override
-	protected void onPause() {
-		super.onPause();
-		setResult(RESULT_CANCELED);
-		// Fecha a tela
-		finish();
-	}
-
     /**
      * Método que direciona para Activity Menu
      * @return void
@@ -94,6 +86,7 @@ public class Login extends Activity implements OnClickListener{
     public void init(){
     	startActivity(new Intent(this, Menu.class));
     }
+    
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -102,8 +95,10 @@ public class Login extends Activity implements OnClickListener{
 	}
 
 	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
+	protected void onPause() {
+		super.onPause();
+		setResult(RESULT_CANCELED);
+		// Fecha a tela
+		//finish();
 	}
 }

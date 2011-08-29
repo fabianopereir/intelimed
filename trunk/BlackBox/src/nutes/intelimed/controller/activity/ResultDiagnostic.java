@@ -199,6 +199,13 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 		}
 
 	}
+	
+	@Override
+    protected void onPause() {
+            super.onPause();
+            setResult(RESULT_CANCELED);
+            // finish();
+    }
 
 	/**
 	 * 
