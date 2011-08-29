@@ -11,6 +11,7 @@ import nutes.intelimed.model.entity.Evidence;
 public interface IModelEvidence {
 
 	public abstract long insertEvidence(Evidence evidence);
+	public abstract int deleteEvidence(long id);
 	public abstract void fechar();
 
 }

@@ -3,6 +3,7 @@ package nutes.intelimed.model.DAO;
 import nutes.intelimed.model.IModelNode;
 import nutes.intelimed.model.entity.Node;
 import nutes.intelimed.model.entity.Node.NodeTable;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -53,10 +54,41 @@ public class NodeDao extends GenericDao implements IModelNode{
 		return node;
 	}
 	
+	/**
+	 * Insere um nó na base de dados
+	 * @param Node
+	 * @return Long fk_idno (identificador do nó)
+	 */
+	public long insertNode(Node node) {
+		ContentValues values = new ContentValues();
+
+		values.put(NodeTable.DESCRICAO_NO, node.getDescricaoNo());
+		values.put(NodeTable.DIAGNOSTICO, node.getDiagnostico());
+		long id = db.insert(NOME_TABELA, "", values);
+		return id;
+	}
+	
+	/**
+	 * Deleta um nó na base de dados
+	 * @param Long id (identificador do nó)
+	 * @return int - quantidade de nós deletados
+	 */
+	public int deleteNode(long id) {
+		String where = NodeTable._ID + "=?";
+
+		String _id = String.valueOf(id);
+		String[] whereArgs = new String[] { _id };
+
+		int count = db.delete(NOME_TABELA, where, whereArgs);
+		return count;
+	}
+	
 	@Override
 	public void fechar() {
 		if (db != null) {
 			db.close();
 		}
 	}
+
+	
 }
