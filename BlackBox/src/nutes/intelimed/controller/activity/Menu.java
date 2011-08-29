@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import nutes.intelimed.Login;
 import nutes.intelimed.R;
+import nutes.intelimed.communication.TreeUpdate;
 import nutes.intelimed.model.EvidenceToServerScript;
 import nutes.intelimed.model.IModelEvidenceToServer;
 import nutes.intelimed.model.entity.EvidenceToServer;
@@ -16,6 +17,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,9 +32,14 @@ import android.widget.ImageButton;
  * 
  */
 public class Menu extends Activity{
+	
 	private ProgressDialog dialog;
 	
 	private ImageButton back, logout;
+	
+	private Button diagnostic, sync, TreeUp; 
+	
+	protected static final String CATEGORIA = "nutes";
 	
     private IModelEvidenceToServer daoEvidenceToServer;
 
@@ -41,13 +48,15 @@ public class Menu extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu);
 		
-        final Button diagnostic = (Button) findViewById(R.id.btDiagnostico);
-        final Button sync = (Button) findViewById(R.id.btSincronizarDados);
-
+        diagnostic = (Button) findViewById(R.id.btDiagnostico);
+        sync = (Button) findViewById(R.id.btSincronizarDados);
+        TreeUp = (Button) findViewById(R.id.btAtualizarArvore);
         
         back = (ImageButton) findViewById(R.bt.btBack);
-        back.setVisibility(ImageButton.GONE);
         logout = (ImageButton) findViewById(R.bt.btLogoff);
+        
+        back.setVisibility(ImageButton.GONE);
+       
         
         daoEvidenceToServer = (IModelEvidenceToServer) new EvidenceToServerScript(this);
 
@@ -64,6 +73,15 @@ public class Menu extends Activity{
 				sendData();
 			}
 		});	
+		
+		TreeUp.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				dialog = ProgressDialog.show(Menu.this,"InteliMED", "Atualizando árvore...", false,true);
+				TreeUpdate();
+			}
+		});
 		
 		logout.setOnClickListener(new OnClickListener() {
 			
@@ -133,12 +151,27 @@ public class Menu extends Activity{
 			
 			
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			dialog.dismiss();
 		}
              
+	}
+	
+	private void TreeUpdate()
+	{
+		try {
+			
+			TreeUpdate teste = new TreeUpdate();
+			teste.start();
+			
+		}catch (Exception e) {
+			Log.i(CATEGORIA, e.getMessage(),e);
+		}finally{
+			dialog.dismiss();
+		}
+		//startActivity(new Intent(this, TreeUpdate.class));
+		
 	}
 	
 	/**

@@ -24,6 +24,11 @@
 			android:layout_width="fill_parent" android:layout_height="wrap_content" 
 			android:text="Sincronizar Dados"
 		/>
+		<Button
+			android:id="@+id/btAtualizarArvore"
+			android:layout_width="fill_parent" android:layout_height="wrap_content" 
+			android:text="Atualizar Árvore"
+		/>
 	</LinearLayout>
 
 </LinearLayout>
