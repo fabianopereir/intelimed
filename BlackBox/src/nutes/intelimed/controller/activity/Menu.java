@@ -1,9 +1,13 @@
 package nutes.intelimed.controller.activity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import nutes.intelimed.Login;
 import nutes.intelimed.R;
+import nutes.intelimed.communication.SendEvidence;
+import nutes.intelimed.communication.ServerConstants;
 import nutes.intelimed.communication.TreeUpdate;
 import nutes.intelimed.model.EvidenceToServerScript;
 import nutes.intelimed.model.IModelEvidenceToServer;
@@ -12,6 +16,7 @@ import nutes.intelimed.model.entity.EvidenceToServer;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -147,8 +152,15 @@ public class Menu extends Activity{
 	             i = aux - 1;
 	         }
 			 data.put("dados", arrData);
-			 System.out.println(data);
-			
+			 System.out.println("Dados Mobile: "+data);
+			 Map params = new HashMap();
+			 params.put("n1", arrData);
+			 
+			 
+			 SendEvidence sEv = new SendEvidence();
+			 sEv.url = ServerConstants.getContextFromPost();
+			 sEv.params = params;
+			 sEv.start();
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -161,16 +173,14 @@ public class Menu extends Activity{
 	private void TreeUpdate()
 	{
 		try {
-			
-			TreeUpdate teste = new TreeUpdate();
-			teste.start();
+			TreeUpdate tUP = new TreeUpdate();
+			tUP.start();
 			
 		}catch (Exception e) {
 			Log.i(CATEGORIA, e.getMessage(),e);
 		}finally{
 			dialog.dismiss();
 		}
-		//startActivity(new Intent(this, TreeUpdate.class));
 		
 	}
 	

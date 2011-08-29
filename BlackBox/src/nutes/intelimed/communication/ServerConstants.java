@@ -15,7 +15,8 @@ public class ServerConstants {
 	}
 	
 	private static String getContext(String ip) {
-		return "http://" + ip + "/livro_android/arvore.txt";
+	return "http://" + ip + "/livro_android/arvore.txt";
+	//	return "http://" + ip + "/livro_android/calculadoraServlet";
 	}
 	
 	

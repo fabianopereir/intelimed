@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 
 import nutes.intelimed.R;
-import nutes.intelimed.communication.TreeUpdate;
 import nutes.intelimed.controller.activity.Menu;
 import nutes.intelimed.model.IModelUser;
 import nutes.intelimed.model.MD5Password;
