@@ -10,5 +10,7 @@ import nutes.intelimed.model.entity.Node;
  */
 public interface IModelNode {
 	public abstract Node searchNode(Long fk_idno);
+	public abstract long insertNode(Node node);
+	public abstract int deleteNode(long idnode);
 	public abstract void fechar();
 }

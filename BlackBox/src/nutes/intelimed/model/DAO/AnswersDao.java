@@ -1,13 +1,14 @@
 package nutes.intelimed.model.DAO;
 
-import android.content.Context;
-import android.database.Cursor;
-
-import android.database.SQLException;
-import android.util.Log;
 import nutes.intelimed.model.IModelAnswers;
 import nutes.intelimed.model.entity.Answer;
 import nutes.intelimed.model.entity.Answer.AnswersTable;
+import nutes.intelimed.model.entity.Node.NodeTable;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.util.Log;
 
 /**
  * Classe responsável por realizar consultas em banco na tabela de repostas
@@ -53,6 +54,36 @@ public class AnswersDao extends GenericDao implements IModelAnswers {
 		}
 
 		return answer;
+	}
+	
+	/**
+	 * Insere nova resposta no banco
+	 * @param Answer - resposta a ser inserida no banco
+	 * @return id - identificador de evidência
+	 */
+	public long insertAnswer(Answer answer) {
+		ContentValues values = new ContentValues();
+		values.put(AnswersTable.FK_IDNO, answer.getFk_idno());
+		values.put(AnswersTable.DESCRICAO_RESPOSTA, answer.getDescricao_resposta());
+		values.put(AnswersTable.CODERESPOSTA, answer.getCodeResposta());
+		
+		long id = db.insert(NOME_TABELA, "", values);
+		return id;
+	}
+	
+	/**
+	 * Deleta respostas na base de dados
+	 * @param Long id (identificador de resposta)
+	 * @return int - quantidade de tuplas de respostas deletadas
+	 */
+	public int deleteAnswer(long id) {
+		String where = NodeTable._ID + "=?";
+
+		String _id = String.valueOf(id);
+		String[] whereArgs = new String[] { _id };
+
+		int count = db.delete(NOME_TABELA, where, whereArgs);
+		return count;
 	}
 	
 	@Override

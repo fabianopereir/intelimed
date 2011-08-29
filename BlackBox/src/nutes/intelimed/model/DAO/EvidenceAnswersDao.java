@@ -3,6 +3,7 @@ package nutes.intelimed.model.DAO;
 import nutes.intelimed.model.IModelEvidenceAnswers;
 import nutes.intelimed.model.entity.EvidenceAnswers;
 import nutes.intelimed.model.entity.EvidenceAnswers.EvidenceAnswersTable;
+import nutes.intelimed.model.entity.Node.NodeTable;
 import android.content.ContentValues;
 import android.content.Context;
 
@@ -36,6 +37,21 @@ public class EvidenceAnswersDao extends GenericDao implements IModelEvidenceAnsw
 		
 		long id = db.insert(NOME_TABELA, "", values);
 		return id;
+	}
+	
+	/**
+	 * Deleta respostas de uma evidência na base de dados
+	 * @param Long id (identificador da tupla de respostas de uma evidência)
+	 * @return int - quantidade de tuplas de respostas de uma evidências deletadas
+	 */
+	public int deleteEvidenceAnswers(long id) {
+		String where = NodeTable._ID + "=?";
+
+		String _id = String.valueOf(id);
+		String[] whereArgs = new String[] { _id };
+
+		int count = db.delete(NOME_TABELA, where, whereArgs);
+		return count;
 	}
 	
 	@Override
