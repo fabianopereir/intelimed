@@ -3,9 +3,9 @@ package nutes.intelimed.model.DAO;
 import nutes.intelimed.model.IModelEvidenceAnswers;
 import nutes.intelimed.model.entity.EvidenceAnswers;
 import nutes.intelimed.model.entity.EvidenceAnswers.EvidenceAnswersTable;
-import nutes.intelimed.model.entity.Node.NodeTable;
 import android.content.ContentValues;
 import android.content.Context;
+import android.util.Log;
 
 
 /**
@@ -40,18 +40,20 @@ public class EvidenceAnswersDao extends GenericDao implements IModelEvidenceAnsw
 	}
 	
 	/**
-	 * Deleta respostas de uma evidência na base de dados
-	 * @param Long id (identificador da tupla de respostas de uma evidência)
-	 * @return int - quantidade de tuplas de respostas de uma evidências deletadas
+	 * Deleta respostas de evidências na base de dados
+	 * @return boolean - se deletar retorna true
 	 */
-	public int deleteEvidenceAnswers(long id) {
-		String where = NodeTable._ID + "=?";
-
-		String _id = String.valueOf(id);
-		String[] whereArgs = new String[] { _id };
-
-		int count = db.delete(NOME_TABELA, where, whereArgs);
-		return count;
+	public boolean deleteEvidenceAnswers() {
+		boolean aux = true;
+		try{
+			String sql = "DELETE FROM "+ NOME_TABELA;
+	        db.execSQL(sql);
+		}catch (Exception e) {
+            aux=false;
+            Log.i("Exception excluir",e.getMessage().toString());
+		}
+		
+		return aux;
 	}
 	
 	@Override

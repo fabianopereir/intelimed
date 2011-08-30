@@ -3,7 +3,6 @@ package nutes.intelimed.model.DAO;
 import nutes.intelimed.model.IModelAnswers;
 import nutes.intelimed.model.entity.Answer;
 import nutes.intelimed.model.entity.Answer.AnswersTable;
-import nutes.intelimed.model.entity.Node.NodeTable;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -73,17 +72,19 @@ public class AnswersDao extends GenericDao implements IModelAnswers {
 	
 	/**
 	 * Deleta respostas na base de dados
-	 * @param Long id (identificador de resposta)
-	 * @return int - quantidade de tuplas de respostas deletadas
+	 * @return boolean - se deletar retorna true
 	 */
-	public int deleteAnswer(long id) {
-		String where = NodeTable._ID + "=?";
-
-		String _id = String.valueOf(id);
-		String[] whereArgs = new String[] { _id };
-
-		int count = db.delete(NOME_TABELA, where, whereArgs);
-		return count;
+	public boolean deleteAnswer() {
+		boolean aux = true;
+		try{
+			String sql = "DELETE FROM "+ NOME_TABELA;
+	        db.execSQL(sql);
+		}catch (Exception e) {
+            aux=false;
+            Log.i("Exception excluir",e.getMessage().toString());
+		}
+		
+		return aux;
 	}
 	
 	@Override

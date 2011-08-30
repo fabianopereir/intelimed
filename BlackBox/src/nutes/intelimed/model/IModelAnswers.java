@@ -12,6 +12,6 @@ import nutes.intelimed.model.entity.Answer;
 public interface IModelAnswers {
 	public abstract Answer searchAnswer(Long idresposta);
 	public abstract long insertAnswer(Answer answer);
-	public abstract int deleteAnswer(long id);
+	public abstract boolean deleteAnswer();
 	public abstract void fechar();
 }

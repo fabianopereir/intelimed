@@ -9,7 +9,6 @@ import android.util.Log;
 import nutes.intelimed.model.IModelEdge;
 import nutes.intelimed.model.entity.Edge;
 import nutes.intelimed.model.entity.Edge.EdgeTable;
-import nutes.intelimed.model.entity.Node.NodeTable;
 
 /**
  * Classe responsável por realizar consultas em banco na tabela de arestas
@@ -71,18 +70,20 @@ public class EdgeDao extends GenericDao implements IModelEdge {
 	}
 	
 	/**
-	 * Deleta uma aresta na base de dados
-	 * @param Long id (identificador da aresta)
-	 * @return int - quantidade de arestas deletados
+	 * Deleta conteúdo da tabela aresta na base de dados
+	 * @return boolean - se deletar retorna true
 	 */
-	public int deleteEdge(long id) {
-		String where = NodeTable._ID + "=?";
-
-		String _id = String.valueOf(id);
-		String[] whereArgs = new String[] { _id };
-
-		int count = db.delete(NOME_TABELA, where, whereArgs);
-		return count;
+	public boolean deleteEdge() {
+		boolean aux = true;
+		try{
+			String sql = "DELETE FROM "+ NOME_TABELA;
+	        db.execSQL(sql);
+		}catch (Exception e) {
+            aux=false;
+            Log.i("Exception excluir",e.getMessage().toString());
+		}
+		
+		return aux;
 	}
 	
 	@Override
