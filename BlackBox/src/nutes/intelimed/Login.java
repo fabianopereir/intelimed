@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -86,6 +87,21 @@ public class Login extends Activity{
     	startActivity(new Intent(this, Menu.class));
     }
     
+    /**
+	 * 
+	 * Implementação para botão voltar de Activity
+	 * @param Indentificação de onclick
+	 * @return value boolean
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+	        finish();
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
+	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
