@@ -10,7 +10,7 @@ import nutes.intelimed.model.entity.EvidenceAnswers;
  */
 public interface IModelEvidenceAnswers {
 	public abstract long insertEvidenceAnswers(EvidenceAnswers evidenceAnswers);
-	public abstract int deleteEvidenceAnswers(long id);
+	public abstract boolean deleteEvidenceAnswers();
 	public abstract void fechar();
 
 }

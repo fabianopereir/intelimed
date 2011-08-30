@@ -12,6 +12,6 @@ import nutes.intelimed.model.entity.Edge;
 public interface IModelEdge {
 	public abstract Edge searchEdge(Long fk_idresposta);
 	public abstract long insertEdge(Edge edge);
-	public abstract int deleteEdge(long id);
+	public abstract boolean deleteEdge();
 	public abstract void fechar();
 }

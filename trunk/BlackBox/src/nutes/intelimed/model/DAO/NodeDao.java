@@ -69,19 +69,23 @@ public class NodeDao extends GenericDao implements IModelNode{
 	}
 	
 	/**
-	 * Deleta um nó na base de dados
-	 * @param Long id (identificador do nó)
-	 * @return int - quantidade de nós deletados
+	 * Deleta conteúdo da tabela nó na base de dados
+	 * @return boolean - se deletar retorna true
 	 */
-	public int deleteNode(long id) {
-		String where = NodeTable._ID + "=?";
-
-		String _id = String.valueOf(id);
-		String[] whereArgs = new String[] { _id };
-
-		int count = db.delete(NOME_TABELA, where, whereArgs);
-		return count;
+	public boolean deleteNode() {
+		boolean aux = true;
+		try{
+			String sql = "DELETE FROM "+ NOME_TABELA;
+	        db.execSQL(sql);
+		}catch (Exception e) {
+            aux=false;
+            Log.i("Exception excluir",e.getMessage().toString());
+		}
+		
+		return aux;
 	}
+	
+	
 	
 	@Override
 	public void fechar() {

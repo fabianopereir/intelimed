@@ -3,9 +3,9 @@ package nutes.intelimed.model.DAO;
 import nutes.intelimed.model.IModelEvidence;
 import nutes.intelimed.model.entity.Evidence;
 import nutes.intelimed.model.entity.Evidence.EvidenceTable;
-import nutes.intelimed.model.entity.Node.NodeTable;
 import android.content.ContentValues;
 import android.content.Context;
+import android.util.Log;
 
 /**
  * Classe responsável por realizar manipulação em banco na tabela de evidências
@@ -38,18 +38,20 @@ public class EvidenceDao extends GenericDao implements IModelEvidence {
 	}
 	
 	/**
-	 * Deleta uma evidência na base de dados
-	 * @param Long id (identificador da evidência)
-	 * @return int - quantidade de evidências deletadas
+	 * Deleta evidência na base de dados
+	 * @return boolean - se deletar retorna true
 	 */
-	public int deleteEvidence(long id) {
-		String where = NodeTable._ID + "=?";
-
-		String _id = String.valueOf(id);
-		String[] whereArgs = new String[] { _id };
-
-		int count = db.delete(NOME_TABELA, where, whereArgs);
-		return count;
+	public boolean deleteEvidence() {
+		boolean aux = true;
+		try{
+			String sql = "DELETE FROM "+ NOME_TABELA;
+	        db.execSQL(sql);
+		}catch (Exception e) {
+            aux=false;
+            Log.i("Exception excluir",e.getMessage().toString());
+		}
+		
+		return aux;
 	}
 	
 	@Override
