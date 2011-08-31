@@ -6,8 +6,8 @@ import nutes.intelimed.InteliMEDContext;
 import nutes.intelimed.communication.helper.Http;
 import nutes.intelimed.model.EvidenceAnswersScript;
 import nutes.intelimed.model.EvidenceScript;
-import nutes.intelimed.model.IModelEvidence;
-import nutes.intelimed.model.IModelEvidenceAnswers;
+import nutes.intelimed.model.DAO.IModelEvidenceAnswersDao;
+import nutes.intelimed.model.DAO.IModelEvidenceDao;
 import android.util.Log;
 
 public class SendEvidence extends Thread implements Runnable{
@@ -16,21 +16,26 @@ public class SendEvidence extends Thread implements Runnable{
 	public static String url;
 	public static Map params;
 	
-	private IModelEvidence daoEvidence;
-	private IModelEvidenceAnswers daoEvidenceAnswer;
+	private IModelEvidenceDao daoEvidence;
+	private IModelEvidenceAnswersDao daoEvidenceAnswer;
 	
 	
 	@Override
 	public void run() {
 		
-		daoEvidence = (IModelEvidence) new EvidenceScript(InteliMEDContext.getInstance());
-		daoEvidenceAnswer = (IModelEvidenceAnswers) new EvidenceAnswersScript(InteliMEDContext.getInstance());		
+		/*daoEvidence = (IModelEvidenceDao) new EvidenceScript(InteliMEDContext.getInstance());
+		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(InteliMEDContext.getInstance());*/		
 		
-		final String rData = Http.getInstance(Http.NORMAL).doPost(url, params);
+		final Boolean rData = Http.getInstance(Http.NORMAL).doPost(url, params);
 
+		if (rData)
+		{
+			Log.i(CATEGORIA, "Funcionou: " +rData);
+		}
 		Log.i(CATEGORIA, "Http.doPost: " +rData);
 		
-		if (rData!=null){
+		
+		/*if (rData!=null){
 			boolean delEvAns = daoEvidenceAnswer.deleteEvidenceAnswers();
 			
 			if(delEvAns){
@@ -41,7 +46,7 @@ public class SendEvidence extends Thread implements Runnable{
 			
 		}else{
 			Log.i(CATEGORIA, "Erro ao deletar tabela EvidenceAnswers");
-		}
+		}*/
 	}
 
 }

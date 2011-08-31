@@ -1,6 +1,5 @@
 package nutes.intelimed.model.DAO;
 
-import nutes.intelimed.model.IModelEvidence;
 import nutes.intelimed.model.entity.Evidence;
 import nutes.intelimed.model.entity.Evidence.EvidenceTable;
 import android.content.ContentValues;
@@ -12,7 +11,7 @@ import android.util.Log;
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  */
-public class EvidenceDao extends GenericDao implements IModelEvidence {
+public class EvidenceDao extends GenericDao implements IModelEvidenceDao {
 	
 	public static final String NOME_TABELA = "evidencia";
 

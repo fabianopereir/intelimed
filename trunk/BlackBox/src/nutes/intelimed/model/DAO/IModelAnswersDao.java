@@ -1,4 +1,4 @@
-package nutes.intelimed.model;
+package nutes.intelimed.model.DAO;
 
 import nutes.intelimed.model.entity.Answer;
 
@@ -9,7 +9,7 @@ import nutes.intelimed.model.entity.Answer;
  * 
  */
 
-public interface IModelAnswers {
+public interface IModelAnswersDao {
 	public abstract Answer searchAnswer(Long idresposta);
 	public abstract long insertAnswer(Answer answer);
 	public abstract boolean deleteAnswer();

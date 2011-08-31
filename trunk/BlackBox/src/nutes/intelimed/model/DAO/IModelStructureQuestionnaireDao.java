@@ -1,4 +1,4 @@
-package nutes.intelimed.model;
+package nutes.intelimed.model.DAO;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import nutes.intelimed.model.entity.StructureQuestionnaire;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public interface IModelStructureQuestionnaire {
+public interface IModelStructureQuestionnaireDao {
 	public abstract List<StructureQuestionnaire> listarEstruturaQuestionario();
 	public abstract void fechar();
 }

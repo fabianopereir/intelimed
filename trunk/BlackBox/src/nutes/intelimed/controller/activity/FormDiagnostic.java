@@ -7,8 +7,8 @@ import java.util.List;
 import nutes.intelimed.Login;
 import nutes.intelimed.R;
 import nutes.intelimed.controller.util.AnswerOption;
-import nutes.intelimed.model.IModelStructureQuestionnaire;
 import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.model.DAO.IModelStructureQuestionnaireDao;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 import nutes.intelimed.service.BlackBox;
 import nutes.intelimed.service.IBlackBox;
@@ -40,7 +40,7 @@ import android.widget.Toast;
  */
 public class FormDiagnostic extends Activity implements OnCheckedChangeListener {
 
-        public static IModelStructureQuestionnaire dao;
+        public static IModelStructureQuestionnaireDao dao;
         public static IBlackBox treeQ;
         
         private Button validar;
@@ -57,7 +57,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.questionnaire_asma);
 
-                dao = (IModelStructureQuestionnaire) new BaseScript(this);
+                dao = (IModelStructureQuestionnaireDao) new BaseScript(this);
 
                 montarQuest();
 

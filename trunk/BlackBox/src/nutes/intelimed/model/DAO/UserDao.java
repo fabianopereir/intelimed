@@ -1,6 +1,5 @@
 package nutes.intelimed.model.DAO;
 
-import nutes.intelimed.model.IModelUser;
 import nutes.intelimed.model.entity.User;
 import nutes.intelimed.model.entity.User.Users;
 import android.content.Context;
@@ -12,7 +11,7 @@ import android.database.SQLException;
 * @author Jamilson Batista (jamilsonbatista@gmail.com)
 * @author Dyego Carlos (dyego12345@gmail.com)
 */
-public class UserDao extends GenericDao implements IModelUser{
+public class UserDao extends GenericDao implements IModelUserDao{
 
 	// Nome da tabela
 	public static final String NOME_TABELA = "usuario";

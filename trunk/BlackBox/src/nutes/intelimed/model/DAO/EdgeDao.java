@@ -6,7 +6,6 @@ import android.database.Cursor;
 
 import android.database.SQLException;
 import android.util.Log;
-import nutes.intelimed.model.IModelEdge;
 import nutes.intelimed.model.entity.Edge;
 import nutes.intelimed.model.entity.Edge.EdgeTable;
 
@@ -15,7 +14,7 @@ import nutes.intelimed.model.entity.Edge.EdgeTable;
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  */
-public class EdgeDao extends GenericDao implements IModelEdge {
+public class EdgeDao extends GenericDao implements IModelEdgeDao {
 	
 	public static final String NOME_TABELA = "aresta";
 

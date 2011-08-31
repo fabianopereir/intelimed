@@ -8,9 +8,9 @@ import nutes.intelimed.Login;
 import nutes.intelimed.R;
 import nutes.intelimed.communication.SendEvidence;
 import nutes.intelimed.communication.ServerConstants;
-import nutes.intelimed.communication.TreeUpdate;
+import nutes.intelimed.communication.ReceiveTree;
 import nutes.intelimed.model.EvidenceToServerScript;
-import nutes.intelimed.model.IModelEvidenceToServer;
+import nutes.intelimed.model.DAO.IModelEvidenceToServerDao;
 import nutes.intelimed.model.entity.EvidenceToServer;
 
 import org.json.JSONArray;
@@ -46,7 +46,7 @@ public class Menu extends Activity{
 	
 	protected static final String CATEGORIA = "nutes";
 	
-    private IModelEvidenceToServer daoEvidenceToServer;
+    private IModelEvidenceToServerDao daoEvidenceToServer;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class Menu extends Activity{
         back.setVisibility(ImageButton.GONE);
        
         
-        daoEvidenceToServer = (IModelEvidenceToServer) new EvidenceToServerScript(this);
+        daoEvidenceToServer = (IModelEvidenceToServerDao) new EvidenceToServerScript(this);
 
         
 		diagnostic.setOnClickListener(new OnClickListener() {
@@ -155,7 +155,7 @@ public class Menu extends Activity{
 			 System.out.println("Dados Mobile: "+data);
 			 Map params = new HashMap();
 			 params.put("n1", arrData);
-			 
+			
 			 
 			 SendEvidence sEv = new SendEvidence();
 			 sEv.url = ServerConstants.getContextFromPost();
@@ -173,7 +173,7 @@ public class Menu extends Activity{
 	private void TreeUpdate()
 	{
 		try {
-			TreeUpdate tUP = new TreeUpdate();
+			ReceiveTree tUP = new ReceiveTree();
 			tUP.start();
 			
 		}catch (Exception e) {

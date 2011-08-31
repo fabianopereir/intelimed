@@ -1,4 +1,4 @@
-package nutes.intelimed.model;
+package nutes.intelimed.model.DAO;
 
 import nutes.intelimed.model.entity.Evidence;
 
@@ -8,7 +8,7 @@ import nutes.intelimed.model.entity.Evidence;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public interface IModelEvidence {
+public interface IModelEvidenceDao {
 
 	public abstract long insertEvidence(Evidence evidence);
 	public abstract boolean deleteEvidence();

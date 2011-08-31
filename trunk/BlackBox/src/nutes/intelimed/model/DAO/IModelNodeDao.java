@@ -1,4 +1,4 @@
-package nutes.intelimed.model;
+package nutes.intelimed.model.DAO;
 
 import nutes.intelimed.model.entity.Node;
 
@@ -8,7 +8,7 @@ import nutes.intelimed.model.entity.Node;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public interface IModelNode {
+public interface IModelNodeDao {
 	public abstract Node searchNode(Long fk_idno);
 	public abstract long insertNode(Node node);
 	public abstract boolean deleteNode();

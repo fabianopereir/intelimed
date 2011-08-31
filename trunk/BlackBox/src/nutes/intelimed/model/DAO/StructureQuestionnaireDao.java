@@ -3,7 +3,6 @@ package nutes.intelimed.model.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
-import nutes.intelimed.model.IModelStructureQuestionnaire;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
 import nutes.intelimed.model.entity.StructureQuestionnaire.StructureQuestionnaireAll;
 import android.content.Context;
@@ -16,7 +15,7 @@ import android.util.Log;
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  */
-public class StructureQuestionnaireDao extends GenericDao implements IModelStructureQuestionnaire{
+public class StructureQuestionnaireDao extends GenericDao implements IModelStructureQuestionnaireDao{
 		
 	public static final String NOME_TABELA = " no"+" INNER JOIN resposta";
 	

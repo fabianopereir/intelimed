@@ -17,13 +17,13 @@ public abstract class Http {
 		switch (tipo) {
 			case NORMAL:
 				return new HttpNormalImpl();
-			case JAKARTA:
-				return new HttpClientImpl();
+			//case JAKARTA:
+				//return new HttpClientImpl();
 		default:
 			return new HttpNormalImpl();
 		}
 	}
 	public abstract String downloadArquivo(String url);
 	public abstract byte[] downloadImagem(String url);
-	public abstract String doPost(String url, Map map);
+	public abstract Boolean doPost(String url, Map map);
 }

@@ -97,15 +97,16 @@ public class HttpNormalImpl extends Http {
 	 * @return String url
 	 */
 	@Override
-	public String doPost(String url, Map params) {
+	public Boolean doPost(String url, Map params) {
 		try {
 			String queryString = getQueryString(params);
-			String texto = doPost(url, queryString);
+			Boolean texto = doPost(url, queryString);
+			Log.i(CATEGORIA, "Valor de texto: "+texto);
 			return texto;
 		} catch (IOException e) {
 			Log.e(CATEGORIA, e.getMessage(), e);
 		}
-		return url;
+		return false;
 	}
 
 	/**
@@ -113,10 +114,10 @@ public class HttpNormalImpl extends Http {
 	 * Os parâmetros são enviados ao servidor
 	 * @param String url
 	 * @param String params
-	 * @return
+	 * @return	
 	 * @throws IOException
 	 */
-	private String doPost(String url, String params) throws IOException {
+	private Boolean doPost(String url, String params) throws IOException {
 		Log.i(CATEGORIA, "Http.doPost: " + url + "?" + params);
 		URL u = new URL(url);
 
@@ -137,10 +138,11 @@ public class HttpNormalImpl extends Http {
 
 		// le o texto
 		String texto = readString(in);
-
+		Log.i(CATEGORIA, "Valor de texto após read: "+texto);
+		
 		conn.disconnect();
 
-		return texto;
+		return Boolean.valueOf(texto);
 	}
 
 	// 

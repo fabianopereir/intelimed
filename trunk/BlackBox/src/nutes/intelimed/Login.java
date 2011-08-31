@@ -18,9 +18,9 @@ import android.widget.Toast;
 
 import nutes.intelimed.R;
 import nutes.intelimed.controller.activity.Menu;
-import nutes.intelimed.model.IModelUser;
 import nutes.intelimed.model.MD5Password;
 import nutes.intelimed.model.UserScript;
+import nutes.intelimed.model.DAO.IModelUserDao;
 import nutes.intelimed.model.entity.User;
 
 /**
@@ -32,7 +32,7 @@ import nutes.intelimed.model.entity.User;
  */
 public class Login extends Activity{
 	
-	public static IModelUser dao;
+	public static IModelUserDao dao;
 	
 	Button btlogin;
 	EditText user, password;

@@ -14,7 +14,7 @@ import android.util.Log;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class TreeUpdate extends Thread implements Runnable {
+public class ReceiveTree extends Thread implements Runnable {
 
 	protected static final String CATEGORIA = "nutes";
 	
