@@ -13,15 +13,13 @@ import android.database.SQLException;
 */
 public class UserDao extends GenericDao implements IModelUserDao{
 
-	// Nome da tabela
 	public static final String NOME_TABELA = "usuario";
 	
-	public UserDao()
-	{
+	public UserDao(){
 		
 	}
+	
 	public UserDao(Context ctx) {
-		// Abre o banco de dados
 		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
 	}
 
@@ -57,7 +55,6 @@ public class UserDao extends GenericDao implements IModelUserDao{
 	}
 	
 	public void fechar() {
-		// fecha o banco de dados
 		if (db != null) {
 			db.close();
 		}

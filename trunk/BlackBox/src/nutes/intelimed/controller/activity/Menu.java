@@ -105,8 +105,7 @@ public class Menu extends Activity{
 	 * Evento disparado quando o botão de "sincronizar dados" da Activity Menu recebe um click
 	 * @return void
 	 */
-	public void sendData()
-	{
+	public void sendData(){
 		dialog = ProgressDialog.show(this,"InteliMED", "Enviando dados", false,true);
 		
 		 ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer.searchEvidenceToServer();
@@ -170,8 +169,7 @@ public class Menu extends Activity{
              
 	}
 	
-	private void TreeUpdate()
-	{
+	private void TreeUpdate(){
 		try {
 			ReceiveTree tUP = new ReceiveTree();
 			tUP.start();
@@ -193,7 +191,6 @@ public class Menu extends Activity{
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-	        	//finish();
 	    	startActivity(new Intent(getBaseContext(), Login.class));
 	        return true;
 	    }
@@ -204,7 +201,5 @@ public class Menu extends Activity{
 	protected void onPause() {
 		super.onPause();
 		setResult(RESULT_CANCELED);
-		// Fecha a tela
-		//finish();
 	}
 }

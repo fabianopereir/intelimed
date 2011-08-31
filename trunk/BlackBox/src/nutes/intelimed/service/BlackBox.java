@@ -26,6 +26,10 @@ public class BlackBox implements IBlackBox {
 	private Node node;
 	private Context ctx;
 
+	/**
+	 * Método construtor
+	 * @param Context - contexto
+	 */
 	public BlackBox(Context context) {
 		this.ctx = context;
 		edgeDao = (IModelEdgeDao) new EdgeScript(ctx);

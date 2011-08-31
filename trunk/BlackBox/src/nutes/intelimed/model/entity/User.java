@@ -18,8 +18,7 @@ public class User {
 	public static final String AUTHORITY = "nutes.intelimed.model.entity";
 	public static String[] colunas = new String[] { Users._ID, Users.USUARIO, Users.SENHA };
 	
-	public User()
-	{
+	public User(){
 	}
 
 	public  String getVuser() {
@@ -62,6 +61,8 @@ public class User {
 	
 		/**
 		 * Método que constrói uma Uri para um Usuário específico, com o seu id
+		 * @param id
+		 * @return Uri
 		 */
 		public static Uri getUriId(long id) {
 			Uri uriFuncionario = ContentUris.withAppendedId(Users.CONTENT_URI, id);

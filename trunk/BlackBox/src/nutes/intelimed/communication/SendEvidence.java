@@ -21,13 +21,20 @@ public class SendEvidence extends Thread implements Runnable{
 	private IModelEvidenceAnswersDao daoEvidenceAnswer;
 	private Context ctx;
 	
+	/**
+	 * Método construtor
+	 * @param Context - contexto
+	 */
 	public SendEvidence(Context ctx){
 		this.ctx = ctx;
 		daoEvidence = (IModelEvidenceDao) new EvidenceScript(ctx);
 		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(ctx);
 	}
 	
-	@Override
+	/**
+	 * Faz upload de evidências para servidor
+	 * @return void
+	 */	
 	public void run() {
 
 		daoEvidence = (IModelEvidenceDao) new EvidenceScript(ctx);

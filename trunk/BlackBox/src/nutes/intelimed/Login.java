@@ -64,7 +64,6 @@ public class Login extends Activity{
 					usuario.setVuser(Vuser);
 					usuario.setVpassword(MD5Password.getPassword(Vpassword));
 				} catch (NoSuchAlgorithmException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				userFinal = dao.login(usuario);
@@ -105,7 +104,6 @@ public class Login extends Activity{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		// Fecha o banco
 		dao.fechar();
 	}
 
@@ -113,7 +111,6 @@ public class Login extends Activity{
 	protected void onPause() {
 		super.onPause();
 		setResult(RESULT_CANCELED);
-		// Fecha a tela
-		//finish();
+		
 	}
 }

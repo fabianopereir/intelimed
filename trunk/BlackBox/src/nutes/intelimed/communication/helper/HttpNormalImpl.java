@@ -136,7 +136,6 @@ public class HttpNormalImpl extends Http {
 
 		InputStream in = conn.getInputStream();
 
-		// le o texto
 		String texto = readString(in);
 		Log.i(CATEGORIA, "Valor de texto após read: "+texto);
 		

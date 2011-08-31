@@ -95,7 +95,7 @@ public class Answer {
 		 * Método que constrói uma Uri para uma resposta específica, com seu id
 		 * 
 		 * @param id - identificador da resposta
-		 * @return uriEvidence
+		 * @return uriAnswers
 		 */
 		public static Uri getUriId(long id) {
 			Uri uriAnswers = ContentUris.withAppendedId(

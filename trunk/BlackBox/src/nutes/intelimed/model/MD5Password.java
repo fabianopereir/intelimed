@@ -3,7 +3,19 @@ package nutes.intelimed.model;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Classe responsável pela criptografia da senha do usuário
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
+ *  
+ */
 public class MD5Password{
+	/**
+	 * Método responsável pela criptografia da senha do usuário
+	 * @param password
+	 * @return String
+	 *  
+	 */
 	public static String getPassword(String password) throws NoSuchAlgorithmException
 	{
 		MessageDigest md = MessageDigest.getInstance("MD5");

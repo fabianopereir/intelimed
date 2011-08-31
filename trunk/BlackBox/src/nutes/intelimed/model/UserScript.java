@@ -9,7 +9,7 @@ public class UserScript extends UserDao{
 	private DatabaseHelper dbHelper;
 
 	/**
-	 * Cria o banco de dados com um script SQL
+	 * Acessa o banco de dados com um script SQL
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public UserScript(Context ctx) {

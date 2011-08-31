@@ -26,8 +26,7 @@ import android.widget.LinearLayout.LayoutParams;
 
 /**
  * Classe responsável pela montagem da tela de resultado do questionário, com
- * suas questões e respectivas respostas obtidas através de questionnaireData da
- * Activity FormDiagnostic
+ * suas questões e respectivas respostas obtidas através de questionnaireData de FormDiagnostic
  * 
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
@@ -51,6 +50,7 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 	private LinearLayout layout;
 	private ImageButton back,logout;
 	
+	@Override
 	public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
@@ -110,7 +110,6 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 			public void onClick(View v) {
 				
 				startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
-				//	finish();
 				
 			}
 		});
@@ -120,7 +119,6 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 			public void onClick(View v) {
 				
 				startActivity(new Intent(getBaseContext(), Login.class));
-				//	finish();
 				
 			}
 		});
@@ -204,7 +202,6 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
     protected void onPause() {
             super.onPause();
             setResult(RESULT_CANCELED);
-            // finish();
     }
 
 	/**
@@ -216,7 +213,6 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-	        	//finish();
 	    	startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 	        return true;
 	    }
