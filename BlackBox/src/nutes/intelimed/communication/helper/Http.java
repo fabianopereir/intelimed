@@ -17,8 +17,6 @@ public abstract class Http {
 		switch (tipo) {
 			case NORMAL:
 				return new HttpNormalImpl();
-			//case JAKARTA:
-				//return new HttpClientImpl();
 		default:
 			return new HttpNormalImpl();
 		}

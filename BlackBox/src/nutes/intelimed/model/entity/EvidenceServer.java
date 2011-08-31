@@ -11,7 +11,7 @@ import android.provider.BaseColumns;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class EvidenceToServer {
+public class EvidenceServer {
 	private Long idevidencia;
 	private String sistema;
 	private String medico;

@@ -9,9 +9,9 @@ import nutes.intelimed.R;
 import nutes.intelimed.communication.SendEvidence;
 import nutes.intelimed.communication.ServerConstants;
 import nutes.intelimed.communication.ReceiveTree;
-import nutes.intelimed.model.EvidenceToServerScript;
-import nutes.intelimed.model.DAO.IModelEvidenceToServerDao;
-import nutes.intelimed.model.entity.EvidenceToServer;
+import nutes.intelimed.model.EvidenceServerScript;
+import nutes.intelimed.model.DAO.IModelEvidenceServerDao;
+import nutes.intelimed.model.entity.EvidenceServer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +46,7 @@ public class Menu extends Activity{
 	
 	protected static final String CATEGORIA = "nutes";
 	
-    private IModelEvidenceToServerDao daoEvidenceToServer;
+    private IModelEvidenceServerDao daoEvidenceToServer;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class Menu extends Activity{
         back.setVisibility(ImageButton.GONE);
        
         
-        daoEvidenceToServer = (IModelEvidenceToServerDao) new EvidenceToServerScript(this);
+        daoEvidenceToServer = (IModelEvidenceServerDao) new EvidenceServerScript(this);
 
         
 		diagnostic.setOnClickListener(new OnClickListener() {
@@ -109,10 +109,10 @@ public class Menu extends Activity{
 	{
 		dialog = ProgressDialog.show(this,"InteliMED", "Enviando dados", false,true);
 		
-		 ArrayList<EvidenceToServer> arrayData = (ArrayList<EvidenceToServer>) daoEvidenceToServer.searchEvidenceToServer();
+		 ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer.searchEvidenceToServer();
 		 int aux;
          int aux2 = 0;
-         EvidenceToServer vAux;
+         EvidenceServer vAux;
          
 		 JSONObject data = new JSONObject();
 		 JSONObject dataEvidence;
