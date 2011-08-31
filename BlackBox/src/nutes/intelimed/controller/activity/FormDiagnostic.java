@@ -204,8 +204,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
          * @param formDiagnostic - tela de questionário
          * @return TextView com uma questão específica
          */
-        public TextView createQuestionLabel(String pergunta, long idno,
-                        FormDiagnostic formDiagnostic) {
+        public TextView createQuestionLabel(String pergunta, long idno,FormDiagnostic formDiagnostic) {
                 TextView perguntas = null;
                 perguntas = new TextView(formDiagnostic);
                 perguntas.setId((int) idno);
@@ -222,8 +221,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
          * @param formDiagnostic - tela de questionário
          * @return View com radio group de um questão específica
          */
-        public View createQuestionOption(ArrayList<AnswerOption> questionOption,
-                        int radioId, FormDiagnostic formDiagnostic) {
+        public View createQuestionOption(ArrayList<AnswerOption> questionOption,int radioId, FormDiagnostic formDiagnostic) {
 
                 RadioGroup radio_group = new RadioGroup(formDiagnostic);
                 radio_group.setTag(radioId);
@@ -252,6 +250,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
     	@Override
     	public boolean onKeyDown(int keyCode, KeyEvent event) {
     	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+    	        finish();
     	    	startActivity(new Intent(getBaseContext(), Menu.class));
     	        return true;
     	    }
@@ -260,7 +259,9 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         
         @Override
         protected void onPause() {
-                super.onPause();
-                setResult(RESULT_CANCELED);
+	        super.onPause();
+	        setResult(RESULT_CANCELED);
+	        finish();
+
         }
 }

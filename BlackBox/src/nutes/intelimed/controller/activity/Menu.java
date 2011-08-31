@@ -94,7 +94,7 @@ public class Menu extends Activity{
 			public void onClick(View v) {
 				
 				startActivity(new Intent(getBaseContext(), Login.class));
-				//	finish();
+				finish();
 				
 			}
 		});
@@ -154,7 +154,6 @@ public class Menu extends Activity{
 			 System.out.println("Dados Mobile: "+data);
 			 Map params = new HashMap();
 			 params.put("n1", arrData);
-			
 			 
 			 SendEvidence sEv = new SendEvidence(getBaseContext());
 			 sEv.url = ServerConstants.getContextFromPost();
@@ -191,6 +190,7 @@ public class Menu extends Activity{
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+	        finish();
 	    	startActivity(new Intent(getBaseContext(), Login.class));
 	        return true;
 	    }
@@ -201,5 +201,6 @@ public class Menu extends Activity{
 	protected void onPause() {
 		super.onPause();
 		setResult(RESULT_CANCELED);
+		finish();
 	}
 }

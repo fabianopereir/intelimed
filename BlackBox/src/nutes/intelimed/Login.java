@@ -111,6 +111,6 @@ public class Login extends Activity{
 	protected void onPause() {
 		super.onPause();
 		setResult(RESULT_CANCELED);
-		
+		finish();
 	}
 }
