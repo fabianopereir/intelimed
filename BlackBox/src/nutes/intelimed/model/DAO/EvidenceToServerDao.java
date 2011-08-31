@@ -2,7 +2,6 @@ package nutes.intelimed.model.DAO;
 
 import java.util.ArrayList;
 
-import nutes.intelimed.model.IModelEvidenceToServer;
 import nutes.intelimed.model.entity.EvidenceToServer;
 import nutes.intelimed.model.entity.EvidenceToServer.EvidenceToServerTable;
 import android.content.Context;
@@ -15,7 +14,7 @@ import android.util.Log;
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  */
-public class EvidenceToServerDao extends GenericDao implements IModelEvidenceToServer{
+public class EvidenceToServerDao extends GenericDao implements IModelEvidenceToServerDao{
 	public static final String NOME_TABELA = "evidencia_respostas INNER JOIN resposta"+" INNER JOIN evidencia";
 
 	public EvidenceToServerDao() {}

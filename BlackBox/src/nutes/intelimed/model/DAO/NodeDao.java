@@ -1,6 +1,5 @@
 package nutes.intelimed.model.DAO;
 
-import nutes.intelimed.model.IModelNode;
 import nutes.intelimed.model.entity.Node;
 import nutes.intelimed.model.entity.Node.NodeTable;
 import android.content.ContentValues;
@@ -14,7 +13,7 @@ import android.util.Log;
 * @author Jamilson Batista (jamilsonbatista@gmail.com)
 * @author Dyego Carlos (dyego12345@gmail.com)
 */
-public class NodeDao extends GenericDao implements IModelNode{
+public class NodeDao extends GenericDao implements IModelNodeDao{
 	
 	public static final String NOME_TABELA = "no";
 

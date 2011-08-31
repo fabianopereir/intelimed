@@ -4,8 +4,8 @@ import nutes.intelimed.Login;
 import nutes.intelimed.R;
 import nutes.intelimed.model.EvidenceAnswersScript;
 import nutes.intelimed.model.EvidenceScript;
-import nutes.intelimed.model.IModelEvidence;
-import nutes.intelimed.model.IModelEvidenceAnswers;
+import nutes.intelimed.model.DAO.IModelEvidenceAnswersDao;
+import nutes.intelimed.model.DAO.IModelEvidenceDao;
 import nutes.intelimed.model.entity.Evidence;
 import nutes.intelimed.model.entity.EvidenceAnswers;
 import android.app.Activity;
@@ -41,8 +41,8 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 
 	private String medico;
 
-	private IModelEvidence daoEvidence;
-	private IModelEvidenceAnswers daoEvidenceAnswer;
+	private IModelEvidenceDao daoEvidence;
+	private IModelEvidenceAnswersDao daoEvidenceAnswer;
 
 	private Evidence evidence;
 	private EvidenceAnswers evidenceAnswer;
@@ -58,8 +58,8 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 
 		layout = (LinearLayout) findViewById(R.id.LinearLayout02);
 
-		daoEvidence = (IModelEvidence) new EvidenceScript(this);
-		daoEvidenceAnswer = (IModelEvidenceAnswers) new EvidenceAnswersScript(
+		daoEvidence = (IModelEvidenceDao) new EvidenceScript(this);
+		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(
 				this);
 
 		evidence = new Evidence();

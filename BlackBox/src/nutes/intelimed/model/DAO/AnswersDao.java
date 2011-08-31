@@ -1,6 +1,5 @@
 package nutes.intelimed.model.DAO;
 
-import nutes.intelimed.model.IModelAnswers;
 import nutes.intelimed.model.entity.Answer;
 import nutes.intelimed.model.entity.Answer.AnswersTable;
 import android.content.ContentValues;
@@ -14,7 +13,7 @@ import android.util.Log;
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  */
-public class AnswersDao extends GenericDao implements IModelAnswers {
+public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	
 	public static final String NOME_TABELA = "aresta";
 

@@ -1,4 +1,4 @@
-package nutes.intelimed.model;
+package nutes.intelimed.model.DAO;
 
 import nutes.intelimed.model.entity.Edge;
 
@@ -9,7 +9,7 @@ import nutes.intelimed.model.entity.Edge;
  * 
  */
 
-public interface IModelEdge {
+public interface IModelEdgeDao {
 	public abstract Edge searchEdge(Long fk_idresposta);
 	public abstract long insertEdge(Edge edge);
 	public abstract boolean deleteEdge();

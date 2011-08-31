@@ -1,9 +1,9 @@
 package nutes.intelimed.service;
 
 import nutes.intelimed.model.EdgeScript;
-import nutes.intelimed.model.IModelEdge;
-import nutes.intelimed.model.IModelNode;
 import nutes.intelimed.model.NodeScript;
+import nutes.intelimed.model.DAO.IModelEdgeDao;
+import nutes.intelimed.model.DAO.IModelNodeDao;
 import nutes.intelimed.model.entity.Edge;
 import nutes.intelimed.model.entity.Node;
 
@@ -20,16 +20,16 @@ import android.content.Context;
  */
 public class BlackBox implements IBlackBox {
 
-	public static IModelEdge edgeDao;
-	public static IModelNode nodeDao;
+	public static IModelEdgeDao edgeDao;
+	public static IModelNodeDao nodeDao;
 	private Edge entEdge;
 	private Node node;
 	private Context ctx;
 
 	public BlackBox(Context context) {
 		this.ctx = context;
-		edgeDao = (IModelEdge) new EdgeScript(ctx);
-		nodeDao = (IModelNode) new NodeScript(ctx);
+		edgeDao = (IModelEdgeDao) new EdgeScript(ctx);
+		nodeDao = (IModelNodeDao) new NodeScript(ctx);
 	}
 
 	/**

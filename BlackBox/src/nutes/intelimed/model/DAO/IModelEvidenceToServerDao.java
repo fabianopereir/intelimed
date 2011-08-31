@@ -1,11 +1,11 @@
-package nutes.intelimed.model;
+package nutes.intelimed.model.DAO;
 
 
 import java.util.ArrayList;
 
 import nutes.intelimed.model.entity.EvidenceToServer;
 
-public interface IModelEvidenceToServer {
+public interface IModelEvidenceToServerDao {
 	public abstract ArrayList<EvidenceToServer> searchEvidenceToServer();
 	public abstract void fechar();
 }

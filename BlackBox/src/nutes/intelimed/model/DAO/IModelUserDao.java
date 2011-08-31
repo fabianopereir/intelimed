@@ -1,4 +1,4 @@
-package nutes.intelimed.model;
+package nutes.intelimed.model.DAO;
 
 
 import nutes.intelimed.model.entity.User;
@@ -10,7 +10,7 @@ import nutes.intelimed.model.entity.User;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public interface IModelUser{
+public interface IModelUserDao{
 	public abstract User login(User user);
 	public abstract void fechar();
 }
