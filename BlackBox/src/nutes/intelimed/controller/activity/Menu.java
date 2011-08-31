@@ -157,7 +157,7 @@ public class Menu extends Activity{
 			 params.put("n1", arrData);
 			
 			 
-			 SendEvidence sEv = new SendEvidence();
+			 SendEvidence sEv = new SendEvidence(getBaseContext());
 			 sEv.url = ServerConstants.getContextFromPost();
 			 sEv.params = params;
 			 sEv.start();
