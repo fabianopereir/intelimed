@@ -15,7 +15,7 @@ public class AnswerScript extends AnswersDao{
 	private DatabaseHelper dbHelper;
 
 	/**
-	 * Cria o banco de dados com um script SQL
+	 * Acessa o banco de dados com um script SQL
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public AnswerScript(Context ctx) {

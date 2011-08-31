@@ -12,7 +12,6 @@ import java.util.Map;
  */
 public abstract class Http {
 	public static final int NORMAL 	= 1;
-	public static final int JAKARTA = 2;
 	public static Http getInstance(int tipo){
 		switch (tipo) {
 			case NORMAL:

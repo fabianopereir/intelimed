@@ -14,21 +14,18 @@ import org.json.JSONObject;
 public class ParserSimulation {
 	private JSONObject jObject;
 	
-	//private String jString = "{\"menu\":	{\"id\": \"file\", \"value\": \"File\", \"popup\": { \"menuitem\": [ {\"value\": \"New\", \"onclick\": \"CreateNewDoc()\"}, {\"value\": \"Open\", \"onclick\": \"OpenDoc()\"}, {\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}]}}}";
 	private String jString = "{'menu':	{'id': 'file', 'value': 'File', 'popup': { 'menuitem': [ {'value': 'New', 'onclick': 'CreateNewDoc()'}, {'value': 'Open', 'onclick': 'OpenDoc()'}, {'value': 'Close', 'onclick': 'CloseDoc()'}]}}}";
 	
-	public ParserSimulation()
-	{
+	public ParserSimulation(){
 		
 	}
+	
 	/**
 	 * Método responsável por simular parser para leitura do json
 	 * @param String - arquivo do servidor
 	 * @return void
 	 */
-	public void parserJson(String arquivo)
-	{
-		//JSONObject teste = new JSONObject();
+	public void parserJson(String arquivo){
 		try {
 			
 			jObject = new JSONObject(jString);
@@ -50,7 +47,6 @@ public class ParserSimulation {
 
 			
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			
 			e.printStackTrace();
 		}

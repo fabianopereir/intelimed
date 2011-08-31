@@ -76,8 +76,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	public boolean deleteAnswer() {
 		boolean aux = true;
 		try{
-			String sql = "DELETE FROM "+ NOME_TABELA;
-	        db.execSQL(sql);
+			db.delete(NOME_TABELA, null, null);
 		}catch (Exception e) {
             aux=false;
             Log.i("Exception excluir",e.getMessage().toString());

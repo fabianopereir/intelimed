@@ -63,7 +63,7 @@ public class BaseScript extends StructureQuestionnaireDao{
 	
 
 	/**
-	 * Cria o banco de dados com um script SQL
+	 * Acessa o banco de dados com um script SQL
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public BaseScript(Context ctx) {

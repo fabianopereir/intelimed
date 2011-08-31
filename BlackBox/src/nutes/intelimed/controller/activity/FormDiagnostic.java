@@ -252,7 +252,6 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
     	@Override
     	public boolean onKeyDown(int keyCode, KeyEvent event) {
     	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-    	        	//finish();
     	    	startActivity(new Intent(getBaseContext(), Menu.class));
     	        return true;
     	    }
@@ -263,6 +262,5 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         protected void onPause() {
                 super.onPause();
                 setResult(RESULT_CANCELED);
-                // finish();
         }
 }
