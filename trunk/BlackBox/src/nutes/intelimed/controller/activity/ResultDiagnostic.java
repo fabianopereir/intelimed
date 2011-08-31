@@ -98,6 +98,7 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 		validar.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				validar(answer, arrNO, result);
+				startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 			}
 		});
 		
@@ -119,6 +120,7 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 			public void onClick(View v) {
 				
 				startActivity(new Intent(getBaseContext(), Login.class));
+				finish();
 				
 			}
 		});
@@ -198,12 +200,6 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 
 	}
 	
-	@Override
-    protected void onPause() {
-            super.onPause();
-            setResult(RESULT_CANCELED);
-    }
-
 	/**
 	 * 
 	 * Implementação para botão voltar de Activity
@@ -213,9 +209,19 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+	        finish();
 	    	startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 	        return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
 	}
+	
+	@Override
+    protected void onPause() {
+        super.onPause();
+        setResult(RESULT_CANCELED);
+        finish();
+    }
+
+	
 }

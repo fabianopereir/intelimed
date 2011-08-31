@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Diagnostico</string>
+	<string name="app_name">InteliMED</string>
 	<string name="url_string"></string>
 	<string name="request"></string>
 	<string name="default_url"></string>
