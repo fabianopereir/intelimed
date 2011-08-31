@@ -43,8 +43,9 @@ public class EvidenceDao extends GenericDao implements IModelEvidenceDao {
 	public boolean deleteEvidence() {
 		boolean aux = true;
 		try{
-			String sql = "DELETE FROM "+ NOME_TABELA;
-	        db.execSQL(sql);
+			//String sql = "DELETE FROM "+ NOME_TABELA;
+			db.delete(NOME_TABELA, null, null);
+	       // db.execSQL(sql);
 		}catch (Exception e) {
             aux=false;
             Log.i("Exception excluir",e.getMessage().toString());
