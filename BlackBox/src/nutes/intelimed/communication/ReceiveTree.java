@@ -5,8 +5,6 @@ import nutes.intelimed.communication.helper.Http;
 import android.os.Handler;
 import android.util.Log;
 
-
-
 /**
  * Classe responsável por realizar download da árvore do servidor
  *  
@@ -29,7 +27,7 @@ public class ReceiveTree extends Thread implements Runnable {
 	public void run() {
 		try {
 			
-			final String arquivo = Http.getInstance(Http.NORMAL).downloadArquivo(ServerConstants.getContextFromGet());
+			final String arquivo = Http.getInstance().doGet(ServerConstants.getContextFromGet());
 
 			Log.i(CATEGORIA,"Texto retornado: " + arquivo);
 

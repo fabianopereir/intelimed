@@ -11,6 +11,13 @@ import nutes.intelimed.model.DAO.IModelEvidenceDao;
 import android.content.Context;
 import android.util.Log;
 
+/**
+ * Classe responsável por realizar upload de evidências ao servidor
+ *  
+ * @author Jamilson Batista (jamilsonbatista@gmail.com)
+ * @author Dyego Carlos (dyego12345@gmail.com)
+ * 
+ */
 public class SendEvidence extends Thread implements Runnable{
 
 	private final String CATEGORIA = "nutes";
@@ -40,7 +47,7 @@ public class SendEvidence extends Thread implements Runnable{
 		daoEvidence = (IModelEvidenceDao) new EvidenceScript(ctx);
 		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(ctx);		
 
-		final Boolean rData = Http.getInstance(Http.NORMAL).doPost(url, params);
+		final Boolean rData = Http.getInstance().doPost(url, params);
 
 		if (rData)
 		{
