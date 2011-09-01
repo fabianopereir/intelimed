@@ -28,7 +28,7 @@ public class HttpNormalImpl extends Http {
 	 * @return String
 	 */
 	@Override
-	public final String downloadArquivo(String url) {
+	public final String doGet(String url) {
 		Log.i(CATEGORIA, "Http.downloadArquivo: " + url);
 		try {
 			URL u = new URL(url);
@@ -46,42 +46,6 @@ public class HttpNormalImpl extends Http {
 			conn.disconnect();
 
 			return arquivo;
-		} catch (MalformedURLException e) {
-			Log.e(CATEGORIA, e.getMessage(), e);
-		} catch (IOException e) {
-			Log.e(CATEGORIA, e.getMessage(), e);
-		}
-		return null;
-	}
-
-	/**
-	 * Método responsável por realizar download de imagem do servidor
-	 * @param String url
-	 * @return byte[] array de bytes da imagem
-	 */
-	@Override
-	public final byte[] downloadImagem(String url) {
-		Log.i(CATEGORIA, "Http.downloadImagem: " + url);
-		try {
-			URL u = new URL(url);
-
-			HttpURLConnection connection = (HttpURLConnection) u.openConnection();
-			connection.setRequestProperty("Request-Method", "GET");
-			connection.setDoInput(true);
-			connection.setDoOutput(false);
-
-			connection.connect();
-
-			InputStream in = connection.getInputStream();
-
-			byte[] bytes = readBytes(in);
-
-			Log.i(CATEGORIA, "imagem retornada com: " + bytes.length + " bytes");
-
-			connection.disconnect();
-
-			return bytes;
-
 		} catch (MalformedURLException e) {
 			Log.e(CATEGORIA, e.getMessage(), e);
 		} catch (IOException e) {

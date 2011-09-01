@@ -17,12 +17,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
 
 /**
  * Classe responsável pela montagem da tela de resultado do questionário, com
@@ -32,7 +29,7 @@ import android.widget.LinearLayout.LayoutParams;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class ResultDiagnostic extends Activity implements OnCheckedChangeListener {
+public class ResultDiagnostic extends Activity {
 
 	private String result;
 	private String[] answer;
@@ -46,25 +43,30 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 	private Evidence evidence;
 	private EvidenceAnswers evidenceAnswer;
 	private EditText justification;
+	private TextView resultado;
+	private Button validar;
+	private RadioGroup opiniaoMedico;
 
-	private LinearLayout layout;
 	private ImageButton back,logout;
 	
 	@Override
 	public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
-		setContentView(R.layout.questionnaire_asma);
+		setContentView(R.layout.result_questionnaire);
 
-		layout = (LinearLayout) findViewById(R.id.LinearLayout02);
-
+		resultado = (TextView) findViewById(R.id.result);
+        validar = (Button) findViewById(R.id.btOkResult);
+        opiniaoMedico = (RadioGroup) findViewById(R.id.opiniaoMedico);
+        justification = (EditText) findViewById(R.id.justificativa);
+        
 		daoEvidence = (IModelEvidenceDao) new EvidenceScript(this);
-		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(
-				this);
+		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(this);
 
 		evidence = new Evidence();
 		evidenceAnswer = new EvidenceAnswers();
-
+		
+		
 		Intent intent = getIntent();
 		if (intent != null) {
 
@@ -75,32 +77,34 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 
 				evidence.setSistema(result);
 
-				TextView resultado = new TextView(this);
-				resultado.setLayoutParams(new LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-				resultado.setText("Resultado: " + result);
-				layout.addView(resultado);
+				if(result.equals("NO")){
+					resultado.setText("O paciente não tem asma.");
+				}else if(result.equals("YES")){
+					resultado.setText("O paciente tem asma.");
+				}
 			}
-		}
+		}		
 
-		layout.addView(createRadioButton());
-
-		justification = new EditText(this);
-		justification.setLines(5);
-		justification.setGravity(48);
-		justification.setLayoutParams(new LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-		layout.addView(justification);
-
-		Button validar = new Button(this);
-		validar.setText("OK");
-		layout.addView(validar);
 		validar.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				validar(answer, arrNO, result);
-				startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 			}
 		});
+		
+		opiniaoMedico.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    		public void onCheckedChanged(RadioGroup group, int checkedId) {
+    			boolean sim = R.id.concordo == checkedId;
+    			boolean naoconcordo = R.id.naoconcordo == checkedId;
+    			
+    			if (sim) {
+    				medico = "yes";
+    				justification.setEnabled(false);
+    			} else if(naoconcordo){
+    				medico = "no";
+    				justification.setEnabled(true);
+    			}
+    		}
+    	});
 		
 		back = (ImageButton) findViewById(R.bt.btBack);
 		logout = (ImageButton) findViewById(R.bt.btLogoff);
@@ -124,80 +128,38 @@ public class ResultDiagnostic extends Activity implements OnCheckedChangeListene
 				
 			}
 		});
-
-	}
-
-	/**
-	 * O método é chamado ao clicar em uma opção do radio group
-	 * 
-	 * @param group - instância do RadioGroup
-	 * @param checkedId - índice da resposta selecionada
-	 * @return void
-	 */
-	public void onCheckedChanged(RadioGroup group, int checkedId) {
-		if (checkedId == 1) {
-			medico = "yes";
-			justification.setEnabled(false);
-		} else {
-			medico = "no";
-			justification.setEnabled(true);
-		}
-	}
-
-	/**
-	 * Método responsável por criar radio group da tela de resultado
-	 * 
-	 * @return RadioGroup com 2 radioButtons criados dinamicamente
-	 */
-	private RadioGroup createRadioButton() {
-
-		RadioGroup radio_group = new RadioGroup(this);
-
-		RadioButton radio_button1, radio_button2;
-
-		radio_button1 = new RadioButton(this);
-		radio_button2 = new RadioButton(this);
-
-		radio_button1.setId(1);
-		radio_button1.setTag("yes");
-		radio_button1.setText("Concordo");
-
-		radio_group.addView(radio_button1);
-
-		radio_button2.setId(2);
-		radio_button2.setTag("no");
-		radio_button2.setText("Não Concordo");
-		radio_group.addView(radio_button2);
-		radio_group.setOnCheckedChangeListener(this);
-
-		return radio_group;
-	}
+    }	
 
 	/**
 	 * Método responsável por validar e mandar a classe EvidenceAnswersDao
 	 * inserir a evidência no banco
 	 * 
-	 * @param answerData
-	 * @param noData
-	 * @param result
+	 * @param answerData - array de string que armazena respostas
+	 * @param noData - array de string que armazena informações de nós
+	 * @param result - string com o resultado do sistema
 	 * @return void
 	 */
 	public void validar(String[] answerData, String[] noData, String result) {
 		evidence.setMedico(medico);
+		
 		evidence.setJustificativa(justification.getText().toString());
 
 		Long idevidencia = daoEvidence.insertEvidence(evidence);
 
-		for (int i = 0; i < answerData.length; i++) {
-			if (noData[i] != null && answerData[i] != null) {
-				evidenceAnswer.setFk_idevidencia(idevidencia);
-
-				evidenceAnswer.setFk_idResposta(Long.parseLong(answerData[i]));
-
-				daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);
+		if(evidence.getMedico()==null){	
+            Toast.makeText(ResultDiagnostic.this, "Por favor responda se concorda com o diagnóstico.", Toast.LENGTH_SHORT).show();
+		}else{
+			for (int i = 0; i < answerData.length; i++) {
+				if (noData[i] != null && answerData[i] != null) {
+					evidenceAnswer.setFk_idevidencia(idevidencia);
+	
+					evidenceAnswer.setFk_idResposta(Long.parseLong(answerData[i]));
+	
+					daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);
+				}
 			}
+			startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 		}
-
 	}
 	
 	/**

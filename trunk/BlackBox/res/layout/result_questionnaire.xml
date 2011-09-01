@@ -6,8 +6,9 @@
 	android:layout_width="fill_parent"
 	android:background="@drawable/gradientbg"
 	android:layout_height="match_parent">
-	
-	<include layout="@layout/navbar" />
+
+	<include
+		layout="@layout/navbar" />
 
 	<ScrollView
 		android:layout_height="fill_parent"
@@ -18,7 +19,57 @@
 			android:layout_width="fill_parent"
 			android:id="@+id/ResultLinearLayout02"
 			android:orientation="vertical">
-	</LinearLayout>
+
+			<TextView
+				android:id="@+id/result"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="" />
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:text="-----------------------------------------------------------" />
+				
+			<TextView
+				android:id="@+id/lblConcorda"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="Concorda com o resultado apresentado pelo sistema?" />
+
+			<RadioGroup
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+id/opiniaoMedico"
+				android:orientation="vertical"
+				android:visibility="visible">
+				<RadioButton
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:id="@+id/concordo"
+					android:tag="1"
+					android:text="Sim" />
+				<RadioButton
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent"
+					android:id="@+id/naoconcordo"
+					android:tag="2"
+					android:text="Não" />
+			</RadioGroup>
+
+			<EditText
+				android:id="@+id/justificativa"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:lines="5"
+				android:gravity="top"
+				android:text="" />
+			<Button
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+id/btOkResult"
+				android:text="OK" />
+		</LinearLayout>
 	</ScrollView>
 
 </LinearLayout>
