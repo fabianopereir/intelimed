@@ -98,6 +98,7 @@ public class ResultDiagnostic extends Activity {
     			
     			if (sim) {
     				medico = "yes";
+    				justification.setText("");
     				justification.setEnabled(false);
     			} else if(naoconcordo){
     				medico = "no";
