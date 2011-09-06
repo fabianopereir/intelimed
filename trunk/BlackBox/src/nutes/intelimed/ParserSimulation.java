@@ -35,12 +35,11 @@ public class ParserSimulation {
 			String attributeId = arvoreObject.getString("id");
 			System.out.println(attributeId);
 			
-			JSONObject arestasObject = arvoreObject.getJSONObject("arestas");
-			JSONArray arestaArray = arestasObject.getJSONArray("intermediate.Aresta");
+			JSONArray arestaArray = arvoreObject.getJSONArray("arestas");
 			for (int i = 0; i < 3; i++) {
 				String attributeIdAresta = arestaArray.getJSONObject(i).getString("id");
 				System.out.println(attributeIdAresta);
-				JSONObject respostaObject = arvoreObject.getJSONObject("resposta");
+				JSONObject respostaObject = arestaArray.getJSONObject(i).getJSONObject("resposta");
 				for(int j = 0; j < 2; j++){
 					String attributeIdResposta = respostaObject.getString("id").toString();
 					System.out.println(attributeIdResposta);
