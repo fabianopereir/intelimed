@@ -15,7 +15,7 @@ import android.util.Log;
  */
 public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	
-	public static final String NOME_TABELA = "aresta";
+	public static final String NOME_TABELA = "resposta";
 
 	public AnswersDao() {}
 

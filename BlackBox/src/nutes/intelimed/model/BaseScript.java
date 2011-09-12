@@ -37,7 +37,7 @@ public class BaseScript extends StructureQuestionnaireDao{
 		"create table grupo (_id integer primary key autoincrement, nome varchar(45), descricao varchar(45));",
 		"create table usuario ( _id integer primary key autoincrement, user text not null,password text not null,id_grupo integer, Foreign Key (id_grupo) references grupo(_id));",
 		"create table grupo_permissao (id_grupo integer, id_permissao integer, Foreign Key (id_grupo) references grupo(_id), Foreign Key (id_permissao) references permissao(_id));",
-		"insert into no(descricao_no, diagnostico) values('OUTLOOK',0);",
+		/*"insert into no(descricao_no, diagnostico) values('OUTLOOK',0);",
 		"insert into no(descricao_no, diagnostico) values('HUMIDITY',0);",
 		"insert into no(descricao_no, diagnostico) values('WIND',0);",
 		"insert into no(descricao_no, diagnostico) values('YES',1);",
@@ -55,10 +55,10 @@ public class BaseScript extends StructureQuestionnaireDao{
 		"insert into aresta(fk_idno, fk_idresposta) values(5,4);",
 		"insert into aresta(fk_idno, fk_idresposta) values(4,5);",
 		"insert into aresta(fk_idno, fk_idresposta) values(5,6);",
-		"insert into aresta(fk_idno, fk_idresposta) values(4,7);",
+		"insert into aresta(fk_idno, fk_idresposta) values(4,7);",*/
 		"insert into permissao (nome,descricao) values('deletar','paciente');",
 		"insert into grupo (nome,descricao) values('acs','Agentes de saúde');",
-		"insert into usuario (user,password,id_grupo) values('jamilson','202cb962ac59075b964b07152d234b70', 1);"
+		"insert into usuario (user,password,id_grupo) values('dyego','202cb962ac59075b964b07152d234b70', 1);"
 	};
 	
 
