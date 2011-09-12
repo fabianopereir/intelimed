@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import nutes.intelimed.Login;
+import nutes.intelimed.ParserSimulation;
 import nutes.intelimed.R;
 import nutes.intelimed.communication.SendEvidence;
 import nutes.intelimed.communication.ServerConstants;
@@ -12,6 +13,7 @@ import nutes.intelimed.communication.ReceiveTree;
 import nutes.intelimed.model.EvidenceServerScript;
 import nutes.intelimed.model.DAO.IModelEvidenceServerDao;
 import nutes.intelimed.model.entity.EvidenceServer;
+import nutes.intelimed.service.BlackBox;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -170,7 +172,8 @@ public class Menu extends Activity{
 	
 	private void TreeUpdate(){
 		try {
-			ReceiveTree tUP = new ReceiveTree();
+			BlackBox bb = new BlackBox(getBaseContext());
+			ReceiveTree tUP = new ReceiveTree(bb);
 			tUP.start();
 			
 		}catch (Exception e) {

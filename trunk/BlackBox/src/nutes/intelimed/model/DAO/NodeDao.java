@@ -64,6 +64,7 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 		values.put(NodeTable.DESCRICAO_NO, node.getDescricaoNo());
 		values.put(NodeTable.DIAGNOSTICO, node.getDiagnostico());
 		long id = db.insert(NOME_TABELA, "", values);
+        Log.i(CATEGORIA,"Insere nó???");
 		return id;
 	}
 	
@@ -91,6 +92,5 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 			db.close();
 		}
 	}
-
 	
 }
