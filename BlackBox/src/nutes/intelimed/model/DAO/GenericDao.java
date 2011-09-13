@@ -14,7 +14,7 @@ public class GenericDao {
 	protected SQLiteDatabase db;
 	protected static final String CATEGORIA = "nutes";
 	protected static final String NOME_BANCO = "caixapreta";
-	protected static final int VERSAO_BANCO = 2;
+	protected static final int VERSAO_BANCO = 34;
 	
 	/**
 	 * Busca utilizando as configurações definidas no SQLiteQueryBuilder
