@@ -5,11 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import nutes.intelimed.Login;
-import nutes.intelimed.ParserSimulation;
 import nutes.intelimed.R;
 import nutes.intelimed.communication.SendEvidence;
 import nutes.intelimed.communication.ServerConstants;
 import nutes.intelimed.communication.ReceiveTree;
+import nutes.intelimed.controller.util.Parser;
+import nutes.intelimed.controller.util.TreeUpdate;
 import nutes.intelimed.model.EvidenceServerScript;
 import nutes.intelimed.model.DAO.IModelEvidenceServerDao;
 import nutes.intelimed.model.entity.EvidenceServer;
@@ -86,7 +87,7 @@ public class Menu extends Activity{
 			@Override
 			public void onClick(View v) {
 				dialog = ProgressDialog.show(Menu.this,"InteliMED", "Atualizando árvore...", false,true);
-				TreeUpdate();
+				treeUpdate();
 			}
 		});
 		
@@ -170,10 +171,10 @@ public class Menu extends Activity{
              
 	}
 	
-	private void TreeUpdate(){
+	private void treeUpdate(){
 		try {
-			BlackBox bb = new BlackBox(getBaseContext());
-			ReceiveTree tUP = new ReceiveTree(bb);
+			TreeUpdate tree = new TreeUpdate(getBaseContext());
+			ReceiveTree tUP = new ReceiveTree(tree);
 			tUP.start();
 			
 		}catch (Exception e) {

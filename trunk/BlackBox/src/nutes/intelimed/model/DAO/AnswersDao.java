@@ -50,7 +50,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 			Log.e(CATEGORIA, "Erro ao buscar resposta: " + e.toString());
 			return null;
 		}
-
+		c.close();
 		return answer;
 	}
 	

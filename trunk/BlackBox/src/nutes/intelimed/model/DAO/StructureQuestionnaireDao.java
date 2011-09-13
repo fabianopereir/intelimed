@@ -71,6 +71,7 @@ public class StructureQuestionnaireDao extends GenericDao implements IModelStruc
 				
 			} while (c.moveToNext());
 		}
+		c.close();
 		return estrutura;
 	}
 	

@@ -89,7 +89,7 @@ public class Answer {
 		public static final String DESCRICAO_RESPOSTA = "descricao_resposta";
 		public static final String FK_IDNO = "fk_idno";
 		public static final String IDRESPOSTA = "idresposta";
-		public static final String CODERESPOSTA = "fk_idresposta";
+		public static final String CODERESPOSTA = "code_resposta";
 
 		/**
 		 * Método que constrói uma Uri para uma resposta específica, com seu id

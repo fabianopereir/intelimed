@@ -1,9 +1,7 @@
 package nutes.intelimed.communication;
 
-import nutes.intelimed.ParserSimulation;
-import nutes.intelimed.communication.helper.Http;
-import nutes.intelimed.service.BlackBox;
-import android.content.Context;
+import nutes.intelimed.controller.util.Parser;
+import nutes.intelimed.controller.util.TreeUpdate;
 import android.os.Handler;
 import android.util.Log;
 
@@ -19,11 +17,11 @@ public class ReceiveTree extends Thread implements Runnable {
 	protected static final String CATEGORIA = "nutes";
 	
 	private Handler handler = new Handler();
-	private ParserSimulation parserJason;
-	private BlackBox bb;
+	private Parser parserJason;
+	private TreeUpdate tree;
 
-	public ReceiveTree(BlackBox bb) {
-		this.bb = bb;
+	public ReceiveTree(TreeUpdate tree) {
+		this.tree = tree;
 	}
 	
 	/**
@@ -40,7 +38,7 @@ public class ReceiveTree extends Thread implements Runnable {
 			handler.post(new Runnable() {
 				public void run() {
 					try {
-						parserJason = new ParserSimulation(bb);
+						parserJason = new Parser(tree);
 						parserJason.parserJson("teste");
 					} catch (Exception e) {
 						e.printStackTrace();

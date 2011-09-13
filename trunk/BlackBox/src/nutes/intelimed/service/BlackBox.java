@@ -26,14 +26,11 @@ import android.util.Log;
 public class BlackBox implements IBlackBox {
 	protected static final String CATEGORIA = "nutes";
 
-
 	public static IModelEdgeDao edgeDao;
 	public static IModelNodeDao nodeDao;
-	public static IModelAnswersDao answersDao;
 	private Edge entEdge;
 	private Node node;
 	private Context ctx;
-	private Answer answer;
 
 	/**
 	 * Método construtor
@@ -44,7 +41,6 @@ public class BlackBox implements IBlackBox {
 	public BlackBox(Context context) {
 		this.ctx = context;
 		edgeDao = (IModelEdgeDao) new EdgeScript(ctx);
-		answersDao = (IModelAnswersDao) new AnswerScript(ctx);
 		nodeDao = (IModelNodeDao) new NodeScript(ctx);
 	}
 
@@ -92,60 +88,6 @@ public class BlackBox implements IBlackBox {
 		return res;
 	}
 
-	/*public void insertEdge(Long arestaId, Long respostaId, String respostaDescricao) {
-		entEdge.setIdaresta(arestaId);
-		entEdge.setFk_idresposta(respostaId);
-		
-		
-		edgeDao.insertEdge(entEdge);
-
-	}*/
-
 	
-	public void insertNode(Long noId, String noDescricao) {
-		
-		node = new Node();
-		node.setIdno(noId);
-		node.setDescricaoNo(noDescricao);
-		//TODO se não houverem respostas para o nó -> node.setDiagnostico(1);
-
-        Log.i(CATEGORIA,"dentro do insertNode");
-		nodeDao.insertNode(node);
-	}
-
-	
-	public void insertNodeAnswers(Long respostaNoId, String respostaNoDescricao) {
-		answer = new Answer();
-		answer.setIdresposta(respostaNoId);
-		answer.setDescricao_resposta(respostaNoDescricao);
-	
-		answer.setFk_idno(node.getIdno());
-		
-        Log.i(CATEGORIA,"dentro do insertresposta");
-
-		answersDao.insertAnswer(answer);
-	}
-
-	
-	public void insertNodeEdge(Long arestaId, Long respostaId) {
-		entEdge = new Edge();
-		entEdge.setFk_idno(node.getIdno());
-		entEdge.setIdaresta(arestaId);
-		entEdge.setFk_idresposta(respostaId);
-        Log.i(CATEGORIA,"dentro do insertAresta");
-
-		edgeDao.insertEdge(entEdge);
-	}
-	
-	
-	/*
-	public void insertAnswers(Long respostaId, String respostaDescricao) {
-		answer.setIdresposta(respostaId);
-		answer.setDescricao_resposta(respostaDescricao);
-		
-		answersDao.insertAnswer(answer);
-
-	}
-	*/
 	
 }

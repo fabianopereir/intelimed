@@ -50,7 +50,7 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 			Log.e(CATEGORIA, "Erro ao buscar a aresta pelo código da resposta: " + e.toString());
 			return null;
 		}
-
+		c.close();
 		return edge;
 	}
 	

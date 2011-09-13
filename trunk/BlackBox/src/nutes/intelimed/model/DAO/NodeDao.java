@@ -45,11 +45,13 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 			} else{
 				return null;
 			}
+			
+			c.close();
 		} catch (SQLException e) {
 			Log.e(CATEGORIA,"Erro ao buscar o nó: " + e.toString());
 			return null;
 		}
-
+		
 		return node;
 	}
 	
