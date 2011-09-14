@@ -46,7 +46,7 @@ public class Parser {
 		System.out.println(attributeArvore);
 		
 		//Arestas
-		JSONArray arestasArray = jObject.getJSONArray("arestas");
+		/*JSONArray arestasArray = jObject.getJSONArray("arestas");
 
 		for (int i = 0; i < arestasArray.length(); i++) {
 			JSONObject arestaObject = arestasArray.getJSONObject(i);
@@ -63,7 +63,7 @@ public class Parser {
 			Log.i(CATEGORIA,"Resposta Descrição: "+respostaDescricao);
 			
 			//tree.insertEdge(arestaId,respostaId,respostaDescricao);
-		}
+		}*/
 		
 		//Nós
 		JSONArray nosArray = jObject.getJSONArray("nos");
@@ -76,11 +76,6 @@ public class Parser {
 			Log.i(CATEGORIA,"NoID: "+noId);
 			String noDescricao = noObject.getString("descricao");
 			Log.i(CATEGORIA,"No Descrição: "+noDescricao);
-
-
-			
-			
-			
 			
 			JSONArray respostasArray = noObject.getJSONArray("respostas");
 			
@@ -125,7 +120,7 @@ public class Parser {
 		}
 		
 		//Respostas
-		JSONArray respostasArray = jObject.getJSONArray("respostas");
+		/*JSONArray respostasArray = jObject.getJSONArray("respostas");
 
 		for (int i = 0; i < respostasArray.length(); i++) {
 			JSONObject respostaObject = respostasArray.getJSONObject(i);
@@ -136,6 +131,6 @@ public class Parser {
 			Log.i(CATEGORIA,"Resposta Descrição: "+respostaDescricao);
 			
 			//tree.insertAnswers(respostaId, respostaDescricao);
-		}
+		}*/
 	}
 }

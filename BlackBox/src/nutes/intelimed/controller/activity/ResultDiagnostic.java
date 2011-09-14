@@ -11,6 +11,7 @@ import nutes.intelimed.model.entity.EvidenceAnswers;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,7 @@ import android.widget.Toast;
  * 
  */
 public class ResultDiagnostic extends Activity {
+	protected static final String CATEGORIA = "nutes";
 
 	private String result;
 	private String[] answer;
@@ -76,10 +78,10 @@ public class ResultDiagnostic extends Activity {
 			if (result != null) {
 
 				evidence.setSistema(result);
-
-				if(result.equals("NO")){
+				
+				if(result.equals("No")){
 					resultado.setText("O paciente não tem asma.");
-				}else if(result.equals("YES")){
+				}else if(result.equals("Yes")){
 					resultado.setText("O paciente tem asma.");
 				}
 			}

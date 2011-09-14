@@ -61,7 +61,7 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 	 */
 	public long insertEdge(Edge edge) {
 		ContentValues values = new ContentValues();
-
+		values.put(EdgeTable.IDARESTA, edge.getIdaresta());
 		values.put(EdgeTable.FK_IDNO, edge.getFk_idno());
 		values.put(EdgeTable.FK_IDRESPOSTA, edge.getFk_idresposta());
 		long id = db.insert(NOME_TABELA, "", values);
