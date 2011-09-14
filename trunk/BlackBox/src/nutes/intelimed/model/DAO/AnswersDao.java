@@ -61,7 +61,9 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	 */
 	public long insertAnswer(Answer answer) {
 		ContentValues values = new ContentValues();
+		values.put(AnswersTable.IDRESPOSTA, answer.getIdresposta());
 		values.put(AnswersTable.FK_IDNO, answer.getFk_idno());
+		
 		values.put(AnswersTable.DESCRICAO_RESPOSTA, answer.getDescricao_resposta());
 		values.put(AnswersTable.CODERESPOSTA, answer.getCodeResposta());
 		

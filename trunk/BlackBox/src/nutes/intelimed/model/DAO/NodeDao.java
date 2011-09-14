@@ -62,7 +62,7 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 	 */
 	public long insertNode(Node node) {
 		ContentValues values = new ContentValues();
-
+		values.put(NodeTable.IDNO, node.getIdno());
 		values.put(NodeTable.DESCRICAO_NO, node.getDescricaoNo());
 		values.put(NodeTable.DIAGNOSTICO, node.getDiagnostico());
 		long id = db.insert(NOME_TABELA, "", values);
