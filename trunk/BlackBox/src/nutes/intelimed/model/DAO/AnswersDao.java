@@ -28,7 +28,6 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	  * @param idResposta - identificador da resposta
 	  * @return resposta
 	  */
-	@Override
 	public Answer searchAnswer(Long idResposta) {
 
 		Answer answer = null;
@@ -87,7 +86,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 		return aux;
 	}
 	
-	@Override
+
 	public void fechar() {
 		if (db != null) {
 			db.close();

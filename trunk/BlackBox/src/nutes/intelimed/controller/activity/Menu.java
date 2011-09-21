@@ -84,7 +84,7 @@ public class Menu extends Activity{
 		
 		TreeUp.setOnClickListener(new OnClickListener() {
 			
-			@Override
+			
 			public void onClick(View v) {
 				dialog = ProgressDialog.show(Menu.this,"InteliMED", "Atualizando árvore...", false,true);
 				treeUpdate();
@@ -93,7 +93,6 @@ public class Menu extends Activity{
 		
 		logout.setOnClickListener(new OnClickListener() {
 			
-			@Override
 			public void onClick(View v) {
 				
 				startActivity(new Intent(getBaseContext(), Login.class));

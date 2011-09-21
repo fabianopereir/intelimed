@@ -4,11 +4,30 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
+
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.AuthenticationException;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.auth.BasicScheme;
+import org.apache.http.impl.auth.DigestScheme;
+import org.apache.http.impl.client.AbstractHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.util.EntityUtils;
 
 import android.util.Log;
 
@@ -22,6 +41,8 @@ import android.util.Log;
 public class HttpNormalImpl extends Http {
 	private final String CATEGORIA = "nutes";
 
+	
+
 	/**
 	 * Método responsável por realizar download de arquivo texto do servidor
 	 * @param String url
@@ -30,10 +51,20 @@ public class HttpNormalImpl extends Http {
 	@Override
 	public final String doGet(String url) {
 		Log.i(CATEGORIA, "Http.downloadArquivo: " + url);
+		
+ 		final String username = "admin";
+ 		final String password = "123";
+ 		Authenticator.setDefault(new Authenticator() {
+			  protected PasswordAuthentication getPasswordAuthentication() {
+					PasswordAuthentication pa = new PasswordAuthentication (username, password.toCharArray());
+					return pa;
+				}
+			  });
 		try {
+
 			URL u = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) u.openConnection();
-
+			
 			conn.setRequestMethod("GET");
 			conn.setDoInput(true);
 			conn.setDoOutput(false);
@@ -44,13 +75,13 @@ public class HttpNormalImpl extends Http {
 			String arquivo = readString(in);
 
 			conn.disconnect();
-
+			
 			return arquivo;
 		} catch (MalformedURLException e) {
 			Log.e(CATEGORIA, e.getMessage(), e);
 		} catch (IOException e) {
 			Log.e(CATEGORIA, e.getMessage(), e);
-		}
+		} 
 		return null;
 	}
 

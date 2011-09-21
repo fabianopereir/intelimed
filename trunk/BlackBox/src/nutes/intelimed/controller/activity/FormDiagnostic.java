@@ -75,7 +75,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 
                 back.setOnClickListener(new OnClickListener() {
         			
-        			@Override
+        			
         			public void onClick(View v) {
         				
         				startActivity(new Intent(getBaseContext(), Menu.class));
@@ -85,7 +85,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         		});
                 logout.setOnClickListener(new OnClickListener() {
         			
-        			@Override
+        			
         			public void onClick(View v) {
         				
         				startActivity(new Intent(getBaseContext(), Login.class));

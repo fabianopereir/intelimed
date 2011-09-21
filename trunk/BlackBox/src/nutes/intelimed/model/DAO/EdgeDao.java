@@ -29,7 +29,6 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 	  * @param codeResposta - código da resposta
 	  * @return aresta 
 	  */
-	@Override
 	public Edge searchEdge(Long codeResposta) {
 
 		Edge edge = null;
@@ -84,7 +83,7 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 		return aux;
 	}
 	
-	@Override
+
 	public void fechar() {
 		if (db != null) {
 			db.close();

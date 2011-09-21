@@ -114,7 +114,7 @@ public class ResultDiagnostic extends Activity {
         
         back.setOnClickListener(new OnClickListener() {
 			
-			@Override
+			
 			public void onClick(View v) {
 				
 				startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
@@ -123,7 +123,7 @@ public class ResultDiagnostic extends Activity {
 		});
         logout.setOnClickListener(new OnClickListener() {
 			
-			@Override
+			
 			public void onClick(View v) {
 				
 				startActivity(new Intent(getBaseContext(), Login.class));

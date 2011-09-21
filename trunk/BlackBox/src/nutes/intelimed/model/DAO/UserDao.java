@@ -28,7 +28,6 @@ public class UserDao extends GenericDao implements IModelUserDao{
 	 * @param User u (identificador de usuário)
 	 * @return User 
 	 */
-	@Override
 	public User login(User u) {
 		User user = null;
 
