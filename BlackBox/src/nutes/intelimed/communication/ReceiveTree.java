@@ -1,5 +1,6 @@
 package nutes.intelimed.communication;
 
+import nutes.intelimed.communication.helper.Http;
 import nutes.intelimed.controller.util.Parser;
 import nutes.intelimed.controller.util.TreeUpdate;
 import android.os.Handler;
@@ -31,9 +32,9 @@ public class ReceiveTree extends Thread implements Runnable {
 	public void run() {
 		try {
 			
-			//final String arquivo = Http.getInstance().doGet(ServerConstants.getContextFromGet());
+			final String arquivo = Http.getInstance().doGet(ServerConstants.getContextFromGet());
 
-			//Log.i(CATEGORIA,"Texto retornado: " + arquivo);
+			Log.i(CATEGORIA,"Texto retornado: " + arquivo);
 
 			handler.post(new Runnable() {
 				public void run() {

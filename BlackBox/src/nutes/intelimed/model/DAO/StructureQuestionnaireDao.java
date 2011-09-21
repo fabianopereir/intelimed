@@ -74,8 +74,6 @@ public class StructureQuestionnaireDao extends GenericDao implements IModelStruc
 		c.close();
 		return estrutura;
 	}
-	
-	@Override
 	public void fechar() {
 		if (db != null) {
 			db.close();

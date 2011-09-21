@@ -50,7 +50,6 @@ public class Login extends Activity{
         btlogin = (Button) findViewById(R.bt.btLogin);
         btlogin.setOnClickListener(new OnClickListener() {
 			
-			@Override
 			public void onClick(View v) {
 				String Vuser, Vpassword;
 				User userFinal=null;

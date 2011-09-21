@@ -52,7 +52,6 @@ public class EvidenceDao extends GenericDao implements IModelEvidenceDao {
 		return aux;
 	}
 	
-	@Override
 	public void fechar() {
 		if (db != null) {
 			db.close();
