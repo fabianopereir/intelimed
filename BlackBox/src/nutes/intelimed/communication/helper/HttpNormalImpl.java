@@ -1,14 +1,19 @@
 package nutes.intelimed.communication.helper;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.PasswordAuthentication;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
@@ -20,11 +25,14 @@ import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.auth.DigestScheme;
 import org.apache.http.impl.client.AbstractHttpClient;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.util.EntityUtils;
@@ -95,6 +103,7 @@ public class HttpNormalImpl extends Http {
 	public Boolean doPost(String url, Map params) {
 		try {
 			String queryString = getQueryString(params);
+			Log.i(CATEGORIA, "Post: "+queryString);
 			Boolean texto = doPost(url, queryString);
 			Log.i(CATEGORIA, "Valor de texto: "+texto);
 			return texto;
@@ -114,28 +123,48 @@ public class HttpNormalImpl extends Http {
 	 */
 	private Boolean doPost(String url, String params) throws IOException {
 		Log.i(CATEGORIA, "Http.doPost: " + url + "?" + params);
+		
+		
+		
+		
+		
+		
+		final String username = "admin";
+ 		final String password = "123";
+ 		Authenticator.setDefault(new Authenticator() {
+			  protected PasswordAuthentication getPasswordAuthentication() {
+					PasswordAuthentication pa = new PasswordAuthentication (username, password.toCharArray());
+					return pa;
+				}
+			  });
+
+ 		
+ 		
 		URL u = new URL(url);
 
 		HttpURLConnection conn = (HttpURLConnection) u.openConnection();
 		conn.setRequestMethod("POST");
 		conn.setDoOutput(true);
 		conn.setDoInput(true);
-
+		conn.setFixedLengthStreamingMode(params.length());
 		conn.connect();
 
 		OutputStream out = conn.getOutputStream();
 		byte[] bytes = params.getBytes("UTF8");
 		out.write(bytes);
 		out.flush();
-		out.close();
-
-		InputStream in = conn.getInputStream();
-
-		String texto = readString(in);
-		Log.i(CATEGORIA, "Valor de texto após read: "+texto);
 		
-		conn.disconnect();
+		int rc = conn.getResponseCode();
+		/*InputStream in = conn.getInputStream();
 
+		String texto = readString(in);*/
+		Log.i(CATEGORIA, "Valor de texto após read: "+rc);
+		
+		out.close();
+		conn.disconnect();
+		
+	   String texto = "teste";
+		
 		return Boolean.valueOf(texto);
 	}
 

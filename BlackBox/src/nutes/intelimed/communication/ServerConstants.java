@@ -8,22 +8,20 @@ package nutes.intelimed.communication;
  * 
  */
 public class ServerConstants {
+	
+	private final static String server = "lagarage.dyndns.biz/Intermediate/";
+	//private final static String server = "localhost:8080/Intermediate-0.1/";
 
 	public static String getContextFromPost() {
-
-		return getContext("lagarage.dyndns.biz/Intermediate/"); 
-		//192.168.0.9
-
+		return getContext(server); 
 	}
 	
 	public static String getContextFromGet() {
-
-		return getContext("lagarage.dyndns.biz/Intermediate/"); 
-
+		return getContext(server); 
 	}
 	
 	public static String getContextFromPut() {
-		return getContext("lagarage.dyndns.biz/Intermediate/"); 
+		return getContext(server); 
 	}
 	
 	private static String getContext(String ip) {
