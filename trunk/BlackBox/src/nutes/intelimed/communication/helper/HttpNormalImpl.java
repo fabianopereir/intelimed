@@ -1,43 +1,44 @@
 package nutes.intelimed.communication.helper;
 
-import java.io.BufferedReader;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.PasswordAuthentication;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Random;
-
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.AuthenticationException;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.ClientContext;
-import org.apache.http.impl.auth.BasicScheme;
-import org.apache.http.impl.auth.DigestScheme;
-import org.apache.http.impl.client.AbstractHttpClient;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.util.EntityUtils;
-
 import android.util.Log;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpEntityEnclosingRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.ProtocolVersion;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.params.AuthPolicy;
+import org.apache.http.entity.AbstractHttpEntity;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.auth.BasicScheme;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.AbstractHttpMessage;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+
+
+
+
+
 
 /**
  * Classe que encapsula as requests HTTP utilizando a "HttpURLConnection"
@@ -123,13 +124,8 @@ public class HttpNormalImpl extends Http {
 	 */
 	private Boolean doPost(String url, String params) throws IOException {
 		Log.i(CATEGORIA, "Http.doPost: " + url + "?" + params);
-		
-		
-		
-		
-		
-		
-		final String username = "admin";
+		execute(url, params);
+		/*final String username = "admin";
  		final String password = "123";
  		Authenticator.setDefault(new Authenticator() {
 			  protected PasswordAuthentication getPasswordAuthentication() {
@@ -137,32 +133,75 @@ public class HttpNormalImpl extends Http {
 					return pa;
 				}
 			  });
-
  		
  		
 		URL u = new URL(url);
 
 		HttpURLConnection conn = (HttpURLConnection) u.openConnection();
-		conn.setRequestMethod("POST");
 		conn.setDoOutput(true);
 		conn.setDoInput(true);
-		conn.setFixedLengthStreamingMode(params.length());
-		conn.connect();
-
+		conn.setRequestMethod("POST");
+		
+		//conn.setFixedLengthStreamingMode(params.length());
+		
+		params = "";
 		OutputStream out = conn.getOutputStream();
-		byte[] bytes = params.getBytes("UTF8");
+		params = URLEncoder.encode(params, "UTF-8");
+		byte[] bytes = params.getBytes();
 		out.write(bytes);
 		out.flush();
+		out.close();
 		
-		int rc = conn.getResponseCode();
+		//int rc = conn.getResponseCode();
+		
 		/*InputStream in = conn.getInputStream();
 
 		String texto = readString(in);*/
+		//Log.i(CATEGORIA, "Valor de texto após read: "+rc);
+		/*BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		StringBuffer newData = new StringBuffer(10000);
+		String s = "";
+		while (null != ((s = br.readLine()))) {
+		newData.append(s);
+		} 
+		
+		
+		conn.disconnect();*/
+		/*	
+		URL u = new URL(url);
+
+		HttpURLConnection conn = (HttpURLConnection) u.openConnection();
+		conn.setRequestMethod("POST");
+		
+		String encodedCredential = URLEncoder.encode("admin:123" , "UTF-8");
+	    conn.setRequestProperty("Authorization", "BASIC " + encodedCredential);
+	        
+		conn.setDoOutput(true);
+		//conn.setDoInput(true);
+		
+		
+		//conn.setFixedLengthStreamingMode(params.length());
+		
+		conn.connect();
+		OutputStream out = conn.getOutputStream();
+		params = URLEncoder.encode(params, "UTF-8");
+		byte[] bytes = params.getBytes();
+		out.write(bytes);
+		out.flush();
+		out.close();
+		 
+		
+		
+		/*InputStream in = conn.getInputStream();
+
+		String texto = readString(in);*/
+		/*int rc = conn.getResponseCode();
 		Log.i(CATEGORIA, "Valor de texto após read: "+rc);
 		
-		out.close();
+		
 		conn.disconnect();
 		
+		*/
 	   String texto = "teste";
 		
 		return Boolean.valueOf(texto);
@@ -226,4 +265,115 @@ public class HttpNormalImpl extends Http {
 		Log.i(CATEGORIA, "Http.readString: " + texto);
 		return texto;
 	}
+	
+	 public void execute(String u, String params) throws ClientProtocolException, IOException {
+		 	DefaultHttpClient httpclient;
+	        final URL url = new URL(u);
+	        final String urlHost = url.getHost();
+	        final int urlPort = url.getPort()==-1?url.getDefaultPort():url.getPort();
+	        final String urlStr = url.toString();
+
+	        // Needed for specifying HTTP pre-emptive authentication
+	        HttpContext httpContext = null;
+
+	        httpclient = new DefaultHttpClient();
+
+	        // Set HTTP version
+	        ProtocolVersion protocolVersion = new ProtocolVersion("HTTP", 1, 1);
+	        httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION,
+	                protocolVersion);
+
+	       
+
+	        // HTTP Authentication 
+	        if (true) {
+	            String uid = "admin";
+	            String pwd = new String("123");
+	            String host = urlHost;
+	           
+
+	            // Type of authentication
+	            List<String> authPrefs = new ArrayList<String>(2);
+	            authPrefs.add(AuthPolicy.BASIC);
+	                      
+	            
+	            httpclient.getParams().setParameter("http.auth.scheme-pref", authPrefs);
+
+	            httpclient.getCredentialsProvider().setCredentials(
+	                    new AuthScope(host, urlPort),
+	                    new UsernamePasswordCredentials(uid, pwd));
+
+	            // preemptive mode
+	            // http://svn.apache.org/repos/asf/httpcomponents/httpclient/trunk/module-client/src/examples/org/apache/http/examples/client/ClientPreemptiveBasicAuthentication.java
+	            
+	                BasicHttpContext localcontext = new BasicHttpContext();
+	                BasicScheme basicAuth = new BasicScheme();
+	                localcontext.setAttribute("preemptive-auth", basicAuth);
+	                httpContext = localcontext;
+	            
+	        }
+
+	        AbstractHttpMessage method = null;
+            method = new HttpPost(urlStr);
+            method.setParams(new BasicHttpParams().setParameter(urlStr, url));
+
+	            // POST/PUT method specific logic
+	            if (method instanceof HttpEntityEnclosingRequest) {
+
+	                HttpEntityEnclosingRequest eeMethod = (HttpEntityEnclosingRequest) method;
+
+	                // Create and set RequestEntity
+	               
+	                    AbstractHttpEntity entity = new ByteArrayEntity(params.getBytes());
+						entity.setContentType("UTF-8");
+						eeMethod.setEntity(entity);
+	                
+	            }
+
+	    
+	            // Now Execute:
+	            
+	            HttpResponse http_res = httpclient.execute((HttpUriRequest) method,
+	                    httpContext);
+	            
+
+	           
+
+	        
+/*
+	            final Header[] responseHeaders = http_res.getAllHeaders();
+	            String contentType = null;
+	            for (Header header : responseHeaders) {
+	                 if(header.getName().equalsIgnoreCase("content-type")) {
+	                    contentType = header.getValue();
+	                }
+	            }*/
+
+	            
+
+	            final HttpEntity entity = http_res.getEntity();
+	            if(entity != null){
+	                try {
+						InputStream is = entity.getContent();
+						try{
+						    String responseBody = readString(is);
+						    Log.i(CATEGORIA, "Valor de texto após read: "+responseBody);
+						   
+						}
+						catch(IOException ex) {
+						   ex.getStackTrace();
+						}
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	            }
+
+	           
+	    }
+	 
+	 
 }
