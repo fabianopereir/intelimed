@@ -1,4 +1,4 @@
-package nutes.intelimed.communication;
+package nutes.intelimed.communication.helper;
 
 /**
  * Classe responsável por fornecer constantes usadas para comunicação
@@ -9,8 +9,10 @@ package nutes.intelimed.communication;
  */
 public class ServerConstants {
 	
-	private final static String server = "lagarage.dyndns.biz/Intermediate/";
-	//private final static String server = "localhost:8080/Intermediate-0.1/";
+	//private final static String server = "lagarage.dyndns.biz/Intermediate/";
+	private final static String server = "localhost:8080/Intermediate/";
+	private final static String username = "admin";
+	private final static String password = "123";
 
 	public static String getContextFromPost() {
 		return getContext(server); 
@@ -20,16 +22,16 @@ public class ServerConstants {
 		return getContext(server); 
 	}
 	
-	public static String getContextFromPut() {
-		return getContext(server); 
-	}
-	
 	private static String getContext(String ip) {
-
-	//return "http://" + ip + "/livro_android/arvore.txt";
-	return "http://" + ip + "arvore/rest/";
-
+		return "http://" + ip + "arvore/rest/";
 	}
-	
+
+	public static String getUsername() {
+		return username;
+	}
+
+	public static String getPassword() {
+		return password;
+	}
 	
 }

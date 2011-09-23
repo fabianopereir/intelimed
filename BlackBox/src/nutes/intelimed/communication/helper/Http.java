@@ -12,7 +12,7 @@ import java.util.Map;
 public abstract class Http {
 
 	public static Http getInstance() {
-		return new HttpNormalImpl();
+		return new HttpConnection();
 	}
 
 	public abstract String doGet(String url);

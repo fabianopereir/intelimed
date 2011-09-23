@@ -1,11 +1,9 @@
 package nutes.intelimed.communication;
 
 import java.util.Map;
-
 import nutes.intelimed.communication.helper.Http;
 import nutes.intelimed.model.EvidenceAnswersScript;
 import nutes.intelimed.model.EvidenceScript;
-
 import nutes.intelimed.model.DAO.IModelEvidenceAnswersDao;
 import nutes.intelimed.model.DAO.IModelEvidenceDao;
 import android.content.Context;
@@ -21,9 +19,8 @@ import android.util.Log;
 public class SendEvidence extends Thread implements Runnable{
 
 	private final String CATEGORIA = "nutes";
-	public static String url;
-	public static Map params;
-	
+	private String url;
+	private Map params;
 	private IModelEvidenceDao daoEvidence;
 	private IModelEvidenceAnswersDao daoEvidenceAnswer;
 	private Context ctx;
@@ -38,6 +35,23 @@ public class SendEvidence extends Thread implements Runnable{
 		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(ctx);
 	}
 	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Map getParams() {
+		return params;
+	}
+
+	public void setParams(Map params) {
+		this.params = params;
+	}
+
+
 	/**
 	 * Faz upload de evidências para servidor
 	 * @return void
