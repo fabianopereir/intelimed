@@ -1,6 +1,7 @@
 package nutes.intelimed.communication;
 
 import nutes.intelimed.communication.helper.Http;
+import nutes.intelimed.communication.helper.ServerConstants;
 import nutes.intelimed.controller.util.Parser;
 import nutes.intelimed.controller.util.TreeUpdate;
 import android.os.Handler;
@@ -16,7 +17,6 @@ import android.util.Log;
 public class ReceiveTree extends Thread implements Runnable {
 
 	protected static final String CATEGORIA = "nutes";
-	
 	private Handler handler = new Handler();
 	private Parser parserJason;
 	private TreeUpdate tree;
@@ -40,7 +40,7 @@ public class ReceiveTree extends Thread implements Runnable {
 				public void run() {
 					try {
 						parserJason = new Parser(tree);
-						parserJason.parserJson("teste");
+						parserJason.parserJson(arquivo);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

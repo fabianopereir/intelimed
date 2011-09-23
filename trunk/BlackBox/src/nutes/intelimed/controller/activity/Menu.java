@@ -7,8 +7,8 @@ import java.util.Map;
 import nutes.intelimed.Login;
 import nutes.intelimed.R;
 import nutes.intelimed.communication.SendEvidence;
-import nutes.intelimed.communication.ServerConstants;
 import nutes.intelimed.communication.ReceiveTree;
+import nutes.intelimed.communication.helper.ServerConstants;
 import nutes.intelimed.controller.util.Parser;
 import nutes.intelimed.controller.util.TreeUpdate;
 import nutes.intelimed.model.EvidenceServerScript;
@@ -158,8 +158,8 @@ public class Menu extends Activity{
 			 params.put("n1", arrData);
 			 
 			 SendEvidence sEv = new SendEvidence(getBaseContext());
-			 sEv.url = ServerConstants.getContextFromPost();
-			 sEv.params = params;
+			 sEv.setUrl(ServerConstants.getContextFromPost());
+			 sEv.setParams(params);
 			 sEv.start();
 			
 		} catch (JSONException e) {
