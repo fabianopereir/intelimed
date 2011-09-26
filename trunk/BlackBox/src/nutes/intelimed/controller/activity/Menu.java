@@ -63,7 +63,7 @@ public class Menu extends Activity{
         back = (ImageButton) findViewById(R.bt.btBack);
         logout = (ImageButton) findViewById(R.bt.btLogoff);
         
-        back.setVisibility(ImageButton.GONE);
+        back.setVisibility(ImageButton.INVISIBLE);
        
         
         daoEvidenceToServer = (IModelEvidenceServerDao) new EvidenceServerScript(this);

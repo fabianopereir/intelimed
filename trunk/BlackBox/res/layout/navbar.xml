@@ -17,8 +17,7 @@
 		<ImageButton
 			android:src="@drawable/logo"
 			android:id="@+bt/btLogo"
-			android:background="@drawable/logo"
-			android:layout_gravity="center_horizontal" />
+			android:background="@drawable/logo" android:layout_gravity="center"/>
 		<ImageButton
 			android:background="@drawable/logoff"
 			android:gravity="right"
