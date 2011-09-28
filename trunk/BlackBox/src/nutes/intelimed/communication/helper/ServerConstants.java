@@ -10,7 +10,7 @@ package nutes.intelimed.communication.helper;
 public class ServerConstants {
 	
 	//private final static String server = "lagarage.dyndns.biz/Intermediate/";
-	private final static String server = "localhost:8080/Intermediate/";
+	private final static String server = "192.168.0.9:8080/Intermediate/";
 	private final static String username = "admin";
 	private final static String password = "123";
 

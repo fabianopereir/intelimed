@@ -161,25 +161,24 @@ public class Menu extends Activity{
 			 sEv.setUrl(ServerConstants.getContextFromPost());
 			 sEv.setParams(params);
 			 sEv.start();
-			
+	
 		} catch (JSONException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			dialog.dismiss();
 		}
              
 	}
 	
 	private void treeUpdate(){
+		TreeUpdate tree = new TreeUpdate(getBaseContext());
 		try {
-			TreeUpdate tree = new TreeUpdate(getBaseContext());
 			ReceiveTree tUP = new ReceiveTree(tree);
 			tUP.start();
-			
 		}catch (Exception e) {
 			Log.i(CATEGORIA, e.getMessage(),e);
 		}finally{
-			dialog.dismiss();
+			dialog.dismiss();	
 		}
 		
 	}
@@ -194,6 +193,7 @@ public class Menu extends Activity{
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 	        finish();
+	        daoEvidenceToServer.fechar();
 	    	startActivity(new Intent(getBaseContext(), Login.class));
 	        return true;
 	    }
@@ -205,5 +205,12 @@ public class Menu extends Activity{
 		super.onPause();
 		setResult(RESULT_CANCELED);
 		finish();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		// Fecha o banco
+		daoEvidenceToServer.fechar();
 	}
 }

@@ -13,4 +13,5 @@ public interface IBlackBox {
 
 	public abstract String controlTree(String[] arrQuest, JSONArray arrayJason,JSONObject treeObj, String[] arrNO);
 
+	public void fechar();
 }

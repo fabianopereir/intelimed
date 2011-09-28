@@ -43,6 +43,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 				answer.setDescricao_resposta(c.getString(1));
 				answer.setCodeResposta(c.getLong(1));
 				answer.setFk_idno(c.getLong(2));
+				
 			}
 		} catch (SQLException e) {
 

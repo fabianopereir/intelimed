@@ -35,4 +35,8 @@ public class GenericDao {
 				selectionArgs, groupBy, having, orderBy);
 		return c;
 	}
+	
+	public void fechar(){
+		this.db.close();
+	}
 }

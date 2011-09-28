@@ -49,5 +49,6 @@ public class ReceiveTree extends Thread implements Runnable {
 		} catch (Throwable e) {
 			Log.i(CATEGORIA, e.getMessage(),e);
 		}
+		
 	}
 }

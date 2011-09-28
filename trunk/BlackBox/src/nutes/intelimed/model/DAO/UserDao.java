@@ -40,9 +40,11 @@ public class UserDao extends GenericDao implements IModelUserDao{
 				user = new User();
 				user.Vuser = c.getString(1);
 				user.Vpassword = c.getString(2);
+				c.close();
 				return u;
 			}else 
 			{
+				c.close();
 				return null;
 			}
 			

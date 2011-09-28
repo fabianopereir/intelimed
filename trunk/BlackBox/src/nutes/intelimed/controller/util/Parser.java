@@ -116,6 +116,7 @@ public class Parser {
 			
 		}
 		
+		tree.fechar();
 		//Respostas
 		/*JSONArray respostasArray = jObject.getJSONArray("respostas");
 

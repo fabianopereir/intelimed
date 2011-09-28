@@ -83,6 +83,7 @@ public class HttpConnection extends Http {
 		} catch (IOException e) {
 			Log.e(CATEGORIA, e.getMessage(), e);
 		} 
+		//TODO: fazer retorno
 		return null;
 	}
 
@@ -176,7 +177,7 @@ public class HttpConnection extends Http {
 			    Log.i(CATEGORIA, "Valor de texto após read: "+responseBody);
         }
         //TODO: Fazer o Retorno
-        return null;
+        return true;
 	}
 	
 	

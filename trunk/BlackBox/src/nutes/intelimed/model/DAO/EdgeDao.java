@@ -90,6 +90,5 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 		}
 	}
 
-	
 
 }

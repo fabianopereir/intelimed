@@ -19,6 +19,8 @@ public class AnswerScript extends AnswersDao{
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public AnswerScript(Context ctx) {
+		if(this.db!=null)
+			this.db.close();
 		dbHelper = new DatabaseHelper(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
 				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
 		db = dbHelper.getWritableDatabase();
