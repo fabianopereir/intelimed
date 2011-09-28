@@ -31,8 +31,6 @@ public class SendEvidence extends Thread implements Runnable{
 	 */
 	public SendEvidence(Context ctx){
 		this.ctx = ctx;
-		daoEvidence = (IModelEvidenceDao) new EvidenceScript(ctx);
-		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(ctx);
 	}
 	
 	public String getUrl() {
@@ -57,7 +55,7 @@ public class SendEvidence extends Thread implements Runnable{
 	 * @return void
 	 */	
 	public void run() {
-
+		
 		daoEvidence = (IModelEvidenceDao) new EvidenceScript(ctx);
 		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(ctx);		
 
@@ -73,6 +71,9 @@ public class SendEvidence extends Thread implements Runnable{
 				Log.i(CATEGORIA, "Erro ao deletar tabela EvidenceAnswers");
 			}
 		}
+		daoEvidence.fechar();
+	    daoEvidenceAnswer.fechar();
 	}
+
 
 }

@@ -10,6 +10,8 @@ public interface ITreeUpdate {
 
 	public abstract void insertNodeAnswers(Long respostaNoId,
 			String respostaDescricao, Long codeResposta);
+	
+	public void fechar(); 
 
 	// public abstract void insertAnswers(Long respostaId, String
 	// respostaDescricao);

@@ -87,6 +87,11 @@ public class BlackBox implements IBlackBox {
 
 		return res;
 	}
+	
+	public void fechar() {
+		nodeDao.fechar();
+		edgeDao.fechar();
+	}
 
 	
 	

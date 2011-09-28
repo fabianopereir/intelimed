@@ -116,7 +116,8 @@ public class ResultDiagnostic extends Activity {
 			
 			
 			public void onClick(View v) {
-				
+				daoEvidence.fechar();
+				daoEvidenceAnswer.fechar();
 				startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 				
 			}
@@ -161,6 +162,8 @@ public class ResultDiagnostic extends Activity {
 					daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);
 				}
 			}
+			daoEvidence.fechar();
+			daoEvidenceAnswer.fechar();
 			startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 		}
 	}
@@ -175,6 +178,8 @@ public class ResultDiagnostic extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 	        finish();
+	        daoEvidence.fechar();
+			daoEvidenceAnswer.fechar();
 	    	startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 	        return true;
 	    }
@@ -188,5 +193,11 @@ public class ResultDiagnostic extends Activity {
         finish();
     }
 
-	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		// Fecha o banco
+		daoEvidence.fechar();
+		daoEvidenceAnswer.fechar();
+	}
 }

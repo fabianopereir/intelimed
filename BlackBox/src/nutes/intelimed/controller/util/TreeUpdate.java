@@ -75,6 +75,12 @@ public class TreeUpdate implements ITreeUpdate {
 		Log.i(CATEGORIA, "dentro do insertAresta");
 		edgeDao.insertEdge(entEdge);
 	}
+	
+	public void fechar(){
+		edgeDao.fechar();
+		nodeDao.fechar();
+		answersDao.fechar();
+	}
 
 	
 }

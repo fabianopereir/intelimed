@@ -77,7 +77,8 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         			
         			
         			public void onClick(View v) {
-        				
+        				treeQ.fechar();
+            	        dao.fechar();
         				startActivity(new Intent(getBaseContext(), Menu.class));
         				//	finish();
         				
@@ -87,13 +88,16 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         			
         			
         			public void onClick(View v) {
-        				
+        				treeQ.fechar();
+            	        dao.fechar();
         				startActivity(new Intent(getBaseContext(), Login.class));
         				//	finish();
         				
         			}
         		});
         };
+        
+        
         
         
         /**
@@ -141,7 +145,8 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                         Toast.makeText(FormDiagnostic.this, "Por favor responda todas as perguntas.", Toast.LENGTH_SHORT).show();
 
                 }
-                
+                treeQ.fechar();
+                dao.fechar();
         }
 
         /**
@@ -194,7 +199,8 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                         questionOption.clear();
                         i = aux - 1;
                 }
-
+                treeQ.fechar();
+                dao.fechar();
         }
         
         /**
@@ -251,6 +257,8 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
     	public boolean onKeyDown(int keyCode, KeyEvent event) {
     	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
     	        finish();
+    	        treeQ.fechar();
+    	        dao.fechar();
     	    	startActivity(new Intent(getBaseContext(), Menu.class));
     	        return true;
     	    }
@@ -264,4 +272,12 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 	        finish();
 
         }
+        
+        @Override
+    	protected void onDestroy() {
+    		super.onDestroy();
+    		// Fecha o banco
+    		treeQ.fechar();
+    		dao.fechar();
+    	}
 }

@@ -42,7 +42,9 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 				node.setIdno(c.getLong(0));
 				node.setDescricaoNo(c.getString(1));
 				node.setDiagnostico(c.getInt(2));
+				c.close();
 			} else{
+				c.close();
 				return null;
 			}
 			

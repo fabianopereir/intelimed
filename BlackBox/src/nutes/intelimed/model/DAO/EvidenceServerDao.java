@@ -74,6 +74,7 @@ public class EvidenceServerDao extends GenericDao implements IModelEvidenceServe
 				
 			} while (c.moveToNext());
 		}
+		c.close();
 		return estrutura;
 	}
 	
