@@ -1,4 +1,4 @@
-package nutes.intelimed.controller.util;
+package nutes.intelimed.controller;
 
 import nutes.intelimed.model.AnswerScript;
 import nutes.intelimed.model.EdgeScript;

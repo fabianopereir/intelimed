@@ -1,5 +1,8 @@
-package nutes.intelimed.controller.util;
+package nutes.intelimed.util;
 
+
+import nutes.intelimed.controller.ITreeUpdate;
+import nutes.intelimed.controller.TreeUpdate;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

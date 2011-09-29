@@ -84,7 +84,7 @@ public class HttpConnection extends Http {
 			Log.e(CATEGORIA, e.getMessage(), e);
 		} 
 		//TODO: fazer retorno
-		return null;
+		return "";
 	}
 
 	/**

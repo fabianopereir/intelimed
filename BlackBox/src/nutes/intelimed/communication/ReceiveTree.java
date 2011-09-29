@@ -2,8 +2,8 @@ package nutes.intelimed.communication;
 
 import nutes.intelimed.communication.helper.Http;
 import nutes.intelimed.communication.helper.ServerConstants;
-import nutes.intelimed.controller.util.Parser;
-import nutes.intelimed.controller.util.TreeUpdate;
+import nutes.intelimed.controller.TreeUpdate;
+import nutes.intelimed.util.Parser;
 import android.os.Handler;
 import android.util.Log;
 

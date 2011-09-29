@@ -1,20 +1,19 @@
-package nutes.intelimed.controller.activity;
+package nutes.intelimed.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import nutes.intelimed.Login;
 import nutes.intelimed.R;
 import nutes.intelimed.communication.SendEvidence;
 import nutes.intelimed.communication.ReceiveTree;
 import nutes.intelimed.communication.helper.ServerConstants;
-import nutes.intelimed.controller.util.Parser;
-import nutes.intelimed.controller.util.TreeUpdate;
+import nutes.intelimed.controller.BlackBox;
+import nutes.intelimed.controller.TreeUpdate;
 import nutes.intelimed.model.EvidenceServerScript;
 import nutes.intelimed.model.DAO.IModelEvidenceServerDao;
 import nutes.intelimed.model.entity.EvidenceServer;
-import nutes.intelimed.service.BlackBox;
+import nutes.intelimed.util.Parser;
 
 import org.json.JSONArray;
 import org.json.JSONException;

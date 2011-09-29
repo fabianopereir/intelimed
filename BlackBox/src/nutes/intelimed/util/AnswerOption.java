@@ -1,4 +1,4 @@
-package nutes.intelimed.controller.util;
+package nutes.intelimed.util;
 
 /**
  * Classe útil para o tratamento das opções de respostas de cada pergunta
