@@ -1,4 +1,4 @@
-package nutes.intelimed;
+package nutes.intelimed.activity;
 
 
 import java.security.NoSuchAlgorithmException;
@@ -17,11 +17,13 @@ import android.widget.Toast;
 
 
 import nutes.intelimed.R;
-import nutes.intelimed.controller.activity.Menu;
-import nutes.intelimed.model.MD5Password;
+import nutes.intelimed.R.bt;
+import nutes.intelimed.R.campo;
+import nutes.intelimed.R.layout;
 import nutes.intelimed.model.UserScript;
 import nutes.intelimed.model.DAO.IModelUserDao;
 import nutes.intelimed.model.entity.User;
+import nutes.intelimed.util.MD5Password;
 
 /**
  * Classe responsável por apresentação da tela de autenticação de usuário

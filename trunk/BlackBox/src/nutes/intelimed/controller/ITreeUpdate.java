@@ -1,4 +1,4 @@
-package nutes.intelimed.controller.util;
+package nutes.intelimed.controller;
 
 public interface ITreeUpdate {
 	// public abstract void insertEdge(Long arestaId, Long respostaId,String

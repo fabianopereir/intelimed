@@ -1,17 +1,16 @@
-package nutes.intelimed.controller.activity;
+package nutes.intelimed.activity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import nutes.intelimed.Login;
 import nutes.intelimed.R;
-import nutes.intelimed.controller.util.AnswerOption;
+import nutes.intelimed.controller.BlackBox;
+import nutes.intelimed.controller.IBlackBox;
 import nutes.intelimed.model.BaseScript;
 import nutes.intelimed.model.DAO.IModelStructureQuestionnaireDao;
 import nutes.intelimed.model.entity.StructureQuestionnaire;
-import nutes.intelimed.service.BlackBox;
-import nutes.intelimed.service.IBlackBox;
+import nutes.intelimed.util.AnswerOption;
 
 import org.json.JSONArray;
 import org.json.JSONException;

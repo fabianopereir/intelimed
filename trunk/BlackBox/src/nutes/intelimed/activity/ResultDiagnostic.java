@@ -1,6 +1,5 @@
-package nutes.intelimed.controller.activity;
+package nutes.intelimed.activity;
 
-import nutes.intelimed.Login;
 import nutes.intelimed.R;
 import nutes.intelimed.model.EvidenceAnswersScript;
 import nutes.intelimed.model.EvidenceScript;

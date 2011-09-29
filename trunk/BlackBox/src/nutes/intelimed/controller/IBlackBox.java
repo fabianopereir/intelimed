@@ -1,4 +1,4 @@
-package nutes.intelimed.service;
+package nutes.intelimed.controller;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
