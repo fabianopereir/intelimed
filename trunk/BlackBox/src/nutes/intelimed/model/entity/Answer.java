@@ -1,9 +1,5 @@
 package nutes.intelimed.model.entity;
 
-import android.content.ContentUris;
-import android.net.Uri;
-import android.provider.BaseColumns;
-
 /**
  * Entidade resposta
  * 
@@ -12,96 +8,75 @@ import android.provider.BaseColumns;
  * 
  */
 public class Answer {
-	private Long  fk_idno;
-	private Long  idresposta;
-	private String  descricao_resposta;
-	private Long  codeResposta;
+	private Long idNo;
+	private Long idResposta;
+	private String descricaoResposta;
+	private Long codeResposta;
 	
-	public static final String AUTHORITY = "nutes.intelimed.model.entity";
-	public static String[] colunas = new String[] { AnswersTable.FK_IDNO,AnswersTable.IDRESPOSTA, 
-		AnswersTable.CODERESPOSTA, AnswersTable.DESCRICAO_RESPOSTA};
-
-	
-	public Long getFk_idno() {
-		return fk_idno;
-	}
-	public void setFk_idno(Long fk_idno) {
-		this.fk_idno = fk_idno;
-	}
-	public Long getIdresposta() {
-		return idresposta;
-	}
-	public void setIdresposta(Long idresposta) {
-		this.idresposta = idresposta;
-	}
-	public String getDescricao_resposta() {
-		return descricao_resposta;
-	}
-	public void setDescricao_resposta(String descricao_resposta) {
-		this.descricao_resposta = descricao_resposta;
-	}
-	public Long getCodeResposta() {
-		return codeResposta;
-	}
-	public void setCodeResposta(Long codeResposta) {
+	public Answer(Long fk_idno, Long idresposta, String descricao_resposta,
+			Long codeResposta) {
+		super();
+		this.idNo = fk_idno;
+		this.idResposta = idresposta;
+		this.descricaoResposta = descricao_resposta;
 		this.codeResposta = codeResposta;
 	}
 	
+	public Long getIdNo() {
+		return idNo;
+	}
+
+	public void setIdNo(Long idNo) {
+		this.idNo = idNo;
+	}
+
+	public Long getIdResposta() {
+		return idResposta;
+	}
+
+	public void setIdResposta(Long idResposta) {
+		this.idResposta = idResposta;
+	}
+
+	public String getDescricaoResposta() {
+		return descricaoResposta;
+	}
+
+	public void setDescricaoResposta(String descricaoResposta) {
+		this.descricaoResposta = descricaoResposta;
+	}
+
+	public Long getCodeResposta() {
+		return codeResposta;
+	}
+
+	public void setCodeResposta(Long codeResposta) {
+		this.codeResposta = codeResposta;
+	}
+
+
+
 	/**
-	 * Classe interna necessária para Content Provider de respostas
+	 * Classe interna com atributos da tabela respostas 
 	 * 
 	 * @author Jamilson Batista (jamilsonbatista@gmail.com)
 	 * @author Dyego Carlos (dyego12345@gmail.com)
 	 * 
 	 */
-	public static final class AnswersTable implements BaseColumns {
-
-		public static String getDescricao_resposta() {
-			return DESCRICAO_RESPOSTA;
-		}
+	public static final class AnswersTableConstants {
 		
-		public static String getFk_idno() {
-			return FK_IDNO;
-		}
-		
-		public static String getIdresposta() {
-			return IDRESPOSTA;
-		}
-		
-		public static String getCodeResposta() {
-			return CODERESPOSTA;
-		}
-		
-	
-
-		private AnswersTable() {
-		}
-
-		public static final Uri CONTENT_URI = Uri.parse("content://"
-				+ AUTHORITY + "/respostas");
-
-		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.google.respostas";
-
-		public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.google.respostas";
-
-		public static final String DEFAULT_SORT_ORDER = "idresposta ASC";
-
 		public static final String DESCRICAO_RESPOSTA = "descricao_resposta";
 		public static final String FK_IDNO = "fk_idno";
-		public static final String IDRESPOSTA = "idresposta";
-		public static final String CODERESPOSTA = "code_resposta";
-
-		/**
-		 * Método que constrói uma Uri para uma resposta específica, com seu id
-		 * 
-		 * @param id - identificador da resposta
-		 * @return uriAnswers
-		 */
-		public static Uri getUriId(long id) {
-			Uri uriAnswers = ContentUris.withAppendedId(
-					AnswersTable.CONTENT_URI, id);
-			return uriAnswers;
+		public static final String ID_RESPOSTA = "idresposta";
+		public static final String CODE_RESPOSTA = "code_resposta";
+		public static String[] colunas = new String[] { AnswersTableConstants.FK_IDNO,AnswersTableConstants.ID_RESPOSTA, 
+			AnswersTableConstants.CODE_RESPOSTA, AnswersTableConstants.DESCRICAO_RESPOSTA};
+		
+		//Classe nunca é instanciada
+		public AnswersTableConstants(){
+			
 		}
+
 	}
 
 }

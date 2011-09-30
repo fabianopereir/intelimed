@@ -15,13 +15,12 @@ import android.util.Log;
 public class TreeUpdate implements ITreeUpdate {
 	protected static final String CATEGORIA = "nutes";
 
-	public static IModelEdgeDao edgeDao;
-	public static IModelNodeDao nodeDao;
-	public static IModelAnswersDao answersDao;
+	private static IModelEdgeDao edgeDao;
+	private static IModelNodeDao nodeDao;
+	private static IModelAnswersDao answersDao;
 	private Edge entEdge;
 	private Node node;
 	private Context ctx;
-	private Answer answer;
 
 	/**
 	 * Método construtor
@@ -40,8 +39,6 @@ public class TreeUpdate implements ITreeUpdate {
 		
 		entEdge = new Edge();
 		node = new Node();
-		answer = new Answer();
-
 	}
 
 	public void insertNode(Long noId, String noDescricao, boolean diagnostico) {
@@ -57,10 +54,7 @@ public class TreeUpdate implements ITreeUpdate {
 	}
 
 	public void insertNodeAnswers(Long respostaNoId, String respostaNoDescricao, Long codeResposta) {
-		answer.setIdresposta(respostaNoId);
-		answer.setDescricao_resposta(respostaNoDescricao);
-		answer.setCodeResposta(codeResposta);
-		answer.setFk_idno(node.getIdno());
+		Answer answer = new Answer(node.getIdno(), respostaNoId, respostaNoDescricao, codeResposta);
 		
 		Log.i(CATEGORIA, "dentro do insertresposta");
 
@@ -81,6 +75,5 @@ public class TreeUpdate implements ITreeUpdate {
 		nodeDao.fechar();
 		answersDao.fechar();
 	}
-
 	
 }

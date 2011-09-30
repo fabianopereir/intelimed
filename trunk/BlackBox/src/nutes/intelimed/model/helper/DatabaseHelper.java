@@ -1,5 +1,6 @@
 package nutes.intelimed.model.helper;
 
+import nutes.intelimed.model.BaseScript;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -17,6 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	private String[] scriptSQLCreate;
 	private String[] scriptSQLDelete;
+	private static DatabaseHelper helper;
 
 	/**
 	 * Método construtor - Cria uma instância de DatabaseHelper
@@ -26,10 +28,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 * @param scriptSQLCreate - SQL com o create table
 	 * @param scriptDatabaseDelete - SQL com o drop table
 	 */
-	public DatabaseHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
+	private DatabaseHelper(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete) {
 		super(context, nomeBanco, null, versaoBanco);
 		this.scriptSQLCreate = scriptSQLCreate;
 		this.scriptSQLDelete = scriptDatabaseDelete;
+	}
+	
+	public static DatabaseHelper getInstance(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete){
+		if(helper==null){
+			return new DatabaseHelper(context, nomeBanco, versaoBanco,
+					BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
+		}
+		return helper;
 	}
 	
 	/**

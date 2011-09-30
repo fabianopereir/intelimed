@@ -1,7 +1,7 @@
 package nutes.intelimed.model.DAO;
 
 import nutes.intelimed.model.entity.Answer;
-import nutes.intelimed.model.entity.Answer.AnswersTable;
+import nutes.intelimed.model.entity.Answer.AnswersTableConstants;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -34,16 +34,11 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	 	Long n = idResposta;  
 	    Integer code = Integer.valueOf(n.toString());  
 	  
-		Cursor c = db.query(NOME_TABELA, Answer.colunas,  AnswersTable.IDRESPOSTA +  "="+code, null, null, null, null);
+		Cursor c = db.query(NOME_TABELA, AnswersTableConstants.colunas,  AnswersTableConstants.ID_RESPOSTA +  "="+code, null, null, null, null);
 		
 		try {
 			if (c.moveToNext()) {
-				answer = new Answer();
-				answer.setIdresposta(c.getLong(0));
-				answer.setDescricao_resposta(c.getString(1));
-				answer.setCodeResposta(c.getLong(1));
-				answer.setFk_idno(c.getLong(2));
-				
+				answer = new Answer(c.getLong(2), c.getLong(0), c.getString(1), c.getLong(1));
 			}
 		} catch (SQLException e) {
 
@@ -61,11 +56,11 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	 */
 	public long insertAnswer(Answer answer) {
 		ContentValues values = new ContentValues();
-		values.put(AnswersTable.IDRESPOSTA, answer.getIdresposta());
-		values.put(AnswersTable.FK_IDNO, answer.getFk_idno());
+		values.put(AnswersTableConstants.ID_RESPOSTA, answer.getIdResposta());
+		values.put(AnswersTableConstants.FK_IDNO, answer.getIdNo());
 		
-		values.put(AnswersTable.DESCRICAO_RESPOSTA, answer.getDescricao_resposta());
-		values.put(AnswersTable.CODERESPOSTA, answer.getCodeResposta());
+		values.put(AnswersTableConstants.DESCRICAO_RESPOSTA, answer.getDescricaoResposta());
+		values.put(AnswersTableConstants.CODE_RESPOSTA, answer.getCodeResposta());
 		
 		long id = db.insert(NOME_TABELA, "", values);
 		return id;
