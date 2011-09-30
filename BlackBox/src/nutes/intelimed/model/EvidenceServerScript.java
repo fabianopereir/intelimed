@@ -19,9 +19,7 @@ public class EvidenceServerScript extends EvidenceServerDao{
 	 * @param ctx - contexto que será criado o banco
 	 */
 	public EvidenceServerScript(Context ctx) {
-		if(this.db!=null)
-			this.db.close();
-		dbHelper = new DatabaseHelper(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
+		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
 				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
 		db = dbHelper.getWritableDatabase();
 	}
