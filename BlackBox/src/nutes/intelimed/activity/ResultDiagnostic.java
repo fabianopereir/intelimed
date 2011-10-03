@@ -45,10 +45,9 @@ public class ResultDiagnostic extends Activity {
 	private EvidenceAnswers evidenceAnswer;
 	private EditText justification;
 	private TextView resultado;
-	private Button validar;
+	private Button validar, logout;
 	private RadioGroup opiniaoMedico;
 
-	private ImageButton back,logout;
 	
 	@Override
 	public void onCreate(Bundle icicle) {
@@ -108,9 +107,11 @@ public class ResultDiagnostic extends Activity {
     		}
     	});
 		
-		back = (ImageButton) findViewById(R.bt.btBack);
-		logout = (ImageButton) findViewById(R.bt.btLogoff);
+		
+		logout = (Button) findViewById(R.bt.btLogoff);
         
+		/*
+		back = (Button) findViewById(R.bt.btBack);
         back.setOnClickListener(new OnClickListener() {
 			
 			
@@ -120,7 +121,7 @@ public class ResultDiagnostic extends Activity {
 				startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 				
 			}
-		});
+		});*/
         logout.setOnClickListener(new OnClickListener() {
 			
 			

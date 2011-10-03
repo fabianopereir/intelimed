@@ -6,8 +6,15 @@
 	android:layout_width="fill_parent"
 	android:background="@drawable/gradientbg"
 	android:layout_height="match_parent">
-	
+
 	<include layout="@layout/navbar" />
+
+	<TextView
+		android:text="Diagnóstico"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="5px"
+		android:textColor="#ffffff" />
 
 	<ScrollView
 		android:layout_height="fill_parent"
@@ -16,9 +23,25 @@
 		<LinearLayout
 			android:layout_height="fill_parent"
 			android:layout_width="fill_parent"
-			android:id="@+id/LinearLayout02"
+			android:id="@+id/LinearLayout03"
 			android:orientation="vertical">
-	</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="fill_parent"
+				android:layout_width="fill_parent"
+				android:id="@+id/LinearLayout02"
+				android:orientation="vertical"
+				android:paddingRight="10dp"
+				android:paddingLeft="10dp">
+			</LinearLayout>
+			<Button
+				android:id="@+bt/btOkDiagnostic"
+				android:layout_marginTop="10dp"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="OK" />
+
+		</LinearLayout>
 	</ScrollView>
 
 </LinearLayout>

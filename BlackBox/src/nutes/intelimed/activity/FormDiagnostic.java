@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -42,14 +43,13 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         public static IModelStructureQuestionnaireDao dao;
         public static IBlackBox treeQ;
         
-        private Button validar;
+        private Button validar, logout;
         private String[] arrQuest;
         private String[] arrNO;
         private JSONArray arrJason;
         private JSONObject treeObj;
         private LinearLayout linerLayout;
 
-        private ImageButton back, logout;
         
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -57,21 +57,20 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 setContentView(R.layout.questionnaire_asma);
 
                 dao = (IModelStructureQuestionnaireDao) new BaseScript(this);
-
+                
                 montarQuest();
-
-                validar = new Button(this);
-                validar.setText("OK");
-                linerLayout.addView(validar);
+                
+                validar = (Button) findViewById(R.bt.btOkDiagnostic);
                 validar.setOnClickListener(new OnClickListener() {
                         public void onClick(View v) {
                                 validar();
                         }
                 });
                 
-                back = (ImageButton) findViewById(R.bt.btBack);
-        		logout = (ImageButton) findViewById(R.bt.btLogoff);
+                logout = (Button) findViewById(R.bt.btLogoff);
                 
+                /*back = (Button) findViewById(R.bt.btBack);
+        		
                 back.setOnClickListener(new OnClickListener() {
         			
         			
@@ -82,7 +81,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         				//	finish();
         				
         			}
-        		});
+        		});*/
                 logout.setOnClickListener(new OnClickListener() {
         			
         			
@@ -202,6 +201,11 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 dao.fechar();
         }
         
+        public int convertDpToPx(int dp) {
+        	final float scale = getResources().getDisplayMetrics().density;
+            return (int) (dp * scale + 0.5f);
+        }
+        
         /**
          * Monta uma questão específica
          * @param pergunta - pergunta que se deseja imprimir na tela
@@ -210,12 +214,15 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
          * @return TextView com uma questão específica
          */
         public TextView createQuestionLabel(String pergunta, long idno,FormDiagnostic formDiagnostic) {
-                TextView perguntas = null;
-                perguntas = new TextView(formDiagnostic);
-                perguntas.setId((int) idno);
-                perguntas.setText(pergunta);
+        	TextView perguntas = null;
+            perguntas = new TextView(formDiagnostic);
+            perguntas.setId((int) idno);
+            perguntas.setText(pergunta);
+            perguntas.setTextColor(Color.WHITE);
+            perguntas.setShadowLayer(1, 1, 1, Color.DKGRAY);
+            perguntas.setPadding(0, convertDpToPx(15), 0, convertDpToPx(5));
 
-                return perguntas;
+            return perguntas;
         }
         
         /**
@@ -239,6 +246,10 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                         radio_button.setId(nextOption.codeResposta);
                         radio_button.setTag(nextOption.fk_idno);
                         radio_button.setText(nextOption.resposta);
+                        radio_button.setTextColor(Color.BLACK);
+                        radio_group.setBackgroundResource(R.drawable.corner);
+                        radio_group.setFocusableInTouchMode(true);
+                        radio_group.setPadding(convertDpToPx(5), convertDpToPx(5), convertDpToPx(5), convertDpToPx(5));
                         radio_group.addView(radio_button);
                 }
                 radio_group.setOnCheckedChangeListener(formDiagnostic);
