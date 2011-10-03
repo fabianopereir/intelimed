@@ -41,10 +41,8 @@ import android.widget.ImageButton;
 public class Menu extends Activity{
 	
 	private ProgressDialog dialog;
-	
-	private ImageButton back, logout;
-	
-	private Button diagnostic, sync, TreeUp; 
+		
+	private Button logout, diagnostic, sync, TreeUp; 
 	
 	protected static final String CATEGORIA = "nutes";
 	
@@ -59,10 +57,11 @@ public class Menu extends Activity{
         sync = (Button) findViewById(R.id.btSincronizarDados);
         TreeUp = (Button) findViewById(R.id.btAtualizarArvore);
         
-        back = (ImageButton) findViewById(R.bt.btBack);
-        logout = (ImageButton) findViewById(R.bt.btLogoff);
         
-        back.setVisibility(ImageButton.INVISIBLE);
+        logout = (Button) findViewById(R.bt.btLogoff);
+        
+        //back = (Button) findViewById(R.bt.btBack);
+        //back.setVisibility(Button.INVISIBLE);
        
         
         daoEvidenceToServer = (IModelEvidenceServerDao) new EvidenceServerScript(this);
