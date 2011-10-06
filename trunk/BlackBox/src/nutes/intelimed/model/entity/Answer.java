@@ -72,7 +72,6 @@ public class Answer {
 		public static String[] colunas = new String[] { AnswersTableConstants.FK_IDNO,AnswersTableConstants.ID_RESPOSTA, 
 			AnswersTableConstants.CODE_RESPOSTA, AnswersTableConstants.DESCRICAO_RESPOSTA};
 		
-		//Classe nunca é instanciada
 		public AnswersTableConstants(){
 			
 		}

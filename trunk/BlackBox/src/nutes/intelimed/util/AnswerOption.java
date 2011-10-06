@@ -7,26 +7,40 @@ package nutes.intelimed.util;
  * 
  */
 public class AnswerOption {
-	public String resposta;
-	public int codeResposta;
-	public int fk_idno;
+	private String resposta;
+	private int codeResposta;
+	private int idNo;
+	
+	public AnswerOption(String resposta, int codeResposta, int idNo) {
+		this.resposta = resposta;
+		this.codeResposta = codeResposta;
+		this.idNo = idNo;
+	}
+	
+	public AnswerOption() {
+	}
 	
 	public String getResposta() {
 		return resposta;
 	}
+	
 	public void setResposta(String resposta) {
 		this.resposta = resposta;
 	}
+
 	public int getCodeResposta() {
 		return codeResposta;
 	}
-	public void setCodeResposta(int codResposta) {
-		this.fk_idno = codResposta;
+
+	public void setCodeResposta(int codeResposta) {
+		this.codeResposta = codeResposta;
 	}
-	public int getFk_Idano() {
-		return fk_idno;
+
+	public int getIdNo() {
+		return idNo;
 	}
-	public void getFk_Idano(int fk_idano) {
-		this.fk_idno = fk_idano;
+
+	public void setIdNo(int idNo) {
+		this.idNo = idNo;
 	}
 }

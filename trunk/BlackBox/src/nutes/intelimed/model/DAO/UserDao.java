@@ -1,8 +1,8 @@
 package nutes.intelimed.model.DAO;
 
 import nutes.intelimed.model.entity.User;
-import nutes.intelimed.model.entity.User.Users;
-import android.content.Context;
+import nutes.intelimed.model.entity.User.UsersTableConstants;
+import nutes.intelimed.model.entity.UserOrPasswordIncorrectException;
 import android.database.Cursor;
 import android.database.SQLException;
 
@@ -19,40 +19,19 @@ public class UserDao extends GenericDao implements IModelUserDao{
 		
 	}
 	
-	public UserDao(Context ctx) {
-		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
-	}
-
 	/**
 	 * Busca usuário e senha na base de dados
-	 * @param User u (identificador de usuário)
-	 * @return User 
+	 * @param User user (identificador de usuário)
 	 */
-	public User login(User u) {
-		User user = null;
-
-		try {
+	public void login(User user) throws UserOrPasswordIncorrectException,SQLException {
+		Cursor c = db.query(NOME_TABELA, UsersTableConstants.colunas, UsersTableConstants.USUARIO + "='" + user.getUser() + "'" + " AND " + UsersTableConstants.SENHA + "='" + user.getPassword() + "'", null, null, null, null);
 			
-			Cursor c = db.query(NOME_TABELA, User.colunas, Users.USUARIO + "='" + u.getVuser() + "'" + " AND " + Users.SENHA + "='" + u.getVpassword() + "'", null, null, null, null);
-			
-			if (c.getCount() > 0) {
-				c.moveToFirst();
-				user = new User();
-				user.Vuser = c.getString(1);
-				user.Vpassword = c.getString(2);
-				c.close();
-				return u;
-			}else 
-			{
-				c.close();
-				return null;
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}	 	
-       
+		if (c.getCount() > 0) {
+			c.close();
+		}else{
+			c.close();
+			throw new UserOrPasswordIncorrectException();
+		}	
 	}
 	
 	public void fechar() {

@@ -59,7 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 	
 	/**
-	 * Método onCreate - Atualiza banco de dados
+	 * Método onUpgrade - Atualiza banco de dados
 	 * @param SQLiteDatabase db
 	 * @param int versaoAntiga
 	 * @param int novaVersao

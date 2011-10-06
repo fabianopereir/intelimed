@@ -10,13 +10,11 @@ import nutes.intelimed.model.entity.EvidenceAnswers;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,9 +38,9 @@ public class ResultDiagnostic extends Activity {
 
 	private IModelEvidenceDao daoEvidence;
 	private IModelEvidenceAnswersDao daoEvidenceAnswer;
-
 	private Evidence evidence;
 	private EvidenceAnswers evidenceAnswer;
+	
 	private EditText justification;
 	private TextView resultado;
 	private Button validar, logout;
@@ -87,7 +85,7 @@ public class ResultDiagnostic extends Activity {
 
 		validar.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				validar(answer, arrNO, result);
+				storeEvidence(answer, arrNO, result);
 			}
 		});
 		
@@ -143,7 +141,7 @@ public class ResultDiagnostic extends Activity {
 	 * @param result - string com o resultado do sistema
 	 * @return void
 	 */
-	public void validar(String[] answerData, String[] noData, String result) {
+	public void storeEvidence(String[] answerData, String[] noData, String result) {
 		evidence.setMedico(medico);
 		
 		evidence.setJustificativa(justification.getText().toString());
@@ -162,8 +160,7 @@ public class ResultDiagnostic extends Activity {
 					daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);
 				}
 			}
-			daoEvidence.fechar();
-			daoEvidenceAnswer.fechar();
+			close();
 			startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 		}
 	}
@@ -178,12 +175,16 @@ public class ResultDiagnostic extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 	        finish();
-	        daoEvidence.fechar();
-			daoEvidenceAnswer.fechar();
+	        close();
 	    	startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 	        return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
+	}
+
+	private void close() {
+		daoEvidence.fechar();
+		daoEvidenceAnswer.fechar();
 	}
 	
 	@Override
@@ -196,8 +197,6 @@ public class ResultDiagnostic extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		// Fecha o banco
-		daoEvidence.fechar();
-		daoEvidenceAnswer.fechar();
+		close();
 	}
 }
