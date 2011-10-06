@@ -3,9 +3,9 @@ package nutes.intelimed.activity;
 
 import java.security.NoSuchAlgorithmException;
 
-
 import android.app.Activity;
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,15 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-
 import nutes.intelimed.R;
-import nutes.intelimed.R.bt;
-import nutes.intelimed.R.campo;
-import nutes.intelimed.R.layout;
 import nutes.intelimed.model.UserScript;
 import nutes.intelimed.model.DAO.IModelUserDao;
 import nutes.intelimed.model.entity.User;
+import nutes.intelimed.model.entity.UserOrPasswordIncorrectException;
 import nutes.intelimed.util.MD5Password;
 
 /**
@@ -34,47 +30,42 @@ import nutes.intelimed.util.MD5Password;
  */
 public class Login extends Activity{
 	
-	public static IModelUserDao dao;
-	
-	Button btlogin;
-	EditText user, password;
-	
-	User usuario = new User();
+	private IModelUserDao usersDao;
+	private Button btLogin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-    	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
        
-        dao = new UserScript(this);
+        usersDao = new UserScript(this);
        
-        btlogin = (Button) findViewById(R.bt.btLogin);
-        btlogin.setOnClickListener(new OnClickListener() {
+        btLogin = (Button) findViewById(R.bt.btLogin);
+        btLogin.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				String Vuser, Vpassword;
-				User userFinal=null;
+				EditText etUser, etPassword;
+				String strUser, strPassword;
 				
-				user = (EditText) findViewById(R.campo.user);
-				password = (EditText) findViewById(R.campo.password);
+				etUser = (EditText) findViewById(R.campo.user);
+				etPassword = (EditText) findViewById(R.campo.password);
 				
-				Vuser = user.getText().toString();
-				Vpassword = password.getText().toString();
+				strUser = etUser.getText().toString();
+				strPassword = etPassword.getText().toString();
+				
 				try {
-					usuario.setVuser(Vuser);
-					usuario.setVpassword(MD5Password.getPassword(Vpassword));
-				} catch (NoSuchAlgorithmException e) {
-					e.printStackTrace();
-				}
-				userFinal = dao.login(usuario);
-				if (userFinal!=null)
-				{
+					User user = new User(strUser,MD5Password.getPassword(strPassword));
+					usersDao.login(user);
 					init();
-				}else{
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UserOrPasswordIncorrectException e) {
 					Toast.makeText(Login.this, "Usuário ou senha incorreto!", Toast.LENGTH_SHORT).show();
 				}
-				
 			}
 		}); 
     }
@@ -96,6 +87,7 @@ public class Login extends Activity{
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+	    	usersDao.fechar();
 	        finish();
 	        return true;
 	    }
@@ -105,7 +97,7 @@ public class Login extends Activity{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		dao.fechar();
+		usersDao.fechar();
 	}
 
 	@Override

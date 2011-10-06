@@ -182,9 +182,9 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 
                         while (arrayQuestion.get(i).getIdno() == vAux.getIdno() && aux < arrayQuestion.size()) {
                                 option = new AnswerOption();
-                                option.codeResposta = arrayQuestion.get(aux).getIdresposta();
-                                option.fk_idno = arrayQuestion.get(aux).getFk_idno();
-                                option.resposta = arrayQuestion.get(aux).getDescricao_resposta();
+                                option.setCodeResposta(arrayQuestion.get(aux).getIdresposta());
+                                option.setIdNo(arrayQuestion.get(aux).getFk_idno());
+                                option.setResposta(arrayQuestion.get(aux).getDescricao_resposta());
                                 questionOption.add(option);
                                 aux++;
                                 if (aux < arrayQuestion.size()) {
@@ -243,9 +243,9 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 while (option.hasNext()) {
                         AnswerOption nextOption = option.next();
                         radio_button = new RadioButton(formDiagnostic);
-                        radio_button.setId(nextOption.codeResposta);
-                        radio_button.setTag(nextOption.fk_idno);
-                        radio_button.setText(nextOption.resposta);
+                        radio_button.setId(nextOption.getCodeResposta());
+                        radio_button.setTag(nextOption.getIdNo());
+                        radio_button.setText(nextOption.getResposta());
                         radio_button.setTextColor(Color.BLACK);
                         radio_group.setBackgroundResource(R.drawable.corner);
                         radio_group.setFocusableInTouchMode(true);

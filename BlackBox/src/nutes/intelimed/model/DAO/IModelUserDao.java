@@ -1,7 +1,9 @@
 package nutes.intelimed.model.DAO;
 
 
+import android.database.SQLException;
 import nutes.intelimed.model.entity.User;
+import nutes.intelimed.model.entity.UserOrPasswordIncorrectException;
 
 
 /**
@@ -11,6 +13,6 @@ import nutes.intelimed.model.entity.User;
  * 
  */
 public interface IModelUserDao{
-	public abstract User login(User user);
+	public abstract void login(User user) throws UserOrPasswordIncorrectException, SQLException;
 	public abstract void fechar();
 }
