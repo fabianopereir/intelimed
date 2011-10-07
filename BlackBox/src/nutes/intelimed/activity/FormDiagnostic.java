@@ -8,9 +8,9 @@ import nutes.intelimed.R;
 import nutes.intelimed.controller.BlackBox;
 import nutes.intelimed.controller.IBlackBox;
 import nutes.intelimed.model.BaseScript;
-import nutes.intelimed.model.DAO.IModelStructureQuestionnaireDao;
-import nutes.intelimed.model.entity.StructureQuestionnaire;
-import nutes.intelimed.util.AnswerOption;
+import nutes.intelimed.model.diagnostic.AnswerOption;
+import nutes.intelimed.model.diagnostic.IModelStructureQuestionnaireDao;
+import nutes.intelimed.model.diagnostic.StructureQuestionnaire;
 
 import org.json.JSONArray;
 import org.json.JSONException;

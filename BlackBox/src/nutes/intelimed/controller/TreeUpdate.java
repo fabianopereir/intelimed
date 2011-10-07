@@ -1,14 +1,14 @@
 package nutes.intelimed.controller;
 
-import nutes.intelimed.model.AnswerScript;
-import nutes.intelimed.model.EdgeScript;
-import nutes.intelimed.model.NodeScript;
-import nutes.intelimed.model.DAO.IModelAnswersDao;
-import nutes.intelimed.model.DAO.IModelEdgeDao;
-import nutes.intelimed.model.DAO.IModelNodeDao;
-import nutes.intelimed.model.entity.Answer;
-import nutes.intelimed.model.entity.Edge;
-import nutes.intelimed.model.entity.Node;
+import nutes.intelimed.model.tree.Answer;
+import nutes.intelimed.model.tree.AnswersDao;
+import nutes.intelimed.model.tree.Edge;
+import nutes.intelimed.model.tree.EdgeDao;
+import nutes.intelimed.model.tree.IModelAnswersDao;
+import nutes.intelimed.model.tree.IModelEdgeDao;
+import nutes.intelimed.model.tree.IModelNodeDao;
+import nutes.intelimed.model.tree.Node;
+import nutes.intelimed.model.tree.NodeDao;
 import android.content.Context;
 import android.util.Log;
 
@@ -29,9 +29,9 @@ public class TreeUpdate implements ITreeUpdate {
 	 */
 	public TreeUpdate(Context context) {
 		this.ctx = context;
-		edgeDao = (IModelEdgeDao) new EdgeScript(ctx);
-		answersDao = (IModelAnswersDao) new AnswerScript(ctx);
-		nodeDao = (IModelNodeDao) new NodeScript(ctx);
+		edgeDao = (IModelEdgeDao) new EdgeDao(ctx);
+		answersDao = (IModelAnswersDao) new AnswersDao(ctx);
+		nodeDao = (IModelNodeDao) new NodeDao(ctx);
 		
 		nodeDao.deleteNode();
 		answersDao.deleteAnswer();

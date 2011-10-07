@@ -1,0 +1,104 @@
+package nutes.intelimed.model.tree;
+
+import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.model.DatabaseHelper;
+import nutes.intelimed.model.GenericDao;
+import nutes.intelimed.model.tree.Node.NodesTableConstants;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.util.Log;
+
+/**
+* Classe responsável por realizar consultas no banco na tabela de nós
+* @author Jamilson Batista (jamilsonbatista@gmail.com)
+* @author Dyego Carlos (dyego12345@gmail.com)
+*/
+public class NodeDao extends GenericDao implements IModelNodeDao{
+	
+	private DatabaseHelper dbHelper;
+	
+	public static final String NOME_TABELA = "no";
+
+	public NodeDao(Context ctx) {
+		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
+				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
+		db = dbHelper.getWritableDatabase();
+	}
+	
+	/**
+	 * Busca um nó na base de dados
+	 * @param Long fk_idno (identificador do nó)
+	 * @return Node 
+	 */
+	public Node searchNode(Long fk_idno) {
+
+		Node node = null;
+		
+		try {
+
+			Cursor c = db.query(NOME_TABELA, NodesTableConstants.colunas, NodesTableConstants.IDNO + "=" + fk_idno + " AND " + NodesTableConstants.DIAGNOSTICO + "= 1", null, null, null, null);
+
+			if (c.moveToNext()) {
+
+				node = new Node();
+				node.setIdno(c.getLong(0));
+				node.setDescricaoNo(c.getString(1));
+				node.setDiagnostico(c.getInt(2));
+				c.close();
+			} else{
+				c.close();
+				return null;
+			}
+			
+			c.close();
+		} catch (SQLException e) {
+			Log.e(CATEGORIA,"Erro ao buscar o nó: " + e.toString());
+			return null;
+		}
+		
+		return node;
+	}
+	
+	/**
+	 * Insere um nó na base de dados
+	 * @param Node
+	 * @return Long fk_idno (identificador do nó)
+	 */
+	public long insertNode(Node node) {
+		ContentValues values = new ContentValues();
+		values.put(NodesTableConstants.IDNO, node.getIdno());
+		values.put(NodesTableConstants.DESCRICAO_NO, node.getDescricaoNo());
+		values.put(NodesTableConstants.DIAGNOSTICO, node.getDiagnostico());
+		long id = db.insert(NOME_TABELA, "", values);
+        Log.i(CATEGORIA,"Insere nó???");
+		return id;
+	}
+	
+	/**
+	 * Deleta conteúdo da tabela nó na base de dados
+	 * @return boolean - se deletar retorna true
+	 */
+	public boolean deleteNode() {
+		boolean aux = true;
+		try{
+			db.delete(NOME_TABELA, null, null);
+		}catch (Exception e) {
+            aux=false;
+            Log.i("Exception excluir",e.getMessage().toString());
+		}
+		
+		return aux;
+	}
+	
+	public void fechar() {
+		if (db != null) {
+			db.close();
+		}
+		if (dbHelper != null) {
+			dbHelper.close();
+		}
+	}
+	
+}
