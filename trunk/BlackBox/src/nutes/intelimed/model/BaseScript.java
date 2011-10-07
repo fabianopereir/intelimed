@@ -1,8 +1,7 @@
 package nutes.intelimed.model;
 
 import android.content.Context;
-import nutes.intelimed.model.DAO.StructureQuestionnaireDao;
-import nutes.intelimed.model.helper.DatabaseHelper;
+import nutes.intelimed.model.diagnostic.StructureQuestionnaireDao;
 
 
 /**

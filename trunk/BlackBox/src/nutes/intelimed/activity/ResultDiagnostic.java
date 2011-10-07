@@ -1,12 +1,12 @@
 package nutes.intelimed.activity;
 
 import nutes.intelimed.R;
-import nutes.intelimed.model.EvidenceAnswersScript;
-import nutes.intelimed.model.EvidenceScript;
-import nutes.intelimed.model.DAO.IModelEvidenceAnswersDao;
-import nutes.intelimed.model.DAO.IModelEvidenceDao;
-import nutes.intelimed.model.entity.Evidence;
-import nutes.intelimed.model.entity.EvidenceAnswers;
+import nutes.intelimed.model.evidence.Evidence;
+import nutes.intelimed.model.evidence.EvidenceAnswers;
+import nutes.intelimed.model.evidence.EvidenceAnswersDao;
+import nutes.intelimed.model.evidence.EvidenceDao;
+import nutes.intelimed.model.evidence.IModelEvidenceAnswersDao;
+import nutes.intelimed.model.evidence.IModelEvidenceDao;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,8 +58,8 @@ public class ResultDiagnostic extends Activity {
         opiniaoMedico = (RadioGroup) findViewById(R.id.opiniaoMedico);
         justification = (EditText) findViewById(R.id.justificativa);
         
-		daoEvidence = (IModelEvidenceDao) new EvidenceScript(this);
-		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersScript(this);
+		daoEvidence = (IModelEvidenceDao) new EvidenceDao(this);
+		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersDao(this);
 
 		evidence = new Evidence();
 		evidenceAnswer = new EvidenceAnswers();

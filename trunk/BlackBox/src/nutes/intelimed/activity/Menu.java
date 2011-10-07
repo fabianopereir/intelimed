@@ -5,15 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import nutes.intelimed.R;
-import nutes.intelimed.communication.SendEvidence;
-import nutes.intelimed.communication.ReceiveTree;
-import nutes.intelimed.communication.helper.ServerConstants;
-import nutes.intelimed.controller.BlackBox;
+import nutes.intelimed.communication.ServerConstants;
+import nutes.intelimed.controller.ReceiveTree;
+import nutes.intelimed.controller.SendEvidence;
 import nutes.intelimed.controller.TreeUpdate;
-import nutes.intelimed.model.EvidenceServerScript;
-import nutes.intelimed.model.DAO.IModelEvidenceServerDao;
-import nutes.intelimed.model.entity.EvidenceServer;
-import nutes.intelimed.util.Parser;
+import nutes.intelimed.model.evidence.EvidenceServer;
+import nutes.intelimed.model.evidence.EvidenceServerDao;
+import nutes.intelimed.model.evidence.IModelEvidenceServerDao;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +27,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 
 /**
@@ -64,7 +61,7 @@ public class Menu extends Activity{
         //back.setVisibility(Button.INVISIBLE);
        
         
-        daoEvidenceToServer = (IModelEvidenceServerDao) new EvidenceServerScript(this);
+        daoEvidenceToServer = (IModelEvidenceServerDao) new EvidenceServerDao(this);
 
         
 		diagnostic.setOnClickListener(new OnClickListener() {
@@ -110,7 +107,7 @@ public class Menu extends Activity{
 		
 		 ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer.searchEvidenceToServer();
 		 int aux;
-         int aux2 = 0;
+         
          EvidenceServer vAux;
          
 		 JSONObject data = new JSONObject();
@@ -146,7 +143,6 @@ public class Menu extends Activity{
 	             }
 	             dataEvidence.put("respostas", arrAnswer);
 				 arrData.put(dataEvidence);
-	             aux2++;
 	            
 	             i = aux - 1;
 	         }

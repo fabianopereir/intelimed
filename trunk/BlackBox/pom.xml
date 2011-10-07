@@ -11,7 +11,7 @@
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
-            <version>Android_2.2</version>
+            <version>2.2</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -23,11 +23,11 @@
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>maven-android-plugin</artifactId>
-                <version>2.8.4</version>
+                <version>2.2.1</version>
                 <configuration>
                     <sdk>
                         <!-- platform or api level (api level 4 = platform 1.6)-->
-                        <platform>4</platform>
+                        <platform>8</platform>
                     </sdk>
                     <emulator>
                         <!-- the name of the avd device to use for starting the emulator -->
@@ -40,8 +40,21 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <!-- version 2.3 defaults to java 1.5, so no further configuration needed-->
-                <version>2.3</version>
+                <version>2.2.1</version>
             </plugin>
         </plugins>
     </build>
+    <properties>
+                <sonar.jdbc.url>
+                        jdbc:mysql://localhost:3306/sonar
+                </sonar.jdbc.url>
+                <sonar.jdbc.driverClassName>com.mysql.jdbc.Driver</sonar.jdbc.driverClassName>
+                <sonar.jdbc.username>sonar</sonar.jdbc.username>
+                <sonar.jdbc.password>sonar</sonar.jdbc.password>
+                <sonar.language>java</sonar.language>
+                <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+                <sonar.surefire.reportsPath>test/reports</sonar.surefire.reportsPath>
+                <sonar.cobertura.reportPath>target/test-reports/cobertura/coverage.xml</sonar.cobertura.reportPath>
+                <sonar.phase>generate-sources</sonar.phase>
+     </properties>
 </project>

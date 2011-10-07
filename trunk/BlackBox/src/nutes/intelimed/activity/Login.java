@@ -15,10 +15,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import nutes.intelimed.R;
-import nutes.intelimed.model.UserScript;
-import nutes.intelimed.model.DAO.IModelUserDao;
-import nutes.intelimed.model.entity.User;
-import nutes.intelimed.model.entity.UserOrPasswordIncorrectException;
+import nutes.intelimed.controller.IUser;
+import nutes.intelimed.controller.UserController;
+import nutes.intelimed.model.user.IModelUserDao;
+import nutes.intelimed.model.user.User;
+import nutes.intelimed.model.user.UserDao;
+import nutes.intelimed.model.user.UserOrPasswordIncorrectException;
 import nutes.intelimed.util.MD5Password;
 
 /**
@@ -30,7 +32,8 @@ import nutes.intelimed.util.MD5Password;
  */
 public class Login extends Activity{
 	
-	private IModelUserDao usersDao;
+	//private IModelUserDao usersDao;
+	private IUser users;
 	private Button btLogin;
 
     @Override
@@ -38,7 +41,8 @@ public class Login extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
        
-        usersDao = new UserScript(this);
+        //usersDao = new UserDao(this);
+        users = new UserController(this);
        
         btLogin = (Button) findViewById(R.bt.btLogin);
         btLogin.setOnClickListener(new OnClickListener() {
@@ -54,8 +58,8 @@ public class Login extends Activity{
 				strPassword = etPassword.getText().toString();
 				
 				try {
-					User user = new User(strUser,MD5Password.getPassword(strPassword));
-					usersDao.login(user);
+					users.login(strUser, MD5Password.getPassword(strPassword));
+					//usersDao.login(user);
 					init();
 				} catch (NoSuchAlgorithmException e) {
 					// TODO Auto-generated catch block
@@ -87,7 +91,7 @@ public class Login extends Activity{
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-	    	usersDao.fechar();
+	    	//usersDao.fechar();
 	        finish();
 	        return true;
 	    }
@@ -97,7 +101,7 @@ public class Login extends Activity{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		usersDao.fechar();
+		//usersDao.fechar();
 	}
 
 	@Override
