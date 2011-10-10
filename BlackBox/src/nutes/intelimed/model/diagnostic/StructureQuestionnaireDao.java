@@ -3,6 +3,8 @@ package nutes.intelimed.model.diagnostic;
 import java.util.ArrayList;
 import java.util.List;
 
+import nutes.intelimed.model.ScriptConstants;
+import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.diagnostic.StructureQuestionnaire.StructureQuestionnaireTableConstants;
 import android.content.Context;
@@ -17,12 +19,15 @@ import android.util.Log;
  */
 public class StructureQuestionnaireDao extends GenericDao implements IModelStructureQuestionnaireDao{
 		
+	private DatabaseHelper dbHelper;
+	
 	public static final String NOME_TABELA = " no"+" INNER JOIN resposta";
 	
-	public StructureQuestionnaireDao()	{}
-	
 	public StructureQuestionnaireDao(Context ctx) {
-		db = ctx.openOrCreateDatabase(NOME_BANCO, Context.MODE_PRIVATE, null);
+		dbHelper = DatabaseHelper.getInstance(ctx, ScriptConstants.NOME_BANCO, ScriptConstants.VERSAO_BANCO,
+				ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());
+
+		//db = dbHelper.getWritableDatabase();
 	}
 	
 	/**
@@ -45,7 +50,7 @@ public class StructureQuestionnaireDao extends GenericDao implements IModelStruc
 	 * @return List<StructureQuestionnaire> 
 	 */
 	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
-
+		db = dbHelper.getWritableDatabase();
 		Cursor c = getCursor();
 		
 		List<StructureQuestionnaire> estrutura = new ArrayList<StructureQuestionnaire>();
@@ -72,11 +77,16 @@ public class StructureQuestionnaireDao extends GenericDao implements IModelStruc
 			} while (c.moveToNext());
 		}
 		c.close();
+		this.fechar();
 		return estrutura;
 	}
+	
 	public void fechar() {
 		if (db != null) {
 			db.close();
+		}
+		if (dbHelper != null) {
+			dbHelper.close();
 		}
 	}
 

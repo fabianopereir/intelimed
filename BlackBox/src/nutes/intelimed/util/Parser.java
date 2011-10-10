@@ -1,8 +1,6 @@
 package nutes.intelimed.util;
 
-
-import nutes.intelimed.controller.ITreeUpdate;
-import nutes.intelimed.controller.TreeUpdate;
+import nutes.intelimed.controller.tree.ITree;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,15 +16,15 @@ import android.util.Log;
  */
 public class Parser {
 	protected static final String CATEGORIA = "nutes";
-	private ITreeUpdate tree;
+	private ITree tree;
 	private JSONObject jObject;
 
 	//private String jString = "[{\"class\":\"intermediate.Arvore\",\"id\":1,\"arestas\":[{\"class\":\"intermediate.Aresta\",\"id\":1,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":1,\"descricao\":\"Sunny\"}},{\"class\":\"intermediate.Aresta\",\"id\":2,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":2,\"descricao\":\"Overcast\"}},{\"class\":\"intermediate.Aresta\",\"id\":3,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":3,\"descricao\":\"Rain\"}},{\"class\":\"intermediate.Aresta\",\"id\":7,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":7,\"descricao\":\"Weak\"}},{\"class\":\"intermediate.Aresta\",\"id\":5,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":5,\"descricao\":\"Normal\"}},{\"class\":\"intermediate.Aresta\",\"id\":4,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":4,\"descricao\":\"High\"}},{\"class\":\"intermediate.Aresta\",\"id\":6,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":6,\"descricao\":\"Strong\"}}],\"nos\":[{\"class\":\"intermediate.No\",\"id\":1,\"arestasEntrada\":[],\"descricao\":\"Outlook\",\"respostas\":[{\"class\":\"intermediate.Resposta\",\"id\":2,\"descricao\":\"Overcast\"},{\"class\":\"intermediate.Resposta\",\"id\":1,\"descricao\":\"Sunny\"},{\"class\":\"intermediate.Resposta\",\"id\":3,\"descricao\":\"Rain\"}]},{\"class\":\"intermediate.No\",\"id\":2,\"arestasEntrada\":[{\"class\":\"intermediate.Aresta\",\"id\":1,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":1,\"descricao\":\"Sunny\"}}],\"descricao\":\"Humidity\",\"respostas\":[{\"class\":\"intermediate.Resposta\",\"id\":4,\"descricao\":\"High\"},{\"class\":\"intermediate.Resposta\",\"id\":5,\"descricao\":\"Normal\"}]},{\"class\":\"intermediate.No\",\"id\":3,\"arestasEntrada\":[{\"class\":\"intermediate.Aresta\",\"id\":3,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":3,\"descricao\":\"Rain\"}}],\"descricao\":\"Wind\",\"respostas\":[{\"class\":\"intermediate.Resposta\",\"id\":6,\"descricao\":\"Strong\"},{\"class\":\"intermediate.Resposta\",\"id\":7,\"descricao\":\"Weak\"}]},{\"class\":\"intermediate.No\",\"id\":4,\"arestasEntrada\":[{\"class\":\"intermediate.Aresta\",\"id\":2,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":2,\"descricao\":\"Overcast\"}},{\"class\":\"intermediate.Aresta\",\"id\":7,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":7,\"descricao\":\"Weak\"}},{\"class\":\"intermediate.Aresta\",\"id\":5,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":5,\"descricao\":\"Normal\"}}],\"descricao\":\"Yes\",\"respostas\":[]},{\"class\":\"intermediate.No\",\"id\":5,\"arestasEntrada\":[{\"class\":\"intermediate.Aresta\",\"id\":4,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":4,\"descricao\":\"High\"}},{\"class\":\"intermediate.Aresta\",\"id\":6,\"resposta\":{\"class\":\"intermediate.Resposta\",\"id\":6,\"descricao\":\"Strong\"}}],\"descricao\":\"No\",\"respostas\":[]}],\"respostas\":[{\"class\":\"intermediate.Resposta\",\"id\":2,\"descricao\":\"Overcast\"},{\"class\":\"intermediate.Resposta\",\"id\":6,\"descricao\":\"Strong\"},{\"class\":\"intermediate.Resposta\",\"id\":1,\"descricao\":\"Sunny\"},{\"class\":\"intermediate.Resposta\",\"id\":4,\"descricao\":\"High\"},{\"class\":\"intermediate.Resposta\",\"id\":7,\"descricao\":\"Weak\"},{\"class\":\"intermediate.Resposta\",\"id\":5,\"descricao\":\"Normal\"},{\"class\":\"intermediate.Resposta\",\"id\":3,\"descricao\":\"Rain\"}]}]";
 	 
-	public Parser(TreeUpdate tree) {
+	public Parser(ITree tree) {
 		this.tree = tree;
-
 	}
+
 
 	/**
 	 * Método responsável por simular parser para leitura do json
@@ -119,7 +117,6 @@ public class Parser {
 			
 		}
 		
-		tree.fechar();
 		//Respostas
 		/*JSONArray respostasArray = jObject.getJSONArray("respostas");
 

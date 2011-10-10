@@ -6,7 +6,7 @@ import android.database.Cursor;
 
 import android.database.SQLException;
 import android.util.Log;
-import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.model.ScriptConstants;
 import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.tree.Edge.EdgesTableConstants;
@@ -25,9 +25,9 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 	public EdgeDao() {}
 
 	public EdgeDao(Context ctx) {
-		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
-				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
-		db = dbHelper.getWritableDatabase();
+		dbHelper = DatabaseHelper.getInstance(ctx, ScriptConstants.NOME_BANCO, ScriptConstants.VERSAO_BANCO,
+				ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());
+		//db = dbHelper.getWritableDatabase();
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 	  * @return aresta 
 	  */
 	public Edge searchEdge(Long codeResposta) {
-
+		db = dbHelper.getWritableDatabase();
 		Edge edge = null;
 	 	Long n = codeResposta;  
 	    Integer code = Integer.valueOf(n.toString());  
@@ -54,8 +54,10 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 
 			Log.e(CATEGORIA, "Erro ao buscar a aresta pelo código da resposta: " + e.toString());
 			return null;
+		} finally{
+			c.close();
+			this.fechar();
 		}
-		c.close();
 		return edge;
 	}
 	
@@ -65,11 +67,13 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 	 * @return Long id (identificador da aresta)
 	 */
 	public long insertEdge(Edge edge) {
+		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put(EdgesTableConstants.IDARESTA, edge.getIdaresta());
 		values.put(EdgesTableConstants.FK_IDNO, edge.getFk_idno());
 		values.put(EdgesTableConstants.FK_IDRESPOSTA, edge.getFk_idresposta());
 		long id = db.insert(NOME_TABELA, "", values);
+		this.fechar();
 		return id;
 	}
 	
@@ -78,14 +82,16 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 	 * @return boolean - se deletar retorna true
 	 */
 	public boolean deleteEdge() {
+		db = dbHelper.getWritableDatabase();
 		boolean aux = true;
 		try{
 			db.delete(NOME_TABELA, null, null);
 		}catch (Exception e) {
             aux=false;
             Log.i("Exception excluir",e.getMessage().toString());
+		}finally{
+			this.fechar();
 		}
-		
 		return aux;
 	}
 	

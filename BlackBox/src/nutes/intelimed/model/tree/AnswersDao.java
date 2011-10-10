@@ -1,6 +1,6 @@
 package nutes.intelimed.model.tree;
 
-import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.model.ScriptConstants;
 import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.tree.Answer.AnswersTableConstants;
@@ -22,9 +22,9 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	public static final String NOME_TABELA = "resposta";
 
 	public AnswersDao(Context ctx) {
-		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
-				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
-		db = dbHelper.getWritableDatabase();
+		dbHelper = DatabaseHelper.getInstance(ctx, ScriptConstants.NOME_BANCO, ScriptConstants.VERSAO_BANCO,
+				ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());
+		//db = dbHelper.getWritableDatabase();
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	  * @return resposta
 	  */
 	public Answer searchAnswer(Long idResposta) {
-
+		db = dbHelper.getWritableDatabase();
 		Answer answer = null;
 	 	Long n = idResposta;  
 	    Integer code = Integer.valueOf(n.toString());  
@@ -48,8 +48,10 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 
 			Log.e(CATEGORIA, "Erro ao buscar resposta: " + e.toString());
 			return null;
+		}finally{
+			c.close();
+			this.fechar();
 		}
-		c.close();
 		return answer;
 	}
 	
@@ -59,6 +61,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	 * @return id - identificador de evidência
 	 */
 	public long insertAnswer(Answer answer) {
+		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put(AnswersTableConstants.ID_RESPOSTA, answer.getIdResposta());
 		values.put(AnswersTableConstants.FK_IDNO, answer.getIdNo());
@@ -67,6 +70,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 		values.put(AnswersTableConstants.CODE_RESPOSTA, answer.getCodeResposta());
 		
 		long id = db.insert(NOME_TABELA, "", values);
+		this.fechar();
 		return id;
 	}
 	
@@ -75,6 +79,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	 * @return boolean - se deletar retorna true
 	 */
 	public boolean deleteAnswer() {
+		db = dbHelper.getWritableDatabase();
 		boolean aux = true;
 		try{
 			db.delete(NOME_TABELA, null, null);
@@ -82,7 +87,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
             aux=false;
             Log.i("Exception excluir",e.getMessage().toString());
 		}
-		
+		this.fechar();
 		return aux;
 	}
 	

@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static DatabaseHelper getInstance(Context context, String nomeBanco, int versaoBanco, String[] scriptSQLCreate, String[] scriptDatabaseDelete){
 		if(helper==null){
 			return new DatabaseHelper(context, nomeBanco, versaoBanco,
-					BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
+					ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());
 		}
 		return helper;
 	}

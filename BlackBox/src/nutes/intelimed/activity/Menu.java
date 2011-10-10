@@ -1,22 +1,11 @@
 package nutes.intelimed.activity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import nutes.intelimed.R;
-import nutes.intelimed.communication.ServerConstants;
-import nutes.intelimed.controller.ReceiveTree;
-import nutes.intelimed.controller.SendEvidence;
-import nutes.intelimed.controller.TreeUpdate;
-import nutes.intelimed.model.evidence.EvidenceServer;
-import nutes.intelimed.model.evidence.EvidenceServerDao;
-import nutes.intelimed.model.evidence.IModelEvidenceServerDao;
-
-import org.json.JSONArray;
+import nutes.intelimed.controller.evidence.EvidenceController;
+import nutes.intelimed.controller.evidence.IEvidence;
+import nutes.intelimed.controller.tree.ITree;
+import nutes.intelimed.controller.tree.TreeController;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -43,7 +32,6 @@ public class Menu extends Activity{
 	
 	protected static final String CATEGORIA = "nutes";
 	
-    private IModelEvidenceServerDao daoEvidenceToServer;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,17 +41,11 @@ public class Menu extends Activity{
         diagnostic = (Button) findViewById(R.id.btDiagnostico);
         sync = (Button) findViewById(R.id.btSincronizarDados);
         TreeUp = (Button) findViewById(R.id.btAtualizarArvore);
-        
-        
         logout = (Button) findViewById(R.bt.btLogoff);
         
         //back = (Button) findViewById(R.bt.btBack);
         //back.setVisibility(Button.INVISIBLE);
-       
-        
-        daoEvidenceToServer = (IModelEvidenceServerDao) new EvidenceServerDao(this);
 
-        
 		diagnostic.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent it = new Intent(getBaseContext(), FormDiagnostic.class);
@@ -78,21 +60,15 @@ public class Menu extends Activity{
 		});	
 		
 		TreeUp.setOnClickListener(new OnClickListener() {
-			
-			
 			public void onClick(View v) {
-				dialog = ProgressDialog.show(Menu.this,"InteliMED", "Atualizando árvore...", false,true);
 				treeUpdate();
 			}
 		});
 		
 		logout.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				
+			public void onClick(View v) {	
 				startActivity(new Intent(getBaseContext(), Login.class));
 				finish();
-				
 			}
 		});
 		
@@ -104,58 +80,9 @@ public class Menu extends Activity{
 	 */
 	public void sendData(){
 		dialog = ProgressDialog.show(this,"InteliMED", "Enviando dados", false,true);
-		
-		 ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer.searchEvidenceToServer();
-		 int aux;
-         
-         EvidenceServer vAux;
-         
-		 JSONObject data = new JSONObject();
-		 JSONObject dataEvidence;
-		 JSONObject dataAnswer;
-		 JSONArray arrData = new JSONArray();
-		 JSONArray arrAnswer;
-		 try {
-
-			 for (int i = 0; i < arrayData.size(); i++) {
-	             aux = i;
-	             vAux = arrayData.get(aux);
-	             
-	             arrAnswer = new JSONArray();
-	             dataEvidence = new JSONObject();
-				 
-				 dataEvidence.put("idevidencia", arrayData.get(i).getIdevidencia());
-				 dataEvidence.put("sistema", arrayData.get(i).getSistema());
-				 dataEvidence.put("medico", arrayData.get(i).getMedico());
-				 dataEvidence.put("justificativa", arrayData.get(i).getJustificativa());
-				 
-	             while (arrayData.get(i).getIdevidencia() == vAux.getIdevidencia() && aux < arrayData.size()) {
-	                     
-		            	 dataAnswer = new JSONObject();
-		    			 dataAnswer.put("fk_idno", arrayData.get(aux).getFk_idno());
-		    			 dataAnswer.put("idresposta", arrayData.get(aux).getIdresposta());
-		    			 arrAnswer.put(dataAnswer);
-		    			
-	                     aux++;
-	                     if (aux < arrayData.size()) {
-	                             vAux = arrayData.get(aux);
-	                     }
-	             }
-	             dataEvidence.put("respostas", arrAnswer);
-				 arrData.put(dataEvidence);
-	            
-	             i = aux - 1;
-	         }
-			 data.put("dados", arrData);
-			 System.out.println("Dados Mobile: "+data);
-			 Map params = new HashMap();
-			 params.put("n1", arrData);
-			 
-			 SendEvidence sEv = new SendEvidence(getBaseContext());
-			 sEv.setUrl(ServerConstants.getContextFromPost());
-			 sEv.setParams(params);
-			 sEv.start();
-	
+		try {
+			IEvidence evidence = new EvidenceController(this);
+			evidence.sendEvidence();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} finally {
@@ -165,16 +92,15 @@ public class Menu extends Activity{
 	}
 	
 	private void treeUpdate(){
-		TreeUpdate tree = new TreeUpdate(getBaseContext());
+		dialog = ProgressDialog.show(Menu.this,"InteliMED", "Atualizando árvore...", false,true);
 		try {
-			ReceiveTree tUP = new ReceiveTree(tree);
-			tUP.start();
+			ITree tree = new TreeController(getBaseContext());
+			tree.receiveTree();
 		}catch (Exception e) {
 			Log.i(CATEGORIA, e.getMessage(),e);
 		}finally{
 			dialog.dismiss();	
 		}
-		
 	}
 	
 	/**
@@ -187,7 +113,6 @@ public class Menu extends Activity{
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 	        finish();
-	        daoEvidenceToServer.fechar();
 	    	startActivity(new Intent(getBaseContext(), Login.class));
 	        return true;
 	    }
@@ -200,11 +125,5 @@ public class Menu extends Activity{
 		setResult(RESULT_CANCELED);
 		finish();
 	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		// Fecha o banco
-		daoEvidenceToServer.fechar();
-	}
+
 }

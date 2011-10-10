@@ -5,11 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import nutes.intelimed.R;
-import nutes.intelimed.controller.BlackBox;
-import nutes.intelimed.controller.IBlackBox;
-import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.controller.diagnostic.Diagnostic;
+import nutes.intelimed.controller.diagnostic.IDiagnostic;
 import nutes.intelimed.model.diagnostic.AnswerOption;
-import nutes.intelimed.model.diagnostic.IModelStructureQuestionnaireDao;
 import nutes.intelimed.model.diagnostic.StructureQuestionnaire;
 
 import org.json.JSONArray;
@@ -24,7 +22,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -40,8 +37,7 @@ import android.widget.Toast;
  */
 public class FormDiagnostic extends Activity implements OnCheckedChangeListener {
 
-        public static IModelStructureQuestionnaireDao dao;
-        public static IBlackBox treeQ;
+        public static IDiagnostic diagnostic;
         
         private Button validar, logout;
         private String[] arrQuest;
@@ -56,8 +52,8 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.questionnaire_asma);
 
-                dao = (IModelStructureQuestionnaireDao) new BaseScript(this);
-                
+               // dao = (IModelStructureQuestionnaireDao) new StructureQuestionnaireDao(this);
+                diagnostic = (IDiagnostic) new Diagnostic(getBaseContext());
                 montarQuest();
                 
                 validar = (Button) findViewById(R.bt.btOkDiagnostic);
@@ -83,14 +79,8 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         			}
         		});*/
                 logout.setOnClickListener(new OnClickListener() {
-        			
-        			
         			public void onClick(View v) {
-        				treeQ.fechar();
-            	        dao.fechar();
         				startActivity(new Intent(getBaseContext(), Login.class));
-        				//	finish();
-        				
         			}
         		});
         };
@@ -107,7 +97,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 arrJason = new JSONArray();
                 treeObj = new JSONObject();
                 int cont = 1;
-                treeQ = (IBlackBox) new BlackBox(getBaseContext());
+                diagnostic = (IDiagnostic) new Diagnostic(getBaseContext());
                 for (int i = 0; i < arrQuest.length; i++) {
                         try {
                                 treeObj.put("Q" + cont, arrQuest[i]);
@@ -137,14 +127,12 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                         Intent it = new Intent(getBaseContext(), ResultDiagnostic.class);
                         it.putExtra("answer",arrQuest);
                         it.putExtra("no",arrNO);
-                        it.putExtra("diagnostic",treeQ.controlTree(arrQuest, arrJason, treeObj,arrNO));
+                        it.putExtra("diagnostic",diagnostic.controlTree(arrQuest, arrJason, treeObj,arrNO));
                         startActivity(it);
                 }else{
                         Toast.makeText(FormDiagnostic.this, "Por favor responda todas as perguntas.", Toast.LENGTH_SHORT).show();
 
                 }
-                treeQ.fechar();
-                dao.fechar();
         }
 
         /**
@@ -155,7 +143,6 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
          */
         public void onCheckedChanged(RadioGroup group, int checkedId) {
                 arrQuest[Integer.parseInt(group.getTag().toString())] = Integer.toString(checkedId);
-
         }
 
         /**
@@ -164,8 +151,8 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
          */
         public void montarQuest() {
 
-                ArrayList<StructureQuestionnaire> arrayQuestion = (ArrayList<StructureQuestionnaire>) dao.listarEstruturaQuestionario();
-                treeQ = (IBlackBox) new BlackBox(getBaseContext());
+                ArrayList<StructureQuestionnaire> arrayQuestion = (ArrayList<StructureQuestionnaire>) diagnostic.listarEstruturaQuestionario();
+                diagnostic = (IDiagnostic) new Diagnostic(getBaseContext());
                 linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
                 ArrayList<AnswerOption> questionOption = new ArrayList<AnswerOption>();
 
@@ -197,8 +184,6 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                         questionOption.clear();
                         i = aux - 1;
                 }
-                treeQ.fechar();
-                dao.fechar();
         }
         
         public int convertDpToPx(int dp) {
@@ -267,8 +252,6 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
     	public boolean onKeyDown(int keyCode, KeyEvent event) {
     	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
     	        finish();
-    	        treeQ.fechar();
-    	        dao.fechar();
     	    	startActivity(new Intent(getBaseContext(), Menu.class));
     	        return true;
     	    }
@@ -282,12 +265,5 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
 	        finish();
 
         }
-        
-        @Override
-    	protected void onDestroy() {
-    		super.onDestroy();
-    		// Fecha o banco
-    		treeQ.fechar();
-    		dao.fechar();
-    	}
+       
 }

@@ -11,6 +11,5 @@ public interface IModelEvidenceDao {
 
 	public abstract long insertEvidence(Evidence evidence);
 	public abstract boolean deleteEvidence();
-	public abstract void fechar();
 
 }

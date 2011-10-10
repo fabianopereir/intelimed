@@ -10,6 +10,5 @@ package nutes.intelimed.model.evidence;
 public interface IModelEvidenceAnswersDao {
 	public abstract long insertEvidenceAnswers(EvidenceAnswers evidenceAnswers);
 	public abstract boolean deleteEvidenceAnswers();
-	public abstract void fechar();
 
 }

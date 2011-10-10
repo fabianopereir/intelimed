@@ -1,12 +1,10 @@
-package nutes.intelimed.controller;
+package nutes.intelimed.controller.evidence;
 
 import java.util.Map;
 
+import org.json.JSONArray;
+
 import nutes.intelimed.communication.Http;
-import nutes.intelimed.model.evidence.EvidenceAnswersDao;
-import nutes.intelimed.model.evidence.EvidenceDao;
-import nutes.intelimed.model.evidence.IModelEvidenceAnswersDao;
-import nutes.intelimed.model.evidence.IModelEvidenceDao;
 import android.content.Context;
 import android.util.Log;
 
@@ -21,17 +19,15 @@ public class SendEvidence extends Thread implements Runnable{
 
 	private final String CATEGORIA = "nutes";
 	private String url;
-	private Map params;
-	private IModelEvidenceDao daoEvidence;
-	private IModelEvidenceAnswersDao daoEvidenceAnswer;
-	private Context ctx;
+	private Map<String,JSONArray> params;
+	private IEvidence evidences;
 	
 	/**
 	 * Método construtor
 	 * @param Context - contexto
 	 */
 	public SendEvidence(Context ctx){
-		this.ctx = ctx;
+		this.evidences = new EvidenceController(ctx);
 	}
 	
 	public String getUrl() {
@@ -42,11 +38,11 @@ public class SendEvidence extends Thread implements Runnable{
 		this.url = url;
 	}
 
-	public Map getParams() {
+	public Map<String,JSONArray> getParams() {
 		return params;
 	}
 
-	public void setParams(Map params) {
+	public void setParams(Map<String,JSONArray> params) {
 		this.params = params;
 	}
 
@@ -55,26 +51,20 @@ public class SendEvidence extends Thread implements Runnable{
 	 * Faz upload de evidências para servidor
 	 * @return void
 	 */	
-	public void run() {
-		
-		daoEvidence = (IModelEvidenceDao) new EvidenceDao(ctx);
-		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersDao(ctx);		
+	public void run() {	
 
 		final Boolean rData = Http.getInstance().doPost(url, params);
 
 		if (rData)
 		{
-			boolean delEvAns = daoEvidenceAnswer.deleteEvidenceAnswers();
+			boolean delEvAns = evidences.deleteEvidenceAnswers();
 			
 			if(delEvAns){
-				daoEvidence.deleteEvidence();	
+				evidences.deleteEvidence();	
 			}else{
 				Log.i(CATEGORIA, "Erro ao deletar tabela EvidenceAnswers");
 			}
 		}
-		daoEvidence.fechar();
-	    daoEvidenceAnswer.fechar();
 	}
-
 
 }

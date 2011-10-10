@@ -11,5 +11,4 @@ import java.util.List;
  */
 public interface IModelStructureQuestionnaireDao {
 	public abstract List<StructureQuestionnaire> listarEstruturaQuestionario();
-	public abstract void fechar();
 }

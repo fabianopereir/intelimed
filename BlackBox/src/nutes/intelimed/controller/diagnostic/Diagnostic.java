@@ -1,5 +1,10 @@
-package nutes.intelimed.controller;
+package nutes.intelimed.controller.diagnostic;
 
+import java.util.List;
+
+import nutes.intelimed.model.diagnostic.IModelStructureQuestionnaireDao;
+import nutes.intelimed.model.diagnostic.StructureQuestionnaire;
+import nutes.intelimed.model.diagnostic.StructureQuestionnaireDao;
 import nutes.intelimed.model.tree.Edge;
 import nutes.intelimed.model.tree.EdgeDao;
 import nutes.intelimed.model.tree.IModelEdgeDao;
@@ -20,11 +25,12 @@ import android.content.Context;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class BlackBox implements IBlackBox {
+public class Diagnostic implements IDiagnostic {
 	protected static final String CATEGORIA = "nutes";
 
-	public static IModelEdgeDao edgeDao;
-	public static IModelNodeDao nodeDao;
+	private IModelEdgeDao edgeDao;
+	private IModelNodeDao nodeDao;
+	private IModelStructureQuestionnaireDao questionnaireDao;
 	private Edge entEdge;
 	private Node node;
 	private Context ctx;
@@ -35,10 +41,11 @@ public class BlackBox implements IBlackBox {
 	 * @param Context
 	 *            - contexto o qual será utilizado o BlackBox
 	 */
-	public BlackBox(Context context) {
+	public Diagnostic(Context context) {
 		this.ctx = context;
 		edgeDao = (IModelEdgeDao) new EdgeDao(ctx);
 		nodeDao = (IModelNodeDao) new NodeDao(ctx);
+		questionnaireDao = (IModelStructureQuestionnaireDao) new StructureQuestionnaireDao(ctx);
 	}
 
 	/**
@@ -84,12 +91,8 @@ public class BlackBox implements IBlackBox {
 
 		return res;
 	}
-	
-	public void fechar() {
-		nodeDao.fechar();
-		edgeDao.fechar();
-	}
 
-	
-	
+	public List<StructureQuestionnaire> listarEstruturaQuestionario() {
+		return this.questionnaireDao.listarEstruturaQuestionario();
+	}
 }

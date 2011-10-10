@@ -1,4 +1,8 @@
-package nutes.intelimed.controller;
+package nutes.intelimed.controller.diagnostic;
+
+import java.util.List;
+
+import nutes.intelimed.model.diagnostic.StructureQuestionnaire;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -9,9 +13,8 @@ import org.json.JSONObject;
  * @author Dyego Carlos (dyego12345@gmail.com)	
  * 
  */
-public interface IBlackBox {
+public interface IDiagnostic {
 
 	public abstract String controlTree(String[] arrQuest, JSONArray arrayJason,JSONObject treeObj, String[] arrNO);
-
-	public void fechar();
+	public List<StructureQuestionnaire> listarEstruturaQuestionario();
 }
