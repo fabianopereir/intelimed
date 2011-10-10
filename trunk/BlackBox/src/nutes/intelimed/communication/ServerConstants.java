@@ -11,8 +11,8 @@ public class ServerConstants {
 	
 	//private final static String server = "lagarage.dyndns.biz/Intermediate/";
 	private final static String server = "192.168.0.9:8080/Intermediate/";
-	private final static String username = "admin";
-	private final static String password = "123";
+	public final static String username = "admin";
+	public final static String password = "123";
 
 	public static String getContextFromPost() {
 		return getContext(server); 
@@ -24,14 +24,6 @@ public class ServerConstants {
 	
 	private static String getContext(String ip) {
 		return "http://" + ip + "arvore/rest/";
-	}
-
-	public static String getUsername() {
-		return username;
-	}
-
-	public static String getPassword() {
-		return password;
 	}
 	
 }

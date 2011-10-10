@@ -1,4 +1,4 @@
-package nutes.intelimed.controller;
+package nutes.intelimed.controller.tree;
 
 import nutes.intelimed.model.tree.Answer;
 import nutes.intelimed.model.tree.AnswersDao;
@@ -12,7 +12,7 @@ import nutes.intelimed.model.tree.NodeDao;
 import android.content.Context;
 import android.util.Log;
 
-public class TreeUpdate implements ITreeUpdate {
+public class TreeController implements ITree {
 	protected static final String CATEGORIA = "nutes";
 
 	private static IModelEdgeDao edgeDao;
@@ -27,7 +27,7 @@ public class TreeUpdate implements ITreeUpdate {
 	 * 
 	 * @param contexto o qual será utilizado o TreeUpdate
 	 */
-	public TreeUpdate(Context context) {
+	public TreeController(Context context) {
 		this.ctx = context;
 		edgeDao = (IModelEdgeDao) new EdgeDao(ctx);
 		answersDao = (IModelAnswersDao) new AnswersDao(ctx);
@@ -69,11 +69,10 @@ public class TreeUpdate implements ITreeUpdate {
 		Log.i(CATEGORIA, "dentro do insertAresta");
 		edgeDao.insertEdge(entEdge);
 	}
-	
-	public void fechar(){
-		edgeDao.fechar();
-		nodeDao.fechar();
-		answersDao.fechar();
+
+	public void receiveTree() throws Exception {
+		TreeUpdate treeUpdate = new TreeUpdate(this.ctx);
+		treeUpdate.start();
 	}
 	
 }

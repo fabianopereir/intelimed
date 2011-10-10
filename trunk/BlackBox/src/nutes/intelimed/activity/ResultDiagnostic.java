@@ -1,12 +1,9 @@
 package nutes.intelimed.activity;
 
 import nutes.intelimed.R;
+import nutes.intelimed.controller.evidence.IEvidence;
+import nutes.intelimed.controller.evidence.EvidenceController;
 import nutes.intelimed.model.evidence.Evidence;
-import nutes.intelimed.model.evidence.EvidenceAnswers;
-import nutes.intelimed.model.evidence.EvidenceAnswersDao;
-import nutes.intelimed.model.evidence.EvidenceDao;
-import nutes.intelimed.model.evidence.IModelEvidenceAnswersDao;
-import nutes.intelimed.model.evidence.IModelEvidenceDao;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,17 +26,12 @@ import android.widget.Toast;
  */
 public class ResultDiagnostic extends Activity {
 	protected static final String CATEGORIA = "nutes";
-
-	private String result;
-	private String[] answer;
-	private String[] arrNO;
+	private String[] arrayAnswers;
+	private String[] arrayNodes;
 
 	private String medico;
-
-	private IModelEvidenceDao daoEvidence;
-	private IModelEvidenceAnswersDao daoEvidenceAnswer;
 	private Evidence evidence;
-	private EvidenceAnswers evidenceAnswer;
+	private IEvidence evidences;
 	
 	private EditText justification;
 	private TextView resultado;
@@ -58,23 +50,18 @@ public class ResultDiagnostic extends Activity {
         opiniaoMedico = (RadioGroup) findViewById(R.id.opiniaoMedico);
         justification = (EditText) findViewById(R.id.justificativa);
         
-		daoEvidence = (IModelEvidenceDao) new EvidenceDao(this);
-		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersDao(this);
-
-		evidence = new Evidence();
-		evidenceAnswer = new EvidenceAnswers();
-		
-		
+        evidence = new Evidence();
+        this.evidences = new EvidenceController(this);
+        
 		Intent intent = getIntent();
+		String result;
 		if (intent != null) {
 
-			answer = (String[]) intent.getSerializableExtra("answer");
-			arrNO = (String[]) intent.getSerializableExtra("no");
+			arrayAnswers = (String[]) intent.getSerializableExtra("answer");
+			arrayNodes = (String[]) intent.getSerializableExtra("no");
 			result = (String) intent.getSerializableExtra("diagnostic");
 			if (result != null) {
-
-				evidence.setSistema(result);
-				
+				evidence.setSistema(result);				
 				if(result.equals("No")){
 					resultado.setText("O paciente não tem asma.");
 				}else if(result.equals("Yes")){
@@ -85,7 +72,7 @@ public class ResultDiagnostic extends Activity {
 
 		validar.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				storeEvidence(answer, arrNO, result);
+				storeEvidence(arrayAnswers, arrayNodes);
 			}
 		});
 		
@@ -104,10 +91,7 @@ public class ResultDiagnostic extends Activity {
     			}
     		}
     	});
-		
-		
-		logout = (Button) findViewById(R.bt.btLogoff);
-        
+       
 		/*
 		back = (Button) findViewById(R.bt.btBack);
         back.setOnClickListener(new OnClickListener() {
@@ -120,14 +104,12 @@ public class ResultDiagnostic extends Activity {
 				
 			}
 		});*/
+		
+		logout = (Button) findViewById(R.bt.btLogoff);
         logout.setOnClickListener(new OnClickListener() {
-			
-			
 			public void onClick(View v) {
-				
 				startActivity(new Intent(getBaseContext(), Login.class));
 				finish();
-				
 			}
 		});
     }	
@@ -141,26 +123,14 @@ public class ResultDiagnostic extends Activity {
 	 * @param result - string com o resultado do sistema
 	 * @return void
 	 */
-	public void storeEvidence(String[] answerData, String[] noData, String result) {
+	public void storeEvidence(String[] answerData, String[] noData) {
 		evidence.setMedico(medico);
-		
 		evidence.setJustificativa(justification.getText().toString());
-
-		Long idevidencia = daoEvidence.insertEvidence(evidence);
 
 		if(evidence.getMedico()==null){	
             Toast.makeText(ResultDiagnostic.this, "Por favor responda se concorda com o diagnóstico.", Toast.LENGTH_SHORT).show();
 		}else{
-			for (int i = 0; i < answerData.length; i++) {
-				if (noData[i] != null && answerData[i] != null) {
-					evidenceAnswer.setFk_idevidencia(idevidencia);
-	
-					evidenceAnswer.setFk_idResposta(Long.parseLong(answerData[i]));
-	
-					daoEvidenceAnswer.insertEvidenceAnswers(evidenceAnswer);
-				}
-			}
-			close();
+			this.evidences.storeEvidence(answerData, noData, evidence);
 			startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 		}
 	}
@@ -175,18 +145,12 @@ public class ResultDiagnostic extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
 	        finish();
-	        close();
 	    	startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
 	        return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
 	}
 
-	private void close() {
-		daoEvidence.fechar();
-		daoEvidenceAnswer.fechar();
-	}
-	
 	@Override
     protected void onPause() {
         super.onPause();
@@ -194,9 +158,4 @@ public class ResultDiagnostic extends Activity {
         finish();
     }
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		close();
-	}
 }

@@ -12,5 +12,4 @@ public interface IModelAnswersDao {
 	public abstract Answer searchAnswer(Long idresposta);
 	public abstract long insertAnswer(Answer answer);
 	public abstract boolean deleteAnswer();
-	public abstract void fechar();
 }

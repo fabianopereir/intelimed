@@ -1,6 +1,6 @@
 package nutes.intelimed.model.user;
 
-import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.model.ScriptConstants;
 import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.user.User.UsersTableConstants;
@@ -20,9 +20,9 @@ public class UserDao extends GenericDao implements IModelUserDao{
 	public static final String NOME_TABELA = "usuario";
 	
 	public UserDao(Context ctx) {
-		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
-				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
-		db = dbHelper.getWritableDatabase();
+		dbHelper = DatabaseHelper.getInstance(ctx, ScriptConstants.NOME_BANCO, ScriptConstants.VERSAO_BANCO,
+				ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());
+		//db = dbHelper.getWritableDatabase();
 	}
 	
 	public User search(String user,String password) throws UserOrPasswordIncorrectException,SQLException {
@@ -39,21 +39,6 @@ public class UserDao extends GenericDao implements IModelUserDao{
 			throw new UserOrPasswordIncorrectException();
 		}	
 		
-	}
-	
-	/**
-	 * Busca usuário e senha na base de dados
-	 * @param User user (identificador de usuário)
-	 */
-	public void login(User user) throws UserOrPasswordIncorrectException,SQLException {
-		Cursor c = db.query(NOME_TABELA, UsersTableConstants.colunas, UsersTableConstants.USUARIO + "='" + user.getUser() + "'" + " AND " + UsersTableConstants.SENHA + "='" + user.getPassword() + "'", null, null, null, null);
-			
-		if (c.getCount() > 0) {
-			c.close();
-		}else{
-			c.close();
-			throw new UserOrPasswordIncorrectException();
-		}	
 	}
 	
 	public void fechar() {

@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Map;
 import android.util.Log;
 
-
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpResponse;
@@ -34,6 +32,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+import org.json.JSONArray;
 
 
 /**
@@ -58,7 +57,7 @@ public class HttpConnection extends Http {
 		//Authentication
  		Authenticator.setDefault(new Authenticator() {
  			protected PasswordAuthentication getPasswordAuthentication() {
- 				PasswordAuthentication pa = new PasswordAuthentication (ServerConstants.getUsername(), ServerConstants.getPassword().toCharArray());
+ 				PasswordAuthentication pa = new PasswordAuthentication (ServerConstants.username, ServerConstants.password.toCharArray());
 				return pa;
 			}
  		});
@@ -95,7 +94,7 @@ public class HttpConnection extends Http {
 	 * @return String url
 	 */
 	@Override
-	public Boolean doPost(String url, Map params) {
+	public Boolean doPost(String url, Map<String,JSONArray> params) {
 		try {
 			String queryString = getQueryString(params);
 			Log.i(CATEGORIA, "Post: "+queryString);
@@ -143,7 +142,7 @@ public class HttpConnection extends Http {
 
             httpclient.getCredentialsProvider().setCredentials(
                     new AuthScope(urlHost, urlPort),
-                    new UsernamePasswordCredentials(ServerConstants.getUsername(), ServerConstants.getPassword()));
+                    new UsernamePasswordCredentials(ServerConstants.username, ServerConstants.password));
 
             //Preemptive mode
 	          
@@ -189,12 +188,12 @@ public class HttpConnection extends Http {
 	 * @return String urlParams
 	 * @throws IOException
 	 */
-	private String getQueryString(Map params) throws IOException {
+	private String getQueryString(Map<String,JSONArray> params) throws IOException {
 		if (params == null || params.size() == 0) {
 			return null;
 		}
 		String urlParams = null;
-		Iterator e = (Iterator) params.keySet().iterator();
+		Iterator<String> e = (Iterator<String>) params.keySet().iterator();
 		while (e.hasNext()) {
 			String chave = (String) e.next();
 			Object objValor = params.get(chave);
@@ -239,94 +238,6 @@ public class HttpConnection extends Http {
 		String texto = new String(bytes);
 		Log.i(CATEGORIA, "Http.readString: " + texto);
 		return texto;
-	}
-	
-	
-	
-	/*private Boolean doPost(String url, String params) throws IOException {
-	Log.i(CATEGORIA, "Http.doPost: " + url + "?" + params);
-	execute(url, params);
-	/*final String username = "admin";
-		final String password = "123";
-		Authenticator.setDefault(new Authenticator() {
-		  protected PasswordAuthentication getPasswordAuthentication() {
-				PasswordAuthentication pa = new PasswordAuthentication (username, password.toCharArray());
-				return pa;
-			}
-		  });
-		
-		
-	URL u = new URL(url);
-
-	HttpURLConnection conn = (HttpURLConnection) u.openConnection();
-	conn.setDoOutput(true);
-	conn.setDoInput(true);
-	conn.setRequestMethod("POST");
-	
-	//conn.setFixedLengthStreamingMode(params.length());
-	
-	params = "";
-	OutputStream out = conn.getOutputStream();
-	params = URLEncoder.encode(params, "UTF-8");
-	byte[] bytes = params.getBytes();
-	out.write(bytes);
-	out.flush();
-	out.close();
-	
-	//int rc = conn.getResponseCode();
-	
-	/*InputStream in = conn.getInputStream();
-
-	String texto = readString(in);*/
-	//Log.i(CATEGORIA, "Valor de texto após read: "+rc);
-	/*BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	StringBuffer newData = new StringBuffer(10000);
-	String s = "";
-	while (null != ((s = br.readLine()))) {
-	newData.append(s);
-	} 
-	
-	
-	conn.disconnect();*/
-	/*	
-	URL u = new URL(url);
-
-	HttpURLConnection conn = (HttpURLConnection) u.openConnection();
-	conn.setRequestMethod("POST");
-	
-	String encodedCredential = URLEncoder.encode("admin:123" , "UTF-8");
-    conn.setRequestProperty("Authorization", "BASIC " + encodedCredential);
-        
-	conn.setDoOutput(true);
-	//conn.setDoInput(true);
-	
-	
-	//conn.setFixedLengthStreamingMode(params.length());
-	
-	conn.connect();
-	OutputStream out = conn.getOutputStream();
-	params = URLEncoder.encode(params, "UTF-8");
-	byte[] bytes = params.getBytes();
-	out.write(bytes);
-	out.flush();
-	out.close();
-	 
-	
-	
-	/*InputStream in = conn.getInputStream();
-
-	String texto = readString(in);*/
-	/*int rc = conn.getResponseCode();
-	Log.i(CATEGORIA, "Valor de texto após read: "+rc);
-	
-	
-	conn.disconnect();
-	
-	*/
-   /*String texto = "teste";
-	
-	return Boolean.valueOf(texto);
-}*/
-	 
+	}	 
 	 
 }

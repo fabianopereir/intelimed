@@ -1,6 +1,6 @@
 package nutes.intelimed.model.evidence;
 
-import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.model.ScriptConstants;
 import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.evidence.EvidenceAnswers.EvidenceAnswersTable;
@@ -23,9 +23,9 @@ public class EvidenceAnswersDao extends GenericDao implements IModelEvidenceAnsw
 	public EvidenceAnswersDao() {}
 
 	public EvidenceAnswersDao(Context ctx) {
-		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
-				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
-		db = dbHelper.getWritableDatabase();
+		dbHelper = DatabaseHelper.getInstance(ctx, ScriptConstants.NOME_BANCO, ScriptConstants.VERSAO_BANCO,
+				ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());
+		//db = dbHelper.getWritableDatabase();
 	}
 
 	/**
@@ -34,13 +34,12 @@ public class EvidenceAnswersDao extends GenericDao implements IModelEvidenceAnsw
 	 * @return id - identificador de evidência
 	 */
 	public long insertEvidenceAnswers(EvidenceAnswers evidenceAnswers) {
+		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put(EvidenceAnswersTable.FK_IDEVIDENCIA, evidenceAnswers.getFk_idevidencia());
-
 		values.put(EvidenceAnswersTable.FK_IDRESPOSTA, evidenceAnswers.getFk_idResposta());
-		
-		
 		long id = db.insert(NOME_TABELA, "", values);
+		this.fechar();
 		return id;
 	}
 	
@@ -49,14 +48,16 @@ public class EvidenceAnswersDao extends GenericDao implements IModelEvidenceAnsw
 	 * @return boolean - se deletar retorna true
 	 */
 	public boolean deleteEvidenceAnswers() {
+		db = dbHelper.getWritableDatabase();
 		boolean aux = true;
 		try{
 			db.delete(NOME_TABELA, null, null);
 		}catch (Exception e) {
             aux=false;
             Log.i("Exception excluir",e.getMessage().toString());
+		}finally{
+			this.fechar();
 		}
-		
 		return aux;
 	}
 	

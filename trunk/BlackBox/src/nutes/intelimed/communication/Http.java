@@ -2,6 +2,8 @@ package nutes.intelimed.communication;
 
 import java.util.Map;
 
+import org.json.JSONArray;
+
 
 /**
  * Classe abstrata responsável por definir os métodos de Http
@@ -17,5 +19,5 @@ public abstract class Http {
 	}
 
 	public abstract String doGet(String url);
-	public abstract Boolean doPost(String url, Map map);
+	public abstract Boolean doPost(String url, Map<String,JSONArray> map);
 }

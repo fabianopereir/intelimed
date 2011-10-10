@@ -1,6 +1,6 @@
 package nutes.intelimed.model.tree;
 
-import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.model.ScriptConstants;
 import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.tree.Node.NodesTableConstants;
@@ -22,9 +22,9 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 	public static final String NOME_TABELA = "no";
 
 	public NodeDao(Context ctx) {
-		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
-				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
-		db = dbHelper.getWritableDatabase();
+		dbHelper = DatabaseHelper.getInstance(ctx, ScriptConstants.NOME_BANCO, ScriptConstants.VERSAO_BANCO,
+				ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());
+		//db = dbHelper.getWritableDatabase();
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 	 * @return Node 
 	 */
 	public Node searchNode(Long fk_idno) {
-
+		db = dbHelper.getWritableDatabase();
 		Node node = null;
 		
 		try {
@@ -41,23 +41,18 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 			Cursor c = db.query(NOME_TABELA, NodesTableConstants.colunas, NodesTableConstants.IDNO + "=" + fk_idno + " AND " + NodesTableConstants.DIAGNOSTICO + "= 1", null, null, null, null);
 
 			if (c.moveToNext()) {
-
 				node = new Node();
 				node.setIdno(c.getLong(0));
 				node.setDescricaoNo(c.getString(1));
 				node.setDiagnostico(c.getInt(2));
-				c.close();
-			} else{
-				c.close();
-				return null;
-			}
-			
+			} 
 			c.close();
 		} catch (SQLException e) {
 			Log.e(CATEGORIA,"Erro ao buscar o nó: " + e.toString());
 			return null;
+		}finally{
+			this.fechar();
 		}
-		
 		return node;
 	}
 	
@@ -67,12 +62,14 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 	 * @return Long fk_idno (identificador do nó)
 	 */
 	public long insertNode(Node node) {
+		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put(NodesTableConstants.IDNO, node.getIdno());
 		values.put(NodesTableConstants.DESCRICAO_NO, node.getDescricaoNo());
 		values.put(NodesTableConstants.DIAGNOSTICO, node.getDiagnostico());
 		long id = db.insert(NOME_TABELA, "", values);
         Log.i(CATEGORIA,"Insere nó???");
+        this.fechar();
 		return id;
 	}
 	
@@ -81,14 +78,16 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 	 * @return boolean - se deletar retorna true
 	 */
 	public boolean deleteNode() {
+		db = dbHelper.getWritableDatabase();
 		boolean aux = true;
 		try{
 			db.delete(NOME_TABELA, null, null);
 		}catch (Exception e) {
             aux=false;
             Log.i("Exception excluir",e.getMessage().toString());
-		}
-		
+		}finally{
+			this.fechar();
+		}		
 		return aux;
 	}
 	

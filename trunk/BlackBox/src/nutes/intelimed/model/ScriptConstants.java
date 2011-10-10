@@ -1,18 +1,11 @@
 package nutes.intelimed.model;
 
-import android.content.Context;
-import nutes.intelimed.model.diagnostic.StructureQuestionnaireDao;
-
-
 /**
  * Classe responsável pela criação, povoamento e remoção do banco que armazena a estrutura do questionário
  * @author Jamilson Batista (jamilsonbatista@gmail.com)
  * @author Dyego Carlos (dyego12345@gmail.com)
  */
-public class BaseScript extends StructureQuestionnaireDao{
-	
-	
-	private DatabaseHelper dbHelper;
+public class ScriptConstants extends GenericDao{
 	
 	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {
 		"DROP TABLE IF EXISTS no;",
@@ -60,18 +53,6 @@ public class BaseScript extends StructureQuestionnaireDao{
 		"insert into usuario (user,password,id_grupo) values('dyego','202cb962ac59075b964b07152d234b70', 1);"
 	};
 	
-
-	/**
-	 * Acessa o banco de dados com um script SQL
-	 * @param ctx - contexto que será criado o banco
-	 */
-	public BaseScript(Context ctx) {
-		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
-				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
-
-		db = dbHelper.getWritableDatabase();
-	}
-	
 	/**
 	 * Busca script de criação da base de dados
 	 * @return script da base de dados
@@ -88,11 +69,4 @@ public class BaseScript extends StructureQuestionnaireDao{
 		return SCRIPT_DATABASE_DELETE;
 	}
 	
-	@Override
-	public void fechar() {
-		super.fechar();
-		if (dbHelper != null) {
-			dbHelper.close();
-		}
-	}	
 }

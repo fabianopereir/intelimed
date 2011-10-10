@@ -1,6 +1,5 @@
 package nutes.intelimed.activity;
 
-
 import java.security.NoSuchAlgorithmException;
 
 import android.app.Activity;
@@ -15,11 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import nutes.intelimed.R;
-import nutes.intelimed.controller.IUser;
-import nutes.intelimed.controller.UserController;
-import nutes.intelimed.model.user.IModelUserDao;
-import nutes.intelimed.model.user.User;
-import nutes.intelimed.model.user.UserDao;
+import nutes.intelimed.controller.user.IUser;
+import nutes.intelimed.controller.user.UserController;
 import nutes.intelimed.model.user.UserOrPasswordIncorrectException;
 import nutes.intelimed.util.MD5Password;
 
@@ -32,7 +28,6 @@ import nutes.intelimed.util.MD5Password;
  */
 public class Login extends Activity{
 	
-	//private IModelUserDao usersDao;
 	private IUser users;
 	private Button btLogin;
 
@@ -41,7 +36,6 @@ public class Login extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
        
-        //usersDao = new UserDao(this);
         users = new UserController(this);
        
         btLogin = (Button) findViewById(R.bt.btLogin);
@@ -59,7 +53,6 @@ public class Login extends Activity{
 				
 				try {
 					users.login(strUser, MD5Password.getPassword(strPassword));
-					//usersDao.login(user);
 					init();
 				} catch (NoSuchAlgorithmException e) {
 					// TODO Auto-generated catch block
@@ -91,17 +84,10 @@ public class Login extends Activity{
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 	    if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-	    	//usersDao.fechar();
 	        finish();
 	        return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
-	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		//usersDao.fechar();
 	}
 
 	@Override

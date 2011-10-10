@@ -11,6 +11,7 @@ import android.database.SQLException;
  * 
  */
 public interface IModelUserDao{
-	public abstract void login(User user) throws UserOrPasswordIncorrectException, SQLException;
-	public abstract void fechar();
+
+	public abstract User search(String user,String password) throws UserOrPasswordIncorrectException, SQLException;
+
 }

@@ -2,7 +2,7 @@ package nutes.intelimed.model.evidence;
 
 import java.util.ArrayList;
 
-import nutes.intelimed.model.BaseScript;
+import nutes.intelimed.model.ScriptConstants;
 import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.evidence.EvidenceServer.EvidenceServerTableConstants;
@@ -23,9 +23,9 @@ public class EvidenceServerDao extends GenericDao implements IModelEvidenceServe
 	public static final String NOME_TABELA = "evidencia_respostas INNER JOIN resposta"+" INNER JOIN evidencia";
 
 	public EvidenceServerDao(Context ctx) {
-		dbHelper = DatabaseHelper.getInstance(ctx, BaseScript.NOME_BANCO, BaseScript.VERSAO_BANCO,
-				BaseScript.getScriptDatabaseCreate(), BaseScript.getScriptDatabaseDelete());
-		db = dbHelper.getWritableDatabase();
+		dbHelper = DatabaseHelper.getInstance(ctx, ScriptConstants.NOME_BANCO, ScriptConstants.VERSAO_BANCO,
+				ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());
+		//db = dbHelper.getWritableDatabase();
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class EvidenceServerDao extends GenericDao implements IModelEvidenceServe
 	 * @return ArrayList<Object>
 	 */
 	public ArrayList<EvidenceServer> searchEvidenceToServer(){
-
+		db = dbHelper.getWritableDatabase();
 		Cursor c = getCursor();
 		
 		ArrayList<EvidenceServer> estrutura = new ArrayList<EvidenceServer>();
@@ -80,6 +80,7 @@ public class EvidenceServerDao extends GenericDao implements IModelEvidenceServe
 			} while (c.moveToNext());
 		}
 		c.close();
+		this.fechar();
 		return estrutura;
 	}
 	

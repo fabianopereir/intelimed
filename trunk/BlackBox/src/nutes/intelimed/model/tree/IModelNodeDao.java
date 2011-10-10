@@ -11,5 +11,4 @@ public interface IModelNodeDao {
 	public abstract Node searchNode(Long fk_idno);
 	public abstract long insertNode(Node node);
 	public abstract boolean deleteNode();
-	public abstract void fechar();
 }
