@@ -35,6 +35,9 @@ public class User {
 		this.password = password;
 	}
 
+	public String toString(){
+		return "User:"+this.user+"---Password:"+this.password;
+	}
 
 	/**
 	 * Classe interna com atributos da tabela usuários
