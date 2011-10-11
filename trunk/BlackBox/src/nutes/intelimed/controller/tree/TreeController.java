@@ -18,8 +18,6 @@ public class TreeController implements ITree {
 	private static IModelEdgeDao edgeDao;
 	private static IModelNodeDao nodeDao;
 	private static IModelAnswersDao answersDao;
-	private Edge entEdge;
-	private Node node;
 	private Context ctx;
 
 	/**
@@ -32,46 +30,37 @@ public class TreeController implements ITree {
 		edgeDao = (IModelEdgeDao) new EdgeDao(ctx);
 		answersDao = (IModelAnswersDao) new AnswersDao(ctx);
 		nodeDao = (IModelNodeDao) new NodeDao(ctx);
-		
-		nodeDao.deleteNode();
-		answersDao.deleteAnswer();
-		edgeDao.deleteEdge();
-		
-		entEdge = new Edge();
-		node = new Node();
 	}
 
-	public void insertNode(Long noId, String noDescricao, boolean diagnostico) {
-		node.setIdno(noId);
-		node.setDescricaoNo(noDescricao);
-		
-		if(diagnostico == true)	node.setDiagnostico(1);
-		else node.setDiagnostico(0);
-		
+	public void deleteEdges() {
+		edgeDao.deleteEdge();
+	}
+
+	public void deleteAnswers() {
+		answersDao.deleteAnswer();
+	}
+
+	public void deleteNodes() {
+		nodeDao.deleteNode();
+	}
+
+	public void insertNode(Node node) {
 		Log.i(CATEGORIA, "dentro do insertNode");
 		nodeDao.insertNode(node);
-		
 	}
 
-	public void insertNodeAnswers(Long respostaNoId, String respostaNoDescricao, Long codeResposta) {
-		Answer answer = new Answer(node.getIdno(), respostaNoId, respostaNoDescricao, codeResposta);
-		
+	public void insertNodeAnswers(Answer answer) {
 		Log.i(CATEGORIA, "dentro do insertresposta");
-
 		answersDao.insertAnswer(answer);
 	}
 
-	public void insertNodeEdge(Long arestaId, Long respostaId) {
-		entEdge.setFk_idno(node.getIdno());
-		entEdge.setIdaresta(arestaId);
-		entEdge.setFk_idresposta(respostaId);
-		
+	public void insertNodeEdge(Edge edge) {
 		Log.i(CATEGORIA, "dentro do insertAresta");
-		edgeDao.insertEdge(entEdge);
+		edgeDao.insertEdge(edge);
 	}
 
 	public void receiveTree() throws Exception {
-		TreeUpdate treeUpdate = new TreeUpdate(this.ctx);
+		TreeUpdate treeUpdate = new TreeUpdate(this);
 		treeUpdate.start();
 	}
 	

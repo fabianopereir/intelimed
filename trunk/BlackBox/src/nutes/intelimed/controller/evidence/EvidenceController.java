@@ -49,7 +49,7 @@ public class EvidenceController implements IEvidence{
 	public void sendEvidence() throws JSONException {
 		 ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer.searchEvidenceToServer();
 		 int aux;
-         EvidenceServer vAux;
+         EvidenceServer evidenceToServer;
          
 		 JSONObject data = new JSONObject();
 		 JSONObject dataEvidence;
@@ -59,7 +59,7 @@ public class EvidenceController implements IEvidence{
 
 		 for (int i = 0; i < arrayData.size(); i++) {
              aux = i;
-             vAux = arrayData.get(aux);
+             evidenceToServer = arrayData.get(aux);
              
              arrAnswer = new JSONArray();
              dataEvidence = new JSONObject();
@@ -69,7 +69,7 @@ public class EvidenceController implements IEvidence{
 			 dataEvidence.put("medico", arrayData.get(i).getMedico());
 			 dataEvidence.put("justificativa", arrayData.get(i).getJustificativa());
 			 
-             while (arrayData.get(i).getIdevidencia() == vAux.getIdevidencia() && aux < arrayData.size()) {
+             while (arrayData.get(i).getIdevidencia() == evidenceToServer.getIdevidencia() && aux < arrayData.size()) {
                      
 	            	 dataAnswer = new JSONObject();
 	    			 dataAnswer.put("fk_idno", arrayData.get(aux).getFk_idno());
@@ -78,7 +78,7 @@ public class EvidenceController implements IEvidence{
 	    			
                      aux++;
                      if (aux < arrayData.size()) {
-                             vAux = arrayData.get(aux);
+                             evidenceToServer = arrayData.get(aux);
                      }
              }
              dataEvidence.put("respostas", arrAnswer);

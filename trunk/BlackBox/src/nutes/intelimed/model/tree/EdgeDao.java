@@ -22,8 +22,6 @@ public class EdgeDao extends GenericDao implements IModelEdgeDao {
 	
 	public static final String NOME_TABELA = "aresta";
 
-	public EdgeDao() {}
-
 	public EdgeDao(Context ctx) {
 		dbHelper = DatabaseHelper.getInstance(ctx, ScriptConstants.NOME_BANCO, ScriptConstants.VERSAO_BANCO,
 				ScriptConstants.getScriptDatabaseCreate(), ScriptConstants.getScriptDatabaseDelete());

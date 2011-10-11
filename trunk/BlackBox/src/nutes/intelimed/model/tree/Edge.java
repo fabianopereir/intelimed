@@ -11,6 +11,16 @@ public class Edge {
 	private Long fk_idno;
 	private Long fk_idresposta;
 	
+	public Edge(){
+		
+	}
+	
+	public Edge(Long idaresta, Long fk_idno, Long fk_idresposta) {
+		this.idaresta = idaresta;
+		this.fk_idno = fk_idno;
+		this.fk_idresposta = fk_idresposta;
+	}
+
 	public Long getIdaresta() {
 		return idaresta;
 	}

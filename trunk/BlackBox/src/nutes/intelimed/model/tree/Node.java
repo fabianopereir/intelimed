@@ -12,6 +12,16 @@ public class Node{
 	private String descricaoNo;
 	private int diagnostico;
 	
+	public Node(){
+		
+	}
+
+	public Node(Long idno, String descricaoNo, int diagnostico) {
+		this.idno = idno;
+		this.descricaoNo = descricaoNo;
+		this.diagnostico = diagnostico;
+	}
+	
 	public Long getIdno() {
 		return idno;
 	}
