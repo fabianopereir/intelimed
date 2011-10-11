@@ -46,20 +46,13 @@ public class SendEvidence extends Thread implements Runnable{
 		this.params = params;
 	}
 
-
 	/**
 	 * Faz upload de evidências para servidor
 	 * @return void
 	 */	
 	public void run() {	
-
-		final Boolean rData = Http.getInstance().doPost(url, params);
-
-		if (rData)
-		{
-			boolean delEvAns = evidences.deleteEvidenceAnswers();
-			
-			if(delEvAns){
+		if (Http.getInstance().doPost(url, params)){
+			if(evidences.deleteEvidenceAnswers()){
 				evidences.deleteEvidence();	
 			}else{
 				Log.i(CATEGORIA, "Erro ao deletar tabela EvidenceAnswers");
