@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nutes.intelimed</groupId>
     <artifactId>Blackbox</artifactId>
-    <version>1.0.0-intelimed</version>
+    <version>1.0.0_intelimed</version>
     <packaging>apk</packaging>
     <name>BlackBox</name>
 
