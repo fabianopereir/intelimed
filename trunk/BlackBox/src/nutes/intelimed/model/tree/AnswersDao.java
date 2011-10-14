@@ -38,11 +38,13 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	 	Long n = idResposta;  
 	    Integer code = Integer.valueOf(n.toString());  
 	  
-		Cursor c = db.query(NOME_TABELA, AnswersTableConstants.colunas,  AnswersTableConstants.ID_RESPOSTA +  "="+code, null, null, null, null);
+		Cursor c = db.query(NOME_TABELA, AnswersTableConstants.colunas,  AnswersTableConstants.ID_RESPOSTA +  "='"+code+"'", null, null, null, null);
 		
 		try {
-			if (c.moveToNext()) {
-				answer = new Answer(c.getLong(2), c.getLong(0), c.getString(1), c.getLong(1));
+			if (c.getCount() > 0) {
+				c.moveToNext();
+				answer = new Answer(c.getLong(0), c.getLong(1), c.getString(3), c.getLong(2));
+				//Log.i(CATEGORIA,"Erro"+c.getLong(2)+" "+c.getLong(0)+" "+c.getLong(1)+" "+c.getString(1));
 			}
 		} catch (SQLException e) {
 

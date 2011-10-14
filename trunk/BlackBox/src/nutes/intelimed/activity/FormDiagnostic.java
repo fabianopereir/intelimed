@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import nutes.intelimed.R;
-import nutes.intelimed.controller.diagnostic.Diagnostic;
+import nutes.intelimed.controller.diagnostic.DiagnosticController;
 import nutes.intelimed.controller.diagnostic.IDiagnostic;
 import nutes.intelimed.model.diagnostic.AnswerOption;
 import nutes.intelimed.model.diagnostic.StructureQuestionnaire;
@@ -53,7 +53,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 setContentView(R.layout.questionnaire_asma);
 
                // dao = (IModelStructureQuestionnaireDao) new StructureQuestionnaireDao(this);
-                diagnostic = (IDiagnostic) new Diagnostic(getBaseContext());
+                diagnostic = (IDiagnostic) new DiagnosticController(getBaseContext());
                 montarQuest();
                 
                 validar = (Button) findViewById(R.bt.btOkDiagnostic);
@@ -97,7 +97,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
                 arrJason = new JSONArray();
                 treeObj = new JSONObject();
                 int cont = 1;
-                diagnostic = (IDiagnostic) new Diagnostic(getBaseContext());
+                diagnostic = (IDiagnostic) new DiagnosticController(getBaseContext());
                 for (int i = 0; i < arrQuest.length; i++) {
                         try {
                                 treeObj.put("Q" + cont, arrQuest[i]);
@@ -152,7 +152,7 @@ public class FormDiagnostic extends Activity implements OnCheckedChangeListener 
         public void montarQuest() {
 
                 ArrayList<StructureQuestionnaire> arrayQuestion = (ArrayList<StructureQuestionnaire>) diagnostic.listarEstruturaQuestionario();
-                diagnostic = (IDiagnostic) new Diagnostic(getBaseContext());
+                diagnostic = (IDiagnostic) new DiagnosticController(getBaseContext());
                 linerLayout = (LinearLayout) findViewById(R.id.LinearLayout02);
                 ArrayList<AnswerOption> questionOption = new ArrayList<AnswerOption>();
 
