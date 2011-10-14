@@ -44,6 +44,13 @@ public class Edge {
 	public void setFk_idresposta(Long fk_idresposta) {
 		this.fk_idresposta = fk_idresposta;
 	}
+	
+	@Override
+	public boolean equals(Object obj){
+		Edge edge = (Edge) obj;
+		return (this.idaresta.equals(edge.getIdaresta()) && this.fk_idno.equals(edge.getFk_idno())
+			&& this.fk_idresposta.equals(edge.getFk_idresposta()));	
+	}
 
 	/**
 	 * Classe interna necessária para Content Provider de arestas

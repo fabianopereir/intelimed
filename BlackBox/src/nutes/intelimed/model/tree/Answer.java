@@ -54,7 +54,16 @@ public class Answer {
 		this.codeResposta = codeResposta;
 	}
 
-
+	@Override
+	public boolean equals(Object obj){
+		Answer answer = (Answer) obj;
+		return (this.codeResposta.equals(answer.getCodeResposta()) && this.descricaoResposta.equals(answer.getDescricaoResposta())
+			&& this.idNo.equals(answer.getIdNo()) && this.idResposta.equals(answer.getIdResposta()));	
+	}
+	
+	public String toString(){
+		return this.idNo+this.idResposta+this.descricaoResposta+this.codeResposta;
+	}
 
 	/**
 	 * Classe interna com atributos da tabela respostas 

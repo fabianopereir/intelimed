@@ -41,6 +41,13 @@ public class Node{
 		this.diagnostico = diagnostico;
 	}
 	
+	@Override
+	public boolean equals(Object obj){
+		Node node = (Node) obj;
+		return (this.diagnostico==node.getDiagnostico() && this.descricaoNo.equals(node.getDescricaoNo())
+			&& this.idno.equals(node.getIdno()));	
+	}
+	
 	/**
 	 * Classe interna necessária para Content Provider de nós
 	 * @author Jamilson Batista (jamilsonbatista@gmail.com)

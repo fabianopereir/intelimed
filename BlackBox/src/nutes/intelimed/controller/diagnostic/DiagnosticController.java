@@ -25,7 +25,7 @@ import android.content.Context;
  * @author Dyego Carlos (dyego12345@gmail.com)
  * 
  */
-public class Diagnostic implements IDiagnostic {
+public class DiagnosticController implements IDiagnostic {
 	protected static final String CATEGORIA = "nutes";
 
 	private IModelEdgeDao edgeDao;
@@ -41,7 +41,7 @@ public class Diagnostic implements IDiagnostic {
 	 * @param Context
 	 *            - contexto o qual será utilizado o BlackBox
 	 */
-	public Diagnostic(Context context) {
+	public DiagnosticController(Context context) {
 		this.ctx = context;
 		edgeDao = (IModelEdgeDao) new EdgeDao(ctx);
 		nodeDao = (IModelNodeDao) new NodeDao(ctx);
