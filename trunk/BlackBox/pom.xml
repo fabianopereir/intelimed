@@ -17,6 +17,7 @@
     </dependencies>
 
     <build>
+    	<defaultGoal>install</defaultGoal> 
         <finalName>${project.artifactId}</finalName>
         <sourceDirectory>${project.basedir}/src</sourceDirectory>
         <plugins>
