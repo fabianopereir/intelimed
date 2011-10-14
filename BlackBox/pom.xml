@@ -10,9 +10,8 @@
     <dependencies>
         <dependency>
             <groupId>com.google.android</groupId>
-            
             <artifactId>android</artifactId>
-            <version>2.2</version>
+            <version>2.2.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -23,13 +22,21 @@
         <plugins>
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                
                 <artifactId>maven-android-plugin</artifactId>
+                <configuration>
+				    <sdk>
+				      <platform>8</platform>
+				    </sdk>
+				    <deleteConflictingFiles>true</deleteConflictingFiles>
+				</configuration>
+				<extensions>true</extensions>
             </plugin>
             <plugin>
-                
-                
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+				    <source>1.5</source>
+				    <target>1.5</target>
+				</configuration>
             </plugin>
         </plugins>
     </build>
