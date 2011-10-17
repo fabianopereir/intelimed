@@ -6,9 +6,9 @@
 	android:layout_width="fill_parent"
 	android:background="@drawable/gradientbg"
 	android:layout_height="match_parent">
-	
+
 	<include layout="@layout/navbar" />
-	
+
 	<LinearLayout
 		android:layout_height="fill_parent"
 		android:layout_width="fill_parent"
@@ -16,19 +16,22 @@
 		android:orientation="vertical">
 		<Button
 			android:id="@+id/btDiagnostico"
-			android:layout_width="fill_parent" android:layout_height="wrap_content" 
-			android:text="Diagnóstico"
-		/>
+			android:layout_marginTop="10dp"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Diagnóstico" />
 		<Button
 			android:id="@+id/btSincronizarDados"
-			android:layout_width="fill_parent" android:layout_height="wrap_content" 
-			android:text="Enviar Evidência"
-		/>
+			android:layout_marginTop="5dp"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Enviar Evidência" />
 		<Button
 			android:id="@+id/btAtualizarArvore"
-			android:layout_width="fill_parent" android:layout_height="wrap_content" 
-			android:text="Atualizar Árvore"
-		/>
+			android:layout_marginTop="5dp"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Atualizar Árvore" />
 	</LinearLayout>
 
 </LinearLayout>

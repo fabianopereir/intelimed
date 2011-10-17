@@ -9,6 +9,14 @@
 
 	<include layout="@layout/navbar" />
 
+	<TextView
+		android:text="Diagnóstico"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="5dp"
+		android:paddingLeft="5dp"
+		android:textColor="#ffffff" />
+
 	<ScrollView
 		android:layout_height="fill_parent"
 		android:layout_width="fill_parent"
@@ -18,21 +26,14 @@
 			android:layout_width="fill_parent"
 			android:id="@+id/ResultLinearLayout02"
 			android:orientation="vertical"
-			android:paddingRight="10dp"
-			android:paddingLeft="10dp">
-
-			<TextView
-				android:text="Diagnóstico"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:paddingTop="5dp"
-				android:textColor="#ffffff"
-				android:layout_gravity="center" />
+			>
 
 			<TextView
 				android:id="@+id/result"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
+				android:paddingRight="5dp"
+			android:paddingLeft="5dp"
 				android:text="" />
 
 			<TextView
@@ -42,6 +43,8 @@
 
 			<TextView
 				android:id="@+id/lblConcorda"
+				android:paddingRight="5dp"
+				android:paddingLeft="5dp"
 				android:textColor="#ffffff"
 				android:paddingTop="10dp"
 				android:layout_width="fill_parent"
@@ -50,6 +53,8 @@
 
 			<RadioGroup
 				android:layout_height="wrap_content"
+				android:layout_marginRight="5dp"
+				android:layout_marginLeft="5dp"
 				android:layout_width="fill_parent"
 				android:id="@+id/opiniaoMedico"
 				android:orientation="vertical"
@@ -77,6 +82,8 @@
 
 			<EditText
 				android:id="@+id/justificativa"
+				android:layout_marginRight="5dp"
+				android:layout_marginLeft="5dp"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:lines="5"
