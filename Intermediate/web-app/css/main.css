@@ -12,7 +12,7 @@ html * {
 }
 
 body {
-    background: #fff;
+    background: #FFF;
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
 }
@@ -24,7 +24,11 @@ body {
 */
 
 #intelimedLogo {
-		padding:20px;
+	background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 13%,rgba(138,187,215,1) 39%,rgba(6,109,171,1) 77%); 
+	padding:20px;
+	border-bottom-style: solid;
+	border-bottom-width: 3px;
+	border-bottom-color: #000;
 }
 
 a:link, a:visited, a:hover {
