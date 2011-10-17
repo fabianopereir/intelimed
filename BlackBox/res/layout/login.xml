@@ -13,19 +13,16 @@
 		android:id="@+label/login"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/login"
-		 />
+		android:text="@string/login" />
 	<EditText
 		android:id="@+campo/user"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		 />
+		android:layout_height="wrap_content" />
 	<TextView
 		android:id="@+label/senha"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/senha"
-		 />
+		android:text="@string/senha" />
 	<EditText
 		android:id="@+campo/password"
 		android:layout_width="fill_parent"
@@ -35,12 +32,11 @@
 		android:id="@+bt/btLogin"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/btlogin"
-		 />
-	
+		android:text="@string/btlogin" />
 	<ImageView
 		android:id="@+id/test_image"
+		android:layout_marginTop="10dp"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:src="@drawable/logologin" />
+		android:src="@drawable/logologin"></ImageView>
 </LinearLayout> 
