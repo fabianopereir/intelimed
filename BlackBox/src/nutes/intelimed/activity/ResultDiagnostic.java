@@ -6,6 +6,7 @@ import nutes.intelimed.controller.evidence.EvidenceController;
 import nutes.intelimed.model.evidence.Evidence;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -37,6 +38,9 @@ public class ResultDiagnostic extends Activity {
 	private TextView resultado;
 	private Button validar, logout;
 	private RadioGroup opiniaoMedico;
+	
+	private TextView div;
+
 
 	
 	@Override
@@ -49,7 +53,12 @@ public class ResultDiagnostic extends Activity {
         validar = (Button) findViewById(R.id.btOkResult);
         opiniaoMedico = (RadioGroup) findViewById(R.id.opiniaoMedico);
         justification = (EditText) findViewById(R.id.justificativa);
-        
+        div = (TextView) findViewById(R.id.div);
+
+        opiniaoMedico.setBackgroundResource(R.drawable.corner);
+        opiniaoMedico.setFocusableInTouchMode(true);
+        opiniaoMedico.setPadding(convertDpToPx(2), convertDpToPx(2), convertDpToPx(2), convertDpToPx(2));
+               
         evidence = new Evidence();
         this.evidences = new EvidenceController(this);
         
@@ -61,7 +70,10 @@ public class ResultDiagnostic extends Activity {
 			arrayNodes = (String[]) intent.getSerializableExtra("no");
 			result = (String) intent.getSerializableExtra("diagnostic");
 			if (result != null) {
-				evidence.setSistema(result);				
+				evidence.setSistema(result);	
+				resultado.setTextColor(Color.WHITE);
+				resultado.setTextSize(convertDpToPx(15));
+				resultado.setShadowLayer(1, 1, 1, Color.DKGRAY);
 				if(result.equals("No")){
 					resultado.setText("O paciente não tem asma.");
 				}else if(result.equals("Yes")){
@@ -92,19 +104,6 @@ public class ResultDiagnostic extends Activity {
     		}
     	});
        
-		/*
-		back = (Button) findViewById(R.bt.btBack);
-        back.setOnClickListener(new OnClickListener() {
-			
-			
-			public void onClick(View v) {
-				daoEvidence.fechar();
-				daoEvidenceAnswer.fechar();
-				startActivity(new Intent(getBaseContext(), FormDiagnostic.class));
-				
-			}
-		});*/
-		
 		logout = (Button) findViewById(R.bt.btLogoff);
         logout.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -114,6 +113,11 @@ public class ResultDiagnostic extends Activity {
 		});
     }	
 
+	public int convertDpToPx(int dp) {
+    	final float scale = getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
+    }
+	
 	/**
 	 * Método responsável por validar e mandar a classe EvidenceAnswersDao
 	 * inserir a evidência no banco

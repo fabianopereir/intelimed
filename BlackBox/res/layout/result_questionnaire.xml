@@ -7,8 +7,7 @@
 	android:background="@drawable/gradientbg"
 	android:layout_height="match_parent">
 
-	<include
-		layout="@layout/navbar" />
+	<include layout="@layout/navbar" />
 
 	<ScrollView
 		android:layout_height="fill_parent"
@@ -18,7 +17,17 @@
 			android:layout_height="fill_parent"
 			android:layout_width="fill_parent"
 			android:id="@+id/ResultLinearLayout02"
-			android:orientation="vertical">
+			android:orientation="vertical"
+			android:paddingRight="10dp"
+			android:paddingLeft="10dp">
+
+			<TextView
+				android:text="Diagnóstico"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:textColor="#ffffff"
+				android:layout_gravity="center" />
 
 			<TextView
 				android:id="@+id/result"
@@ -27,12 +36,14 @@
 				android:text="" />
 
 			<TextView
-				android:layout_height="wrap_content"
-				android:layout_width="fill_parent"
-				android:text="-----------------------------------------------------------" />
-				
+				android:id="@+id/div"
+				android:layout_height="20dp"
+				android:layout_width="fill_parent" />
+
 			<TextView
 				android:id="@+id/lblConcorda"
+				android:textColor="#ffffff"
+				android:paddingTop="10dp"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:text="Concorda com o resultado apresentado pelo sistema?" />
@@ -47,15 +58,22 @@
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
 					android:id="@+id/concordo"
+					android:textColor="#000000"
 					android:tag="1"
 					android:text="Sim" />
 				<RadioButton
 					android:layout_height="wrap_content"
 					android:layout_width="fill_parent"
 					android:id="@+id/naoconcordo"
+					android:textColor="#000000"
 					android:tag="2"
 					android:text="Não" />
 			</RadioGroup>
+
+			<TextView
+				android:id="@+id/div2"
+				android:layout_height="10dp"
+				android:layout_width="fill_parent" />
 
 			<EditText
 				android:id="@+id/justificativa"
