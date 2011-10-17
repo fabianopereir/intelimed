@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Welcome to Grails</title>
+        <title>InteliMED</title>
         <meta name="layout" content="main" />
         <style type="text/css" media="screen">
 
@@ -15,12 +15,15 @@
             margin:0px;
         }
         .homePagePanel .panelBody ul {
-            list-style-type:none;
+            /*list-style-type:circle;*/
+            list-style-image:url(images/green_right_arrow.png);
+            margin-left:10px;
             margin-bottom:10px;
+            font-size:1.1em;
         }
         .homePagePanel .panelBody h1 {
             text-transform:uppercase;
-            font-size:1.1em;
+            font-size:1.7em;
             margin-bottom:10px;
         }
         .homePagePanel .panelBody {
@@ -55,6 +58,14 @@
             <div class="homePagePanel">
                 <div class="panelTop"></div>
                 <div class="panelBody">
+                	<h1>Menu</h1>
+                	<ul>
+	                	<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+	                        <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
+	                    </g:each>
+                    </ul>
+                    
+                    <!--  
                     <h1>Application Status</h1>
                     <ul>
                         <li>App version: <g:meta name="app.version"></g:meta></li>
@@ -76,17 +87,17 @@
                         </g:each>
 
                     </ul>
+                    -->
+                    
                 </div>
                 <div class="panelBtm"></div>
             </div>
         </div>
         <div id="pageBody">
-            <h1>Welcome to Grails</h1>
-            <p>Congratulations, you have successfully started your first Grails application! At the moment
-            this is the default page, feel free to modify it to either redirect to a controller or display whatever
-            content you may choose. Below is a list of controllers that are currently deployed in this application,
-            click on each to execute its default action:</p>
-
+            <h1>Bem Vindo ao InteliMED!</h1>
+            <p>No servidor intermediario do InteliMED.....</p>
+			
+			<!--  
             <div id="controllerList" class="dialog">
                 <h2>Available Controllers:</h2>
                 <ul>
@@ -95,6 +106,8 @@
                     </g:each>
                 </ul>
             </div>
+            -->
+            
         </div>
     </body>
 </html>
