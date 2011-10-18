@@ -47,7 +47,13 @@ public class EvidenceController implements IEvidence{
 	}
 
 	public void sendEvidence() throws JSONException {
-		 ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer.searchEvidenceToServer();
+		 Map<String, JSONArray> params = makeJson();
+		 
+		 startSendEvidence(params);
+	}
+
+	public Map<String, JSONArray> makeJson() throws JSONException {
+		ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer.searchEvidenceToServer();
 		 int aux;
          EvidenceServer evidenceToServer;
          
@@ -90,8 +96,11 @@ public class EvidenceController implements IEvidence{
 		 System.out.println("Dados Mobile: "+data);
 		 Map<String,JSONArray> params = new HashMap<String, JSONArray>();
 		 params.put("n1", arrData);
-		 
-		 SendEvidence sEv = new SendEvidence(this.ctx);
+		return params;
+	}
+
+	private void startSendEvidence(Map<String, JSONArray> params) {
+		SendEvidence sEv = new SendEvidence(this.ctx);
 		 sEv.setUrl(ServerConstants.getContextFromPost());
 		 sEv.setParams(params);
 		 sEv.start();

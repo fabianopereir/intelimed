@@ -11,6 +11,19 @@ public class Evidence {
 	private String sistema;
 	private String medico;
 	private String justificativa;
+	
+	public Evidence(){
+		
+	}
+
+	public Evidence(Long idevidencia, String sistema, String medico,
+			String justificativa) {
+		super();
+		this.idevidencia = idevidencia;
+		this.sistema = sistema;
+		this.medico = medico;
+		this.justificativa = justificativa;
+	}
 
 	public Long getIdevidencia() {
 		return idevidencia;

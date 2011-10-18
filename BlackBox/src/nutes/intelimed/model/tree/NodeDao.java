@@ -56,6 +56,30 @@ public class NodeDao extends GenericDao implements IModelNodeDao{
 		return node;
 	}
 	
+	public Node searchNode(String descricao) {
+		db = dbHelper.getWritableDatabase();
+		Node node = null;
+		
+		try {
+
+			Cursor c = db.query(NOME_TABELA, NodesTableConstants.colunas, NodesTableConstants.DESCRICAO_NO + "='" + descricao+"'", null, null, null, null);
+
+			if (c.moveToNext()) {
+				node = new Node();
+				node.setIdno(c.getLong(0));
+				node.setDescricaoNo(c.getString(1));
+				node.setDiagnostico(c.getInt(2));
+			} 
+			c.close();
+		} catch (SQLException e) {
+			Log.e(CATEGORIA,"Erro ao buscar o nó: " + e.toString());
+			return null;
+		}finally{
+			this.fechar();
+		}
+		return node;
+	}
+	
 	/**
 	 * Insere um nó na base de dados
 	 * @param Node

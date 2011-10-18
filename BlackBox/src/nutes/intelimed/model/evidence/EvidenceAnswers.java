@@ -9,6 +9,17 @@ public class EvidenceAnswers {
 	private Long idevidencia_respostas;
 	private Long fk_idevidencia;
 	private Long fk_idresposta;
+	
+	public EvidenceAnswers(){
+		
+	}
+
+	public EvidenceAnswers(Long idevidencia_respostas, Long fk_idevidencia,
+			Long fk_idresposta) {
+		this.idevidencia_respostas = idevidencia_respostas;
+		this.fk_idevidencia = fk_idevidencia;
+		this.fk_idresposta = fk_idresposta;
+	}
 
 	public Long getIdevidencia_respostas() {
 		return idevidencia_respostas;

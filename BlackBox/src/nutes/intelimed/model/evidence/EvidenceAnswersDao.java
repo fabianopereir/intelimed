@@ -6,6 +6,7 @@ import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.evidence.EvidenceAnswers.EvidenceAnswersTable;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.util.Log;
 
 
@@ -59,6 +60,16 @@ public class EvidenceAnswersDao extends GenericDao implements IModelEvidenceAnsw
 			this.fechar();
 		}
 		return aux;
+	}
+	
+	public boolean hasEvidence(Long idEvidenceAnwers){
+		db = dbHelper.getWritableDatabase();
+	    Integer code = Integer.valueOf(idEvidenceAnwers.toString());  
+		Cursor c = db.query(NOME_TABELA, EvidenceAnswersTable.colunas,  EvidenceAnswersTable.IDEVIDENCIARESPOSTAS +  "='"+code+"'", null, null, null, null);
+		boolean answer = (c.getCount() > 0);
+		c.close();
+		this.fechar();
+		return answer;
 	}
 	
 	public void fechar() {

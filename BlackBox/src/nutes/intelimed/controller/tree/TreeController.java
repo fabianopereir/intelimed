@@ -15,9 +15,9 @@ import android.util.Log;
 public class TreeController implements ITree {
 	protected static final String CATEGORIA = "nutes";
 
-	private static IModelEdgeDao edgeDao;
-	private static IModelNodeDao nodeDao;
-	private static IModelAnswersDao answersDao;
+	private IModelEdgeDao edgeDao;
+	private IModelNodeDao nodeDao;
+	private IModelAnswersDao answersDao;
 	private Context ctx;
 
 	/**
@@ -30,6 +30,15 @@ public class TreeController implements ITree {
 		edgeDao = (IModelEdgeDao) new EdgeDao(ctx);
 		answersDao = (IModelAnswersDao) new AnswersDao(ctx);
 		nodeDao = (IModelNodeDao) new NodeDao(ctx);
+	}
+	
+	public TreeController(IModelEdgeDao edgeDao, IModelNodeDao nodeDao,
+			IModelAnswersDao answersDao, Context ctx) {
+		super();
+		this.edgeDao = edgeDao;
+		this.nodeDao = nodeDao;
+		this.answersDao = answersDao;
+		this.ctx = ctx;
 	}
 
 	public void deleteEdges() {
@@ -44,19 +53,19 @@ public class TreeController implements ITree {
 		nodeDao.deleteNode();
 	}
 
-	public void insertNode(Node node) {
+	public Long insertNode(Node node) {
 		Log.i(CATEGORIA, "dentro do insertNode");
-		nodeDao.insertNode(node);
+		return nodeDao.insertNode(node);
 	}
 
-	public void insertNodeAnswers(Answer answer) {
+	public Long insertNodeAnswers(Answer answer) {
 		Log.i(CATEGORIA, "dentro do insertresposta");
-		answersDao.insertAnswer(answer);
+		return answersDao.insertAnswer(answer);
 	}
 
-	public void insertNodeEdge(Edge edge) {
+	public Long insertNodeEdge(Edge edge) {
 		Log.i(CATEGORIA, "dentro do insertAresta");
-		edgeDao.insertEdge(edge);
+		return edgeDao.insertEdge(edge);
 	}
 
 	public void receiveTree() throws Exception {
