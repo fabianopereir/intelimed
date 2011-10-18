@@ -6,11 +6,11 @@ import nutes.intelimed.model.tree.Node;
 
 public interface ITree {
 	
-	public void insertNode(Node node);
+	public Long insertNode(Node node);
 	
-	public void insertNodeAnswers(Answer answer);
+	public Long insertNodeAnswers(Answer answer);
 	
-	public void insertNodeEdge(Edge edge);
+	public Long insertNodeEdge(Edge edge);
 	
 	public void deleteEdges();
 	

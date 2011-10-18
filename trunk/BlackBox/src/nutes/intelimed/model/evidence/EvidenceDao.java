@@ -4,8 +4,10 @@ import nutes.intelimed.model.ScriptConstants;
 import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.evidence.Evidence.EvidencesTableConstants;
+import nutes.intelimed.model.tree.Answer.AnswersTableConstants;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.util.Log;
 
 /**
@@ -58,6 +60,16 @@ public class EvidenceDao extends GenericDao implements IModelEvidenceDao {
 		}
 		
 		return aux;
+	}
+	
+	public boolean hasEvidence(Long idEvidence){
+		db = dbHelper.getWritableDatabase();
+	    Integer code = Integer.valueOf(idEvidence.toString());  
+		Cursor c = db.query(NOME_TABELA, EvidencesTableConstants.colunas,  EvidencesTableConstants.IDEVIDENCIA +  "='"+code+"'", null, null, null, null);
+		boolean answer = (c.getCount() > 0);
+		c.close();
+		this.fechar();
+		return answer;
 	}
 	
 	public void fechar() {

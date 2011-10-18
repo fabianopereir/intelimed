@@ -6,7 +6,6 @@ import nutes.intelimed.controller.evidence.EvidenceController;
 import nutes.intelimed.model.evidence.Evidence;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -39,9 +38,6 @@ public class ResultDiagnostic extends Activity {
 	private Button validar, logout;
 	private RadioGroup opiniaoMedico;
 	
-	private TextView div;
-
-
 	
 	@Override
 	public void onCreate(Bundle icicle) {
@@ -53,7 +49,7 @@ public class ResultDiagnostic extends Activity {
         validar = (Button) findViewById(R.id.btOkResult);
         opiniaoMedico = (RadioGroup) findViewById(R.id.opiniaoMedico);
         justification = (EditText) findViewById(R.id.justificativa);
-        div = (TextView) findViewById(R.id.div);
+        
 
         opiniaoMedico.setBackgroundResource(R.drawable.corner);
         opiniaoMedico.setFocusableInTouchMode(true);
@@ -71,13 +67,10 @@ public class ResultDiagnostic extends Activity {
 			result = (String) intent.getSerializableExtra("diagnostic");
 			if (result != null) {
 				evidence.setSistema(result);	
-				resultado.setTextColor(Color.WHITE);
-				resultado.setTextSize(convertDpToPx(15));
-				resultado.setShadowLayer(1, 1, 1, Color.DKGRAY);
-				if(result.equals("No")){
-					resultado.setText("O paciente não tem asma.");
-				}else if(result.equals("Yes")){
-					resultado.setText("O paciente tem asma.");
+				if(result.equalsIgnoreCase("No")){
+					resultado.setText("Você não deve jogar tênis hoje.");
+				}else if(result.equalsIgnoreCase("Yes")){
+					resultado.setText("Você deve jogar tênis hoje.");
 				}
 			}
 		}		

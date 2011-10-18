@@ -33,8 +33,8 @@ public class ScriptConstants extends GenericDao{
 		"insert into no(descricao_no, diagnostico) values('OUTLOOK',0);",
 		"insert into no(descricao_no, diagnostico) values('HUMIDITY',0);",
 		"insert into no(descricao_no, diagnostico) values('WIND',0);",
-		"insert into no(descricao_no, diagnostico) values('YES',1);",
-		"insert into no(descricao_no, diagnostico) values('NO',1);",
+		"insert into no(descricao_no, diagnostico) values('Yes',1);",
+		"insert into no(descricao_no, diagnostico) values('No',1);",
 		"insert into resposta(descricao_resposta, fk_idno, code_resposta) values('Sunny',1,1);",
 		"insert into resposta(descricao_resposta, fk_idno, code_resposta) values('OverCast',1,2);",
 		"insert into resposta(descricao_resposta, fk_idno, code_resposta) values('Rain',1,3);",
@@ -52,7 +52,7 @@ public class ScriptConstants extends GenericDao{
 		
 		"insert into permissao (nome,descricao) values('deletar','paciente');",
 		"insert into grupo (nome,descricao) values('acs','Agentes de saúde');",
-		"insert into usuario (user,password,id_grupo) values('dyego','202cb962ac59075b964b07152d234b70', 1);"
+		"insert into usuario (user,password,id_grupo) values('nutes','202cb962ac59075b964b07152d234b70', 1);"
 	};
 	
 	/**

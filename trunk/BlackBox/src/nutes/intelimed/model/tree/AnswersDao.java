@@ -35,8 +35,7 @@ public class AnswersDao extends GenericDao implements IModelAnswersDao {
 	public Answer searchAnswer(Long idResposta) {
 		db = dbHelper.getWritableDatabase();
 		Answer answer = null;
-	 	Long n = idResposta;  
-	    Integer code = Integer.valueOf(n.toString());  
+	    Integer code = Integer.valueOf(idResposta.toString());  
 	  
 		Cursor c = db.query(NOME_TABELA, AnswersTableConstants.colunas,  AnswersTableConstants.ID_RESPOSTA +  "='"+code+"'", null, null, null, null);
 		

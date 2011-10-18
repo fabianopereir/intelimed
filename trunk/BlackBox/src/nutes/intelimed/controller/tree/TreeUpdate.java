@@ -59,7 +59,7 @@ public class TreeUpdate extends Thread implements Runnable {
 		
 	}
 	
-	private void update(String json) throws Exception{
+	public void update(String json) throws Exception{
 		tree.deleteAnswers();
 		tree.deleteEdges();
 		tree.deleteNodes();
@@ -91,7 +91,7 @@ public class TreeUpdate extends Thread implements Runnable {
 		}
 	}
 
-	private void insertNode(JSONObject noObject, JSONArray respostasArray)
+	private Long insertNode(JSONObject noObject, JSONArray respostasArray)
 			throws JSONException {
 		Log.i(CATEGORIA,noObject.getString("class").toString());
 		Long noId = noObject.getLong("id");
@@ -104,7 +104,7 @@ public class TreeUpdate extends Thread implements Runnable {
 			diagnostico = 1;
 		}else diagnostico = 0;
 		node = new Node(noId,noDescricao,diagnostico);
-		tree.insertNode(node);
+		return tree.insertNode(node);
 		//tree.insertNode(noId, noDescricao, diagnostico);
 	}
 

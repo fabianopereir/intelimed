@@ -83,7 +83,6 @@ public class HttpConnection extends Http {
 		} catch (IOException e) {
 			Log.e(CATEGORIA, e.getMessage(), e);
 		} 
-		//TODO: fazer retorno
 		return "";
 	}
 
@@ -171,13 +170,14 @@ public class HttpConnection extends Http {
                 httpContext);
         
         final HttpEntity entity = http_res.getEntity();
+        boolean answer = false; 
         if(entity != null){
 				InputStream is = entity.getContent();
 			    String responseBody = readString(is);
+			    answer = !responseBody.equals(null);
 			    Log.i(CATEGORIA, "Valor de texto após read: "+responseBody);
         }
-        //TODO: Fazer o Retorno
-        return true;
+        return answer;
 	}
 	
 	

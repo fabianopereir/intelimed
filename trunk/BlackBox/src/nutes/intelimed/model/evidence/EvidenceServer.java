@@ -17,6 +17,25 @@ public class EvidenceServer {
 	private Long  idresposta;
 	private Long  fk_idresposta;
 	private Long  fk_idevidencia;
+	
+	public EvidenceServer(){
+		
+	}
+	
+	public EvidenceServer(Long idevidencia, String sistema, String medico,
+			String justificativa, Long idevidencia_respostas, Long fk_idno,
+			Long idresposta, Long fk_idresposta, Long fk_idevidencia) {
+		super();
+		this.idevidencia = idevidencia;
+		this.sistema = sistema;
+		this.medico = medico;
+		this.justificativa = justificativa;
+		this.idevidencia_respostas = idevidencia_respostas;
+		this.fk_idno = fk_idno;
+		this.idresposta = idresposta;
+		this.fk_idresposta = fk_idresposta;
+		this.fk_idevidencia = fk_idevidencia;
+	}
 
 	public Long getIdevidencia() {
 		return idevidencia;
