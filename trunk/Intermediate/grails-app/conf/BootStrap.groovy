@@ -104,6 +104,8 @@ class BootStrap {
 		def arvore = new Arvore(nos:[no1, no2, no3, no4, no5, no6, no7, no8, no9, no10], 
 			arestas:[aresta1, aresta2, aresta3, aresta4, aresta5, aresta6, aresta7, aresta8, aresta9, aresta10, aresta11, aresta12], 
 			respostas:[resposta1, resposta2, resposta3, resposta4, resposta5, resposta6, resposta7, resposta8, resposta9, resposta10, resposta11, resposta12]).save()
+			
+		def evidencia = new Evidencia(respostas:[resposta1], justificativa:'teste').save()
 	}
 
 	def destroy = {

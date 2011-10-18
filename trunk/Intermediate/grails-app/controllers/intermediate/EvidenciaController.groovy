@@ -19,14 +19,7 @@ class EvidenciaController {
 	}
 	
 	def rest = {
-		/*def evidencia1 = new Evidencia()
-		for(e in params.evidencia.respostas){
-			println e.id + " - id"
-			evidencia1.addToRespostas(Resposta.findById(e.id))
-			//println Resposta.findById(e.id).descricao
-			
-		}
-		println evidencia1.respostas.size()*/
+		
 		switch(request.method){
 			
 			case "POST":
@@ -35,6 +28,8 @@ class EvidenciaController {
 				Resposta.getAll(params.evidencia.respostas.id).each {
 					evidencia.addToRespostas(it)
 				}
+				
+				evidencia.justificativa = params.evidencia.justificativa
 				
 				if(evidencia.save()){
 					response.status = 201 // Created
@@ -55,14 +50,14 @@ class EvidenciaController {
 				}
 				break
 			case "PUT":
-				//Zica da remanescencia de respostas passadas
+				//Problema da remanescencia de respostas passadas
 				//Limpar antes de atualizar
 				def evidencia = Evidencia.findById(params.evidencia.id)
 
 				Resposta.getAll(params.evidencia.respostas.id).each {
 					evidencia.addToRespostas(it)
 				}
-				
+				evidencia.justificativa = params.evidencia.justificativa
 				evidencia.properties = params.evidencia
 				if(evidencia.save()){
 					response.status = 200 // OK
