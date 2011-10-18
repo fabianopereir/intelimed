@@ -3,14 +3,33 @@
         <title>InteliMED</title>
         <meta name="layout" content="main" />
         <style type="text/css" media="screen">
-
+        
+        /*html, body, #wrap, #pageBody {height: 100%;}
+		body > #wrap {height: auto; min-height: 100%;}*/
         #nav {
             margin-top:20px;
             margin-left:30px;
             width:228px;
             float:left;
-
+			padding-bottom: 40px;
+			/*aque*/
         }
+        #footnote{
+        	position: absolute;
+        	bottom: 0px;
+        	width: 100%;
+			margin-top: -40px;
+			height: 40px;
+			clear: both;
+			border-top-width: 6px;
+			border-top-style: solid;
+			border-top-color: #ACE149;
+			background: -webkit-linear-gradient(45deg, rgba(89,89,89,1) 2%,rgba(102,102,102,1) 14%,rgba(76,76,76,1) 18%,rgba(71,71,71,1) 26%,rgba(44,44,44,1) 34%,rgba(17,17,17,1) 47%,rgba(0,0,0,1) 64%,rgba(43,43,43,1) 76%,rgba(17,17,17,1) 81%,rgba(17,17,17,1) 88%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
+			color: white;
+			text-align: center;
+			font-size:1.1em;
+        }
+        /*aque*/
         .homePagePanel * {
             margin:0px;
         }
@@ -88,14 +107,13 @@
 
                     </ul>
                     -->
-                    
                 </div>
                 <div class="panelBtm"></div>
             </div>
         </div>
         <div id="pageBody">
             <h1>Bem Vindo ao InteliMED!</h1>
-            <p>No servidor intermediario do InteliMED.....</p>
+            <p>< Em constru&#231;&#227;o..... ></p>
 			
 			<!--  
             <div id="controllerList" class="dialog">
@@ -107,7 +125,9 @@
                 </ul>
             </div>
             -->
-            
+        </div>
+        <div id="footnote">
+        	<p> Servidor Intermedi&#225;rio - InteliMED - 2011 </p>
         </div>
     </body>
 </html>
