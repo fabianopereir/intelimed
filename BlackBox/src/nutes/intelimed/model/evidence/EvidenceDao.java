@@ -4,7 +4,6 @@ import nutes.intelimed.model.ScriptConstants;
 import nutes.intelimed.model.DatabaseHelper;
 import nutes.intelimed.model.GenericDao;
 import nutes.intelimed.model.evidence.Evidence.EvidencesTableConstants;
-import nutes.intelimed.model.tree.Answer.AnswersTableConstants;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

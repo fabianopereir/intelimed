@@ -62,6 +62,12 @@ public class StructureQuestionnaire {
 	public void setFk_idno(int fkIdno) {
 		fk_idno = fkIdno;
 	}
+	
+	public boolean equals(StructureQuestionnaire answer){
+		//StructureQuestionnaire answer = (StructureQuestionnaire) obj;
+		return (this.code_resposta==answer.getCodeResposta() && this.descricao_no.equals(answer.getDescricao_no())
+			&& this.descricao_resposta.equals(answer.getDescricao_resposta()));	
+	}
 
 	/**
 	 * Classe interna necessária para Content Provider de estrutura de questionário

@@ -108,6 +108,11 @@ public class EvidenceServer {
 	public Long getFk_idevidencia() {
 		return fk_idevidencia;
 	}
+	
+	public boolean equals(EvidenceServer answer){
+		return (this.sistema.equals(answer.getSistema()) && this.justificativa.equals(answer.getJustificativa())
+			&& this.medico.equals(answer.getMedico()));	
+	}
 
 	/**
 	 * Classe interna necessária para Content Provider de evidências para envio ao servidor

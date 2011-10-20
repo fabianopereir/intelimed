@@ -67,11 +67,11 @@ public class ResultDiagnostic extends Activity {
 			result = (String) intent.getSerializableExtra("diagnostic");
 			if (result != null) {
 				evidence.setSistema(result);	
-				if(result.equalsIgnoreCase("No")){
-					resultado.setText("Você não deve jogar tênis hoje.");
-				}else if(result.equalsIgnoreCase("Yes")){
-					resultado.setText("Você deve jogar tênis hoje.");
-				}
+				//if(result.equalsIgnoreCase("Asma")){
+					resultado.setText(result);
+				//}else if(result.equalsIgnoreCase("Não Asma")){
+					//resultado.setText("Você deve jogar tênis hoje.");
+				//}
 			}
 		}		
 
