@@ -24,6 +24,7 @@ class EvidenciaController {
 			
 			case "POST":
 				
+				//Why u no work?!
 				def evidencia = new Evidencia()
 				Resposta.getAll(params.evidencia.respostas.id).each {
 					evidencia.addToRespostas(it)

@@ -1,11 +1,11 @@
 
 
-<%@ page import="intermediate.Evidencia" %>
+<%@ page import="intermediate.Aresta" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'evidencia.label', default: 'Evidencia')}" />
+        <g:set var="entityName" value="${message(code: 'aresta.label', default: 'Aresta')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -19,33 +19,24 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${evidenciaInstance}">
+            <g:hasErrors bean="${arestaInstance}">
             <div class="errors">
-                <g:renderErrors bean="${evidenciaInstance}" as="list" />
+                <g:renderErrors bean="${arestaInstance}" as="list" />
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <g:hiddenField name="id" value="${evidenciaInstance?.id}" />
-                <g:hiddenField name="version" value="${evidenciaInstance?.version}" />
+                <g:hiddenField name="id" value="${arestaInstance?.id}" />
+                <g:hiddenField name="version" value="${arestaInstance?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="justificativa"><g:message code="evidencia.justificativa.label" default="Justificativa" /></label>
+                                  <label for="resposta"><g:message code="aresta.resposta.label" default="Resposta" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: evidenciaInstance, field: 'justificativa', 'errors')}">
-                                    <g:textField name="justificativa" value="${evidenciaInstance?.justificativa}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="respostas"><g:message code="evidencia.respostas.label" default="Respostas" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: evidenciaInstance, field: 'respostas', 'errors')}">
-                                    <g:select name="respostas" from="${intermediate.Resposta.list()}" multiple="yes" optionKey="id" size="5" value="${evidenciaInstance?.respostas*.id}" />
+                                <td valign="top" class="value ${hasErrors(bean: arestaInstance, field: 'resposta', 'errors')}">
+                                    <g:select name="resposta.id" from="${intermediate.Resposta.list()}" optionKey="id" value="${arestaInstance?.resposta?.id}"  />
                                 </td>
                             </tr>
                         

@@ -1,10 +1,10 @@
 
-<%@ page import="intermediate.Evidencia" %>
+<%@ page import="intermediate.Aresta" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'evidencia.label', default: 'Evidencia')}" />
+        <g:set var="entityName" value="${message(code: 'aresta.label', default: 'Aresta')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -23,29 +23,16 @@
                     <tbody>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="evidencia.id.label" default="Id" /></td>
+                            <td valign="top" class="name"><g:message code="aresta.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: evidenciaInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="evidencia.justificativa.label" default="Justificativa" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: evidenciaInstance, field: "justificativa")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: arestaInstance, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="evidencia.respostas.label" default="Respostas" /></td>
+                            <td valign="top" class="name"><g:message code="aresta.resposta.label" default="Resposta" /></td>
                             
-                            <td valign="top" style="text-align: left;" class="value">
-                                <ul>
-                                <g:each in="${evidenciaInstance.respostas}" var="r">
-                                    <li><g:link controller="resposta" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
+                            <td valign="top" class="value"><g:link controller="resposta" action="show" id="${arestaInstance?.resposta?.id}">${arestaInstance?.resposta?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -54,7 +41,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${evidenciaInstance?.id}" />
+                    <g:hiddenField name="id" value="${arestaInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>
