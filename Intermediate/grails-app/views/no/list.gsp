@@ -1,10 +1,10 @@
 
-<%@ page import="intermediate.Evidencia" %>
+<%@ page import="intermediate.No" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'evidencia.label', default: 'Evidencia')}" />
+        <g:set var="entityName" value="${message(code: 'no.label', default: 'No')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,19 +22,19 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'evidencia.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'no.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="justificativa" title="${message(code: 'evidencia.justificativa.label', default: 'Justificativa')}" />
+                            <g:sortableColumn property="descricao" title="${message(code: 'no.descricao.label', default: 'Descricao')}" />
                         
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${evidenciaInstanceList}" status="i" var="evidenciaInstance">
+                    <g:each in="${noInstanceList}" status="i" var="noInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${evidenciaInstance.id}">${fieldValue(bean: evidenciaInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${noInstance.id}">${fieldValue(bean: noInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: evidenciaInstance, field: "justificativa")}</td>
+                            <td>${fieldValue(bean: noInstance, field: "descricao")}</td>
                         
                         </tr>
                     </g:each>
@@ -42,7 +42,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${evidenciaInstanceTotal}" />
+                <g:paginate total="${noInstanceTotal}" />
             </div>
         </div>
     </body>
