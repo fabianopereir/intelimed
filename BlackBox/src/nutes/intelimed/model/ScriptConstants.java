@@ -21,8 +21,8 @@ public class ScriptConstants extends GenericDao{
 	
 	private static final String[] SCRIPT_DATABASE_CREATE = new String[] {
 		"create table no(idno integer primary key, descricao_no varchar(255), diagnostico integer);",
-		"create table resposta(idresposta integer primary key, descricao_resposta varchar(255), fk_idno integer, code_resposta integer, Foreign Key (fk_idno) references no(idno));",
-		"create table aresta(idaresta integer primary key, fk_idno integer,  fk_idresposta integer, Foreign Key (fk_idno) references no(idno), Foreign Key (fk_idresposta) references resposta(idresposta));",
+		"create table resposta(idresposta integer, descricao_resposta varchar(255), fk_idno integer, code_resposta integer, Foreign Key (fk_idno) references no(idno), CONSTRAINT pk_respostaID PRIMARY KEY (idresposta,fk_idno));",
+		"create table aresta(idaresta integer, fk_idno integer,  fk_idresposta integer, Foreign Key (fk_idno) references no(idno), Foreign Key (fk_idresposta) references resposta(idresposta),CONSTRAINT pk_arestaID PRIMARY KEY (fk_idresposta,fk_idno));",
 		"create table evidencia(idevidencia integer primary key autoincrement, sistema varchar(5),  medico varchar(5), justificativa varchar(255));",
 		"create table evidencia_respostas(idevidencia_respostas integer primary key autoincrement, fk_idresposta integer, fk_idevidencia integer, Foreign Key (fk_idevidencia) references evidencia(idevidencia), Foreign Key (fk_idresposta) references resposta(idresposta));",
 		"create table permissao(_id integer primary key autoincrement, nome varchar(45), descricao varchar(45));",
@@ -39,7 +39,7 @@ public class ScriptConstants extends GenericDao{
 		"insert into no(descricao_no, diagnostico) values('7. Seu filho ou sua filha  melhora da tosse ou chiado quando usa “sprays” ou bombinhas ou nebulizações?',0);",
 		"insert into no(descricao_no, diagnostico) values('8. Seu filho ou sua filha  tem crises de tosse ou chiado no peito quando tem contato com mofo?',0);",
 		"insert into no(descricao_no, diagnostico) values('Asma',1);",
-		"insert into no(descricao_no, diagnostico) values('Não  Asma',1);",
+		"insert into no(descricao_no, diagnostico) values('Não Asma',1);",
 		"insert into resposta(descricao_resposta, fk_idno, code_resposta) values('Sim',1,1);",
 		"insert into resposta(descricao_resposta, fk_idno, code_resposta) values('Não',1,2);",
 		"insert into resposta(descricao_resposta, fk_idno, code_resposta) values('Sim',2,1);",

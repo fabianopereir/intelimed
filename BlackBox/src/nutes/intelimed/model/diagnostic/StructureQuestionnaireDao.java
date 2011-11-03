@@ -36,7 +36,7 @@ public class StructureQuestionnaireDao extends GenericDao implements IModelStruc
 	  */
 	public Cursor getCursor() {
 		try {
-			Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaireTableConstants.colunas, StructureQuestionnaireTableConstants.FK_IDNO + "=" + StructureQuestionnaireTableConstants.IDNO, null, null, null, null);
+			Cursor cursor = db.query(NOME_TABELA, StructureQuestionnaireTableConstants.colunas, StructureQuestionnaireTableConstants.FK_IDNO + "=" + StructureQuestionnaireTableConstants.IDNO, null, null, null, StructureQuestionnaireTableConstants.FK_IDNO+","+StructureQuestionnaireTableConstants.IDRESPOSTA);
 			return cursor;
 
 		} catch (SQLException e) {
