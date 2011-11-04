@@ -70,7 +70,7 @@ public class TreeController implements ITree {
 
 	public void receiveTree() throws Exception {
 		TreeUpdate treeUpdate = new TreeUpdate(this);
-		treeUpdate.start();
+		treeUpdate.run();
 	}
 	
 }

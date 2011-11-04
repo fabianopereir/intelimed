@@ -3,7 +3,6 @@ package nutes.intelimed.activity;
 import nutes.intelimed.R;
 import nutes.intelimed.controller.evidence.EvidenceController;
 import nutes.intelimed.controller.evidence.IEvidence;
-import nutes.intelimed.controller.evidence.SendEvidence;
 import nutes.intelimed.controller.tree.ITree;
 import nutes.intelimed.controller.tree.TreeController;
 import org.json.JSONException;
@@ -77,11 +76,16 @@ public class Menu extends Activity {
 	private Handler handler = new Handler() {
 		 @Override
 		 public void handleMessage(Message msg) {     
-
+			 dialog.dismiss();
 		 }
 		};
 
-		
+	private Handler handler1 = new Handler() {
+		 @Override
+		 public void handleMessage(Message msg) {     
+			 dialog.dismiss();
+		 }
+		};
 	
 
 	/**
@@ -101,24 +105,15 @@ public class Menu extends Activity {
 				} catch (JSONException e) {
 					e.printStackTrace();
 				} 
-	
-			// dismiss the progress dialog
-			handler.sendEmptyMessage(0);
-			dialog.dismiss();
-	
+				handler.sendEmptyMessage(0);
 			}
-
 		}.start();
-
-		
-		
-		
-             
+   
 	}
 	
 	private void treeUpdate(){
 		dialog = ProgressDialog.show(Menu.this, "InteliMED", "Sincronizando Dados...");
-
+		
 		new Thread() {
 
 			public void run() {
@@ -129,19 +124,11 @@ public class Menu extends Activity {
 				}catch (Exception e) {
 					Log.i(CATEGORIA, e.getMessage(),e);
 				}
-	
-			// dismiss the progress dialog
-			handler.sendEmptyMessage(0);
-			dialog.dismiss();
-	
+				handler1.sendEmptyMessage(0);
 			}
-
 		}.start();
-		
-		
+			
 		Log.i("nutes","dentro do treeUpdate");
-		
-		
 	}
 	
 	/**
