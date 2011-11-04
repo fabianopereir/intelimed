@@ -103,7 +103,7 @@ public class EvidenceController implements IEvidence{
 		SendEvidence sEv = new SendEvidence(this.ctx);
 		 sEv.setUrl(ServerConstants.getContextFromPost());
 		 sEv.setParams(params);
-		 sEv.start();
+		 sEv.run();
 	}
 
 	public ArrayList<EvidenceServer> searchEvidenceToServer() {
