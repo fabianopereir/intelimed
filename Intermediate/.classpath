@@ -41,6 +41,5 @@
 			<attribute name="com.springsource.sts.grails.core.SOURCE_FOLDER" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="F:/mysql-connector-java-5.1.17/mysql-connector-java-5.1.17-bin.jar"/>
 	<classpathentry kind="output" path="web-app/WEB-INF/classes"/>
 </classpath>

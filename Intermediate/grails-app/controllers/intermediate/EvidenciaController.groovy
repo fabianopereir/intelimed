@@ -24,18 +24,17 @@ class EvidenciaController {
 			
 			case "POST":
 				
-				//Why u no work?!
+				//Why u no work XML?! Apenas JSON!
 				def evidencia = new Evidencia()
+				evidencia.justificativa = params.evidencia.justificativa
+				
 				Resposta.getAll(params.evidencia.respostas.id).each {
 					evidencia.addToRespostas(it)
 				}
 				
-				evidencia.justificativa = params.evidencia.justificativa
-				
 				if(evidencia.save()){
 					response.status = 201 // Created
-					println evidencia as JSON
-					render evidencia as XML
+					render evidencia as JSON
 				}
 				else{
 					response.status = 500 //Internal Server Error
@@ -44,25 +43,26 @@ class EvidenciaController {
 				break
 			case "GET":
 				if(params.id){
-					render Evidencia.findById(params.id) as XML
+					render Evidencia.findById(params.id) as JSON
 				}
 				else{
-					render Evidencia.list() as XML
+					render Evidencia.list() as JSON
 				}
 				break
 			case "PUT":
 				//Problema da remanescencia de respostas passadas
-				//Limpar antes de atualizar
+				//Limpar antes de atualizar e apenas JSON!
+			
 				def evidencia = Evidencia.findById(params.evidencia.id)
-
+				evidencia.justificativa = params.evidencia.justificativa
 				Resposta.getAll(params.evidencia.respostas.id).each {
 					evidencia.addToRespostas(it)
 				}
-				evidencia.justificativa = params.evidencia.justificativa
+				
 				evidencia.properties = params.evidencia
 				if(evidencia.save()){
 					response.status = 200 // OK
-					render evidencia as XML
+					render evidencia as JSON
 				}
 				else{
 					response.status = 500 //Internal Server Error
