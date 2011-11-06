@@ -24,7 +24,7 @@ class ArvoreController {
 				def arvore = new Arvore(params.arvore)
 				if(arvore.save()){
 					response.status = 201 // Created
-					render arvore as XML
+					render arvore as JSON
 				}
 				else{
 					response.status = 500 //Internal Server Error
@@ -35,7 +35,7 @@ class ArvoreController {
 				if(params.id){
 					def marinha = Arvore.findById(params.id)	
 					
-					render Arvore.findById(params.id) as XML
+					render Arvore.findById(params.id) as JSON
 				}
 				else{
 					render Arvore.list() as JSON
@@ -46,7 +46,7 @@ class ArvoreController {
 				arvore.properties = params.arvore
 				if(arvore.save()){
 					response.status = 200 // OK
-					render arvore as XML
+					render arvore as JSON
 				}
 				else{
 					response.status = 500 //Internal Server Error

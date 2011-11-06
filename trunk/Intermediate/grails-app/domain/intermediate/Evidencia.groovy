@@ -13,5 +13,6 @@ class Evidencia {
 	}
 	
     static constraints = {
+		justificativa(blank:true, nullable:true)
     }
 }

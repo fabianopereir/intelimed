@@ -26,7 +26,7 @@ class UsuarioController {
 				def usuario = new Usuario(params.usuario)
 				if(usuario.save()){
 					response.status = 201 // Created
-					render usuario as XML
+					render usuario as JSON
 				}
 				else{
 					response.status = 500 //Internal Server Error
@@ -35,10 +35,10 @@ class UsuarioController {
 				break
 			case "GET":
 				if(params.cpf){
-					render Usuario.findByCpf(params.cpf) as XML
+					render Usuario.findByCpf(params.cpf) as JSON
 				}
 				else{
-					render Usuario.list() as XML
+					render Usuario.list() as JSON
 				}
 				break
 			case "PUT":
@@ -46,7 +46,7 @@ class UsuarioController {
 				usuario.properties = params.usuario
 				if(usuario.save()){
 					response.status = 200 // OK
-					render usuario as XML
+					render usuario as JSON
 				}
 				else{
 					response.status = 500 //Internal Server Error
