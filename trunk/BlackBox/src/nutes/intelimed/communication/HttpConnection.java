@@ -115,7 +115,8 @@ public class HttpConnection extends Http {
 	 * @throws IOException
 	 */
 	private Boolean doPost(String u, String params) throws IOException {
-		Log.i(CATEGORIA, "Http.doPost: " + u + "?" + params);
+		 String aux = "{\"class\":\"intermediate.Evidencia\","+params.toString().substring(3, params.toString().length()-1);
+		Log.i(CATEGORIA, "Http.doPost: " + u + "?" + aux);
 	 	DefaultHttpClient httpclient;
         final URL url = new URL(u);
         final String urlHost = url.getHost();
@@ -158,10 +159,12 @@ public class HttpConnection extends Http {
         if (method instanceof HttpEntityEnclosingRequest) {
 
             HttpEntityEnclosingRequest eeMethod = (HttpEntityEnclosingRequest) method;
-
+            
+           
+            
             // Create and set RequestEntity
-            AbstractHttpEntity entity = new ByteArrayEntity(params.getBytes());
-			entity.setContentType("UTF-8");
+            AbstractHttpEntity entity = new ByteArrayEntity(aux.getBytes());
+			entity.setContentType("text/json;charset=UTF-8");
 			eeMethod.setEntity(entity);
         }
 
