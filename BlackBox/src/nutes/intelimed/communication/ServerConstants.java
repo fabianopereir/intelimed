@@ -9,21 +9,21 @@ package nutes.intelimed.communication;
  */
 public class ServerConstants {
 	
-	//private final static String server = "lagarage.dyndns.biz/Intermediate/";
-	private final static String server = "192.168.0.9:8080/Intermediate/";
+	//private final static String server = "192.168.0.9:8080/Intermediate/";
+	private final static String server = "ec2-107-22-67-212.compute-1.amazonaws.com/intermediate";
 	public final static String username = "admin";
 	public final static String password = "123";
 
 	public static String getContextFromPost() {
-		return getContext(server); 
+		return getContext(server+"/rest/evidencia"); 
 	}
 	
 	public static String getContextFromGet() {
-		return getContext(server); 
+		return getContext(server+"/rest/arvore"); 
 	}
 	
 	private static String getContext(String ip) {
-		return "http://" + ip + "arvore/rest/";
+		return "http://" + ip;
 	}
 	
 }

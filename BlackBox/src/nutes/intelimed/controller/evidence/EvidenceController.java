@@ -78,8 +78,8 @@ public class EvidenceController implements IEvidence{
              while (arrayData.get(i).getIdevidencia() == evidenceToServer.getIdevidencia() && aux < arrayData.size()) {
                      
 	            	 dataAnswer = new JSONObject();
-	    			 dataAnswer.put("fk_idno", arrayData.get(aux).getFk_idno());
-	    			 dataAnswer.put("idresposta", arrayData.get(aux).getIdresposta());
+	    			 dataAnswer.put("class","intermediate.Resposta"); 
+	    			 dataAnswer.put("id", arrayData.get(aux).getIdresposta());
 	    			 arrAnswer.put(dataAnswer);
 	    			
                      aux++;
@@ -95,7 +95,7 @@ public class EvidenceController implements IEvidence{
 		 data.put("dados", arrData);
 		 System.out.println("Dados Mobile: "+data);
 		 Map<String,JSONArray> params = new HashMap<String, JSONArray>();
-		 params.put("n1", arrData);
+		 params.put("", arrData);
 		return params;
 	}
 
