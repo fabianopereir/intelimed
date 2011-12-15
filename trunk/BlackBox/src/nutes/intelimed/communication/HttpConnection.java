@@ -114,8 +114,8 @@ public class HttpConnection extends Http {
 	 * @return	
 	 * @throws IOException
 	 */
-	private Boolean doPost(String u, String params) throws IOException {
-		 String aux = "{\"class\":\"intermediate.Evidencia\","+params.toString().substring(3, params.toString().length()-1);
+	private Boolean doPost(String u, String params) throws IOException { 
+		String aux = params.toString().substring(2, params.toString().length()-1);
 		Log.i(CATEGORIA, "Http.doPost: " + u + "?" + aux);
 	 	DefaultHttpClient httpclient;
         final URL url = new URL(u);
@@ -173,14 +173,14 @@ public class HttpConnection extends Http {
                 httpContext);
         
         final HttpEntity entity = http_res.getEntity();
-        boolean answer = false; 
+        boolean answer = false;
         if(entity != null){
 				InputStream is = entity.getContent();
 			    String responseBody = readString(is);
 			    answer = !responseBody.equals(null);
 			    Log.i(CATEGORIA, "Valor de texto após read: "+responseBody);
         }
-        return answer;
+		return answer;
 	}
 	
 	

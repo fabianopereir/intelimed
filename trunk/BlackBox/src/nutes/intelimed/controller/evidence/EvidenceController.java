@@ -70,6 +70,7 @@ public class EvidenceController implements IEvidence{
              arrAnswer = new JSONArray();
              dataEvidence = new JSONObject();
 			 
+             dataEvidence.put("class","intermediate.Evidencia");
 			 dataEvidence.put("idevidencia", arrayData.get(i).getIdevidencia());
 			 dataEvidence.put("sistema", arrayData.get(i).getSistema());
 			 dataEvidence.put("medico", arrayData.get(i).getMedico());
