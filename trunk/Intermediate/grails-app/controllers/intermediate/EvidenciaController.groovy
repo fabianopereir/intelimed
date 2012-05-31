@@ -21,25 +21,34 @@ class EvidenciaController {
 	def rest = {
 		
 		switch(request.method){
-			
 			case "POST":
-				
-				//Why u no work XML?! Apenas JSON!
-				def evidencia = new Evidencia()
-				evidencia.justificativa = params.evidencia.justificativa
-				
-				Resposta.getAll(params.evidencia.respostas.id).each {
-					evidencia.addToRespostas(it)
+				def statusFlag = false
+				def errorsLog = ""
+				params.listaEvidencia.evidencias.each {
+					def evidencia = new Evidencia()
+					
+					evidencia.justificativa = it.justificativa
+
+					Resposta.getAll(it.respostas.id).each {
+						evidencia.addToRespostas(it)
+					}
+					
+					if(evidencia.save()){
+						statusFlag = true;
+					} else {
+						errorsLog = evidencia.errors
+					}
 				}
 				
-				if(evidencia.save()){
+				if(statusFlag){
 					response.status = 201 // Created
-					render evidencia as JSON
+					render "Everything\'s fine"
 				}
 				else{
 					response.status = 500 //Internal Server Error
-					render "Could not create new Evidencia due to errors:\n ${evidencia.errors}"
+					render "Could not create new Evidencia due to errors:\n ${errorsLog}"
 				}
+				
 				break
 			case "GET":
 				if(params.id){
