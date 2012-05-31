@@ -9,8 +9,8 @@ package nutes.intelimed.communication;
  */
 public class ServerConstants {
 	
-	//private final static String server = "192.168.0.9:8080/Intermediate/";
-	private final static String server = "ec2-107-22-67-212.compute-1.amazonaws.com/intermediate";
+	private final static String server = "10.0.0.10:9090/Intermediate";
+	//private final static String server = "ec2-23-20-107-254.compute-1.amazonaws.com/intermediate";
 	public final static String username = "admin";
 	public final static String password = "123";
 

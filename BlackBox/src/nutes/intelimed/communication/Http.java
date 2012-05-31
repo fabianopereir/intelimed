@@ -2,7 +2,7 @@ package nutes.intelimed.communication;
 
 import java.util.Map;
 
-import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 /**
@@ -19,5 +19,5 @@ public abstract class Http {
 	}
 
 	public abstract String doGet(String url);
-	public abstract Boolean doPost(String url, Map<String,JSONArray> map);
+	public abstract Boolean doPost(String url, Map<String, JSONObject> params);
 }
