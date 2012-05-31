@@ -2,9 +2,10 @@ package nutes.intelimed.controller.evidence;
 
 import java.util.Map;
 
-import org.json.JSONArray;
-
 import nutes.intelimed.communication.Http;
+
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -19,7 +20,7 @@ public class SendEvidence extends Thread implements Runnable{
 
 	private final String CATEGORIA = "nutes";
 	private String url;
-	private Map<String,JSONArray> params;
+	private Map<String, JSONObject> params;
 	private IEvidence evidences;
 	
 	/**
@@ -38,11 +39,11 @@ public class SendEvidence extends Thread implements Runnable{
 		this.url = url;
 	}
 
-	public Map<String,JSONArray> getParams() {
+	public Map<String,JSONObject> getParams() {
 		return params;
 	}
 
-	public void setParams(Map<String,JSONArray> params) {
+	public void setParams(Map<String,JSONObject> params) {
 		this.params = params;
 	}
 

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
@@ -32,7 +31,9 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-import org.json.JSONArray;
+import org.json.JSONObject;
+
+import android.util.Log;
 
 
 /**
@@ -93,7 +94,7 @@ public class HttpConnection extends Http {
 	 * @return String url
 	 */
 	@Override
-	public Boolean doPost(String url, Map<String,JSONArray> params) {
+	public Boolean doPost(String url, Map<String,JSONObject> params) {
 		try {
 			String queryString = getQueryString(params);
 			Log.i(CATEGORIA, "Post: "+queryString);
@@ -115,7 +116,7 @@ public class HttpConnection extends Http {
 	 * @throws IOException
 	 */
 	private Boolean doPost(String u, String params) throws IOException { 
-		String aux = params.toString().substring(2, params.toString().length()-1);
+		String aux = "{"+params+"}";//.toString().substring(2, params.toString().length()-1);
 		Log.i(CATEGORIA, "Http.doPost: " + u + "?" + aux);
 	 	DefaultHttpClient httpclient;
         final URL url = new URL(u);
@@ -191,7 +192,7 @@ public class HttpConnection extends Http {
 	 * @return String urlParams
 	 * @throws IOException
 	 */
-	private String getQueryString(Map<String,JSONArray> params) throws IOException {
+	private String getQueryString(Map<String, JSONObject> params) throws IOException {
 		if (params == null || params.size() == 0) {
 			return null;
 		}

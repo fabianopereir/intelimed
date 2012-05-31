@@ -20,21 +20,24 @@ import nutes.intelimed.model.evidence.IModelEvidenceAnswersDao;
 import nutes.intelimed.model.evidence.IModelEvidenceDao;
 import nutes.intelimed.model.evidence.IModelEvidenceServerDao;
 
-public class EvidenceController implements IEvidence{
+public class EvidenceController implements IEvidence {
 	private IModelEvidenceDao daoEvidence;
 	private IModelEvidenceAnswersDao daoEvidenceAnswer;
 	private IModelEvidenceServerDao daoEvidenceToServer;
 	private Context ctx;
-	
-	public EvidenceController(Context ctx){
+
+	public EvidenceController(Context ctx) {
 		daoEvidence = (IModelEvidenceDao) new EvidenceDao(ctx);
-		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersDao(ctx);
-		
-		daoEvidenceToServer = (IModelEvidenceServerDao) new EvidenceServerDao(ctx);
+		daoEvidenceAnswer = (IModelEvidenceAnswersDao) new EvidenceAnswersDao(
+				ctx);
+
+		daoEvidenceToServer = (IModelEvidenceServerDao) new EvidenceServerDao(
+				ctx);
 		this.ctx = ctx;
 	}
 
-	public void storeEvidence(String[] answerData, String[] noData, Evidence evidence) {
+	public void storeEvidence(String[] answerData, String[] noData,
+			Evidence evidence) {
 		Long idevidencia = daoEvidence.insertEvidence(evidence);
 		EvidenceAnswers evidenceAnswer = new EvidenceAnswers();
 		for (int i = 0; i < answerData.length; i++) {
@@ -47,64 +50,68 @@ public class EvidenceController implements IEvidence{
 	}
 
 	public void sendEvidence() throws JSONException {
-		 Map<String, JSONArray> params = makeJson();
-		 
-		 startSendEvidence(params);
+		Map<String, JSONObject> params = makeJson();
+
+		startSendEvidence(params);
 	}
 
-	public Map<String, JSONArray> makeJson() throws JSONException {
-		ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer.searchEvidenceToServer();
-		 int aux;
-         EvidenceServer evidenceToServer;
-         
-		 JSONObject data = new JSONObject();
-		 JSONObject dataEvidence;
-		 JSONObject dataAnswer;
-		 JSONArray arrData = new JSONArray();
-		 JSONArray arrAnswer;
+	public Map<String, JSONObject> makeJson() throws JSONException {
+		ArrayList<EvidenceServer> arrayData = (ArrayList<EvidenceServer>) daoEvidenceToServer
+				.searchEvidenceToServer();
+		int aux;
+		EvidenceServer evidenceToServer;
 
-		 for (int i = 0; i < arrayData.size(); i++) {
-             aux = i;
-             evidenceToServer = arrayData.get(aux);
-             
-             arrAnswer = new JSONArray();
-             dataEvidence = new JSONObject();
-			 
-             dataEvidence.put("class","intermediate.Evidencia");
-			 dataEvidence.put("idevidencia", arrayData.get(i).getIdevidencia());
-			 dataEvidence.put("sistema", arrayData.get(i).getSistema());
-			 dataEvidence.put("medico", arrayData.get(i).getMedico());
-			 dataEvidence.put("justificativa", arrayData.get(i).getJustificativa());
-			 
-             while (arrayData.get(i).getIdevidencia() == evidenceToServer.getIdevidencia() && aux < arrayData.size()) {
-                     
-	            	 dataAnswer = new JSONObject();
-	    			 dataAnswer.put("class","intermediate.Resposta"); 
-	    			 dataAnswer.put("id", arrayData.get(aux).getIdresposta());
-	    			 arrAnswer.put(dataAnswer);
-	    			
-                     aux++;
-                     if (aux < arrayData.size()) {
-                             evidenceToServer = arrayData.get(aux);
-                     }
-             }
-             dataEvidence.put("respostas", arrAnswer);
-			 arrData.put(dataEvidence);
-            
-             i = aux - 1;
-         }
-		 data.put("dados", arrData);
-		 System.out.println("Dados Mobile: "+data);
-		 Map<String,JSONArray> params = new HashMap<String, JSONArray>();
-		 params.put("", arrData);
+		JSONObject data = new JSONObject();
+		JSONObject dataEvidence;
+		JSONObject dataAnswer;
+		JSONArray arrData = new JSONArray();
+		JSONArray arrAnswer;
+
+		for (int i = 0; i < arrayData.size(); i++) {
+			aux = i;
+			evidenceToServer = arrayData.get(aux);
+
+			arrAnswer = new JSONArray();
+			dataEvidence = new JSONObject();
+
+			dataEvidence.put("class", "intermediate.Evidencia");
+			dataEvidence.put("idevidencia", arrayData.get(i).getIdevidencia());
+			dataEvidence.put("sistema", arrayData.get(i).getSistema());
+			dataEvidence.put("medico", arrayData.get(i).getMedico());
+			dataEvidence.put("justificativa", arrayData.get(i)
+					.getJustificativa());
+
+			while (arrayData.get(i).getIdevidencia() == evidenceToServer
+					.getIdevidencia() && aux < arrayData.size()) {
+
+				dataAnswer = new JSONObject();
+				dataAnswer.put("class", "intermediate.Resposta");
+				dataAnswer.put("id", arrayData.get(aux).getIdresposta());
+				arrAnswer.put(dataAnswer);
+
+				aux++;
+				if (aux < arrayData.size()) {
+					evidenceToServer = arrayData.get(aux);
+				}
+			}
+			dataEvidence.put("respostas", arrAnswer);
+			arrData.put(dataEvidence);
+
+			i = aux - 1;
+		}
+		data.put("evidencias", arrData);
+		System.out.println("Dados Mobile: " + data);
+		Map<String, JSONObject> params = new HashMap<String, JSONObject>();
+		params.put("listaEvidencia", data);
+		//System.out.println("Params: " + params);
 		return params;
 	}
 
-	private void startSendEvidence(Map<String, JSONArray> params) {
+	private void startSendEvidence(Map<String, JSONObject> params) {
 		SendEvidence sEv = new SendEvidence(this.ctx);
-		 sEv.setUrl(ServerConstants.getContextFromPost());
-		 sEv.setParams(params);
-		 sEv.run();
+		sEv.setUrl(ServerConstants.getContextFromPost());
+		sEv.setParams(params);
+		sEv.run();
 	}
 
 	public ArrayList<EvidenceServer> searchEvidenceToServer() {
