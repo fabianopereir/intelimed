@@ -7,6 +7,8 @@ class Evidencia {
 	
 	static hasMany = [respostas:Resposta]
 	String justificativa
+	String medico
+	String sistema
 	
 	String toString(){
 		justificativa

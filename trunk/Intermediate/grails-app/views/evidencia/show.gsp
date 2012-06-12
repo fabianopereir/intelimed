@@ -37,6 +37,13 @@
                         </tr>
                     
                         <tr class="prop">
+                            <td valign="top" class="name"><g:message code="evidencia.medico.label" default="Medico" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: evidenciaInstance, field: "medico")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="evidencia.respostas.label" default="Respostas" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
@@ -46,6 +53,13 @@
                                 </g:each>
                                 </ul>
                             </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="evidencia.sistema.label" default="Sistema" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: evidenciaInstance, field: "sistema")}</td>
                             
                         </tr>
                     

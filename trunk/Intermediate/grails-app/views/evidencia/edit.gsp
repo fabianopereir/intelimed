@@ -42,10 +42,28 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="medico"><g:message code="evidencia.medico.label" default="Medico" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: evidenciaInstance, field: 'medico', 'errors')}">
+                                    <g:textField name="medico" value="${evidenciaInstance?.medico}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="respostas"><g:message code="evidencia.respostas.label" default="Respostas" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: evidenciaInstance, field: 'respostas', 'errors')}">
                                     <g:select name="respostas" from="${intermediate.Resposta.list()}" multiple="yes" optionKey="id" size="5" value="${evidenciaInstance?.respostas*.id}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="sistema"><g:message code="evidencia.sistema.label" default="Sistema" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: evidenciaInstance, field: 'sistema', 'errors')}">
+                                    <g:textField name="sistema" value="${evidenciaInstance?.sistema}" />
                                 </td>
                             </tr>
                         
