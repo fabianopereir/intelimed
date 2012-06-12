@@ -3,7 +3,7 @@ package intermediate
 import grails.converters.*
 
 class EvidenciaController {
-
+	
 	def xmlList = {
 		render Evidencia.list() as XML
 	}
@@ -28,6 +28,8 @@ class EvidenciaController {
 					def evidencia = new Evidencia()
 					
 					evidencia.justificativa = it.justificativa
+					evidencia.medico = it.medico
+					evidencia.sistema = it.sistema
 
 					Resposta.getAll(it.respostas.id).each {
 						evidencia.addToRespostas(it)

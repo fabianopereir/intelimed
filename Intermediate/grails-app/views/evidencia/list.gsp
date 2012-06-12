@@ -26,6 +26,10 @@
                         
                             <g:sortableColumn property="justificativa" title="${message(code: 'evidencia.justificativa.label', default: 'Justificativa')}" />
                         
+                            <g:sortableColumn property="medico" title="${message(code: 'evidencia.medico.label', default: 'Medico')}" />
+                        
+                            <g:sortableColumn property="sistema" title="${message(code: 'evidencia.sistema.label', default: 'Sistema')}" />
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +39,10 @@
                             <td><g:link action="show" id="${evidenciaInstance.id}">${fieldValue(bean: evidenciaInstance, field: "id")}</g:link></td>
                         
                             <td>${fieldValue(bean: evidenciaInstance, field: "justificativa")}</td>
+                        
+                            <td>${fieldValue(bean: evidenciaInstance, field: "medico")}</td>
+                        
+                            <td>${fieldValue(bean: evidenciaInstance, field: "sistema")}</td>
                         
                         </tr>
                     </g:each>

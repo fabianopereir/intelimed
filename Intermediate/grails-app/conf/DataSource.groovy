@@ -16,7 +16,9 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-            url = "jdbc:mysql://localhost:3306/intermediate_dev"
+			driverClassName = "org.hsqldb.jdbcDriver"
+			url = "jdbc:hsqldb:mem:devDb"
+			username = "sa"
         }
     }
     test {
@@ -29,8 +31,14 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            //url = "jdbc:hsqldb:file:prodDb;shutdown=true"
-			url = "jdbc:mysql://localhost:3306/intermediate"
+			driverClassName = "com.mysql.jdbc.Driver"
+			username = "intelimed"
+			password = "intermediatedb"
+//			driverClassName = "org.hsqldb.jdbcDriver"
+//			url = "jdbc:hsqldb:file:prodDb"
+//			username = "sa"
+//			password = ""
+			url = "jdbc:mysql://localhost:3306/intelimed"
         }
     }
 }
